@@ -1,0 +1,9 @@
+id: pricing
+group: price
+home: 4
+question:
+  en: "How does pricing work?"
+  ar: "كيف يُحدَّد السعر؟"
+answer:
+  en: "Pricing is tailored to each agency. You pay a one-time setup fee and a monthly fee. There is a 10-day live trial and a 3-month minimum. You get your exact price on the 15-minute call."
+  ar: "يُحدَّد السعر لكل مكتب على حدة. تدفع رسوم إعداد لمرة واحدة ورسوماً شهرية. هناك تجربة حيّة لمدة 10 أيام، وحدّ أدنى للاشتراك مدته 3 أشهر. تعرف سعرك بالتحديد في مكالمة الـ 15 دقيقة."

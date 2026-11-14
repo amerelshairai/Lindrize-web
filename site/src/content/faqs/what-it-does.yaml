@@ -1,0 +1,9 @@
+id: what-it-does
+group: product
+home: 1
+question:
+  en: "What does the assistant do?"
+  ar: "ماذا يفعل المساعد؟"
+answer:
+  en: "It answers customer messages on Instagram, WhatsApp and Messenger within seconds, day and night, in Jordanian Arabic or English. It recommends your own packages, quotes from your price list, collects the traveller's details and sends your staff a ready booking request on Telegram."
+  ar: "يردّ على رسائل العملاء في Instagram و WhatsApp و Messenger خلال ثوانٍ، ليلاً ونهاراً، باللهجة الأردنية أو بالإنجليزية. يقترح باقاتك أنت، ويعرض الأسعار من قائمة أسعارك، ويجمع بيانات المسافر، ثم يرسل لموظفيك طلب حجز جاهزاً على Telegram."

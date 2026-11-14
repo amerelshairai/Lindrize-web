@@ -1,0 +1,7 @@
+id: payment-safeguard
+order: 4
+lang: en
+title: { en: "Asking to pay in the chat", ar: "طلب الدفع داخل المحادثة" }
+messages:
+  - { from: customer, time: "6:30 PM", text: "Can I pay now by card here?" }
+  - { from: assistant, time: "6:30 PM", text: "Payment is never taken in this chat. Our team will arrange it with you directly: cash, bank transfer, CliQ or card at the office. Shall I send them your booking request?" }

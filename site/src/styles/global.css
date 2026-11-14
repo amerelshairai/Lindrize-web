@@ -1,0 +1,391 @@
+/* Lindrize design system. Direction B ("Consultancy"): serif headlines, thin lines, warm greys.
+   Teal appears on main buttons only. See SPEC.md sections 7 and 8. */
+
+/* ---------- Tokens ---------- */
+:root {
+  --bg: #ffffff;
+  --soft: #f5f4f2;
+  --ink: #33302d;
+  --muted: #6f6a65;
+  --line: #e6e3df;
+  --line-strong: #8c8680;
+  --agent: #4a4642;
+  --agent-ink: #ffffff;
+  --agent-meta: #d9d4ce;
+  --teal: #4cd9cf;
+  --teal-hover: #3cc9bf;
+  --on-teal: #06302d;
+
+  /* The logo keeps its own brand colours in each mode. */
+  --logo-bar-a: #14b8b0;
+  --logo-bar-b: #0a9fbe;
+  --logo-dot-1: #087c99;
+  --logo-dot-2: #0e8f99;
+  --logo-dot-3: #0c747c;
+  --logo-word-a: #0c1320;
+  --logo-word-b: #0c1320;
+
+  --font-sans: var(--font-plex-sans);
+  --font-serif: var(--font-plex-serif);
+  /* Arabic letters come from Plex Sans Arabic; digits and Latin words inside Arabic text use Plex Sans. */
+  --font-arabic: var(--font-plex-arabic), var(--font-plex-sans);
+
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-body: 1.125rem;
+  --text-lead: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  --text-h3: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --text-h2: clamp(1.875rem, 1.3rem + 2.4vw, 2.75rem);
+  --text-h1: clamp(2.5rem, 1.5rem + 4.4vw, 4.125rem);
+
+  --space-section: clamp(4rem, 3rem + 5vw, 7rem);
+  --gutter: 1.25rem;
+  --wrap: 70rem;
+  --header-h: 4.25rem;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --fast: 150ms;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #2a2826;
+    --soft: #322f2c;
+    --ink: #efece8;
+    --muted: #aba59f;
+    --line: #3b3835;
+    --line-strong: #8c8680;
+    --agent: #d9d4ce;
+    --agent-ink: #2a2826;
+    --agent-meta: #55504b;
+    --logo-bar-a: #22cec3;
+    --logo-bar-b: #0fb8d2;
+    --logo-dot-1: #0a8fb0;
+    --logo-dot-2: #16a6ae;
+    --logo-dot-3: #158a92;
+    --logo-word-a: #24c7bf;
+    --logo-word-b: #14afc4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #2a2826;
+  --soft: #322f2c;
+  --ink: #efece8;
+  --muted: #aba59f;
+  --line: #3b3835;
+  --line-strong: #8c8680;
+  --agent: #d9d4ce;
+  --agent-ink: #2a2826;
+  --agent-meta: #55504b;
+  --logo-bar-a: #22cec3;
+  --logo-bar-b: #0fb8d2;
+  --logo-dot-1: #0a8fb0;
+  --logo-dot-2: #16a6ae;
+  --logo-dot-3: #158a92;
+  --logo-word-a: #24c7bf;
+  --logo-word-b: #14afc4;
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+:lang(ar) {
+  font-family: var(--font-arabic);
+  letter-spacing: 0;
+}
+html:lang(ar) body {
+  line-height: 1.85;
+}
+:lang(en) {
+  font-family: var(--font-sans);
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin: 0;
+  text-wrap: balance;
+}
+h1:lang(ar),
+h2:lang(ar),
+h3:lang(ar) {
+  font-family: var(--font-arabic);
+  font-weight: 500;
+}
+h1 {
+  font-size: var(--text-h1);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+}
+h2 {
+  font-size: var(--text-h2);
+  line-height: 1.12;
+}
+h3 {
+  font-size: var(--text-h3);
+  line-height: 1.18;
+}
+h1:lang(ar) {
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+h2:lang(ar),
+h3:lang(ar) {
+  line-height: 1.45;
+}
+p {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+img,
+svg {
+  max-width: 100%;
+}
+button {
+  font: inherit;
+  color: inherit;
+}
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+[hidden] {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+/* Controls that need scripts stay out of the way when scripts are off. */
+html:not(.js) .js-only {
+  display: none !important;
+}
+html:not(.motion) .motion-only {
+  display: none !important;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: max(var(--gutter), env(safe-area-inset-left, 0px)) max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+.muted {
+  color: var(--muted);
+}
+.ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.skip {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+.skip:focus {
+  top: 1rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--text-md);
+  font-weight: 500;
+  line-height: 1.25;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--fast) ease,
+    border-color var(--fast) ease;
+}
+.btn-main {
+  background: var(--teal);
+  color: var(--on-teal);
+}
+.btn-main:hover {
+  background: var(--teal-hover);
+}
+.btn-alt {
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+.btn-alt:hover {
+  border-color: var(--ink);
+  background: var(--soft);
+}
+.btn-sm {
+  min-height: 2.5rem;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.9375rem;
+}
+.btn .arrow {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  transition: transform 200ms ease;
+}
+.btn:hover .arrow {
+  transform: translateX(4px);
+}
+[dir='rtl'] .arrow {
+  transform: scaleX(-1);
+}
+[dir='rtl'] .btn:hover .arrow {
+  transform: scaleX(-1) translateX(4px);
+}
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color var(--fast) ease,
+    border-color var(--fast) ease;
+}
+.icon-btn:hover {
+  background: var(--soft);
+  border-color: var(--line);
+}
+.icon-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.text-link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  transition: text-decoration-color var(--fast) ease;
+}
+.text-link:hover {
+  text-decoration-color: var(--ink);
+}
+
+/* ---------- Sections ---------- */
+.sec {
+  border-top: 1px solid var(--line);
+}
+.sec-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-block: var(--space-section) clamp(1.75rem, 1rem + 2vw, 2.5rem);
+}
+.sec-head h2 {
+  max-width: 22ch;
+}
+.sec-head p {
+  color: var(--muted);
+  font-size: var(--text-lead);
+  max-width: 56ch;
+}
+.drawline {
+  width: 4.5rem;
+  height: 1px;
+  background: var(--ink);
+  transform-origin: left center;
+}
+[dir='rtl'] .drawline {
+  transform-origin: right center;
+}
+
+/* ---------- Motion (SPEC 8) ----------
+   Everything is visible by default. The motion script adds `motion-ready` only after it has
+   started, so a failed script can never leave content hidden. */
+html.motion-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 600ms var(--ease),
+    transform 600ms var(--ease);
+}
+html.motion-ready [data-reveal].shown {
+  opacity: 1;
+  transform: none;
+}
+html.motion-ready [data-reveal-group] > [data-reveal]:nth-child(2) {
+  transition-delay: 70ms;
+}
+html.motion-ready [data-reveal-group] > [data-reveal]:nth-child(3) {
+  transition-delay: 140ms;
+}
+html.motion-ready [data-reveal-group] > [data-reveal]:nth-child(4) {
+  transition-delay: 210ms;
+}
+html.motion-ready [data-reveal-group] > [data-reveal]:nth-child(5) {
+  transition-delay: 280ms;
+}
+html.motion-ready [data-reveal-group] > [data-reveal]:nth-child(6) {
+  transition-delay: 350ms;
+}
+html.motion-ready .drawline {
+  transform: scaleX(0);
+  transition: transform 700ms var(--ease);
+}
+html.motion-ready .drawline.shown {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

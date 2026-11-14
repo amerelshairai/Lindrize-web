@@ -1,0 +1,10 @@
+id: customer-reactivation
+number: 3
+group: win-bookings
+status: on-request
+name:
+  en: "Customer Reactivation"
+  ar: "استعادة العملاء السابقين"
+summary:
+  en: "Brings past travellers back with offers for Eid, summer and Umrah season."
+  ar: "يعيد المسافرين السابقين بعروض موسمية للعيد والصيف وموسم العمرة."

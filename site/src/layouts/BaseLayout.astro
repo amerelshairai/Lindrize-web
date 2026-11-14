@@ -1,0 +1,102 @@
+---
+import { Font } from 'astro:assets';
+import '@/styles/global.css';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import MobileStickyBar from '@/components/MobileStickyBar.astro';
+import BookDialog from '@/components/BookDialog.astro';
+import PageLoadBar from '@/components/PageLoadBar.astro';
+import { ui, tr, dirOf, localPath, absoluteUrl, settings, type Lang } from '@/lib/i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** The page's path without a language prefix, for example "/" or "/pricing/". */
+  page: string;
+  /** Keep this page out of search engines (unfinished pages, the 404 page). */
+  noindex?: boolean;
+  /** Hide the phone booking bar, for example inside "Design your agent". */
+  hideStickyBar?: boolean;
+  whatsappMessage?: string;
+}
+const { lang, title, description, page, noindex = false, hideStickyBar = false, whatsappMessage } = Astro.props;
+const canonical = absoluteUrl(localPath(lang, page));
+const ogImage = absoluteUrl('/og-image.png');
+---
+
+<!doctype html>
+<html lang={lang} dir={dirOf(lang)}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+        } catch (e) {}
+        if (window.matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches) d.classList.add('motion');
+      })();
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    {
+      !noindex && (
+        <>
+          <link rel="canonical" href={canonical} />
+          <link rel="alternate" hreflang="en" href={absoluteUrl(localPath('en', page))} />
+          <link rel="alternate" hreflang="ar" href={absoluteUrl(localPath('ar', page))} />
+          <link rel="alternate" hreflang="x-default" href={absoluteUrl(localPath('en', page))} />
+        </>
+      )
+    }
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={settings.siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'ar' ? 'ar_AR' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'ar' ? 'en_US' : 'ar_AR'} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Lindrize: AI sales assistants for travel agencies" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#2a2826" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <Font cssVariable="--font-plex-serif" preload={lang === 'en'} />
+    <Font cssVariable="--font-plex-sans" preload={[{ weight: 400 }]} />
+    <Font cssVariable="--font-plex-arabic" preload={[{ weight: lang === 'ar' ? 500 : 400 }]} />
+  </head>
+  <body>
+    <a class="skip" href="#main">{tr(ui.skip, lang)}</a>
+    <Header lang={lang} page={page} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    {!hideStickyBar && <MobileStickyBar lang={lang} whatsappMessage={whatsappMessage} />}
+    <BookDialog lang={lang} />
+    <PageLoadBar lang={lang} />
+  </body>
+</html>
+
+<style is:global>
+  main:focus {
+    outline: none;
+  }
+</style>

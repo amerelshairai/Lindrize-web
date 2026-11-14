@@ -1,0 +1,152 @@
+---
+import Logo from './Logo.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+import { ui, tr, settings, localPath, ROUTES, type Lang } from '@/lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const explore = [
+  { route: ROUTES.solutions, label: ui.nav.solutions },
+  { route: ROUTES.industries, label: ui.nav.industries },
+  { route: ROUTES.pricing, label: ui.nav.pricing },
+  { route: ROUTES.design, label: ui.nav.design },
+];
+const company = [
+  { route: ROUTES.about, label: ui.nav.about },
+  { route: ROUTES.faq, label: ui.nav.faq },
+  { route: ROUTES.contact, label: ui.nav.contact },
+  { route: ROUTES.privacy, label: ui.nav.privacy },
+  { route: ROUTES.terms, label: ui.nav.terms },
+];
+const year = new Date().getFullYear();
+---
+
+<footer class="site-foot" data-site-foot>
+  <div class="wrap">
+    <div class="cols">
+      <div class="brand">
+        <Logo reuse />
+        <p>{tr(ui.footer.tagline, lang)}</p>
+        <p class="muted">{tr(settings.city, lang)}</p>
+      </div>
+
+      <nav aria-label={tr(ui.footer.explore, lang)}>
+        <h2>{tr(ui.footer.explore, lang)}</h2>
+        <ul role="list">
+          {explore.map(({ route, label }) => <li><a href={localPath(lang, route)}>{tr(label, lang)}</a></li>)}
+        </ul>
+      </nav>
+
+      <nav aria-label={tr(ui.footer.company, lang)}>
+        <h2>{tr(ui.footer.company, lang)}</h2>
+        <ul role="list">
+          {company.map(({ route, label }) => <li><a href={localPath(lang, route)}>{tr(label, lang)}</a></li>)}
+        </ul>
+      </nav>
+
+      <div>
+        <h2>{tr(ui.footer.getInTouch, lang)}</h2>
+        <ul role="list">
+          <li><a href={settings.calendlyUrl} data-book data-astro-prefetch="false">{tr(ui.book.long, lang)}</a></li>
+          <li>
+            <WhatsAppLink lang={lang} label={settings.whatsappDisplay} class="ltr" />
+          </li>
+          <li><a href={`mailto:${settings.email}`} class="ltr">{settings.email}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="base">
+      <p>{tr(ui.footer.legal, lang)}</p>
+      <p>
+        {tr(ui.footer.access, lang)}
+        <a href={`mailto:${settings.email}`} class="ltr">{settings.email}</a>
+      </p>
+      <p class="ltr">© {year} Lindrize</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-foot {
+    border-top: 1px solid var(--line);
+    background: var(--soft);
+    font-size: var(--text-md);
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
+    gap: 2.5rem;
+    padding-block: 4rem 3rem;
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 22rem;
+  }
+  h2 {
+    font-family: inherit;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+  li a,
+  li :global(a) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  li a:hover,
+  li :global(a:hover) {
+    text-decoration: underline;
+  }
+  .base {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    justify-content: space-between;
+    padding-block: 1.5rem 2rem;
+    border-top: 1px solid var(--line);
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  .base a {
+    color: var(--ink);
+  }
+  .base .ltr,
+  li .ltr,
+  li :global(.ltr) {
+    display: inline-flex;
+  }
+  @media (max-width: 56rem) {
+    .cols {
+      grid-template-columns: 1fr 1fr;
+      padding-block: 3rem 2rem;
+    }
+    .brand {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 30rem) {
+    .cols {
+      grid-template-columns: 1fr;
+    }
+    .base {
+      /* Room for the sticky booking bar if it reappears while scrolling back up. */
+      padding-bottom: 2.5rem;
+    }
+  }
+</style>

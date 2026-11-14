@@ -1,0 +1,18 @@
+id: family-sharm
+order: 1
+lang: ar
+package: SSH-02
+title: { en: "A family trip by the sea", ar: "رحلة بحر للعائلة" }
+messages:
+  - { from: customer, time: "11:40 PM", text: "بدي رحلة بحر مع الولاد، شو عندكم؟" }
+  - { from: assistant, time: "11:40 PM", text: "أهلاً وسهلاً فيك! كم شخص كبار وكم طفل؟ وبأي شهر حابين تسافروا؟" }
+  - { from: customer, time: "11:41 PM", text: "2 كبار وولدين، بشهر 1" }
+  - { from: assistant, time: "11:41 PM", text: "بنصحكم ببكج «شرم الشيخ - عائلي شامل كل شيء»: 5 ليالي بفندق 5 نجوم، والسفر يوم 21/1. السعر 455 دينار للكبير و250 دينار للطفل، وسعر الطفل عليه خصم 40%. على أي اسم ورقم أسجّل الطلب؟" }
+  - { from: customer, time: "11:42 PM", text: "سامر، 079 ••• ••••" }
+  - { from: assistant, time: "11:42 PM", text: "تمام سامر! بعثت طلبكم للفريق، ورنا من فريقنا رح تأكد الحجز معكم الصبح ✅" }
+request:
+  customer: { en: "Samer", ar: "سامر" }
+  package: { en: "Sharm Family All-Inclusive", ar: "شرم الشيخ - عائلي شامل كل شيء" }
+  travellers: { en: "2 adults, 2 children", ar: "بالغان وطفلان" }
+  departure: { en: "21 January 2027", ar: "21 يناير 2027" }
+  total: { en: "1,410 JOD", ar: "1,410 ديناراً" }

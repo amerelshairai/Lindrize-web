@@ -1,0 +1,31 @@
+---
+/**
+ * A link styled as a button.
+ * `book` opens the booking calendar in a dialog (and still works as a plain link without scripts).
+ */
+interface Props {
+  href: string;
+  variant?: 'main' | 'alt';
+  size?: 'md' | 'sm';
+  arrow?: boolean;
+  book?: boolean;
+  external?: boolean;
+  class?: string;
+  [key: `data-${string}`]: string | boolean | undefined;
+}
+import Icon from './Icon.astro';
+const { href, variant = 'main', size = 'md', arrow = false, book = false, external = false, class: className, ...rest } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={['btn', `btn-${variant}`, size === 'sm' && 'btn-sm', className]}
+  data-book={book ? '' : undefined}
+  data-astro-prefetch={book || external ? 'false' : undefined}
+  rel={external ? 'noopener' : undefined}
+  target={external ? '_blank' : undefined}
+  {...rest}
+>
+  <slot />
+  {arrow && <Icon name="arrow" />}
+</a>

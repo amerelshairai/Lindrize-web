@@ -1,0 +1,72 @@
+---
+/**
+ * The Lindrize logo, drawn inline so it can follow light and dark mode without a second download.
+ * Shapes come from brand/logo/lindrize-logo-for-light-bg.svg; colours are set in global.css
+ * (--logo-*) and match the brand's light-background and dark-background versions exactly.
+ * Render the full logo once per page (the header); elsewhere pass `reuse` to point at it.
+ */
+interface Props {
+  reuse?: boolean;
+  class?: string;
+}
+const { reuse = false, class: className } = Astro.props;
+---
+
+<svg class:list={['logo', className]} viewBox="0 0 211.8 72" aria-hidden="true" focusable="false">
+  {
+    reuse ? (
+      <use href="#lz-logo-art" />
+    ) : (
+      <>
+        <defs>
+          <linearGradient id="lz-logo-bar" x1="0" y1="0" x2="1" y2="1">
+            <stop class="lz-bar-a" offset="0" />
+            <stop class="lz-bar-b" offset="1" />
+          </linearGradient>
+          <linearGradient id="lz-logo-word" x1="0" y1="0" x2="1" y2="0">
+            <stop class="lz-word-a" offset="0" />
+            <stop class="lz-word-b" offset="1" />
+          </linearGradient>
+        </defs>
+        <g id="lz-logo-art" transform="translate(4,4)">
+          <rect x="0" y="0" width="10.4" height="64" rx="3.2" fill="url(#lz-logo-bar)" />
+          <rect x="0" y="53.6" width="42" height="10.4" rx="3.2" fill="url(#lz-logo-bar)" />
+          <circle class="lz-dot-1" cx="16" cy="12.6" r="3.6" />
+          <circle class="lz-dot-2" cx="22" cy="24" r="5.8" />
+          <circle class="lz-dot-3" cx="32" cy="35" r="3.4" />
+          <path fill="url(#lz-logo-word)" d="M67.99 45.75V18.25H72.5V41.62H85.47V45.75ZM89.04 45.75V26.89H93.36V45.75ZM91.2 23.44Q90.1 23.44 89.38 22.69Q88.65 21.94 88.65 20.84Q88.65 19.74 89.38 19Q90.1 18.25 91.2 18.25Q92.34 18.25 93.05 19Q93.76 19.74 93.76 20.84Q93.76 21.94 93.05 22.69Q92.34 23.44 91.2 23.44ZM111.12 45.75V34.87Q111.12 32.98 109.92 31.76Q108.72 30.55 106.84 30.55Q105.58 30.55 104.6 31.1Q103.62 31.65 103.07 32.63Q102.52 33.61 102.52 34.87V45.75H98.2V26.89H102.52V29.01Q103.3 28.07 104.4 27.44Q106.05 26.5 108.14 26.5Q110.26 26.5 111.91 27.58Q113.56 28.66 114.5 30.37Q115.44 32.08 115.44 33.92V45.75ZM127.74 46.14Q125.19 46.14 123.12 44.85Q121.06 43.55 119.86 41.33Q118.66 39.11 118.66 36.36Q118.66 33.57 119.86 31.35Q121.06 29.13 123.12 27.82Q125.19 26.5 127.74 26.5Q129.9 26.5 131.59 27.4Q132.69 28.03 133.51 28.98V17.46H137.84V45.75H133.51V43.71Q132.73 44.61 131.59 45.2Q129.9 46.14 127.74 46.14ZM128.45 42.06Q130.06 42.06 131.26 41.33Q132.45 40.6 133.12 39.31Q133.79 38.01 133.79 36.32Q133.79 34.63 133.12 33.34Q132.45 32.04 131.26 31.31Q130.06 30.59 128.49 30.59Q126.88 30.59 125.68 31.31Q124.48 32.04 123.79 33.34Q123.1 34.63 123.1 36.32Q123.1 38.01 123.79 39.31Q124.48 40.6 125.68 41.33Q126.88 42.06 128.45 42.06ZM142.63 45.75V26.89H146.95V28.86Q146.99 28.78 147.07 28.7Q148.64 26.5 151.86 26.5Q153.28 26.5 154.41 27.01Q155.55 27.52 156.54 28.66L153.71 31.57Q153.2 31.02 152.57 30.78Q151.94 30.55 151.11 30.55Q149.31 30.55 148.13 31.69Q146.95 32.83 146.95 35.26V45.75ZM158.66 45.75V26.89H162.98V45.75ZM160.82 23.44Q159.72 23.44 158.99 22.69Q158.26 21.94 158.26 20.84Q158.26 19.74 158.99 19Q159.72 18.25 160.82 18.25Q161.96 18.25 162.66 19Q163.37 19.74 163.37 20.84Q163.37 21.94 162.66 22.69Q161.96 23.44 160.82 23.44ZM166.4 45.75V43.39L175.75 30.82H167.1V26.89H181.99V29.25L172.64 41.82H181.76V45.75ZM193.97 46.14Q191.15 46.14 188.89 44.87Q186.63 43.59 185.31 41.35Q184 39.11 184 36.32Q184 33.53 185.29 31.31Q186.59 29.09 188.81 27.8Q191.03 26.5 193.74 26.5Q196.37 26.5 198.39 27.72Q200.42 28.94 201.58 31.06Q202.74 33.18 202.74 35.89Q202.74 36.36 202.68 36.85Q202.62 37.34 202.5 37.93H188.44Q188.59 38.68 188.95 39.31Q189.65 40.64 190.95 41.37Q192.25 42.1 193.94 42.1Q195.39 42.1 196.63 41.59Q197.86 41.08 198.73 40.09L201.48 42.88Q200.1 44.49 198.14 45.32Q196.17 46.14 193.97 46.14ZM188.44 34.4H198.49Q198.3 33.57 197.98 32.9Q197.39 31.73 196.31 31.1Q195.23 30.47 193.66 30.47Q192.01 30.47 190.79 31.18Q189.57 31.88 188.91 33.14Q188.59 33.73 188.44 34.4Z" />
+        </g>
+      </>
+    )
+  }
+</svg>
+
+<style is:global>
+  .logo {
+    display: block;
+    height: 2.25rem;
+    width: auto;
+    aspect-ratio: 211.8 / 72;
+  }
+  .lz-bar-a {
+    stop-color: var(--logo-bar-a);
+  }
+  .lz-bar-b {
+    stop-color: var(--logo-bar-b);
+  }
+  .lz-word-a {
+    stop-color: var(--logo-word-a);
+  }
+  .lz-word-b {
+    stop-color: var(--logo-word-b);
+  }
+  .lz-dot-1 {
+    fill: var(--logo-dot-1);
+  }
+  .lz-dot-2 {
+    fill: var(--logo-dot-2);
+  }
+  .lz-dot-3 {
+    fill: var(--logo-dot-3);
+  }
+</style>

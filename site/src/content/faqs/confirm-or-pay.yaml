@@ -1,0 +1,9 @@
+id: confirm-or-pay
+group: limits
+home: 2
+question:
+  en: "Can it confirm a booking or take a payment?"
+  ar: "هل يستطيع تأكيد حجز أو استلام دفعة؟"
+answer:
+  en: "No. It never confirms a booking and never takes a payment. Your staff review every request and keep the final word."
+  ar: "لا. لا يؤكّد حجزاً ولا يستلم دفعةً أبداً. موظفوك يراجعون كل طلب، والكلمة الأخيرة لهم."

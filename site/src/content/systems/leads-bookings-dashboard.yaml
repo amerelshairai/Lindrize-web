@@ -1,0 +1,10 @@
+id: leads-bookings-dashboard
+number: 16
+group: run-office
+status: on-request
+name:
+  en: "Leads & Bookings Dashboard"
+  ar: "لوحة الاستفسارات والحجوزات"
+summary:
+  en: "One place for every inquiry, its status and who is handling it."
+  ar: "مكان واحد لكل استفسار، وحالته، ومن يتابعه."

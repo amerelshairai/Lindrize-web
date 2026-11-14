@@ -1,0 +1,10 @@
+id: ai-travel-sales-assistant
+number: 1
+group: win-bookings
+status: live-demo
+name:
+  en: "AI Travel Sales Assistant"
+  ar: "مساعد مبيعات السفر (AI Travel Sales Assistant)"
+summary:
+  en: "Answers Instagram, WhatsApp and Messenger in seconds and sends your staff a booking request."
+  ar: "يردّ على رسائل Instagram و WhatsApp و Messenger خلال ثوانٍ ويرسل لموظفيك طلب حجز."

@@ -1,0 +1,17 @@
+{
+  "siteName": "Lindrize",
+  "siteUrl": "https://www.lindrize.online",
+  "calendlyUrl": "https://calendly.com/amerelshair-ai-lindrize/15-minute-call-with-lindrize",
+  "whatsappNumber": "962785536571",
+  "whatsappDisplay": "+962 78 553 6571",
+  "email": "amer.ai@lindrize.online",
+  "city": { "en": "Amman, Jordan", "ar": "عمّان، الأردن" },
+  "founder": "Amer El-shair",
+  "demo": {
+    "handle": "darb_alyasmeen",
+    "chatUrl": "https://ig.me/m/darb_alyasmeen",
+    "profileUrl": "https://www.instagram.com/darb_alyasmeen/"
+  },
+  "videoId": "",
+  "foundingPlaces": { "tier30": null, "tier20": null, "tier15": null }
+}

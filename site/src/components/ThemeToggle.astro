@@ -1,0 +1,73 @@
+---
+import Icon from './Icon.astro';
+import { ui, tr, type Lang } from '@/lib/i18n';
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<button
+  type="button"
+  class="icon-btn js-only theme-toggle"
+  data-theme-toggle
+  data-label-dark={tr(ui.theme.toDark, lang)}
+  data-label-light={tr(ui.theme.toLight, lang)}
+  aria-label={tr(ui.theme.toDark, lang)}
+>
+  <span class="when-light"><Icon name="moon" /></span>
+  <span class="when-dark"><Icon name="sun" /></span>
+</button>
+
+<style>
+  .theme-toggle span {
+    display: grid;
+  }
+  .when-dark {
+    display: none !important;
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .when-dark {
+      display: grid !important;
+    }
+    :global(:root:not([data-theme='light'])) .when-light {
+      display: none;
+    }
+  }
+  :global(:root[data-theme='dark']) .when-dark {
+    display: grid !important;
+  }
+  :global(:root[data-theme='dark']) .when-light {
+    display: none;
+  }
+</style>
+
+<script>
+  const root = document.documentElement;
+  const isDark = (): boolean => {
+    const chosen = root.getAttribute('data-theme');
+    if (chosen) return chosen === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  };
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]');
+  const label = (): void => {
+    buttons.forEach((b) => {
+      const text = isDark() ? b.dataset['labelLight'] : b.dataset['labelDark'];
+      if (text) b.setAttribute('aria-label', text);
+    });
+  };
+  buttons.forEach((b) =>
+    b.addEventListener('click', () => {
+      const next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try {
+        localStorage.setItem('theme', next);
+      } catch {
+        /* Private mode: the choice lasts for this page only. */
+      }
+      label();
+    }),
+  );
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', label);
+  label();
+</script>

@@ -1,0 +1,47 @@
+---
+/** Opens WhatsApp with a message already typed for the page the visitor is on. */
+import Icon from './Icon.astro';
+import { ui, tr, whatsappUrl, type Lang } from '@/lib/i18n';
+interface Props {
+  lang: Lang;
+  message?: string;
+  /** "icon" shows only the icon (with a spoken label); "text" shows the icon and a label. */
+  variant?: 'icon' | 'text';
+  label?: string;
+  class?: string;
+}
+const { lang, message = tr(ui.whatsapp.defaultMessage, lang), variant = 'text', label = tr(ui.whatsapp.label, lang), class: className } = Astro.props;
+---
+
+<a
+  href={whatsappUrl(message)}
+  class:list={[variant === 'icon' ? 'icon-btn' : 'wa-text', className]}
+  aria-label={variant === 'icon' ? label : undefined}
+  rel="noopener"
+  target="_blank"
+  data-astro-prefetch="false"
+  data-track="whatsapp"
+>
+  <Icon name="whatsapp" />
+  {variant === 'text' && <span>{label}</span>}
+</a>
+
+<style>
+  .wa-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+  }
+  .wa-text:hover {
+    text-decoration-color: var(--ink);
+  }
+  .wa-text :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: none;
+  }
+</style>

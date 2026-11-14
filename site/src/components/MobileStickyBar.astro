@@ -1,0 +1,87 @@
+---
+/**
+ * Phone-only bar with the two main actions. It appears once the page's own booking button has
+ * scrolled away, and hides while the booking dialog is open or the footer is on screen.
+ */
+import Button from './Button.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+import { ui, tr, settings, type Lang } from '@/lib/i18n';
+interface Props {
+  lang: Lang;
+  whatsappMessage?: string | undefined;
+}
+const { lang, whatsappMessage } = Astro.props;
+---
+
+<div class="sticky-bar js-only" data-sticky-bar data-hidden>
+  <Button href={settings.calendlyUrl} book>{tr(ui.book.sticky, lang)}</Button>
+  <WhatsAppLink lang={lang} variant="icon" message={whatsappMessage} />
+</div>
+
+<style>
+  .sticky-bar {
+    display: none;
+  }
+  @media (max-width: 62rem) {
+    .sticky-bar {
+      position: fixed;
+      inset: auto 0 0 0;
+      z-index: 15;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem max(var(--gutter), env(safe-area-inset-right, 0px)) calc(0.6rem + env(safe-area-inset-bottom, 0px))
+        max(var(--gutter), env(safe-area-inset-left, 0px));
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+      transition:
+        transform 220ms var(--ease),
+        visibility 0s linear 0s;
+    }
+    .sticky-bar[data-hidden] {
+      transform: translateY(110%);
+      visibility: hidden;
+      transition:
+        transform 220ms var(--ease),
+        visibility 0s linear 220ms;
+    }
+    .sticky-bar :global(.btn) {
+      flex: 1;
+    }
+    .sticky-bar :global(.icon-btn) {
+      width: 3rem;
+      height: 3rem;
+      border-color: var(--line-strong);
+    }
+  }
+</style>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-sticky-bar]');
+  if (bar && 'IntersectionObserver' in window) {
+    const state = { heroCta: false, footer: false, dialog: false };
+    const heroCta = document.querySelector('[data-hero-cta]');
+    const footer = document.querySelector('[data-site-foot]');
+    const update = (): void => {
+      bar.toggleAttribute('data-hidden', state.heroCta || state.footer || state.dialog);
+    };
+    const watch = (el: Element | null, key: 'heroCta' | 'footer'): void => {
+      if (!el) return;
+      new IntersectionObserver((entries) => {
+        for (const entry of entries) state[key] = entry.isIntersecting;
+        update();
+      }).observe(el);
+    };
+    watch(heroCta, 'heroCta');
+    watch(footer, 'footer');
+    document.addEventListener('lz:book-open', () => {
+      state.dialog = true;
+      update();
+    });
+    document.addEventListener('lz:book-close', () => {
+      state.dialog = false;
+      update();
+    });
+    if (!heroCta) update();
+  }
+</script>

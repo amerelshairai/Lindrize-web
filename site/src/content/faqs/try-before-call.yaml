@@ -1,0 +1,9 @@
+id: try-before-call
+group: setup
+home: 5
+question:
+  en: "How can I try it before the call?"
+  ar: "كيف أجرّبه قبل المكالمة؟"
+answer:
+  en: "Message @darb_alyasmeen on Instagram from your own account. Darb Al-Yasmeen is a fictional agency we built so you can test the assistant with any question a customer might ask."
+  ar: "راسل \u200E@darb_alyasmeen على Instagram من حسابك. «درب الياسمين» مكتب تجريبي غير حقيقي أنشأناه لتختبر المساعد بأي سؤال قد يطرحه عميل."

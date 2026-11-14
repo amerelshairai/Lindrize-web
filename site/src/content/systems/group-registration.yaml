@@ -1,0 +1,10 @@
+id: group-registration
+number: 13
+group: look-after
+status: on-request
+name:
+  en: "Group Registration"
+  ar: "تسجيل المجموعات"
+summary:
+  en: "Sign-up forms for Umrah, school and company trips, with automatic lists."
+  ar: "نماذج تسجيل لرحلات العمرة والمدارس والشركات، مع قوائم تُجهَّز تلقائياً."

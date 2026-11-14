@@ -1,0 +1,10 @@
+id: quote-follow-up
+number: 2
+group: win-bookings
+status: on-request
+name:
+  en: "Quote Follow-up"
+  ar: "متابعة عروض الأسعار"
+summary:
+  en: "Follows up with customers who got a price and went quiet."
+  ar: "يتابع العملاء الذين حصلوا على سعر ثم توقفوا عن الردّ."

@@ -1,0 +1,125 @@
+seo:
+  title:
+    en: "Lindrize: AI sales assistants for travel agencies"
+    ar: "Lindrize: مساعدو مبيعات بالذكاء الاصطناعي لمكاتب السفر والسياحة"
+  description:
+    en: "An AI assistant that answers your travel agency's Instagram, WhatsApp and Messenger in seconds, day and night, in Arabic or English. Your staff keep the final word."
+    ar: "مساعد بالذكاء الاصطناعي يردّ على رسائل مكتبك السياحي في Instagram و WhatsApp و Messenger خلال ثوانٍ، ليلاً ونهاراً، بالعربية أو الإنجليزية. والكلمة الأخيرة لفريقك."
+
+hero:
+  title:
+    en: "Every traveller answered in seconds, day and night."
+    ar: "ردٌّ على كل مسافر خلال ثوانٍ، ليلاً ونهاراً."
+  lead:
+    en: "An assistant for your Instagram, WhatsApp and Messenger. It replies in Arabic or English, quotes from your price list and hands your team a ready booking request."
+    ar: "مساعد يردّ على رسائل عملائك في Instagram و WhatsApp و Messenger بالعربية أو الإنجليزية، يعرض الأسعار من قائمة أسعارك، ويسلّم فريقك طلب حجز جاهزاً."
+  # {handle} is replaced by a link to the demo account.
+  tryLine:
+    en: "Message {handle}, our fictional demo agency, from your own Instagram and try it yourself."
+    ar: "راسل {handle}، مكتبنا التجريبي غير الحقيقي، من حسابك على Instagram وجرّبه بنفسك."
+
+story:
+  title:
+    en: "One message, from 11:40 PM to a confirmed booking."
+    ar: "رسالة واحدة: من الساعة 11:40 مساءً إلى حجز مؤكَّد."
+  steps:
+    - when: { en: "11:40 PM", ar: "11:40 مساءً" }
+      title:
+        en: "A customer asks while your office is closed."
+        ar: "عميل يسأل ومكتبك مغلق."
+      body:
+        en: "On Instagram, WhatsApp or Messenger, in Arabic or English. At this hour, nobody is at the office to reply."
+        ar: "عبر Instagram أو WhatsApp أو Messenger، بالعربية أو الإنجليزية. في هذه الساعة لا أحد في المكتب ليردّ."
+    - when: { en: "Seconds later", ar: "بعد ثوانٍ" }
+      title:
+        en: "The assistant answers with your package and your price."
+        ar: "المساعد يجيب بباقتك وسعرك."
+      body:
+        en: "It asks what your staff would ask, recommends one of your packages and quotes from your price list."
+        ar: "يسأل ما يسأله موظفوك، ويقترح إحدى باقاتك، ويعرض السعر من قائمة أسعارك."
+    - when: { en: "The next morning", ar: "في صباح اليوم التالي" }
+      title:
+        en: "Your team finds a ready booking request."
+        ar: "فريقك يجد طلب حجز جاهزاً."
+      body:
+        en: "The traveller's name, the dates, the package and the quoted total, waiting on Telegram. Your staff confirm the booking. The assistant never does."
+        ar: "اسم المسافر والتواريخ والباقة والمبلغ المعروض، بانتظارهم على Telegram. موظفوك هم من يؤكّدون الحجز، أما المساعد فلا يؤكّده أبداً."
+  chips:
+    - { en: "Understood Jordanian Arabic", ar: "فهم اللهجة الأردنية" }
+    - { en: "Recommended your package", ar: "اقترح باقتك" }
+    - { en: "Quoted from your price list", ar: "عرض السعر من قائمتك" }
+  confirmed:
+    en: "Confirmed by staff at 9:40 AM."
+    ar: "أكّده أحد الموظفين الساعة 9:40 صباحاً."
+
+tryIt:
+  title:
+    en: "Ask it what your customers ask."
+    ar: "اسأله ما يسأله عملاؤك."
+  body:
+    en: "Three questions from our demo. Choose one to see the answer, then send your own."
+    ar: "ثلاثة أسئلة من عرضنا التجريبي. اختر سؤالاً لترى الإجابة، ثم أرسل سؤالك أنت."
+  tabsLabel: { en: "Sample questions", ar: "أسئلة كأمثلة" }
+  # {handle} is replaced by the demo account's handle.
+  button:
+    en: "Message {handle} on Instagram"
+    ar: "راسل {handle} على Instagram"
+  note:
+    en: "Darb Al-Yasmeen is a fictional agency we built for this demo. Its packages and prices are sample data."
+    ar: "«درب الياسمين» مكتب غير حقيقي أنشأناه لهذا العرض، وباقاته وأسعاره بيانات تجريبية."
+
+statement:
+  en: "It never confirms a booking and never takes a payment. Your team keeps the final word on every price, seat and promise."
+  ar: "لا يؤكّد حجزاً ولا يستلم دفعةً أبداً. تبقى الكلمة الأخيرة لفريقك في كل سعر ومقعد ووعد."
+
+systems:
+  title:
+    en: "Start with one system. Add more when you're ready."
+    ar: "ابدأ بنظام واحد، وأضف غيره متى شئت."
+  body:
+    en: "30 systems for travel agencies, from answering messages to running Umrah groups."
+    ar: "30 نظاماً لمكاتب السفر والسياحة، من الردّ على الرسائل إلى إدارة مجموعات العمرة."
+  all: { en: "See all 30 systems", ar: "تصفّح الأنظمة الثلاثين" }
+  featured: [1, 2, 3, 13, 16]
+
+working:
+  title: { en: "Working with us", ar: "كيف نعمل معك" }
+  body:
+    en: "We do the setup for you, in four steps."
+    ar: "نتولّى الإعداد عنك، في أربع خطوات."
+  steps:
+    - title: { en: "15-minute call", ar: "مكالمة 15 دقيقة" }
+      note: { en: "On Google Meet", ar: "عبر Google Meet" }
+      body:
+        en: "Tell us how your agency answers messages today. You see the assistant working and ask anything you like."
+        ar: "أخبرنا كيف يردّ مكتبك على الرسائل اليوم، وشاهد المساعد وهو يعمل، واسأل ما تشاء."
+    - title: { en: "Setup session", ar: "جلسة الإعداد" }
+      note: { en: "With you", ar: "معك" }
+      body:
+        en: "We go through your packages, your prices and how your team wants to receive booking requests."
+        ar: "نراجع معك باقاتك وأسعارك والطريقة التي يفضّل فريقك استلام طلبات الحجز بها."
+    - title: { en: "We build it", ar: "نحن ننفّذ" }
+      note: { en: "Done for you", ar: "دون جهد منك" }
+      body:
+        en: "We set the assistant up on your accounts and test it with the questions your customers ask."
+        ar: "نجهّز المساعد على حساباتك ونختبره بالأسئلة التي يطرحها عملاؤك."
+    - title: { en: "10-day live trial", ar: "تجربة حيّة لمدة 10 أيام" }
+      note: { en: "With real customers", ar: "مع عملاء حقيقيين" }
+      body:
+        en: "The assistant answers your real customers for 10 days, so you judge it on real conversations."
+        ar: "يردّ المساعد على عملائك الحقيقيين لمدة 10 أيام، فتحكم عليه من محادثات حقيقية."
+
+feedback:
+  title: { en: "What clients say", ar: "ماذا يقول عملاؤنا" }
+
+faq:
+  title: { en: "Questions owners ask", ar: "أسئلة يطرحها أصحاب المكاتب" }
+  all: { en: "See all questions", ar: "كل الأسئلة" }
+
+final:
+  title:
+    en: "See it working for your own agency."
+    ar: "شاهده يعمل لمكتبك أنت."
+  body:
+    en: "15 minutes on Google Meet. Bring your questions."
+    ar: "15 دقيقة عبر Google Meet. أحضر أسئلتك."

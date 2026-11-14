@@ -1,0 +1,9 @@
+id: honeymoon
+order: 3
+lang: en
+package: SSH-04
+title: { en: "A honeymoon by the sea", ar: "شهر عسل على البحر" }
+messages:
+  - { from: customer, time: "8:05 PM", text: "Do you have honeymoon packages by the sea?" }
+  - { from: assistant, time: "8:05 PM", text: "Congratulations! Our Sharm Honeymoon Sea-View Suite is 6 nights at an adults-only 5-star resort, all inclusive, for 760 JOD per person. It comes with free room decoration and a cake." }
+  - { from: assistant, time: "8:05 PM", text: "For something more luxurious, Dubai Luxury Beach & Sky is 5 nights for 1,150 JOD per person. Which month are you thinking of?" }

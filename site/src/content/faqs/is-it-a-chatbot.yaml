@@ -1,0 +1,9 @@
+id: is-it-a-chatbot
+group: product
+home: 3
+question:
+  en: "Is this a chatbot?"
+  ar: "هل هذا «شات بوت»؟"
+answer:
+  en: "It is an AI assistant set up for your agency. It recommends your own packages, quotes from your price list and passes every booking request to your staff."
+  ar: "هو مساعد بالذكاء الاصطناعي مُعَدّ لمكتبك. يقترح باقاتك أنت، ويعرض الأسعار من قائمة أسعارك، ويحوّل كل طلب حجز إلى موظفيك."
