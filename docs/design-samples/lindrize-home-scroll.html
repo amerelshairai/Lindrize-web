@@ -1,0 +1,414 @@
+<title>Lindrize Home Draft</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Outfit:wght@600&display=swap">
+<style>
+/* Layout: direction B. Serif headlines on white, thin rules, a sticky story where the product changes as you scroll. Teal appears only on the main buttons. */
+:root {
+  --bg: #FFFFFF; --soft: #F5F4F2; --ink: #33302D; --muted: #6F6A65; --faint: #C9C4BE; --line: #E6E3DF; --line-strong: #8C8680;
+  --agent: #4A4642; --agent-ink: #FFFFFF;
+  --btn2-hover: #F5F4F2;
+  --teal: #4CD9CF; --teal-hover: #3CC9BF; --on-teal: #06302D;
+  --sans: "IBM Plex Sans", "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif;
+  --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --arabic: "IBM Plex Sans Arabic", "IBM Plex Sans", Tahoma, sans-serif;
+  --mark: "Outfit", "IBM Plex Sans", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #2A2826; --soft: #322F2C; --ink: #EFECE8; --muted: #ABA59F; --faint: #5A5550; --line: #3B3835; --line-strong: #8C8680;
+  --agent: #D9D4CE; --agent-ink: #2A2826; --btn2-hover: #322F2C; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #2A2826; --soft: #322F2C; --ink: #EFECE8; --muted: #ABA59F; --faint: #5A5550; --line: #3B3835; --line-strong: #8C8680;
+  --agent: #D9D4CE; --agent-ink: #2A2826; --btn2-hover: #322F2C; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin-inline: auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.serif { font-family: var(--serif); font-weight: 400; }
+
+/* Buttons: teal only here */
+.btn { display: inline-flex; align-items: center; gap: 10px; font: 500 16px var(--sans); padding: 13px 22px; min-height: 48px; border: 1px solid transparent; text-decoration: none; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease; }
+.btn-main { background: var(--teal); color: var(--on-teal); }
+.btn-main:hover { background: var(--teal-hover); }
+.btn-alt { color: var(--ink); border-color: var(--line-strong); background: transparent; }
+.btn-alt:hover { background: var(--btn2-hover); border-color: var(--ink); }
+.btn .arrow { transition: transform 200ms ease; }
+.btn:hover .arrow { transform: translateX(4px); }
+.btn-sm { padding: 8px 14px; min-height: 40px; font-size: 14.5px; }
+.ghost { background: transparent; border: 1px solid var(--line); color: var(--ink); font: 500 13.5px var(--sans); padding: 7px 12px; cursor: pointer; }
+
+/* Header */
+.head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid transparent; transition: border-color 200ms ease; }
+.head.scrolled { border-color: var(--line); }
+.head .wrap { display: flex; align-items: center; gap: 28px; padding-block: 14px; }
+.mark { font-family: var(--mark); font-weight: 600; font-size: 23px; text-decoration: none; color: var(--ink); }
+.nav { display: flex; gap: 26px; margin-inline-start: auto; font-size: 15px; }
+.nav a { color: var(--muted); text-decoration: none; transition: color 150ms; }
+.nav a:hover { color: var(--ink); }
+.head-tools { display: flex; gap: 10px; align-items: center; }
+.lang { font-family: var(--arabic); font-size: 15px; color: var(--muted); text-decoration: none; }
+
+/* Hero */
+.hero .wrap { padding-block: 64px 80px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+.rule-top { border-top: 1px solid var(--ink); padding-top: 26px; }
+h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5.4vw, 66px); line-height: 1.06; letter-spacing: -0.01em; margin: 0 0 24px; text-wrap: balance; }
+h1 .w { display: inline-block; }
+.lead { font-size: 19px; color: var(--muted); max-width: 46ch; margin: 0 0 30px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.try { margin-top: 20px; font-size: 15px; color: var(--muted); }
+.try a { color: var(--ink); text-underline-offset: 3px; }
+
+/* Phone */
+.phone { background: var(--bg); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; width: 100%; max-width: 380px; margin-inline: auto; box-shadow: 0 1px 2px rgba(51,48,45,.05), 0 18px 40px rgba(51,48,45,.08); }
+.ph-head { display: flex; gap: 10px; align-items: center; padding: 12px 14px; border-bottom: 1px solid var(--line); background: var(--soft); }
+.av { width: 34px; height: 34px; border-radius: 50%; background: var(--agent); color: var(--agent-ink); display: grid; place-items: center; font-weight: 600; font-size: 14px; flex: none; }
+.ph-head b { display: block; font-size: 14.5px; line-height: 1.3; }
+.ph-head small { color: var(--muted); font-size: 12.5px; }
+.ph-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; font-family: var(--arabic); font-size: 15px; line-height: 1.6; }
+.m { max-width: 84%; padding: 8px 12px 6px; border-radius: 13px; display: flex; flex-direction: column; transition: opacity 260ms ease, transform 260ms ease; }
+.m time { font-family: var(--sans); font-size: 11px; opacity: .7; align-self: flex-end; direction: ltr; unicode-bidi: isolate; }
+.m.c { background: var(--soft); border: 1px solid var(--line); align-self: flex-start; }
+.m.a { background: var(--agent); color: var(--agent-ink); align-self: flex-end; }
+.m.wait { opacity: 0; transform: translateY(6px); }
+.typing { height: 28px; padding: 0 16px 10px; font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.typing[data-on="false"] > * { visibility: hidden; }
+.dots { display: inline-flex; gap: 3px; }
+.dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); animation: blink 1s infinite ease-in-out; }
+.dots i:nth-child(2) { animation-delay: .15s; } .dots i:nth-child(3) { animation-delay: .3s; }
+@keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+.ph-foot { padding: 0 14px 12px; font-size: 12px; color: var(--muted); }
+
+/* Section heads */
+.sec { border-top: 1px solid var(--line); }
+.sec-head { padding-block: 72px 32px; display: flex; flex-direction: column; gap: 14px; }
+h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.8vw, 44px); line-height: 1.12; margin: 0; max-width: 22ch; text-wrap: balance; }
+.sec-head p { margin: 0; color: var(--muted); font-size: 18px; max-width: 56ch; }
+.drawline { height: 1px; background: var(--ink); transform-origin: left center; width: 72px; }
+
+/* Story: sticky product, steps scroll past */
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding-bottom: 40px; }
+.story-visual { position: relative; }
+.sticky { position: sticky; top: 110px; display: flex; flex-direction: column; gap: 14px; }
+.clock { font-size: 13.5px; color: var(--muted); display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 8px; font-variant-numeric: tabular-nums; }
+.clock b { color: var(--ink); font-weight: 500; }
+.story-visual .phone { max-width: none; box-shadow: none; }
+.story-visual .ph-body { min-height: 210px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; min-height: 32px; }
+.chip { font-size: 13px; border: 1px solid var(--line-strong); padding: 3px 10px; transition: opacity 260ms ease, transform 260ms ease; }
+.req { border: 1px solid var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; transition: opacity 300ms ease, transform 300ms ease; }
+.req-h { display: flex; justify-content: space-between; font-weight: 600; font-size: 14.5px; }
+.req-h span { font-weight: 400; color: var(--muted); font-size: 13px; }
+.req dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 3px 16px; }
+.req dt { color: var(--muted); } .req dd { margin: 0; }
+.confirm { font-size: 13.5px; font-weight: 500; transition: opacity 260ms ease; }
+.wait { opacity: 0; transform: translateY(6px); }
+.confirm.wait { transform: none; }
+.story-steps { display: flex; flex-direction: column; }
+.story-step { min-height: 72vh; display: flex; flex-direction: column; justify-content: center; gap: 12px; padding-block: 24px; opacity: .35; transition: opacity 300ms ease; }
+.story-step.active { opacity: 1; }
+.story-step .n { font-size: 14px; color: var(--muted); }
+.story-step h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 3vw, 34px); line-height: 1.15; margin: 0; }
+.story-step p { margin: 0; color: var(--muted); font-size: 18px; max-width: 40ch; }
+
+/* Statement: words light up as you scroll */
+.statement .wrap { padding-block: 120px; }
+.statement p { font-family: var(--serif); font-size: clamp(28px, 3.6vw, 44px); line-height: 1.3; margin: 0; max-width: 26ch; }
+.statement .word { transition: color 200ms ease; }
+.statement.armed .word { color: var(--faint); }
+.statement.armed .word.lit { color: var(--ink); }
+
+/* Systems table */
+.table { border-top: 1px solid var(--ink); margin-bottom: 28px; }
+.trow { display: grid; grid-template-columns: 1.1fr 2fr 0.8fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: baseline; text-decoration: none; color: inherit; transition: background-color 150ms ease, padding 200ms ease; }
+.trow:hover { background: var(--soft); padding-inline: 12px; }
+.trow b { font-weight: 500; font-size: 17px; }
+.trow span { color: var(--muted); font-size: 15.5px; }
+.trow em { font-style: normal; font-size: 13.5px; color: var(--muted); text-align: end; }
+.trow em.live { color: var(--ink); font-weight: 500; }
+.more { padding-bottom: 80px; }
+
+/* Working with us: line fills as you scroll */
+.process { position: relative; display: flex; flex-direction: column; gap: 0; padding-bottom: 88px; padding-inline-start: 40px; }
+.track { position: absolute; inset-inline-start: 11px; top: 8px; bottom: 96px; width: 1px; background: var(--line); }
+.fill { position: absolute; inset: 0 0 auto 0; height: 0; background: var(--ink); }
+.pstep { position: relative; padding-block: 18px 30px; display: grid; grid-template-columns: 200px 1fr; gap: 24px; }
+.pstep::before { content: ""; position: absolute; inset-inline-start: -35px; top: 24px; width: 13px; height: 13px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--bg); transition: background-color 250ms ease, border-color 250ms ease; }
+.pstep.reached::before { background: var(--ink); border-color: var(--ink); }
+.pstep h3 { font-family: var(--serif); font-weight: 400; font-size: 24px; margin: 0; line-height: 1.25; }
+.pstep small { display: block; font-size: 14px; color: var(--muted); margin-top: 4px; }
+.pstep p { margin: 0; color: var(--muted); font-size: 17px; max-width: 52ch; }
+
+/* Final call */
+.final { background: var(--soft); border-top: 1px solid var(--line); }
+.final .wrap { padding-block: 96px; display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+.final h2 { max-width: 18ch; }
+.final p { margin: 0; color: var(--muted); font-size: 18px; max-width: 50ch; }
+
+.foot { border-top: 1px solid var(--line); }
+.foot .wrap { padding-block: 32px 48px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+.foot a { color: var(--muted); }
+
+/* Scroll reveal: only armed when JS runs, so the page is complete without it */
+.reveal-on [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity 600ms cubic-bezier(.2,.7,.2,1), transform 600ms cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
+.reveal-on [data-reveal].shown { opacity: 1; transform: none; }
+.reveal-on .drawline { transform: scaleX(0); transition: transform 700ms cubic-bezier(.2,.7,.2,1); }
+.reveal-on .drawline.shown { transform: scaleX(1); }
+.load-on h1 .w { opacity: 0; transform: translateY(14px); animation: rise 600ms cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0ms); }
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .head-tools { margin-inline-start: auto; }
+  .head-tools .btn { display: none; }
+  .hero .wrap { grid-template-columns: 1fr; padding-block: 36px 56px; gap: 40px; }
+  .story-grid { grid-template-columns: 1fr; gap: 8px; }
+  .sticky { position: static; }
+  .story-step { min-height: 0; opacity: 1; padding-block: 18px; }
+  .statement .wrap { padding-block: 80px; }
+  .trow { grid-template-columns: 1fr; gap: 2px; }
+  .trow em { text-align: start; }
+  .pstep { grid-template-columns: 1fr; gap: 6px; }
+  .sec-head { padding-block: 56px 24px; }
+}
+</style>
+
+<header class="head" id="head">
+  <div class="wrap">
+    <a class="mark" href="#top">lindrize</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#systems">Solutions</a>
+      <a href="#systems">Industries</a>
+      <a href="#working">Pricing</a>
+      <a href="#final">Design your agent</a>
+    </nav>
+    <div class="head-tools">
+      <a class="lang" href="#top" lang="ar">عربي</a>
+      <button class="ghost" id="theme-toggle" type="button">Dark</button>
+      <a class="btn btn-main btn-sm" href="https://calendly.com/amerelshair-ai-lindrize/15-minute-call-with-lindrize">Book a call</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="rule-top">
+        <h1 id="h1">Every traveller answered in seconds, day and night.</h1>
+        <p class="lead">An assistant for your Instagram, WhatsApp and Messenger. It replies in Arabic or English, quotes from your price list and hands your team a ready booking request.</p>
+        <div class="actions">
+          <a class="btn btn-main" href="https://calendly.com/amerelshair-ai-lindrize/15-minute-call-with-lindrize">Book a 15-minute call <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-alt" href="#final">Design your agent</a>
+        </div>
+        <p class="try">Message <a href="https://www.instagram.com/yasmeen_aldarb">@Yasmeen_aldarb</a> from your own Instagram and try it yourself.</p>
+      </div>
+      <div>
+        <div class="phone" id="hero-phone">
+          <div class="ph-head"><span class="av">Y</span><div><b>Yasmeen Al-Darb</b><small>Demo agency · Instagram</small></div></div>
+          <div class="ph-body" dir="rtl" lang="ar">
+            <div class="m c">مرحبا، قديش رحلة البترا ليومين؟<time>11:41 PM</time></div>
+            <div class="m a">أهلاً فيك! رحلة البترا ووادي رم يومين بـ 95 دينار للشخص، شاملة المواصلات والمبيت. كم شخص حابين تيجوا؟<time>11:41 PM</time></div>
+            <div class="m c">٤ أشخاص، الجمعة الجاي<time>11:42 PM</time></div>
+            <div class="m a">تمام! بعثت طلبكم للفريق، وبيتواصلوا معكم الصبح لتأكيد الحجز.<time>11:42 PM</time></div>
+          </div>
+          <div class="typing" id="hero-typing" data-on="false"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Yasmeen is typing…</span></div>
+          <div class="ph-foot">Example conversation. Prices are placeholders.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="drawline" data-draw></div>
+        <h2 data-reveal>One message, from 11:41 PM to a confirmed booking.</h2>
+      </div>
+      <div class="story-grid">
+        <div class="story-visual">
+          <div class="sticky" id="story" data-step="3">
+            <div class="clock"><span>Example night</span><b id="clock">11:41 PM</b></div>
+            <div class="phone">
+              <div class="ph-head"><span class="av">A</span><div><b>Your agency</b><small>Instagram messages</small></div></div>
+              <div class="ph-body" dir="rtl" lang="ar">
+                <div class="m c" data-at="1">مرحبا، قديش رحلة البترا ليومين؟<time>11:41 PM</time></div>
+                <div class="m a" data-at="2">أهلاً فيك! يومين بـ 95 دينار للشخص، شاملة المواصلات والمبيت. كم شخص؟<time>11:41 PM</time></div>
+                <div class="m c" data-at="2">٤ أشخاص، الجمعة الجاي<time>11:42 PM</time></div>
+              </div>
+            </div>
+            <div class="chips" aria-label="What the assistant did">
+              <span class="chip" data-at="2">Understood Jordanian Arabic</span>
+              <span class="chip" data-at="2">Found your package</span>
+              <span class="chip" data-at="2">Quoted your price</span>
+            </div>
+            <div class="req" data-at="3">
+              <div class="req-h">New booking request <span>On your team's Telegram</span></div>
+              <dl><dt>Trip</dt><dd>Petra and Wadi Rum, 2 days</dd><dt>Travellers</dt><dd>4 adults</dd><dt>Date</dt><dd>Next Friday</dd></dl>
+            </div>
+            <div class="confirm" data-at="3">Confirmed by your staff at 9:15 AM.</div>
+          </div>
+        </div>
+        <div class="story-steps">
+          <div class="story-step" data-step="1"><span class="n">11:41 PM</span><h3>A customer asks while your office is closed.</h3><p>On Instagram, WhatsApp or Messenger, in Arabic or English. This is when most agencies lose the booking.</p></div>
+          <div class="story-step" data-step="2"><span class="n">11:41 PM, seconds later</span><h3>The assistant answers with your package and your price.</h3><p>It only quotes from the price list you give it, and asks for the details your team needs.</p></div>
+          <div class="story-step" data-step="3"><span class="n">The next morning</span><h3>Your team finds a ready booking request.</h3><p>Trip, travellers and date, waiting on Telegram. Your staff confirm it. The assistant never does.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec statement">
+    <div class="wrap">
+      <p id="statement">It never confirms a booking and never takes a payment. Your team keeps the final word on every price, seat and promise.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="systems">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="drawline" data-draw></div>
+        <h2 data-reveal>Start with one system. Add more when you're ready.</h2>
+        <p data-reveal style="--d:80ms">30 systems for travel agencies, from answering messages to running Umrah groups.</p>
+      </div>
+      <div class="table" role="list">
+        <a class="trow" role="listitem" href="#systems" data-reveal><b>AI Travel Sales Assistant</b><span>Answers messages in seconds and sends your staff a booking request.</span><em class="live">Live demo</em></a>
+        <a class="trow" role="listitem" href="#systems" data-reveal style="--d:70ms"><b>Quote Follow-up</b><span>Follows up with customers who got a price and went quiet.</span><em>Win more bookings</em></a>
+        <a class="trow" role="listitem" href="#systems" data-reveal style="--d:140ms"><b>Customer Reactivation</b><span>Brings past travellers back with offers for Eid, summer and Umrah season.</span><em>Win more bookings</em></a>
+        <a class="trow" role="listitem" href="#systems" data-reveal style="--d:210ms"><b>Group Registration</b><span>Sign-up forms for Umrah, school and company trips, with automatic lists.</span><em>Look after travellers</em></a>
+        <a class="trow" role="listitem" href="#systems" data-reveal style="--d:280ms"><b>Leads and Bookings Dashboard</b><span>One place for every inquiry, its status and who is handling it.</span><em>Run your office</em></a>
+      </div>
+      <div class="more" data-reveal><a class="btn btn-alt" href="#systems">See all 30 systems <span class="arrow" aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="working">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="drawline" data-draw></div>
+        <h2 data-reveal>Working with us</h2>
+        <p data-reveal style="--d:80ms">We do the setup. You see it working with real customers before you commit.</p>
+      </div>
+      <div class="process" id="process">
+        <div class="track" aria-hidden="true"><div class="fill" id="fill"></div></div>
+        <div class="pstep"><div><h3>15-minute call</h3><small>Google Meet</small></div><p>Tell us how your agency works and which messages you miss. We tell you honestly whether a system fits.</p></div>
+        <div class="pstep"><div><h3>Setup session</h3><small>One session</small></div><p>We go through your packages, prices and how your team likes to receive requests.</p></div>
+        <div class="pstep"><div><h3>We build it</h3><small>Done for you</small></div><p>We set up the assistant on your accounts and test it with your real questions.</p></div>
+        <div class="pstep"><div><h3>10-day live trial</h3><small>Before you commit</small></div><p>It answers your real customers for 10 days. You decide after seeing the results.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" id="final">
+    <div class="wrap">
+      <h2 data-reveal>See it working for your own agency.</h2>
+      <p data-reveal style="--d:80ms">15 minutes on Google Meet. No preparation needed.</p>
+      <div class="actions" data-reveal style="--d:160ms">
+        <a class="btn btn-main" href="https://calendly.com/amerelshair-ai-lindrize/15-minute-call-with-lindrize">Book a 15-minute call <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-alt" href="#top">Design your agent</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>Lindrize · Amman, Jordan · Draft for review</span>
+    <span>Trouble using this site? Email us at [your email].</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var narrow = function () { return window.matchMedia('(max-width: 900px)').matches; };
+
+  /* Theme */
+  var tb = document.getElementById('theme-toggle');
+  function isDark() { var t = root.getAttribute('data-theme'); if (t) return t === 'dark'; return window.matchMedia('(prefers-color-scheme: dark)').matches; }
+  function tl() { tb.textContent = isDark() ? 'Light' : 'Dark'; }
+  tb.addEventListener('click', function () { root.setAttribute('data-theme', isDark() ? 'light' : 'dark'); tl(); });
+  tl();
+
+  /* Header line once scrolled */
+  var head = document.getElementById('head');
+  function onHead() { head.classList.toggle('scrolled', window.scrollY > 8); }
+
+  if (reduce || !('IntersectionObserver' in window)) { onHead(); window.addEventListener('scroll', onHead, { passive: true }); return; }
+
+  /* Headline words rise on load */
+  var h1 = document.getElementById('h1');
+  h1.innerHTML = h1.textContent.split(' ').map(function (w, i) { return '<span class="w" style="--d:' + (i * 45) + 'ms">' + w + '</span>'; }).join(' ');
+  root.classList.add('load-on');
+
+  /* Hero chat plays once */
+  var hm = document.querySelectorAll('#hero-phone .m'), ht = document.getElementById('hero-typing');
+  hm.forEach(function (m) { m.classList.add('wait'); });
+  var plan = [[700, function () { hm[0].classList.remove('wait'); }], [1200, function () { ht.dataset.on = 'true'; }],
+    [2300, function () { ht.dataset.on = 'false'; hm[1].classList.remove('wait'); }], [3200, function () { hm[2].classList.remove('wait'); }],
+    [3700, function () { ht.dataset.on = 'true'; }], [4700, function () { ht.dataset.on = 'false'; hm[3].classList.remove('wait'); }]];
+  plan.forEach(function (p) { setTimeout(p[1], p[0]); });
+
+  /* Reveal on scroll */
+  root.classList.add('reveal-on');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+  document.querySelectorAll('[data-reveal], [data-draw]').forEach(function (el) { io.observe(el); });
+
+  /* Sticky story */
+  var story = document.getElementById('story'), clock = document.getElementById('clock');
+  var parts = story.querySelectorAll('[data-at]');
+  var times = { 1: '11:41 PM', 2: '11:41 PM', 3: '9:15 AM' };
+  function setStep(n) {
+    story.dataset.step = n; clock.textContent = times[n];
+    parts.forEach(function (el) { el.classList.toggle('wait', +el.dataset.at > n); });
+    document.querySelectorAll('.story-step').forEach(function (s) { s.classList.toggle('active', +s.dataset.step === n); });
+  }
+  if (!narrow()) {
+    setStep(1);
+    var so = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) setStep(+e.target.dataset.step); });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    document.querySelectorAll('.story-step').forEach(function (s) { so.observe(s); });
+  }
+
+  /* Statement words */
+  var st = document.getElementById('statement');
+  st.innerHTML = st.textContent.split(' ').map(function (w) { return '<span class="word">' + w + '</span>'; }).join(' ');
+  var words = st.querySelectorAll('.word');
+  st.parentNode.parentNode.classList.add('armed');
+
+  /* Process line */
+  var proc = document.getElementById('process'), fill = document.getElementById('fill'), steps = proc.querySelectorAll('.pstep');
+
+  var ticking = false;
+  function onScroll() {
+    onHead();
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      var vh = window.innerHeight;
+      var r = st.getBoundingClientRect();
+      var p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
+      var lit = Math.round(p * words.length);
+      words.forEach(function (w, i) { w.classList.toggle('lit', i < lit); });
+
+      var pr = proc.getBoundingClientRect();
+      var trackH = pr.height - 104;
+      var f = Math.min(trackH, Math.max(0, vh * 0.6 - pr.top));
+      fill.style.height = f + 'px';
+      steps.forEach(function (s) { s.classList.toggle('reached', s.offsetTop + 24 <= f + 8); });
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+</script>

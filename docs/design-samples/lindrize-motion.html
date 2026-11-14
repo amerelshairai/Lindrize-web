@@ -1,0 +1,486 @@
+<title>Lindrize Motion Rules</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Outfit:wght@600&display=swap">
+<style>
+/* Layout: direction B (consultancy). One column of numbered demos, each a framed live example with a one-line rule beside it. */
+:root {
+  --bg: #FFFFFF; --soft: #F5F4F2; --ink: #33302D; --muted: #6F6A65; --line: #E6E3DF; --line-strong: #8C8680;
+  --btn: #4A4642; --btn-hover: #2F2C29; --btn-ink: #FFFFFF;
+  --teal: #4CD9CF; --teal-ink: #0B6B66; --teal-soft: #E2F8F6; --on-teal: #06302D;
+  --bad: #B4442F; --bad-soft: #FBEAE6;
+  --sans: "IBM Plex Sans", "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif;
+  --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --arabic: "IBM Plex Sans Arabic", "IBM Plex Sans", Tahoma, sans-serif;
+  --mark: "Outfit", "IBM Plex Sans", system-ui, sans-serif;
+  --fast: 150ms; --enter: 220ms;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #2A2826; --soft: #322F2C; --ink: #EFECE8; --muted: #ABA59F; --line: #3B3835; --line-strong: #8C8680;
+  --btn: #D9D4CE; --btn-hover: #F2EEE9; --btn-ink: #2A2826; --teal-ink: #4CD9CF; --teal-soft: #24504C;
+  --bad: #E58A74; --bad-soft: #4A2E28; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #2A2826; --soft: #322F2C; --ink: #EFECE8; --muted: #ABA59F; --line: #3B3835; --line-strong: #8C8680;
+  --btn: #D9D4CE; --btn-hover: #F2EEE9; --btn-ink: #2A2826; --teal-ink: #4CD9CF; --teal-soft: #24504C;
+  --bad: #E58A74; --bad-soft: #4A2E28; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.wrap { max-width: 1120px; margin-inline: auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+
+.top { border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding-block: 16px; flex-wrap: wrap; }
+.mark { font-family: var(--mark); font-weight: 600; font-size: 22px; }
+.controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.check { display: inline-flex; align-items: center; gap: 8px; font-size: 14.5px; cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--teal-ink); }
+
+.intro .wrap { padding-block: 56px 24px; }
+h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.1; margin: 0; max-width: 22ch; border-top: 3px solid var(--teal); padding-top: 22px; text-wrap: balance; }
+.intro p { color: var(--muted); font-size: 18px; max-width: 60ch; margin: 18px 0 0; }
+
+.demo { border-top: 1px solid var(--line); }
+.demo .wrap { padding-block: 48px; display: grid; grid-template-columns: 300px 1fr; gap: 40px; }
+.demo h2 { font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.2; margin: 0 0 10px; }
+.demo .num { font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+.demo aside p { margin: 0 0 10px; color: var(--muted); font-size: 15.5px; }
+.rule { font-size: 14.5px; border-inline-start: 2px solid var(--teal); padding-inline-start: 12px; color: var(--ink); }
+.stage { min-width: 0; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; font: 500 15px var(--sans); padding: 11px 20px; border: 1px solid transparent; border-radius: 0; cursor: pointer; text-decoration: none; transition: background-color var(--fast) ease, border-color var(--fast) ease, color var(--fast) ease; }
+.btn-main { background: var(--btn); color: var(--btn-ink); }
+.btn-main:hover { background: var(--btn-hover); }
+.btn-main:active { background: var(--ink); }
+.btn-alt { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.btn-alt:hover { border-color: var(--ink); background: var(--soft); }
+.btn-teal { background: var(--teal); color: var(--on-teal); }
+.btn-teal:hover { background: #3CC9BF; }
+.btn .arrow { display: inline-block; transition: transform 200ms ease; }
+.btn:hover .arrow { transform: translateX(4px); }
+[dir="rtl"] .btn:hover .arrow { transform: translateX(-4px); }
+.btn-sm { padding: 7px 14px; font-size: 14px; }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* Entering items */
+.enter { animation: enter var(--enter) ease-out both; }
+@keyframes enter { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+
+/* Chat */
+.phone { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; width: 100%; max-width: 360px; overflow: hidden; }
+.ph-head { display: flex; gap: 10px; align-items: center; padding: 11px 14px; border-bottom: 1px solid var(--line); background: var(--soft); }
+.av { width: 32px; height: 32px; border-radius: 50%; background: var(--teal); color: var(--on-teal); display: grid; place-items: center; font-weight: 600; font-size: 14px; flex: none; }
+.ph-head b { display: block; font-size: 14px; line-height: 1.3; }
+.ph-head small { color: var(--muted); font-size: 12px; }
+.ph-body { padding: 12px; display: flex; flex-direction: column; gap: 8px; font-family: var(--arabic); font-size: 14.5px; line-height: 1.6; }
+.m { max-width: 84%; padding: 7px 12px 5px; border-radius: 12px; display: flex; flex-direction: column; }
+.m time { font-family: var(--sans); font-size: 11px; color: var(--muted); align-self: flex-end; direction: ltr; unicode-bidi: isolate; }
+.m.c { background: var(--soft); border: 1px solid var(--line); align-self: flex-start; }
+.m.a { background: var(--teal-soft); align-self: flex-end; }
+.m.pending { visibility: hidden; }
+.typing { height: 26px; padding: 0 14px 10px; font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.typing[data-on="false"] span { visibility: hidden; }
+.dots { display: inline-flex; gap: 3px; }
+.dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); animation: blink 1s infinite ease-in-out; }
+.dots i:nth-child(2) { animation-delay: .15s; } .dots i:nth-child(3) { animation-delay: .3s; }
+@keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+.divider { align-self: center; font-family: var(--sans); font-size: 11.5px; color: var(--muted); background: var(--bg); border: 1px solid var(--line); padding: 1px 10px; border-radius: 99px; }
+.voice { display: flex; align-items: center; gap: 8px; direction: ltr; font-family: var(--sans); font-size: 12px; }
+.voice svg { width: 92px; height: 18px; }
+.voice svg rect { fill: currentColor; opacity: .55; }
+
+.hero-demo { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-start; }
+.hero-demo .ph-body { min-height: 300px; }
+.hero-side { display: flex; flex-direction: column; gap: 14px; max-width: 320px; }
+.hero-side p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* Board */
+.board-controls { display: flex; flex-direction: column; gap: 14px; margin-bottom: 18px; }
+.seg { display: inline-flex; border: 1px solid var(--line-strong); }
+.seg button { font: 500 14px var(--sans); padding: 8px 14px; background: transparent; color: var(--ink); border: 0; cursor: pointer; transition: background-color var(--fast), color var(--fast); }
+.seg button + button { border-inline-start: 1px solid var(--line-strong); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.feats { display: flex; gap: 8px; flex-wrap: wrap; }
+.feat { font: 500 14px var(--sans); padding: 7px 12px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink); cursor: pointer; display: inline-flex; gap: 8px; align-items: center; transition: background-color var(--fast), border-color var(--fast); }
+.feat::before { content: "+"; width: 14px; text-align: center; color: var(--muted); }
+.feat[aria-pressed="true"] { background: var(--teal-soft); border-color: var(--teal-ink); }
+.feat[aria-pressed="true"]::before { content: "✓"; color: var(--teal-ink); }
+
+.board { display: grid; grid-template-columns: 1.15fr 0.85fr 1fr; border: 1px solid var(--line); }
+.pane { padding: 16px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.pane + .pane { border-inline-start: 1px solid var(--line); }
+.pane h3 { margin: 0; font-size: 13px; font-weight: 600; color: var(--muted); }
+.feed { height: 330px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; font-family: var(--arabic); font-size: 14px; line-height: 1.55; }
+.feed .m { max-width: 90%; }
+.feed { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 36px); mask-image: linear-gradient(to bottom, transparent 0, #000 36px); }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; font-size: 14px; min-height: 330px; }
+.steps li { padding-inline-start: 14px; border-inline-start: 2px solid var(--line); color: var(--muted); transition: border-color var(--fast), color var(--fast); }
+.steps li.now { border-color: var(--teal); color: var(--ink); }
+.team { min-height: 330px; display: flex; flex-direction: column; gap: 10px; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tile { border: 1px solid var(--line); padding: 8px 10px; }
+.tile small { display: block; font-size: 11.5px; color: var(--muted); }
+.tile b { font-size: 22px; font-weight: 500; font-variant-numeric: tabular-nums; display: inline-block; }
+.tile b.bump { animation: bump 300ms ease-out; }
+@keyframes bump { 0% { color: var(--teal-ink); transform: translateY(-3px); } 100% { transform: none; } }
+.req { border: 1px solid var(--line); padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; }
+.req b { font-size: 14px; }
+.req dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; }
+.req dt { color: var(--muted); } .req dd { margin: 0; }
+.note { font-size: 13px; color: var(--muted); }
+.note.bad { color: var(--bad); }
+.note.good { color: var(--teal-ink); }
+
+.mood { display: flex; gap: 14px; align-items: center; border: 1px solid var(--line); border-top: 0; padding: 12px 16px; min-height: 64px; transition: background-color 300ms ease; }
+.mood[data-kind="good"] { background: var(--teal-soft); }
+.mood[data-kind="bad"] { background: var(--bad-soft); }
+.face { width: 36px; height: 36px; flex: none; color: var(--muted); transition: color 300ms ease; }
+.mood[data-kind="good"] .face { color: var(--teal-ink); }
+.mood[data-kind="bad"] .face { color: var(--bad); }
+.face path { transition: d 300ms ease; }
+.mood-text b { display: block; font-size: 15px; font-weight: 600; }
+.mood-text span { font-size: 13.5px; color: var(--muted); }
+.player { display: flex; gap: 8px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.player .note { margin-inline-start: 6px; }
+
+/* Buttons demo */
+.btn-demo { display: flex; flex-direction: column; gap: 18px; }
+.btn-demo .row { gap: 14px; }
+
+/* Slow-page demo */
+.browser { border: 1px solid var(--line); position: relative; overflow: hidden; }
+.bar-wrap { position: absolute; inset: 0 0 auto 0; height: 3px; }
+.bar { height: 100%; width: 0; background: var(--teal); }
+.b-nav { display: flex; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--soft); flex-wrap: wrap; align-items: center; }
+.b-nav a { font-size: 14px; color: var(--ink); padding: 4px 10px; text-decoration: none; border: 1px solid transparent; }
+.b-nav a[aria-current="page"] { border-color: var(--line-strong); background: var(--bg); }
+.b-nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.b-page { padding: 24px; min-height: 220px; transition: opacity 200ms ease; }
+.b-page h4 { font-family: var(--serif); font-weight: 400; font-size: 26px; margin: 0 0 10px; }
+.b-page p { margin: 0 0 8px; color: var(--muted); max-width: 52ch; }
+.b-page.loading { opacity: .55; }
+.offline { display: none; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 10px 14px; background: var(--soft); border-top: 1px solid var(--line); font-size: 14px; }
+.offline.show { display: flex; }
+.slow-controls { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 14px; }
+
+/* Reduced motion: preview switch and the real setting */
+.rm *, .rm *::before, .rm *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+@media (max-width: 900px) {
+  .demo .wrap { grid-template-columns: 1fr; gap: 20px; padding-block: 36px; }
+  .board { grid-template-columns: 1fr; }
+  .pane + .pane { border-inline-start: 0; border-top: 1px solid var(--line); }
+  .feed { height: 280px; }
+  .steps, .team { min-height: 0; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <span class="mark">lindrize</span>
+    <div class="controls">
+      <label class="check"><input type="checkbox" id="rm-preview"> Preview with "reduce motion" on</label>
+      <button class="btn btn-alt btn-sm" id="theme-toggle" type="button">Dark mode</button>
+    </div>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <h1>How things move on the new site</h1>
+    <p>Four live examples in the chosen style. Try each one, then tick "reduce motion" at the top to see what visitors who turn off animation get: the same content, already finished, with nothing moving.</p>
+  </div>
+</section>
+
+<!-- 1. Hero chat -->
+<section class="demo">
+  <div class="wrap">
+    <aside>
+      <div class="num">1 of 4</div>
+      <h2>The chat on Home plays once</h2>
+      <p>Messages arrive one by one with short typing dots. The whole story takes under 5 seconds, then it stays still.</p>
+      <p class="rule">Space for every message is reserved from the start, so nothing on the page jumps.</p>
+    </aside>
+    <div class="stage">
+      <div class="hero-demo">
+        <div class="phone">
+          <div class="ph-head"><span class="av">Y</span><div><b>Yasmeen Al-Darb</b><small>Demo agency · Instagram</small></div></div>
+          <div class="ph-body" id="hero-chat" dir="rtl" lang="ar">
+            <div class="m c">مرحبا، قديش رحلة البترا ليومين؟<time>11:41 PM</time></div>
+            <div class="m a">أهلاً فيك! رحلة البترا ووادي رم يومين بـ 95 دينار للشخص، شاملة المواصلات والمبيت. كم شخص حابين تيجوا؟<time>11:41 PM</time></div>
+            <div class="m c">٤ أشخاص، الجمعة الجاي<time>11:42 PM</time></div>
+            <div class="m a">تمام! بعثت طلبكم للفريق، وبيتواصلوا معكم الصبح لتأكيد الحجز.<time>11:42 PM</time></div>
+          </div>
+          <div class="typing" id="hero-typing" data-on="false"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Yasmeen is typing…</span></div>
+        </div>
+        <div class="hero-side">
+          <p>Prices in this example are placeholders until the real demo prices are added.</p>
+          <div class="row"><button class="btn btn-alt btn-sm" id="hero-replay" type="button">Replay</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Board -->
+<section class="demo">
+  <div class="wrap">
+    <aside>
+      <div class="num">2 of 4</div>
+      <h2>Design your agent: the board reacts</h2>
+      <p>Each feature you add changes the story. The strip at the bottom shows how the customer feels at each moment.</p>
+      <p>Switch to "Without an assistant" to see the same customer on a normal night.</p>
+      <p class="rule">About 1 second per step, with Pause and Replay. The visitor is always in control.</p>
+    </aside>
+    <div class="stage">
+      <div class="board-controls">
+        <div class="seg" role="group" aria-label="Scenario">
+          <button type="button" id="mode-with" aria-pressed="true">With the assistant</button>
+          <button type="button" id="mode-without" aria-pressed="false">Without an assistant</button>
+        </div>
+        <div class="feats" role="group" aria-label="Features">
+          <button class="feat" type="button" data-feat="voice" aria-pressed="false">Voice-note replies</button>
+          <button class="feat" type="button" data-feat="followup" aria-pressed="false">Quote follow-up</button>
+          <button class="feat" type="button" data-feat="dashboard" aria-pressed="false">Leads dashboard</button>
+        </div>
+      </div>
+      <div class="board">
+        <div class="pane"><h3>Customer's phone</h3><div class="feed" id="feed" dir="rtl" lang="ar"></div></div>
+        <div class="pane"><h3>The assistant</h3><ul class="steps" id="steps"></ul></div>
+        <div class="pane"><h3>Your team</h3><div class="team" id="team"></div></div>
+      </div>
+      <div class="mood" id="mood" data-kind="neutral" aria-live="polite">
+        <svg class="face" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="8.8" cy="9.6" r=".9" fill="currentColor"/><circle cx="15.2" cy="9.6" r=".9" fill="currentColor"/><path id="mouth" d="M8.5 15.5 L15.5 15.5"/></svg>
+        <div class="mood-text"><b id="mood-title">Ready</b><span id="mood-sub">Press Play to start the example.</span></div>
+      </div>
+      <div class="player">
+        <button class="btn btn-main btn-sm" id="play" type="button">Play</button>
+        <button class="btn btn-alt btn-sm" id="replay" type="button">Replay</button>
+        <span class="note">Example only. Yasmeen Al-Darb is a demo agency.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Buttons -->
+<section class="demo">
+  <div class="wrap">
+    <aside>
+      <div class="num">3 of 4</div>
+      <h2>Buttons respond, quietly</h2>
+      <p>Point at or press each button. Colours change in 0.15 seconds. The main buttons nudge their arrow forward, and in Arabic the arrow moves the other way.</p>
+      <p class="rule">Nothing grows, bounces or casts a shadow.</p>
+    </aside>
+    <div class="stage btn-demo">
+      <div class="row">
+        <a class="btn btn-main" href="#book">Book a 15-minute call <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-teal" href="#design">Design your agent <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-alt" href="#demo">Try the demo</a>
+      </div>
+      <div class="row" dir="rtl" lang="ar" style="font-family: var(--arabic)">
+        <a class="btn btn-main" href="#book-ar" style="font-family: var(--arabic)">احجز مكالمة ١٥ دقيقة <span class="arrow" aria-hidden="true">←</span></a>
+        <a class="btn btn-teal" href="#design-ar" style="font-family: var(--arabic)">صمّم مساعدك <span class="arrow" aria-hidden="true">←</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Slow internet -->
+<section class="demo">
+  <div class="wrap">
+    <aside>
+      <div class="num">4 of 4</div>
+      <h2>Changing pages on slow internet</h2>
+      <p>Pages switch instantly with no transition. On a fast connection you see nothing at all.</p>
+      <p>If a page takes more than 0.3 seconds, a thin teal bar appears at the top so visitors know it's working. If the connection drops, a short message offers "Try again".</p>
+      <p class="rule">The real site also starts loading a page when a visitor points at or touches its link, so most clicks feel instant.</p>
+    </aside>
+    <div class="stage">
+      <div class="slow-controls">
+        <label class="check"><input type="checkbox" id="slow" checked> Slow internet</label>
+        <label class="check"><input type="checkbox" id="drop"> Connection drops</label>
+      </div>
+      <div class="browser">
+        <div class="bar-wrap" aria-hidden="true"><div class="bar" id="bar"></div></div>
+        <nav class="b-nav" aria-label="Example site">
+          <a href="#home" data-page="home" aria-current="page">Home</a>
+          <a href="#solutions" data-page="solutions">Solutions</a>
+          <a href="#pricing" data-page="pricing">Pricing</a>
+        </nav>
+        <div class="b-page" id="b-page" aria-live="polite"></div>
+        <div class="offline" id="offline" role="status"><span>No connection right now. The page will load when you're back online.</span><button class="btn btn-alt btn-sm" id="retry" type="button">Try again</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+  var rmBox = document.getElementById('rm-preview');
+  function rm() { return rmBox.checked || mq.matches; }
+  function animIn(el) { if (!rm()) { el.classList.remove('enter'); void el.offsetWidth; el.classList.add('enter'); } }
+
+  /* Theme */
+  var tbtn = document.getElementById('theme-toggle');
+  function isDark() { var t = root.getAttribute('data-theme'); if (t) return t === 'dark'; return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; }
+  function tlabel() { tbtn.textContent = isDark() ? 'Light mode' : 'Dark mode'; }
+  tbtn.addEventListener('click', function () { root.setAttribute('data-theme', isDark() ? 'light' : 'dark'); tlabel(); });
+  tlabel();
+
+  /* 1. Hero chat */
+  var heroMsgs = document.querySelectorAll('#hero-chat .m');
+  var heroTyping = document.getElementById('hero-typing');
+  var heroTimers = [];
+  function heroShow(i) { heroMsgs[i].classList.remove('pending'); animIn(heroMsgs[i]); }
+  function playHero() {
+    heroTimers.forEach(clearTimeout); heroTimers = [];
+    heroTyping.dataset.on = 'false';
+    if (rm()) { heroMsgs.forEach(function (m) { m.classList.remove('pending', 'enter'); }); return; }
+    heroMsgs.forEach(function (m) { m.classList.add('pending'); });
+    var plan = [[300, function () { heroShow(0); }], [900, function () { heroTyping.dataset.on = 'true'; }],
+      [2000, function () { heroTyping.dataset.on = 'false'; heroShow(1); }], [2900, function () { heroShow(2); }],
+      [3500, function () { heroTyping.dataset.on = 'true'; }], [4500, function () { heroTyping.dataset.on = 'false'; heroShow(3); }]];
+    plan.forEach(function (p) { heroTimers.push(setTimeout(p[1], p[0])); });
+  }
+  document.getElementById('hero-replay').addEventListener('click', playHero);
+
+  /* 2. Board */
+  var feed = document.getElementById('feed'), steps = document.getElementById('steps'), team = document.getElementById('team');
+  var mood = document.getElementById('mood'), mouth = document.getElementById('mouth');
+  var moodTitle = document.getElementById('mood-title'), moodSub = document.getElementById('mood-sub');
+  var playBtn = document.getElementById('play');
+  var feats = { voice: false, followup: false, dashboard: false }, mode = 'with';
+  var plan = [], idx = 0, timer = null, playing = false, newCount = 0;
+  var MOUTH = { neutral: 'M8.5 15.5 L15.5 15.5', good: 'M8 14.2 Q12 18 16 14.2', bad: 'M8 16.8 Q12 13 16 16.8' };
+  var VOICE = '<span class="voice"><svg viewBox="0 0 92 18" aria-hidden="true">' +
+    [6,10,14,8,12,16,9,5,11,15,7,12,9,6,13,10,5,8,12,7].map(function (h, i) { return '<rect x="' + (i * 4.6) + '" y="' + (9 - h / 2) + '" width="2.4" height="' + h + '" rx="1"/>'; }).join('') +
+    '</svg>0:07</span>';
+
+  function msg(side, html, time) { var d = document.createElement('div'); d.className = 'm ' + side; d.innerHTML = html + (time ? '<time>' + time + '</time>' : ''); feed.appendChild(d); animIn(d); }
+  function divider(t) { var d = document.createElement('div'); d.className = 'divider'; d.textContent = t; d.dir = 'ltr'; feed.appendChild(d); animIn(d); }
+  function step(t) { steps.querySelectorAll('li').forEach(function (l) { l.classList.remove('now'); }); var li = document.createElement('li'); li.textContent = t; li.className = 'now'; steps.appendChild(li); animIn(li); }
+  function setMood(kind, title, sub) { mood.dataset.kind = kind; mouth.setAttribute('d', MOUTH[kind]); moodTitle.textContent = title; moodSub.textContent = sub; }
+  function teamNote(text, cls) { var p = document.createElement('div'); p.className = 'note ' + (cls || ''); p.textContent = text; team.appendChild(p); animIn(p); }
+  function bumpNew() { newCount++; var b = document.getElementById('tile-new'); if (b) { b.textContent = newCount; b.classList.remove('bump'); if (!rm()) { void b.offsetWidth; b.classList.add('bump'); } } }
+  function setTile(id, v) { var b = document.getElementById(id); if (b) { b.textContent = v; b.classList.remove('bump'); if (!rm()) { void b.offsetWidth; b.classList.add('bump'); } } }
+
+  function reset() {
+    feed.innerHTML = ''; steps.innerHTML = ''; team.innerHTML = ''; newCount = 0;
+    if (feats.dashboard) {
+      team.innerHTML = '<div class="tiles"><div class="tile"><small>New requests</small><b id="tile-new">0</b></div><div class="tile"><small>Avg. first reply</small><b id="tile-reply">–</b></div></div>';
+    }
+    setMood('neutral', 'Ready', 'Press Play to start the example.');
+  }
+
+  function buildPlan() {
+    var p = [];
+    if (mode === 'without') {
+      p.push(function () { feats.voice ? msg('c', VOICE, '11:41 PM') : msg('c', 'مرحبا، قديش رحلة البترا ليومين؟', '11:41 PM'); setMood('neutral', 'Waiting for a reply', '11:41 PM. The office is closed.'); });
+      p.push(function () { step('No assistant. The message waits in the inbox.'); });
+      p.push(function () { divider('Next morning, 9:30 AM'); setMood('bad', 'Still waiting', '10 hours without an answer.'); });
+      p.push(function () { teamNote('Message opened at 9:30 AM.'); if (feats.dashboard) setTile('tile-reply', '10 h'); });
+      p.push(function () { msg('c', 'خلص، حجزت مع مكتب ثاني. شكراً', '9:31 AM'); setMood('bad', 'Booked somewhere else', 'The customer stopped waiting.'); });
+      p.push(function () { teamNote('Booking lost.', 'bad'); });
+      return p;
+    }
+    p.push(function () {
+      feats.voice ? msg('c', VOICE, '11:41 PM') : msg('c', 'مرحبا، قديش رحلة البترا ليومين؟', '11:41 PM');
+      setMood('neutral', 'Waiting for a reply', '11:41 PM. The office is closed.');
+    });
+    p.push(function () { step(feats.voice ? 'Listened to the voice note' : 'Read the question in Jordanian Arabic'); });
+    p.push(function () { step('Found the Petra and Wadi Rum package and its price'); });
+    p.push(function () {
+      msg('a', 'أهلاً فيك! رحلة البترا ووادي رم يومين بـ 95 دينار للشخص، شاملة المواصلات والمبيت. كم شخص حابين تيجوا؟', '11:41 PM');
+      if (feats.voice) msg('a', VOICE, '11:41 PM');
+      setMood('good', 'Answered in seconds', 'At 11:41 PM, with a real price.');
+      if (feats.dashboard) setTile('tile-reply', '4 s');
+    });
+    if (feats.followup) {
+      p.push(function () { step('Customer went quiet. Follow-up scheduled for the morning.'); setMood('neutral', 'Thinking it over', 'Many customers compare offers before answering.'); });
+      p.push(function () { divider('Next morning, 10:00 AM'); msg('a', 'صباح الخير! لسا حابين رحلة البترا يوم الجمعة؟ بنقدر نجهز الطلب للفريق.', '10:00 AM'); });
+      p.push(function () { msg('c', 'أيوا، ٤ أشخاص', '10:04 AM'); setMood('good', 'Reminded, not forgotten', 'A friendly follow-up brought them back.'); });
+    } else {
+      p.push(function () { msg('c', '٤ أشخاص، الجمعة الجاي', '11:42 PM'); });
+    }
+    p.push(function () { step('Collected the group size and date'); });
+    p.push(function () {
+      msg('a', 'تمام! بعثت طلبكم للفريق، وبيتواصلوا معكم لتأكيد الحجز.', feats.followup ? '10:04 AM' : '11:42 PM');
+      step('Sent a booking request to staff');
+      var r = document.createElement('div'); r.className = 'req';
+      r.innerHTML = '<b>New booking request</b><dl><dt>Trip</dt><dd>Petra and Wadi Rum, 2 days</dd><dt>Travellers</dt><dd>4 adults</dd><dt>Date</dt><dd>Next Friday</dd><dt>Quoted</dt><dd>95 JOD per person</dd></dl>';
+      team.appendChild(r); animIn(r); bumpNew();
+      setMood('good', 'Looked after', 'Knows the team will confirm.');
+    });
+    p.push(function () { teamNote('Staff confirmed the booking at 9:15 AM.', 'good'); step('Done. Staff made the final decision.'); setMood('good', 'Booked', 'With your agency, not another one.'); });
+    return p;
+  }
+
+  function stop() { clearTimeout(timer); timer = null; playing = false; playBtn.textContent = idx >= plan.length && plan.length ? 'Play again' : (idx > 0 ? 'Continue' : 'Play'); }
+  function tick() {
+    if (idx >= plan.length) { stop(); return; }
+    plan[idx++]();
+    timer = setTimeout(tick, 1100);
+  }
+  function start(fromScratch) {
+    clearTimeout(timer);
+    if (fromScratch || idx >= plan.length || !plan.length) { reset(); plan = buildPlan(); idx = 0; }
+    if (rm()) { while (idx < plan.length) plan[idx++](); stop(); return; }
+    playing = true; playBtn.textContent = 'Pause'; tick();
+  }
+  playBtn.addEventListener('click', function () { if (playing) stop(); else start(false); });
+  document.getElementById('replay').addEventListener('click', function () { start(true); });
+  document.querySelectorAll('.feat').forEach(function (b) {
+    b.addEventListener('click', function () { var f = b.dataset.feat; feats[f] = !feats[f]; b.setAttribute('aria-pressed', String(feats[f])); start(true); });
+  });
+  var mw = document.getElementById('mode-with'), mwo = document.getElementById('mode-without');
+  function setMode(m) { mode = m; mw.setAttribute('aria-pressed', String(m === 'with')); mwo.setAttribute('aria-pressed', String(m === 'without')); start(true); }
+  mw.addEventListener('click', function () { setMode('with'); });
+  mwo.addEventListener('click', function () { setMode('without'); });
+
+  /* 4. Slow page */
+  var PAGES = {
+    home: ['Every traveller answered in seconds', 'An assistant for Instagram, WhatsApp and Messenger that quotes your prices and hands your team a ready booking.'],
+    solutions: ['30 systems for travel agencies', 'Search by name, or filter by what you need: win more bookings, look after travellers, run your office.'],
+    pricing: ['How pricing works', 'A one-time setup and a monthly fee. A 10-day live trial before you commit.']
+  };
+  var page = document.getElementById('b-page'), bar = document.getElementById('bar'), off = document.getElementById('offline');
+  var links = document.querySelectorAll('.b-nav a'), slow = document.getElementById('slow'), drop = document.getElementById('drop');
+  var loadTimers = [], pendingPage = null;
+  function render(name) {
+    page.innerHTML = '<h4>' + PAGES[name][0] + '</h4><p>' + PAGES[name][1] + '</p>';
+    links.forEach(function (a) { a.toggleAttribute('aria-current', a.dataset.page === name); if (a.dataset.page === name) a.setAttribute('aria-current', 'page'); });
+  }
+  function setBar(w, ms) { bar.style.transition = rm() || !ms ? 'none' : 'width ' + ms + 'ms ease-out'; bar.style.width = w + '%'; }
+  function finish(name) {
+    loadTimers.forEach(clearTimeout); loadTimers = [];
+    off.classList.remove('show'); page.classList.remove('loading'); render(name);
+    if (bar.style.width !== '0%' && bar.style.width) {
+      setBar(100, 150);
+      loadTimers.push(setTimeout(function () { setBar(0, 0); }, 350));
+    }
+  }
+  function go(name) {
+    loadTimers.forEach(clearTimeout); loadTimers = []; pendingPage = name; off.classList.remove('show'); setBar(0, 0);
+    var total = slow.checked ? 3000 : 120;
+    loadTimers.push(setTimeout(function () { page.classList.add('loading'); setBar(drop.checked ? 60 : 85, drop.checked ? 1500 : total); }, 300));
+    if (drop.checked) { loadTimers.push(setTimeout(function () { off.classList.add('show'); }, 2200)); return; }
+    loadTimers.push(setTimeout(function () { finish(name); }, total));
+  }
+  links.forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); go(a.dataset.page); }); });
+  document.getElementById('retry').addEventListener('click', function () { drop.checked = false; if (pendingPage) finish(pendingPage); });
+  render('home');
+
+  rmBox.addEventListener('change', function () { root.classList.toggle('rm', rmBox.checked); playHero(); start(true); });
+
+  /* Start state: hero plays once; board shows its finished story so the page is complete at rest */
+  playHero();
+  reset(); plan = buildPlan(); idx = 0; while (idx < plan.length) plan[idx++](); stop();
+  feed.querySelectorAll('.enter').forEach(function (e) { e.classList.remove('enter'); });
+  steps.querySelectorAll('.enter').forEach(function (e) { e.classList.remove('enter'); });
+  team.querySelectorAll('.enter').forEach(function (e) { e.classList.remove('enter'); });
+})();
+</script>

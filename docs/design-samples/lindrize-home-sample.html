@@ -1,0 +1,262 @@
+<title>Lindrize Home Sample</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap">
+<style>
+/* Layout: airy single-column sections, one idea each; the product board sits on a navy stage; only the Solutions grid is compact. */
+:root {
+  --bg: #F4F6F5;
+  --surface: #FFFFFF;
+  --ink: #0C1320;
+  --muted: #4A5565;
+  --line: #D6DDDB;
+  --accent: #22CEC3;
+  --accent-hover: #0FB8D2;
+  --on-accent: #0C1320;
+  --accent-text: #0F5C63;
+  --stage: #0C1320;
+  --stage-surface: #162136;
+  --stage-line: #26344D;
+  --stage-ink: #EEF3F2;
+  --stage-muted: #9FACBB;
+  --bubble-agent: #0F5C63;
+  --bubble-agent-ink: #FFFFFF;
+  --font-display: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-arabic: "IBM Plex Sans Arabic", "IBM Plex Sans", Tahoma, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C1320; --surface: #131C2D; --ink: #EEF3F2; --muted: #9FACBB; --line: #26344D;
+    --accent-text: #22CEC3; --stage: #101929; --stage-surface: #18243A; --stage-line: #2B3A55;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C1320; --surface: #131C2D; --ink: #EEF3F2; --muted: #9FACBB; --line: #26344D;
+  --accent-text: #22CEC3; --stage: #101929; --stage-surface: #18243A; --stage-line: #2B3A55;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent-hover); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: 1120px; margin-inline: auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+.note { background: var(--surface); border-bottom: 1px solid var(--line); font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.note .wrap { padding-block: 8px; }
+
+/* Header */
+.header .wrap { display: flex; align-items: center; gap: 28px; padding-block: 18px; flex-wrap: wrap; }
+.wordmark { font-family: var(--font-display); font-weight: 600; font-size: 24px; letter-spacing: -0.01em; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.wordmark i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); display: block; }
+.nav { display: flex; gap: 24px; margin-inline-start: auto; flex-wrap: wrap; }
+.nav a { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+.tools { display: flex; align-items: center; gap: 10px; }
+.chip { font: 500 13px var(--font-body); color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 7px 11px; cursor: pointer; text-decoration: none; }
+.chip:hover { border-color: var(--accent-text); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; font: 600 16px var(--font-body); text-decoration: none; border-radius: 10px; padding: 13px 22px; border: 1.5px solid transparent; }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-ghost { border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--accent-text); }
+.btn-sm { padding: 9px 16px; font-size: 14.5px; }
+
+/* Hero */
+.hero .wrap { padding-block: 72px 56px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-text); }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(38px, 6vw, 66px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: 15ch; text-wrap: balance; }
+.lead { font-size: clamp(18px, 2vw, 21px); color: var(--muted); max-width: 54ch; margin: 0; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+.sub-action { font-size: 15px; color: var(--muted); }
+.sub-action a { color: var(--accent-text); font-weight: 500; }
+
+/* Board */
+.stage { background: var(--stage); color: var(--stage-ink); border: 1px solid var(--stage-line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 22px; }
+.stage-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 12.5px; color: var(--stage-muted); letter-spacing: 0.04em; }
+.live { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); }
+.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.board { display: grid; grid-template-columns: 1fr 0.9fr 1fr; gap: 18px; }
+.screen { background: var(--stage-surface); border: 1px solid var(--stage-line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.screen h3 { margin: 0; font: 500 12.5px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--stage-muted); }
+.chat { display: flex; flex-direction: column; gap: 10px; }
+.bubble { font-family: var(--font-arabic); font-size: 15.5px; line-height: 1.65; padding: 10px 14px; border-radius: 14px; max-width: 88%; }
+.bubble.in { background: var(--stage); border: 1px solid var(--stage-line); align-self: flex-start; }
+.bubble.out { background: var(--bubble-agent); color: var(--bubble-agent-ink); align-self: flex-end; }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; font-size: 15px; }
+.steps li { display: flex; gap: 10px; align-items: flex-start; }
+.steps li::before { content: "✓"; flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 700; display: grid; place-items: center; margin-top: 2px; }
+.ticket { background: var(--stage); border: 1px solid var(--stage-line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.ticket strong { font: 600 16px var(--font-display); }
+.ticket dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; }
+.ticket dt { color: var(--stage-muted); }
+.ticket dd { margin: 0; font-variant-numeric: tabular-nums; }
+.ticket .btn { align-self: flex-start; }
+.screen small { color: var(--stage-muted); font-size: 13.5px; line-height: 1.5; }
+
+/* One-idea section */
+.idea .wrap { padding-block: 104px; display: flex; flex-direction: column; gap: 18px; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(30px, 4.2vw, 46px); line-height: 1.1; letter-spacing: -0.015em; margin: 0; max-width: 20ch; text-wrap: balance; }
+.idea p { margin: 0; font-size: 19px; color: var(--muted); max-width: 56ch; }
+
+/* Compact solutions */
+.solutions { border-top: 1px solid var(--line); }
+.solutions .wrap { padding-block: 72px 96px; display: flex; flex-direction: column; gap: 24px; }
+.sol-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.search { font: 400 16px var(--font-body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; width: min(100%, 320px); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 8px; text-decoration: none; min-width: 0; }
+.card:hover { border-color: var(--accent-text); }
+.card .cat { font: 500 11.5px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+.card .tag { color: var(--accent-text); }
+.card b { font: 600 18px var(--font-display); }
+.card span.d { font-size: 14.5px; color: var(--muted); line-height: 1.5; }
+.empty { color: var(--muted); font-size: 15px; }
+
+@media (max-width: 860px) {
+  .board, .grid { grid-template-columns: 1fr; }
+  .nav { display: none; }
+  .tools { margin-inline-start: auto; }
+  .hero .wrap { padding-block: 44px 40px; }
+  .idea .wrap { padding-block: 72px; }
+  .stage { padding: 16px; }
+}
+</style>
+
+<div class="note"><div class="wrap">Design sample for round 5. Wording and example content are drafts, not the final site.</div></div>
+
+<header class="header">
+  <div class="wrap">
+    <a class="wordmark" href="#top"><i></i>lindrize</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#solutions">Solutions</a>
+      <a href="#solutions">Industries</a>
+      <a href="#solutions">Pricing</a>
+      <a href="#solutions">Design your agent</a>
+    </nav>
+    <div class="tools">
+      <span class="chip" lang="ar">عربي</span>
+      <button class="chip" id="theme-toggle" type="button" aria-label="Switch between light and dark">Dark</button>
+      <a class="btn btn-primary btn-sm" href="https://calendly.com/amerelshair-ai-lindrize/15-minute-call-with-lindrize">Book a call</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">For travel agencies · Jordan and the GCC</div>
+      <h1>Every traveller answered in seconds, day and night.</h1>
+      <p class="lead">An assistant that replies on Instagram and WhatsApp in Arabic or English, recommends your packages, quotes from your price list and sends your staff a ready booking request. Your team keeps the final word.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://calendly.com/amerelshair-ai-lindrize/15-minute-call-with-lindrize">Book a 15-minute call</a>
+        <a class="btn btn-ghost" href="#solutions">Design your agent</a>
+      </div>
+      <div class="sub-action">Or <a href="https://www.instagram.com/Yasmeen_aldarb">message our demo agency on Instagram</a> and test it yourself.</div>
+
+      <div class="stage" aria-label="Example: one request moving from the customer to your team">
+        <div class="stage-head">
+          <span class="live">EXAMPLE REQUEST</span>
+          <span>Yasmeen Al-Darb is a demo agency, not a real client</span>
+        </div>
+        <div class="board">
+          <div class="screen">
+            <h3>Customer's phone</h3>
+            <div class="chat" dir="rtl" lang="ar">
+              <div class="bubble in">مرحبا، قديش رحلة البترا ليومين؟</div>
+              <div class="bubble out">أهلاً فيك! رحلة البترا ووادي رم يومين بـ 95 دينار للشخص، شاملة المواصلات والمبيت. كم شخص حابين تيجوا؟</div>
+              <div class="bubble in">٤ أشخاص، الجمعة الجاي</div>
+              <div class="bubble out">تمام! بعثت طلبكم للفريق وبيأكدوا معكم الحجز.</div>
+            </div>
+          </div>
+          <div class="screen">
+            <h3>The assistant</h3>
+            <ul class="steps">
+              <li>Understood the question in Jordanian Arabic</li>
+              <li>Matched it to one of the agency's packages</li>
+              <li>Quoted from the agency's price list</li>
+              <li>Collected the group size and date</li>
+              <li>Sent the request to staff</li>
+            </ul>
+          </div>
+          <div class="screen">
+            <h3>Your team, on Telegram</h3>
+            <div class="ticket">
+              <strong>New booking request</strong>
+              <dl>
+                <dt>Trip</dt><dd>Petra and Wadi Rum, 2 days</dd>
+                <dt>Travellers</dt><dd>4</dd>
+                <dt>Date</dt><dd>Next Friday</dd>
+                <dt>Quoted</dt><dd>95 JOD per person</dd>
+                <dt>From</dt><dd>Instagram</dd>
+              </dl>
+              <span class="btn btn-primary btn-sm">Confirm with customer</span>
+            </div>
+            <small>Your staff confirm the booking. The assistant never does.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="idea">
+    <div class="wrap">
+      <div class="eyebrow">What it never does</div>
+      <h2>It never confirms a booking or takes a payment.</h2>
+      <p>The assistant answers, recommends and collects details. A person on your team checks every request and says yes. That is how you stay in control of prices, seats and promises.</p>
+    </div>
+  </section>
+
+  <section class="solutions" id="solutions">
+    <div class="wrap">
+      <div class="sol-head">
+        <h2>Find the system you need</h2>
+        <input class="search" id="sol-search" type="search" placeholder="Search, for example: follow-up" aria-label="Search systems">
+      </div>
+      <div class="grid" id="sol-grid">
+        <a class="card" href="#solutions"><span class="cat"><span>Win more bookings</span><span class="tag">Live demo</span></span><b>AI Travel Sales Assistant</b><span class="d">Answers Instagram, WhatsApp and Messenger in seconds and sends staff a booking request.</span></a>
+        <a class="card" href="#solutions"><span class="cat"><span>Win more bookings</span></span><b>Quote Follow-up</b><span class="d">Follows up with customers who got a price and went quiet.</span></a>
+        <a class="card" href="#solutions"><span class="cat"><span>Win more bookings</span></span><b>Customer Reactivation</b><span class="d">Brings past travellers back with seasonal offers for Eid, summer and Umrah season.</span></a>
+        <a class="card" href="#solutions"><span class="cat"><span>Win more bookings</span></span><b>Instant Quote and Itinerary</b><span class="d">Turns a chat into a branded PDF quote or a day-by-day itinerary.</span></a>
+        <a class="card" href="#solutions"><span class="cat"><span>Look after travellers</span></span><b>Payment Reminders</b><span class="d">Reminders for deposits and instalments, with payment instructions.</span></a>
+        <a class="card" href="#solutions"><span class="cat"><span>Run your office</span></span><b>Leads and Bookings Dashboard</b><span class="d">One place for every inquiry, its status and who is handling it.</span></a>
+      </div>
+      <div class="empty" id="sol-empty" hidden>No system matches that search in this sample.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+  function isDark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function label() { btn.textContent = isDark() ? 'Light' : 'Dark'; }
+  btn.addEventListener('click', function () {
+    root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+    label();
+  });
+  label();
+
+  var search = document.getElementById('sol-search');
+  var cards = document.querySelectorAll('#sol-grid .card');
+  var empty = document.getElementById('sol-empty');
+  search.addEventListener('input', function () {
+    var q = search.value.trim().toLowerCase(), shown = 0;
+    cards.forEach(function (c) {
+      var hit = c.textContent.toLowerCase().indexOf(q) !== -1;
+      c.hidden = !hit;
+      if (hit) shown++;
+    });
+    empty.hidden = shown !== 0;
+  });
+})();
+</script>

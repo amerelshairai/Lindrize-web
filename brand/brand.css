@@ -1,0 +1,30 @@
+:root {
+  --lz-navy: #0C1320;      /* backgrounds, text on light */
+  --lz-teal: #22CEC3;      /* primary brand colour */
+  --lz-cyan: #0FB8D2;      /* gradient partner */
+  --lz-deep: #0F5C63;      /* text links and labels on light */
+  --lz-paper: #F4F6F5;    /* light backgrounds */
+  --lz-gradient: linear-gradient(135deg, var(--lz-teal), var(--lz-cyan));
+  --lz-radius: 12px;
+}
+
+/* The logo's L as a card corner: put class="lz-corner" on any card or section */
+.lz-corner { position: relative; }
+.lz-corner::before {
+  content: ""; position: absolute; left: -10px; bottom: -10px; width: 64px; height: 64px;
+  border-left: 6px solid var(--lz-teal); border-bottom: 6px solid var(--lz-cyan);
+  border-bottom-left-radius: 8px; pointer-events: none;
+}
+
+/* Gradient button */
+.lz-button {
+  background: var(--lz-gradient); color: var(--lz-navy); font-weight: 600;
+  border: 0; border-radius: var(--lz-radius); padding: 14px 24px;
+}
+
+/* Faint dot background for dark sections */
+.lz-dots {
+  background-color: var(--lz-navy);
+  background-image: radial-gradient(rgba(34,206,195,.10) 1.4px, transparent 1.6px);
+  background-size: 28px 28px;
+}
