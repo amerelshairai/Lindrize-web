@@ -1,0 +1,302 @@
+---
+/**
+ * A chat drawn as a phone screen. Messages stay in the language the customer wrote in, on every
+ * page, because the dialect is part of what the demo shows.
+ */
+import type { CollectionEntry } from 'astro:content';
+import { ui, tr, type Lang } from '@/lib/i18n';
+
+interface Props {
+  chat: CollectionEntry<'chats'>['data'];
+  lang: Lang;
+  /** Show only messages from this position up to (not including) `to`. */
+  from?: number;
+  to?: number;
+  /** Fixed-height window that keeps the newest messages in view. */
+  feed?: boolean;
+  /** Play the messages in once, with typing dots, when the phone comes into view. */
+  autoplay?: boolean;
+  /** For the scroll story: the step at which each message appears. */
+  steps?: number[];
+  class?: string;
+}
+const { chat, lang, from = 0, to, feed = false, autoplay = false, steps, class: className } = Astro.props;
+const messages = chat.messages.slice(from, to);
+const chatDir = chat.lang === 'ar' ? 'rtl' : 'ltr';
+const who = { customer: tr(ui.chat.customer, lang), assistant: tr(ui.chat.assistant, lang) };
+const agency = tr(ui.chat.agencyName, lang);
+---
+
+<figure class:list={['phone', className]} data-chat data-autoplay={autoplay ? '' : undefined}>
+  <figcaption>{tr(ui.chat.demoLabel, lang)}</figcaption>
+  <div class="ph-head" aria-hidden="true">
+    <span class="av">{agency.charAt(0)}</span>
+    <div>
+      <b>{agency}</b>
+      <small>{tr(ui.chat.agencySub, lang)}</small>
+    </div>
+  </div>
+  <ol class:list={['ph-body', feed && 'feed']} role="list" lang={chat.lang} dir={chatDir}>
+    {
+      messages.map((message, i) => (
+        <li class:list={['m', message.from === 'customer' ? 'c' : 'a']} data-msg={message.from} data-at={steps?.[from + i]}>
+          <span class="sr-only" lang={lang}>{who[message.from]}:</span>
+          <span class="t">{message.text}</span>
+          <time class="ltr" lang="en">{message.time}</time>
+        </li>
+      ))
+    }
+  </ol>
+  {
+    autoplay && (
+      <div class="typing" data-typing aria-hidden="true">
+        <span class="dots"><i /><i /><i /></span>
+        <span>{agency} · {tr(ui.chat.typing, lang)}</span>
+      </div>
+    )
+  }
+</figure>
+
+<style>
+  .phone {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 24rem;
+    margin: 0;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 1.125rem;
+    overflow: hidden;
+  }
+  figcaption {
+    order: 9;
+    padding: 0.5rem 1rem 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+  .ph-head {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.7rem 0.9rem;
+    background: var(--soft);
+    border-bottom: 1px solid var(--line);
+  }
+  .av {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2.125rem;
+    height: 2.125rem;
+    border-radius: 50%;
+    background: var(--agent);
+    color: var(--agent-ink);
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+  .ph-head b {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .ph-head small {
+    display: block;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+  .ph-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0.9rem;
+    list-style: none;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  .ph-body:lang(ar) {
+    line-height: 1.75;
+  }
+  .ph-body.feed {
+    height: 17rem;
+    overflow: hidden;
+    justify-content: flex-end;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 2.25rem);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 2.25rem);
+  }
+  .m {
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    max-width: 86%;
+    padding: 0.5rem 0.75rem 0.35rem;
+    border-radius: 0.8rem;
+  }
+  .m time {
+    align-self: flex-end;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+  .m.c {
+    align-self: flex-start;
+    background: var(--soft);
+    border: 1px solid var(--line);
+  }
+  .m.c time {
+    color: var(--muted);
+  }
+  .m.a {
+    align-self: flex-end;
+    background: var(--agent);
+    color: var(--agent-ink);
+  }
+  .m.a time {
+    color: var(--agent-meta);
+  }
+
+  .typing {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    height: 1.75rem;
+    padding: 0 1rem 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--muted);
+    visibility: hidden;
+  }
+  .typing[data-on] {
+    visibility: visible;
+  }
+  .dots {
+    display: inline-flex;
+    gap: 3px;
+  }
+  .dots i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--muted);
+    animation: chat-blink 1s infinite ease-in-out;
+  }
+  .dots i:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .dots i:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  @keyframes chat-blink {
+    0%,
+    80%,
+    100% {
+      opacity: 0.25;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+
+  /* Autoplay. Messages keep their space the whole time, so nothing on the page moves.
+     If the script never starts, the failsafe shows every message after a short wait. */
+  :global(html.motion) [data-autoplay]:not([data-state]) .m {
+    opacity: 0;
+    animation: chat-failsafe 0.3s 3.5s forwards;
+  }
+  [data-autoplay][data-state='waiting'] .m,
+  [data-autoplay][data-state='playing'] .m {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  [data-autoplay][data-state='playing'] .m.on {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 260ms ease,
+      transform 260ms ease;
+  }
+  @keyframes chat-failsafe {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Scroll story: messages that belong to a later step are not shown yet. */
+  .m:global(.wait) {
+    display: none;
+  }
+  :global(html.motion) .feed .m {
+    animation: chat-enter 260ms ease both;
+  }
+  @keyframes chat-enter {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+</style>
+
+<script>
+  /** Plays a chat in once when it scrolls into view. Runs only when motion is allowed. */
+  const motion = document.documentElement.classList.contains('motion');
+
+  function play(phone: HTMLElement): void {
+    const messages = [...phone.querySelectorAll<HTMLElement>('.m')];
+    const typing = phone.querySelector<HTMLElement>('[data-typing]');
+    const timers: number[] = JSON.parse(phone.dataset['timers'] ?? '[]');
+    timers.forEach((id) => window.clearTimeout(id));
+    messages.forEach((m) => m.classList.remove('on'));
+    typing?.removeAttribute('data-on');
+    phone.dataset['state'] = 'playing';
+
+    const next: number[] = [];
+    const at = (ms: number, run: () => void): void => {
+      next.push(window.setTimeout(run, ms));
+    };
+    let t = 300;
+    messages.forEach((message, i) => {
+      if (message.dataset['msg'] === 'assistant') {
+        at(t + 350, () => typing?.setAttribute('data-on', ''));
+        t += 1250;
+        at(t, () => {
+          typing?.removeAttribute('data-on');
+          message.classList.add('on');
+        });
+      } else {
+        if (i > 0) t += 750;
+        at(t, () => message.classList.add('on'));
+      }
+    });
+    at(t + 400, () => {
+      phone.dataset['state'] = 'done';
+    });
+    phone.dataset['timers'] = JSON.stringify(next);
+  }
+
+  if (motion && 'IntersectionObserver' in window) {
+    document.querySelectorAll<HTMLElement>('[data-autoplay]').forEach((phone) => {
+      phone.dataset['state'] = 'waiting';
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            observer.disconnect();
+            play(phone);
+          }
+        },
+        { threshold: 0.35 },
+      );
+      observer.observe(phone);
+    });
+    document.querySelectorAll<HTMLButtonElement>('[data-chat-replay]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const phone = document.getElementById(button.dataset['chatReplay'] ?? '');
+        const target = phone?.matches('[data-autoplay]') ? phone : phone?.querySelector<HTMLElement>('[data-autoplay]');
+        if (target) play(target as HTMLElement);
+      });
+    });
+  }
+</script>

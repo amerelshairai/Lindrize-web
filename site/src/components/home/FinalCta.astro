@@ -1,0 +1,52 @@
+---
+/** The closing block shown at the end of every page: book a call, or message on WhatsApp. */
+import Button from '@/components/Button.astro';
+import WhatsAppLink from '@/components/WhatsAppLink.astro';
+import { ui, tr, settings, type Lang, type Text } from '@/lib/i18n';
+interface Props {
+  lang: Lang;
+  title: Text;
+  body: Text;
+  whatsappMessage?: string;
+}
+const { lang, title, body, whatsappMessage } = Astro.props;
+---
+
+<section class="final">
+  <div class="wrap">
+    <h2 data-reveal>{tr(title, lang)}</h2>
+    <p data-reveal>{tr(body, lang)}</p>
+    <div class="actions" data-reveal>
+      <Button href={settings.calendlyUrl} book arrow data-book-source="final">{tr(ui.book.long, lang)}</Button>
+      <WhatsAppLink lang={lang} message={whatsappMessage} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .final {
+    border-top: 1px solid var(--line);
+  }
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding-block: var(--space-section);
+  }
+  h2 {
+    max-width: 18ch;
+  }
+  p {
+    max-width: 50ch;
+    font-size: var(--text-lead);
+    color: var(--muted);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    margin-top: 0.5rem;
+  }
+</style>

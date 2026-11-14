@@ -24,6 +24,11 @@ export default defineConfig({
   build: { format: 'directory', inlineStylesheets: 'auto' },
   devToolbar: { enabled: false },
 
+  // Short link for emails and profiles. The server turns this into a real redirect in Phase 5.
+  redirects: {
+    '/book': 'https://calendly.com/amerelshair-ai-lindrize/15-minute-call-with-lindrize',
+  },
+
   i18n: {
     locales: ['en', 'ar'],
     defaultLocale: 'en',

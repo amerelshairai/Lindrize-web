@@ -21,6 +21,7 @@ const pages = defineCollection({
     story: z.object({
       title: text,
       steps: z.array(z.object({ when: text, title: text, body: text })).length(3),
+      clock: z.array(text).length(3),
       chips: z.array(text).min(1),
       confirmed: text,
     }),

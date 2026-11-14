@@ -1,0 +1,80 @@
+---
+/**
+ * Client feedback. Nothing is rendered until a real client's quote is added to
+ * src/content/feedback (each entry must carry `consent: true`).
+ */
+import { getCollection } from 'astro:content';
+import { tr, type Lang, type Text } from '@/lib/i18n';
+interface Props {
+  lang: Lang;
+  title: Text;
+}
+const { lang, title } = Astro.props;
+const items = (await getCollection('feedback')).sort((a, b) => a.data.order - b.data.order);
+---
+
+{
+  items.length > 0 && (
+    <section class="sec feedback">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="drawline" data-draw />
+          <h2 data-reveal>{tr(title, lang)}</h2>
+        </div>
+        <ul role="list" data-reveal-group>
+          {items.map((item) => (
+            <li data-reveal>
+              <blockquote>
+                <p>{tr(item.data.quote, lang)}</p>
+              </blockquote>
+              <p class="who">
+                <b>{item.data.name}</b>
+                <span>
+                  {tr(item.data.role, lang)}, {item.data.agency}
+                </span>
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0 0 var(--space-section);
+    list-style: none;
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--ink);
+  }
+  blockquote {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    line-height: 1.45;
+  }
+  blockquote:lang(ar) {
+    font-family: var(--font-arabic);
+  }
+  .who {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--text-md);
+  }
+  .who b {
+    font-weight: 500;
+  }
+  .who span {
+    color: var(--muted);
+  }
+</style>

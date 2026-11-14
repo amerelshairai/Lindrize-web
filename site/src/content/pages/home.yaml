@@ -44,6 +44,11 @@ story:
       body:
         en: "The traveller's name, the dates, the package and the quoted total, waiting on Telegram. Your staff confirm the booking. The assistant never does."
         ar: "اسم المسافر والتواريخ والباقة والمبلغ المعروض، بانتظارهم على Telegram. موظفوك هم من يؤكّدون الحجز، أما المساعد فلا يؤكّده أبداً."
+  # The clock above the example, one value per step.
+  clock:
+    - { en: "11:40 PM", ar: "11:40 مساءً" }
+    - { en: "11:41 PM", ar: "11:41 مساءً" }
+    - { en: "9:40 AM", ar: "9:40 صباحاً" }
   chips:
     - { en: "Understood Jordanian Arabic", ar: "فهم اللهجة الأردنية" }
     - { en: "Recommended your package", ar: "اقترح باقتك" }

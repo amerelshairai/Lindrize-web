@@ -1,0 +1,73 @@
+---
+/** Systems listed as a clean table of rows (direction B), each row a link to its page. */
+import type { CollectionEntry } from 'astro:content';
+import { ui, tr, localPath, systemPath, type Lang } from '@/lib/i18n';
+interface Props {
+  lang: Lang;
+  systems: Array<CollectionEntry<'systems'>>;
+}
+const { lang, systems } = Astro.props;
+---
+
+<ul class="table" role="list" data-reveal-group>
+  {
+    systems.map((system) => (
+      <li data-reveal>
+        <a href={localPath(lang, systemPath(system.id))}>
+          <b>{tr(system.data.name, lang)}</b>
+          <span class="summary">{tr(system.data.summary, lang)}</span>
+          <span class:list={['status', system.data.status]}>{tr(ui.status[system.data.status], lang)}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .table {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--ink);
+  }
+  a {
+    display: grid;
+    grid-template-columns: 1.1fr 2fr 0.6fr;
+    gap: 0.25rem 1.5rem;
+    align-items: baseline;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition:
+      background-color var(--fast) ease,
+      padding 200ms ease;
+  }
+  a:hover {
+    background: var(--soft);
+    padding-inline: 0.75rem;
+  }
+  b {
+    font-weight: 500;
+  }
+  .summary {
+    color: var(--muted);
+    font-size: var(--text-md);
+  }
+  .status {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    text-align: end;
+  }
+  .status.live-demo {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  @media (max-width: 48rem) {
+    a {
+      grid-template-columns: 1fr;
+    }
+    .status {
+      text-align: start;
+    }
+  }
+</style>

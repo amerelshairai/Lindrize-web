@@ -1,0 +1,52 @@
+---
+/** A short notice page: used for "page not found" and for pages that are still being written. */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import { ui, tr, settings, localPath, ROUTES, type Lang, type Text } from '@/lib/i18n';
+interface Props {
+  lang: Lang;
+  page: string;
+  title: Text;
+  body: Text;
+  home: Text;
+}
+const { lang, page, title, body, home } = Astro.props;
+---
+
+<BaseLayout lang={lang} title={`${tr(title, lang)} · Lindrize`} description={tr(body, lang)} page={page} noindex>
+  <section class="notice">
+    <div class="wrap">
+      <h1>{tr(title, lang)}</h1>
+      <p>{tr(body, lang)}</p>
+      <div class="actions">
+        <Button href={localPath(lang, ROUTES.home)} variant="alt">{tr(home, lang)}</Button>
+        <Button href={settings.calendlyUrl} book arrow>{tr(ui.book.long, lang)}</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding-block: var(--space-section);
+    min-height: 60vh;
+  }
+  h1 {
+    font-size: var(--text-h2);
+    line-height: 1.15;
+  }
+  p {
+    color: var(--muted);
+    font-size: var(--text-lead);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+</style>

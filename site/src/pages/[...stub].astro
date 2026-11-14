@@ -1,0 +1,23 @@
+---
+import type { GetStaticPaths } from 'astro';
+import NoticePage from '@/components/NoticePage.astro';
+import { STUB_PAGES } from '@/lib/stubs';
+import { ui, LANGS, type Lang } from '@/lib/i18n';
+
+export const getStaticPaths = (() =>
+  LANGS.flatMap((lang) =>
+    STUB_PAGES.map((page) => ({
+      params: { stub: (lang === 'en' ? page : `/ar${page}`).replace(/^\/|\/$/g, '') },
+      props: { lang, page },
+    })),
+  )) satisfies GetStaticPaths;
+
+interface Props {
+  lang: Lang;
+  page: string;
+}
+const { lang, page } = Astro.props;
+---
+
+<NoticePage lang={lang} page={page} title={ui.stub.title} body={ui.stub.body} home={ui.stub.home} />
+<span data-stub hidden></span>

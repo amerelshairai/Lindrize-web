@@ -1,73 +1,201 @@
 {
-  "skip": { "en": "Skip to content", "ar": "انتقل إلى المحتوى" },
+  "skip": {
+    "en": "Skip to content",
+    "ar": "انتقل إلى المحتوى"
+  },
   "nav": {
-    "label": { "en": "Main", "ar": "القائمة الرئيسية" },
-    "solutions": { "en": "Solutions", "ar": "الحلول" },
-    "industries": { "en": "Industries", "ar": "القطاعات" },
-    "pricing": { "en": "Pricing", "ar": "الأسعار" },
-    "design": { "en": "Design your agent", "ar": "صمّم مساعدك" },
-    "faq": { "en": "FAQ", "ar": "الأسئلة الشائعة" },
-    "about": { "en": "About", "ar": "من نحن" },
-    "contact": { "en": "Contact", "ar": "تواصل معنا" },
-    "privacy": { "en": "Privacy Policy", "ar": "سياسة الخصوصية" },
-    "terms": { "en": "Terms", "ar": "الشروط" },
-    "home": { "en": "Lindrize home", "ar": "الصفحة الرئيسية لـ Lindrize" },
-    "menu": { "en": "Menu", "ar": "القائمة" },
-    "closeMenu": { "en": "Close menu", "ar": "إغلاق القائمة" }
+    "label": {
+      "en": "Main",
+      "ar": "القائمة الرئيسية"
+    },
+    "solutions": {
+      "en": "Solutions",
+      "ar": "الحلول"
+    },
+    "industries": {
+      "en": "Industries",
+      "ar": "القطاعات"
+    },
+    "pricing": {
+      "en": "Pricing",
+      "ar": "الأسعار"
+    },
+    "design": {
+      "en": "Design your agent",
+      "ar": "صمّم مساعدك"
+    },
+    "faq": {
+      "en": "FAQ",
+      "ar": "الأسئلة الشائعة"
+    },
+    "about": {
+      "en": "About",
+      "ar": "من نحن"
+    },
+    "contact": {
+      "en": "Contact",
+      "ar": "تواصل معنا"
+    },
+    "privacy": {
+      "en": "Privacy Policy",
+      "ar": "سياسة الخصوصية"
+    },
+    "terms": {
+      "en": "Terms",
+      "ar": "الشروط"
+    },
+    "home": {
+      "en": "Lindrize home",
+      "ar": "الصفحة الرئيسية لـ Lindrize"
+    },
+    "menu": {
+      "en": "Menu",
+      "ar": "القائمة"
+    },
+    "closeMenu": {
+      "en": "Close menu",
+      "ar": "إغلاق القائمة"
+    }
   },
   "lang": {
-    "switchTo": { "en": "عربي", "ar": "English" },
-    "switchLabel": { "en": "Read this page in Arabic", "ar": "Read this page in English" }
+    "switchTo": {
+      "en": "عربي",
+      "ar": "English"
+    },
+    "switchLabel": {
+      "en": "Read this page in Arabic",
+      "ar": "Read this page in English"
+    }
   },
   "theme": {
-    "toDark": { "en": "Switch to dark mode", "ar": "التبديل إلى الوضع الداكن" },
-    "toLight": { "en": "Switch to light mode", "ar": "التبديل إلى الوضع الفاتح" }
+    "toDark": {
+      "en": "Switch to dark mode",
+      "ar": "التبديل إلى الوضع الداكن"
+    },
+    "toLight": {
+      "en": "Switch to light mode",
+      "ar": "التبديل إلى الوضع الفاتح"
+    }
   },
   "book": {
-    "short": { "en": "Book a call", "ar": "احجز مكالمة" },
-    "long": { "en": "Book a 15-minute call", "ar": "احجز مكالمة 15 دقيقة" },
-    "sticky": { "en": "Book a 15-min call", "ar": "احجز مكالمة 15 دقيقة" },
-    "dialogTitle": { "en": "Book a 15-minute call", "ar": "احجز مكالمة 15 دقيقة" },
-    "loading": { "en": "Loading the calendar…", "ar": "جارٍ تحميل التقويم…" },
-    "newTab": { "en": "Open the calendar in a new tab", "ar": "افتح التقويم في تبويب جديد" },
-    "close": { "en": "Close", "ar": "إغلاق" },
-    "frameTitle": { "en": "Calendly booking calendar", "ar": "تقويم الحجز على Calendly" }
+    "short": {
+      "en": "Book a call",
+      "ar": "احجز مكالمة"
+    },
+    "long": {
+      "en": "Book a 15-minute call",
+      "ar": "احجز مكالمة 15 دقيقة"
+    },
+    "sticky": {
+      "en": "Book a 15-min call",
+      "ar": "احجز مكالمة 15 دقيقة"
+    },
+    "dialogTitle": {
+      "en": "Book a 15-minute call",
+      "ar": "احجز مكالمة 15 دقيقة"
+    },
+    "loading": {
+      "en": "Loading the calendar…",
+      "ar": "جارٍ تحميل التقويم…"
+    },
+    "newTab": {
+      "en": "Open the calendar in a new tab",
+      "ar": "افتح التقويم في تبويب جديد"
+    },
+    "close": {
+      "en": "Close",
+      "ar": "إغلاق"
+    },
+    "frameTitle": {
+      "en": "Calendly booking calendar",
+      "ar": "تقويم الحجز على Calendly"
+    }
   },
   "whatsapp": {
-    "label": { "en": "Message us on WhatsApp", "ar": "راسلنا على WhatsApp" },
-    "short": { "en": "WhatsApp", "ar": "WhatsApp" },
+    "label": {
+      "en": "Message us on WhatsApp",
+      "ar": "راسلنا على WhatsApp"
+    },
+    "short": {
+      "en": "WhatsApp",
+      "ar": "WhatsApp"
+    },
     "defaultMessage": {
       "en": "Hi, I'd like to know more about Lindrize.",
       "ar": "مرحباً، أودّ معرفة المزيد عن Lindrize."
     }
   },
-  "design": { "cta": { "en": "Design your agent", "ar": "صمّم مساعدك" } },
+  "design": {
+    "cta": {
+      "en": "Design your agent",
+      "ar": "صمّم مساعدك"
+    }
+  },
   "chat": {
-    "customer": { "en": "Customer", "ar": "العميل" },
-    "assistant": { "en": "Assistant", "ar": "المساعد" },
-    "typing": { "en": "typing…", "ar": "يكتب…" },
-    "replay": { "en": "Replay", "ar": "إعادة العرض" },
+    "customer": {
+      "en": "Customer",
+      "ar": "العميل"
+    },
+    "assistant": {
+      "en": "Assistant",
+      "ar": "المساعد"
+    },
+    "typing": {
+      "en": "typing…",
+      "ar": "يكتب…"
+    },
+    "replay": {
+      "en": "Replay",
+      "ar": "إعادة العرض"
+    },
     "demoLabel": {
       "en": "Live demo with Darb Al-Yasmeen, a fictional agency",
       "ar": "عرض حي مع «درب الياسمين»، مكتب سياحي تجريبي غير حقيقي"
     },
-    "agencyName": { "en": "Darb Al-Yasmeen", "ar": "درب الياسمين" },
-    "agencySub": { "en": "Fictional demo agency · Instagram", "ar": "مكتب تجريبي غير حقيقي · Instagram" },
-    "conversation": { "en": "Example conversation", "ar": "محادثة كمثال" }
+    "agencyName": {
+      "en": "Darb Al-Yasmeen",
+      "ar": "درب الياسمين"
+    },
+    "agencySub": {
+      "en": "Fictional demo agency · Instagram",
+      "ar": "مكتب تجريبي غير حقيقي · Instagram"
+    },
+    "conversation": {
+      "en": "Example conversation",
+      "ar": "محادثة كمثال"
+    }
   },
   "status": {
-    "live-demo": { "en": "Live demo", "ar": "عرض حي" },
-    "available": { "en": "Available", "ar": "متاح" },
-    "on-request": { "en": "On request", "ar": "عند الطلب" }
+    "live-demo": {
+      "en": "Live demo",
+      "ar": "عرض حي"
+    },
+    "available": {
+      "en": "Available",
+      "ar": "متاح"
+    },
+    "on-request": {
+      "en": "On request",
+      "ar": "عند الطلب"
+    }
   },
   "footer": {
     "tagline": {
       "en": "AI sales assistants for travel agencies",
       "ar": "مساعدو مبيعات بالذكاء الاصطناعي لمكاتب السفر والسياحة"
     },
-    "explore": { "en": "Explore", "ar": "تصفّح" },
-    "company": { "en": "Company", "ar": "الشركة" },
-    "getInTouch": { "en": "Get in touch", "ar": "تواصل" },
+    "explore": {
+      "en": "Explore",
+      "ar": "تصفّح"
+    },
+    "company": {
+      "en": "Company",
+      "ar": "الشركة"
+    },
+    "getInTouch": {
+      "en": "Get in touch",
+      "ar": "تواصل"
+    },
     "legal": {
       "en": "Lindrize is operated by Amer El-shair, Amman, Jordan.",
       "ar": "تدير Lindrize: Amer El-shair، عمّان، الأردن."
@@ -82,31 +210,89 @@
       "en": "No connection right now. The page will load when you're back online.",
       "ar": "لا يوجد اتصال بالإنترنت الآن. ستُحمَّل الصفحة عند عودة الاتصال."
     },
-    "retry": { "en": "Try again", "ar": "حاول مجدداً" }
+    "retry": {
+      "en": "Try again",
+      "ar": "حاول مجدداً"
+    }
   },
   "stub": {
-    "title": { "en": "This page is being written", "ar": "هذه الصفحة قيد الإعداد" },
+    "title": {
+      "en": "This page is being written",
+      "ar": "هذه الصفحة قيد الإعداد"
+    },
     "body": {
       "en": "It will be ready before the site goes live.",
       "ar": "ستكون جاهزة قبل إطلاق الموقع."
     },
-    "home": { "en": "Back to the home page", "ar": "العودة إلى الصفحة الرئيسية" }
+    "home": {
+      "en": "Back to the home page",
+      "ar": "العودة إلى الصفحة الرئيسية"
+    }
   },
   "notFound": {
-    "title": { "en": "Page not found", "ar": "الصفحة غير موجودة" },
+    "title": {
+      "en": "Page not found",
+      "ar": "الصفحة غير موجودة"
+    },
     "body": {
       "en": "The page you were looking for has moved or never existed.",
       "ar": "الصفحة التي تبحث عنها نُقلت أو لم تكن موجودة."
     },
-    "home": { "en": "Go to the home page", "ar": "اذهب إلى الصفحة الرئيسية" }
+    "home": {
+      "en": "Go to the home page",
+      "ar": "اذهب إلى الصفحة الرئيسية"
+    }
   },
   "video": {
-    "watch": { "en": "Watch the 2-minute demo", "ar": "شاهد العرض في دقيقتين" },
-    "play": { "en": "Play the 2-minute demo video", "ar": "شغّل فيديو العرض (دقيقتان)" },
+    "watch": {
+      "en": "Watch the 2-minute demo",
+      "ar": "شاهد العرض في دقيقتين"
+    },
+    "play": {
+      "en": "Play the 2-minute demo video",
+      "ar": "شغّل فيديو العرض (دقيقتان)"
+    },
     "note": {
       "en": "The video plays from YouTube. It loads only when you press play.",
       "ar": "يُعرض الفيديو من YouTube، ولا يُحمَّل إلا عند الضغط على زر التشغيل."
     },
-    "frameTitle": { "en": "Lindrize demo video", "ar": "فيديو عرض Lindrize" }
+    "frameTitle": {
+      "en": "Lindrize demo video",
+      "ar": "فيديو عرض Lindrize"
+    }
+  },
+  "request": {
+    "title": {
+      "en": "New booking request",
+      "ar": "طلب حجز جديد"
+    },
+    "where": {
+      "en": "On your team's Telegram",
+      "ar": "على Telegram لدى فريقك"
+    },
+    "customer": {
+      "en": "Customer",
+      "ar": "العميل"
+    },
+    "package": {
+      "en": "Package",
+      "ar": "الباقة"
+    },
+    "travellers": {
+      "en": "Travellers",
+      "ar": "المسافرون"
+    },
+    "departure": {
+      "en": "Departure",
+      "ar": "تاريخ السفر"
+    },
+    "total": {
+      "en": "Quoted total",
+      "ar": "المبلغ المعروض"
+    },
+    "did": {
+      "en": "What the assistant did",
+      "ar": "ما قام به المساعد"
+    }
   }
 }

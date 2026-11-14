@@ -1,0 +1,253 @@
+---
+/**
+ * "One message, from 11:40 PM to a confirmed booking."
+ * On wide screens the example stays in place while three steps scroll past and change it.
+ * On phones, with scripts off, or with reduced motion, it simply shows the finished example.
+ */
+import type { CollectionEntry } from 'astro:content';
+import ChatPhone from '@/components/ChatPhone.astro';
+import { ui, tr, type Lang } from '@/lib/i18n';
+
+interface Props {
+  lang: Lang;
+  content: CollectionEntry<'pages'>['data']['story'];
+  chat: CollectionEntry<'chats'>['data'];
+}
+const { lang, content, chat } = Astro.props;
+// The step at which each message of the chat appears.
+const messageSteps = [1, 2, 2, 2, 3, 3];
+const request = chat.request;
+if (!request) throw new Error('The story chat needs a `request` block.');
+const rows = [
+  [ui.request.customer, request.customer],
+  [ui.request.package, request.package],
+  [ui.request.travellers, request.travellers],
+  [ui.request.departure, request.departure],
+  [ui.request.total, request.total],
+] as const;
+---
+
+<div class="story" data-story>
+  <ol class="steps" role="list">
+    {
+      content.steps.map((step, i) => (
+        <li class="step" data-step={i + 1}>
+          <span class="when">{tr(step.when, lang)}</span>
+          <h3>{tr(step.title, lang)}</h3>
+          <p>{tr(step.body, lang)}</p>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="visual">
+    <div class="sticky">
+      <ChatPhone chat={chat} lang={lang} feed steps={messageSteps} class="story-phone" />
+      <ul class="chips" role="list" aria-label={tr(ui.request.did, lang)}>
+        {content.chips.map((chip) => <li data-at="2">{tr(chip, lang)}</li>)}
+      </ul>
+      <div class="request" data-at="3">
+        <div class="request-head">
+          <b>{tr(ui.request.title, lang)}</b>
+          <span>{tr(ui.request.where, lang)}</span>
+        </div>
+        <dl>
+          {
+            rows.map(([label, value]) => (
+              <div>
+                <dt>{tr(label, lang)}</dt>
+                <dd>{tr(value, lang)}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <p class="confirmed">{tr(content.confirmed, lang)}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+    padding-block: 1.5rem;
+    padding-inline-start: 1.25rem;
+    border-inline-start: 2px solid var(--line);
+    transition: border-color 300ms ease;
+  }
+  .step h3 {
+    transition: color 300ms ease;
+  }
+  .when {
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  .step p {
+    max-width: 40ch;
+    color: var(--muted);
+  }
+  .visual {
+    order: -1;
+    min-width: 0;
+  }
+  .sticky {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 26rem;
+  }
+  .sticky :global(.story-phone) {
+    max-width: none;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .chips li {
+    padding: 0.15rem 0.6rem;
+    border: 1px solid var(--line-strong);
+    font-size: var(--text-sm);
+  }
+  .request {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--line);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .request-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+  }
+  .request-head b {
+    font-weight: 500;
+  }
+  .request-head span {
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.2rem 1.25rem;
+    margin: 0;
+  }
+  dl div {
+    display: contents;
+  }
+  dt {
+    color: var(--muted);
+  }
+  dd {
+    margin: 0;
+  }
+  .confirmed {
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--line);
+    font-weight: 500;
+  }
+
+  /* Parts that belong to a later step fade in when their step arrives. They keep their space. */
+  .chips li,
+  .request {
+    transition:
+      opacity 300ms ease,
+      transform 300ms ease;
+  }
+  .chips :global(li.wait),
+  .request:global(.wait) {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  /* The pinned, step-by-step version: wide and tall screens only. */
+  @media (min-width: 56.01rem) and (min-height: 44rem) {
+    .sticky {
+      position: sticky;
+      top: calc(var(--header-h) + 2rem);
+    }
+    :global([data-story][data-live]) .step {
+      min-height: 68vh;
+    }
+    :global([data-story][data-live]) .step:not(.active) h3 {
+      color: var(--muted);
+    }
+    :global([data-story][data-live]) .step.active {
+      border-color: var(--ink);
+    }
+  }
+  @media (max-width: 56rem) {
+    .story {
+      grid-template-columns: 1fr;
+    }
+    .visual {
+      order: 0;
+    }
+    .sticky {
+      max-width: 24rem;
+    }
+  }
+</style>
+
+<script>
+  /** Changes the pinned example as each step scrolls into the middle of the screen. */
+  const story = document.querySelector<HTMLElement>('[data-story]');
+  const wide = window.matchMedia('(min-width: 56.01rem) and (min-height: 44rem)');
+  const motion = document.documentElement.classList.contains('motion');
+
+  if (story && motion && 'IntersectionObserver' in window) {
+    const parts = [...story.querySelectorAll<HTMLElement>('[data-at]')];
+    const steps = [...story.querySelectorAll<HTMLElement>('[data-step]')];
+    let observer: IntersectionObserver | undefined;
+
+    const show = (step: number): void => {
+      parts.forEach((part) => part.classList.toggle('wait', Number(part.dataset['at']) > step));
+      steps.forEach((el) => el.classList.toggle('active', Number(el.dataset['step']) === step));
+    };
+    const start = (): void => {
+      observer?.disconnect();
+      if (!wide.matches) {
+        // Small screens show the finished example.
+        story.removeAttribute('data-live');
+        parts.forEach((part) => part.classList.remove('wait'));
+        return;
+      }
+      story.setAttribute('data-live', '');
+      show(1);
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) show(Number((entry.target as HTMLElement).dataset['step']));
+          }
+        },
+        { rootMargin: '-45% 0px -45% 0px' },
+      );
+      steps.forEach((el) => observer?.observe(el));
+    };
+    wide.addEventListener('change', start);
+    start();
+  }
+</script>

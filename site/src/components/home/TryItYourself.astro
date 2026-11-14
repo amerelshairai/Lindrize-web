@@ -1,0 +1,202 @@
+---
+/**
+ * Three sample questions from the demo. Choosing one shows how the assistant answers it.
+ * Without scripts, all three conversations are simply shown one after another.
+ */
+import type { CollectionEntry } from 'astro:content';
+import ChatPhone from '@/components/ChatPhone.astro';
+import Button from '@/components/Button.astro';
+import Icon from '@/components/Icon.astro';
+import { tr, settings, splitAt, type Lang } from '@/lib/i18n';
+
+interface Props {
+  lang: Lang;
+  content: CollectionEntry<'pages'>['data']['tryIt'];
+  chats: Array<CollectionEntry<'chats'>>;
+}
+const { lang, content, chats } = Astro.props;
+const [buttonBefore, buttonAfter] = splitAt(tr(content.button, lang), 'handle');
+---
+
+<div class="try" data-tabs>
+  <div class="copy">
+    <h3 data-reveal>{tr(content.title, lang)}</h3>
+    <p class="body">{tr(content.body, lang)}</p>
+    <div class="questions" data-tablist data-label={tr(content.tabsLabel, lang)}>
+      {
+        chats.map((chat, i) => (
+          <button type="button" class="js-only" data-tab={chat.id} id={`tab-${chat.id}`} data-selected={i === 0 ? '' : undefined}>
+            <span lang={chat.data.lang} dir={chat.data.lang === 'ar' ? 'rtl' : 'ltr'}>
+              {chat.data.messages[0]?.text}
+            </span>
+          </button>
+        ))
+      }
+    </div>
+    <div class="go">
+      <Button href={settings.demo.chatUrl} variant="alt" external data-track="demo">
+        <Icon name="instagram" />
+        <span>{buttonBefore}<span class="ltr">@{settings.demo.handle}</span>{buttonAfter}</span>
+      </Button>
+    </div>
+    <p class="note">{tr(content.note, lang)}</p>
+  </div>
+
+  <div class="panels">
+    {
+      chats.map((chat, i) => (
+        <div class="panel" data-panel={chat.id} id={`panel-${chat.id}`} data-first={i === 0 ? '' : undefined}>
+          <ChatPhone chat={chat.data} lang={lang} />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .try {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+    margin-top: clamp(3rem, 2rem + 4vw, 5rem);
+    padding-block: clamp(2.5rem, 2rem + 3vw, 4rem) var(--space-section);
+    border-top: 1px solid var(--line);
+  }
+  .copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .body {
+    max-width: 44ch;
+    color: var(--muted);
+  }
+  .questions {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .questions button {
+    display: flex;
+    align-items: center;
+    min-height: 3.25rem;
+    padding: 0.6rem 0.9rem;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-inline-start: 2px solid transparent;
+    background: transparent;
+    text-align: start;
+    font-size: var(--text-md);
+    line-height: 1.5;
+    color: var(--muted);
+    cursor: pointer;
+    transition:
+      color var(--fast) ease,
+      background-color var(--fast) ease;
+  }
+  .questions button span {
+    flex: 1;
+  }
+  .questions button:hover {
+    color: var(--ink);
+    background: var(--soft);
+  }
+  .questions button[aria-selected='true'] {
+    color: var(--ink);
+    border-inline-start-color: var(--ink);
+    font-weight: 500;
+  }
+  .go {
+    margin-top: 0.75rem;
+  }
+  .go :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: none;
+  }
+  .note {
+    max-width: 44ch;
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  .panels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .panel {
+    width: 100%;
+    max-width: 24rem;
+  }
+  /* With scripts on, one conversation shows at a time. */
+  :global([data-tabs][data-ready]) .panel[hidden] {
+    display: none;
+  }
+  @media (max-width: 56rem) {
+    .try {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  /** Standard tabs: arrow keys move between questions, and the chosen one shows its conversation. */
+  import { track } from '@/scripts/track';
+
+  document.querySelectorAll<HTMLElement>('[data-tabs]').forEach((root) => {
+    const list = root.querySelector<HTMLElement>('[data-tablist]');
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-tab]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-panel]')];
+    if (!list || tabs.length === 0) return;
+
+    list.setAttribute('role', 'tablist');
+    list.setAttribute('aria-orientation', 'vertical');
+    if (list.dataset['label']) list.setAttribute('aria-label', list.dataset['label']);
+
+    const select = (tab: HTMLButtonElement, focus: boolean): void => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset['panel'] !== tab.dataset['tab'];
+      });
+      if (focus) tab.focus();
+    };
+
+    tabs.forEach((tab, i) => {
+      const panel = panels.find((p) => p.dataset['panel'] === tab.dataset['tab']);
+      tab.setAttribute('role', 'tab');
+      if (panel) {
+        tab.setAttribute('aria-controls', panel.id);
+        panel.setAttribute('role', 'tabpanel');
+        panel.setAttribute('aria-labelledby', tab.id);
+        panel.tabIndex = 0;
+      }
+      tab.addEventListener('click', () => {
+        select(tab, false);
+        track('demo-question', { question: tab.dataset['tab'] ?? '' });
+      });
+      tab.addEventListener('keydown', (event) => {
+        const last = tabs.length - 1;
+        let to: number | undefined;
+        if (event.key === 'ArrowDown' || event.key === 'ArrowRight') to = i === last ? 0 : i + 1;
+        else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') to = i === 0 ? last : i - 1;
+        else if (event.key === 'Home') to = 0;
+        else if (event.key === 'End') to = last;
+        const next = to === undefined ? undefined : tabs[to];
+        if (!next) return;
+        event.preventDefault();
+        select(next, true);
+      });
+    });
+
+    const first = tabs[0];
+    if (first) select(first, false);
+    root.setAttribute('data-ready', '');
+  });
+</script>
