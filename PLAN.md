@@ -296,6 +296,8 @@ This cloud session is temporary, so the files must live on GitHub before real wo
 
 **Checks:** all of section 12 that applies to Home.
 
+**Status:** done on 15 November 2026. Results and the owner's review list are in `docs/PHASE-1-REVIEW.md`. Decisions made along the way are in `docs/DECISIONS.md`.
+
 ---
 
 ## 7. Phase 2: Other pages and all content

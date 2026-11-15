@@ -13,3 +13,39 @@ Fast, bilingual (English/Arabic) site built with Astro. Self-hosted, accessible 
 - `content/demo/`: the fictional demo agency's packages and FAQs (not travel advice).
 - `docs/design-samples/`: the design and motion drafts approved during the interview.
 - `docs/DECISIONS.md`: changes made during the build, and why.
+
+## Preview the site on your computer
+
+You need Node.js 22 or newer.
+
+```bash
+cd site
+```
+
+```bash
+npm ci
+```
+
+```bash
+npm run dev
+```
+
+Then open http://localhost:4321 (Arabic: http://localhost:4321/ar/).
+
+## Run the checks
+
+```bash
+npm run check
+```
+
+```bash
+npm test
+```
+
+```bash
+npm run lighthouse
+```
+
+`npm run check` builds the site and checks types, content rules and links. `npm test` runs the
+accessibility, keyboard and behaviour tests in a browser. `npm run lighthouse` checks the speed
+targets. All three also run automatically on GitHub for every change.

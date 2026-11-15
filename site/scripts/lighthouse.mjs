@@ -5,15 +5,11 @@
  *
  * Usage: build first, then `npm run lighthouse`. Set CHROME_PATH if Chrome is not found.
  */
-import { createServer } from 'node:http';
-import { existsSync, readFileSync, statSync } from 'node:fs';
-import { extname, join, normalize } from 'node:path';
-import { gzipSync } from 'node:zlib';
-import { fileURLToPath } from 'node:url';
+import { existsSync } from 'node:fs';
 import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
+import { startServer } from './serve.mjs';
 
-const DIST = fileURLToPath(new URL('../dist/', import.meta.url));
 const PORT = 4322;
 const BASE = `http://127.0.0.1:${PORT}`;
 const PAGES = process.argv.slice(2).length > 0 ? process.argv.slice(2) : ['/', '/ar/'];
@@ -22,46 +18,7 @@ const TARGET = { score: 95, lcp: 2500, cls: 0.1, bytes: 300 * 1024 };
 const sandboxChrome = '/opt/pw-browsers/chromium';
 const chromePath = process.env.CHROME_PATH ?? (existsSync(sandboxChrome) ? sandboxChrome : undefined);
 
-// A small static server for the built site. Like the real server, it compresses text files
-// and caches fingerprinted files, so the numbers are close to what visitors will get.
-const TYPES = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8',
-  '.json': 'application/json',
-  '.webmanifest': 'application/manifest+json',
-  '.svg': 'image/svg+xml',
-  '.png': 'image/png',
-  '.woff2': 'font/woff2',
-  '.txt': 'text/plain; charset=utf-8',
-  '.xml': 'application/xml',
-};
-const server = createServer((req, res) => {
-  const path = normalize(decodeURIComponent(new URL(req.url ?? '/', BASE).pathname));
-  let file = join(DIST, path);
-  if (!file.startsWith(DIST)) {
-    res.writeHead(403).end();
-    return;
-  }
-  if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
-  if (!existsSync(file)) {
-    res.writeHead(404, { 'content-type': TYPES['.html'] }).end(readFileSync(join(DIST, '404.html')));
-    return;
-  }
-  const type = TYPES[extname(file)] ?? 'application/octet-stream';
-  const body = readFileSync(file);
-  const text = /^(text|application\/(json|manifest|xml)|image\/svg)/.test(type);
-  const headers = {
-    'content-type': type,
-    'cache-control': path.startsWith('/_astro/') ? 'public, max-age=31536000, immutable' : 'no-cache',
-  };
-  if (text && /\bgzip\b/.test(String(req.headers['accept-encoding'] ?? ''))) {
-    res.writeHead(200, { ...headers, 'content-encoding': 'gzip' }).end(gzipSync(body));
-  } else {
-    res.writeHead(200, headers).end(body);
-  }
-});
-await new Promise((resolve) => server.listen(PORT, '127.0.0.1', resolve));
+const server = await startServer(PORT);
 const stop = () => server.close();
 
 const chrome = await chromeLauncher.launch({

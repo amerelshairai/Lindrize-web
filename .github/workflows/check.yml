@@ -1,0 +1,75 @@
+# Runs every check in PLAN.md section 12 on each change.
+# A change can only be published (Phase 5) after this passes.
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# The checks only need to read the code.
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Build, content, links, accessibility, speed
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      # Actions are pinned to exact commits so a changed tag can never run different code.
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version-file: site/.nvmrc
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install exact dependency versions
+        run: npm ci
+
+      - name: Types, build, content rules and links
+        run: npm run check
+
+      - name: Install the test browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Accessibility, keyboard and behaviour tests
+        run: npm test
+
+      - name: Lighthouse (mobile) targets
+        run: npm run lighthouse
+
+      - name: Keep screenshots and traces when a test fails
+        if: failure()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: test-results
+          path: site/test-results
+          retention-days: 7
+
+  audit:
+    name: Known security issues in dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version-file: site/.nvmrc
+      - run: npm audit --audit-level=moderate
