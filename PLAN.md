@@ -375,6 +375,8 @@ This cloud session is temporary, so the files must live on GitHub before real wo
 - builder tests: every step, every rule, keyboard-only use, "Clear my answers", and the Calendly and WhatsApp text
 - receiver tests: good input, bad input, the trap field, the too-fast timer, a Turnstile failure, the rate limit
 
+**Status:** done on 15 November 2026. Results and the owner's review list are in `docs/PHASE-3-REVIEW.md`.
+
 ---
 
 ## 9. Phase 4: Accessibility and speed pass

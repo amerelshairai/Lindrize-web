@@ -83,6 +83,8 @@ const jsonLd = toJsonLd([organization(), website(), webPage(lang, page, title, d
     <meta name="format-detection" content="telephone=no" />
 
     {/* Fonts used at the top of the page are fetched early, so text does not move when they arrive. */}
+    {/* Cookie-free visitor counting (Umami on our own server). Added in Phase 5 by setting the id. */}
+    {settings.umamiWebsiteId !== '' && <script is:inline defer src="/u/script.js" data-website-id={settings.umamiWebsiteId} data-do-not-track="true" />}
     {!noindex && <script type="application/ld+json" is:inline set:html={jsonLd} />}
 
     <Font cssVariable="--font-plex-serif" preload={lang === 'en'} />
@@ -101,6 +103,15 @@ const jsonLd = toJsonLd([organization(), website(), webPage(lang, page, title, d
     <PageLoadBar lang={lang} />
   </body>
 </html>
+
+<script>
+  // Count presses of the buttons marked with data-track (WhatsApp, the demo). No names, no text.
+  import { track } from '@/scripts/track';
+  document.addEventListener('click', (event) => {
+    const marked = (event.target as Element).closest<HTMLElement>('[data-track]');
+    if (marked?.dataset['track']) track(marked.dataset['track'], { page: window.location.pathname });
+  });
+</script>
 
 <style is:global>
   main:focus {

@@ -13,7 +13,7 @@ import { startServer } from './serve.mjs';
 const PORT = 4322;
 const BASE = `http://127.0.0.1:${PORT}`;
 // One of each kind of page, in both languages.
-const DEFAULT_PAGES = ['/', '/ar/', '/solutions/', '/ar/solutions/ai-travel-sales-assistant/', '/pricing/', '/ar/faq/'];
+const DEFAULT_PAGES = ['/', '/ar/', '/solutions/', '/ar/solutions/ai-travel-sales-assistant/', '/pricing/', '/ar/faq/', '/design-your-agent/', '/ar/design-your-agent/'];
 const PAGES = process.argv.slice(2).length > 0 ? process.argv.slice(2) : DEFAULT_PAGES;
 const TARGET = { score: 95, lcp: 2500, cls: 0.1, bytes: 300 * 1024 };
 

@@ -61,10 +61,10 @@ const faces = { neutral: 'M8.5 15.5h7', good: 'M8 14.2q4 3.8 8 0', bad: 'M8 16.8
     data-assumptions={estimateOn ? JSON.stringify(c.assumptions) : undefined}
   >
     <div class="wrap">
-      <noscript>
+      <div class="no-js-only">
         <p class="noscript">{t(c.noScript)}</p>
         <p><a class="btn btn-main" href={settings.calendlyUrl}>{tr(ui.book.long, lang)}</a></p>
-      </noscript>
+      </div>
 
       <div class="grid js-only">
         <div class="steps">
@@ -246,7 +246,8 @@ const faces = { neutral: 'M8.5 15.5h7', good: 'M8 14.2q4 3.8 8 0', bad: 'M8 16.8
           <p class="status" role="status" data-clear-status data-text={t(c.cleared)}></p>
         </div>
 
-        <aside class="preview" aria-labelledby="preview-title">
+        {/* The panel can scroll on short screens, so it must be reachable from the keyboard. */}
+        <aside class="preview" aria-labelledby="preview-title" tabindex="0">
           <div class="preview-head">
             <h2 id="preview-title">{t(c.board.title)}</h2>
             <div class="player motion-only">

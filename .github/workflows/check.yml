@@ -38,7 +38,7 @@ jobs:
       - name: Install exact dependency versions
         run: npm ci
 
-      - name: Types, build, content rules and links
+      - name: Types, build, content rules, links and the receiver's option list
         run: npm run check
 
       - name: Install the test browser
@@ -57,6 +57,26 @@ jobs:
           name: test-results
           path: site/test-results
           retention-days: 7
+
+  receiver:
+    name: Email receiver tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: receiver
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version-file: site/.nvmrc
+          cache: npm
+          cache-dependency-path: receiver/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm audit --audit-level=moderate
 
   audit:
     name: Known security issues in dependencies

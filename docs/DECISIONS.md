@@ -4,6 +4,40 @@ Changes the building model made on its own under the decision rule in `PLAN.md`.
 non-critical: it makes the site safer, faster, more accessible or more honest, and stays inside
 what `SPEC.md` asks for. Newest phase first.
 
+## Phase 3 (15 November 2026)
+
+### Security
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **The builder is plain HTML with a small script, not a Preact app.** Every choice is rendered at build time. | No extra library to trust or update, less code sent to phones, and it works under the strict security policy without exceptions. | PLAN 1 named Preact. |
+| **The design is sent to the receiver as choice ids only,** and the receiver rebuilds the wording from its own list. | A visitor (or a script) cannot put their own text or links into emails sent from the owner's address. | PLAN said "checks input against the builder's own option IDs"; this goes one step further. |
+| **The receiver is plain JavaScript with one dependency (nodemailer),** runs as an unprivileged user, and refuses to start without its settings. | Small surface, nothing to compile on the server. | PLAN showed TypeScript files. |
+| **The Telegram alert does not contain the visitor's email address.** | Telegram is a third party. The address stays in the owner's inbox. | SPEC 6 did not say. |
+| **Scripts caught by the trap field or the timer get a normal "sent" answer.** | They learn nothing about what stopped them. | — |
+| **The email option stays hidden until a Turnstile site key is set** (`turnstileSiteKey` in `settings.json`, Phase 5). | Without the human check the form must not be usable. | — |
+| **Cloudflare's script is the only outside script the policy allows,** and it loads only when the email box is used. | SPEC 13: nothing from another company until the visitor acts. | — |
+| **The preview panel can be reached with Tab** when it scrolls on short screens. | Found by the accessibility scan. | — |
+
+### Honesty and privacy
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **The estimate step, the salary question and the currency picker are all hidden** until the owner sets the three assumptions in `design.yaml`. The booking-value question was left out. | They exist only to feed the estimate. Asking for salary without showing a result would be friction for nothing, and booking value is not used by the agreed formula. | SPEC 4.1 listed them under step 5. |
+| **"Working hours a month" is a third assumption the owner must set.** | The formula needs it to turn salary into a value for time, and it should not be guessed. | PLAN listed two assumptions in the text and three in the formula. |
+| **The estimate is capped by the hours the chosen number of people actually work.** | Otherwise a large message count could "free" more time than exists. | — |
+| **"Without an assistant" is offered for the Sales Assistant only.** | It is the one system with an obvious before and after. Inventing a "before" story for 29 other systems would be guesswork. | SPEC 4.2 described it generally. |
+| **Chosen extras appear as a list under the example,** and the example replays when one is added. | The owner has not yet reviewed how each extra would change each story, so they are shown without invented steps. | SPEC 4.2: "with that feature visible in it". |
+| **Structured data is left off pages hidden from search engines.** FAQ data is checked word for word against the visible page. | SPEC 12: the labels must always match the page. | — |
+| **`llms.txt` and the sitemap are generated from the same content as the pages.** | They can never disagree with the site. | — |
+
+### Structure
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **The sitemap, `robots.txt` and `llms.txt` are small files of our own** instead of a sitemap package. | No dependency, and full control of the language links. | PLAN named `@astrojs/sitemap`. |
+| **A class (`no-js-only`) replaces `<noscript>`** for fallbacks. | It behaves the same in every browser and can be tested. | — |
+
 ## Phase 2 (15 November 2026)
 
 ### Honesty and rules of other services

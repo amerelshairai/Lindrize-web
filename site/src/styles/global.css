@@ -195,6 +195,11 @@ button {
 html:not(.js) .js-only {
   display: none !important;
 }
+/* And the fallback shown in their place. (A class is used instead of <noscript> so that it
+   behaves the same in every browser and can be tested.) */
+html.js .no-js-only {
+  display: none !important;
+}
 html:not(.motion) .motion-only {
   display: none !important;
 }
