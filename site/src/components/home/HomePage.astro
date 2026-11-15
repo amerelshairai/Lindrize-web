@@ -13,6 +13,7 @@ import FaqList from './FaqList.astro';
 import FinalCta from './FinalCta.astro';
 import { tr, localPath, ROUTES, type Lang } from '@/lib/i18n';
 import { getSystem } from '@/lib/content';
+import { faqPage } from '@/lib/schema';
 
 interface Props {
   lang: Lang;
@@ -34,7 +35,13 @@ const homeFaqs = (await getCollection('faqs'))
   .sort((a, b) => (a.data.home ?? 0) - (b.data.home ?? 0));
 ---
 
-<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.home}>
+<BaseLayout
+  lang={lang}
+  title={tr(c.seo.title, lang)}
+  description={tr(c.seo.description, lang)}
+  page={ROUTES.home}
+  schema={[faqPage(lang, homeFaqs.map((faq) => faq.data))]}
+>
   <Hero lang={lang} content={c.hero} chat={mainChat.data} />
 
   <section class="sec" id="how">

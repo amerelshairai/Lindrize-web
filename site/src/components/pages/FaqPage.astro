@@ -6,6 +6,7 @@ import FaqList from '@/components/home/FaqList.astro';
 import FinalCta from '@/components/home/FinalCta.astro';
 import { tr, ROUTES, type Lang } from '@/lib/i18n';
 import { pageCopy, FAQ_GROUP_ORDER } from '@/lib/content';
+import { faqPage, breadcrumbs } from '@/lib/schema';
 
 interface Props {
   lang: Lang;
@@ -21,7 +22,16 @@ const groups = FAQ_GROUP_ORDER.map((group) => ({
 })).filter((g) => g.items.length > 0);
 ---
 
-<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.faq}>
+<BaseLayout
+  lang={lang}
+  title={tr(c.seo.title, lang)}
+  description={tr(c.seo.description, lang)}
+  page={ROUTES.faq}
+  schema={[
+    faqPage(lang, groups.flatMap((g) => g.items.map((faq) => faq.data))),
+    breadcrumbs(lang, [{ name: tr(c.title, lang), page: ROUTES.faq }]),
+  ]}
+>
   <PageHead title={tr(c.title, lang)} lead={tr(c.lead, lang)} />
 
   {

@@ -1,4 +1,5 @@
 ---
+import { breadcrumbs } from '@/lib/schema';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHead from '@/components/PageHead.astro';
 import Button from '@/components/Button.astro';
@@ -13,7 +14,13 @@ const { lang } = Astro.props;
 const c = await pageCopy('contactPage', 'contact');
 ---
 
-<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.contact}>
+<BaseLayout
+  lang={lang}
+  title={tr(c.seo.title, lang)}
+  description={tr(c.seo.description, lang)}
+  page={ROUTES.contact}
+  schema={[breadcrumbs(lang, [{ name: tr(c.title, lang), page: ROUTES.contact }])]}
+>
   <PageHead title={tr(c.title, lang)} lead={tr(c.lead, lang)} />
 
   <section class="ways">

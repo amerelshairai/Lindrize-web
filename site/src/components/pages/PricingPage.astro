@@ -1,4 +1,5 @@
 ---
+import { breadcrumbs } from '@/lib/schema';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHead from '@/components/PageHead.astro';
 import FinalCta from '@/components/home/FinalCta.astro';
@@ -13,7 +14,13 @@ const c = await pageCopy('pricingPage', 'pricing');
 const places = settings.foundingPlaces as Record<string, number | null>;
 ---
 
-<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.pricing}>
+<BaseLayout
+  lang={lang}
+  title={tr(c.seo.title, lang)}
+  description={tr(c.seo.description, lang)}
+  page={ROUTES.pricing}
+  schema={[breadcrumbs(lang, [{ name: tr(c.title, lang), page: ROUTES.pricing }])]}
+>
   <PageHead title={tr(c.title, lang)} lead={tr(c.lead, lang)} />
 
   <section class="sec">

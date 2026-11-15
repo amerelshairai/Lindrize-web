@@ -1,4 +1,5 @@
 ---
+import { breadcrumbs } from '@/lib/schema';
 import { getEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHead from '@/components/PageHead.astro';
@@ -15,7 +16,13 @@ const home = (await getEntry('home', 'home'))?.data;
 if (!home) throw new Error('home.yaml is missing');
 ---
 
-<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.about}>
+<BaseLayout
+  lang={lang}
+  title={tr(c.seo.title, lang)}
+  description={tr(c.seo.description, lang)}
+  page={ROUTES.about}
+  schema={[breadcrumbs(lang, [{ name: tr(c.title, lang), page: ROUTES.about }])]}
+>
   <PageHead title={tr(c.title, lang)} lead={tr(c.lead, lang)} />
 
   <section class="sec" id="at-a-glance">

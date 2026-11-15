@@ -1,4 +1,5 @@
 ---
+import { breadcrumbs } from '@/lib/schema';
 import { getEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHead from '@/components/PageHead.astro';
@@ -22,7 +23,13 @@ const industries = await Promise.all(
 );
 ---
 
-<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.industries}>
+<BaseLayout
+  lang={lang}
+  title={tr(c.seo.title, lang)}
+  description={tr(c.seo.description, lang)}
+  page={ROUTES.industries}
+  schema={[breadcrumbs(lang, [{ name: tr(ui.nav.industries, lang), page: ROUTES.industries }])]}
+>
   <PageHead title={tr(c.title, lang)} lead={tr(c.lead, lang)} />
 
   {

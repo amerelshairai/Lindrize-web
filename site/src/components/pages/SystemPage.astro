@@ -12,6 +12,7 @@ import FinalCta from '@/components/home/FinalCta.astro';
 import TryItYourself from '@/components/home/TryItYourself.astro';
 import { ui, tr, settings, localPath, systemPath, ROUTES, type Lang } from '@/lib/i18n';
 import { getSystem, pageCopy, systemSeo, fill, type System } from '@/lib/content';
+import { faqPage, breadcrumbs, service } from '@/lib/schema';
 
 interface Props {
   lang: Lang;
@@ -32,7 +33,21 @@ const hasDemo = s.status === 'live-demo';
 const chats = hasDemo ? (await getCollection('chats')).sort((a, b) => a.data.order - b.data.order) : [];
 ---
 
-<BaseLayout lang={lang} title={seo.title} description={seo.description} page={systemPath(system.id)} whatsappMessage={whatsapp}>
+<BaseLayout
+  lang={lang}
+  title={seo.title}
+  description={seo.description}
+  page={systemPath(system.id)}
+  whatsappMessage={whatsapp}
+  schema={[
+    service(lang, systemPath(system.id), name, s.name.en, tr(s.does, lang)),
+    faqPage(lang, s.faqs),
+    breadcrumbs(lang, [
+      { name: tr(ui.nav.solutions, lang), page: ROUTES.solutions },
+      { name, page: systemPath(system.id) },
+    ]),
+  ]}
+>
   <PageHead title={name} lead={tr(s.does, lang)}>
     <nav slot="before" class="crumbs" aria-label={tr(c.breadcrumb, lang)}>
       <ol role="list">

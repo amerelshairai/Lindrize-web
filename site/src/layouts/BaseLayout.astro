@@ -7,6 +7,7 @@ import MobileStickyBar from '@/components/MobileStickyBar.astro';
 import BookDialog from '@/components/BookDialog.astro';
 import PageLoadBar from '@/components/PageLoadBar.astro';
 import { ui, tr, dirOf, localPath, absoluteUrl, settings, type Lang } from '@/lib/i18n';
+import { organization, website, webPage, toJsonLd } from '@/lib/schema';
 
 interface Props {
   lang: Lang;
@@ -18,11 +19,14 @@ interface Props {
   noindex?: boolean;
   /** Hide the phone booking bar, for example inside "Design your agent". */
   hideStickyBar?: boolean;
-  whatsappMessage?: string;
+  whatsappMessage?: string | undefined;
+  /** Extra structured data for this page (breadcrumbs, FAQ, service). */
+  schema?: Array<Record<string, unknown>>;
 }
-const { lang, title, description, page, noindex = false, hideStickyBar = false, whatsappMessage } = Astro.props;
+const { lang, title, description, page, noindex = false, hideStickyBar = false, whatsappMessage, schema = [] } = Astro.props;
 const canonical = absoluteUrl(localPath(lang, page));
 const ogImage = absoluteUrl('/og-image.png');
+const jsonLd = toJsonLd([organization(), website(), webPage(lang, page, title, description), ...schema]);
 ---
 
 <!doctype html>
@@ -79,6 +83,8 @@ const ogImage = absoluteUrl('/og-image.png');
     <meta name="format-detection" content="telephone=no" />
 
     {/* Fonts used at the top of the page are fetched early, so text does not move when they arrive. */}
+    {!noindex && <script type="application/ld+json" is:inline set:html={jsonLd} />}
+
     <Font cssVariable="--font-plex-serif" preload={lang === 'en'} />
     <Font cssVariable="--font-plex-sans" preload={[{ weight: 400 }]} />
     <Font cssVariable="--font-plex-arabic" preload={lang === 'ar' ? true : [{ weight: 400 }]} />
