@@ -1,0 +1,9 @@
+---
+import AboutPage from '@/components/pages/AboutPage.astro';
+import { langPaths, type LangProps } from '@/lib/routes';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as LangProps;
+---
+
+<AboutPage lang={lang} />

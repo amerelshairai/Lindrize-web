@@ -1,0 +1,49 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHead from '@/components/PageHead.astro';
+import FaqList from '@/components/home/FaqList.astro';
+import FinalCta from '@/components/home/FinalCta.astro';
+import { tr, ROUTES, type Lang } from '@/lib/i18n';
+import { pageCopy, FAQ_GROUP_ORDER } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = await pageCopy('faqPage', 'faq');
+const home = (await getEntry('home', 'home'))?.data;
+if (!home) throw new Error('home.yaml is missing');
+const all = await getCollection('faqs');
+const groups = FAQ_GROUP_ORDER.map((group) => ({
+  group,
+  items: all.filter((faq) => faq.data.group === group).sort((a, b) => a.data.order - b.data.order),
+})).filter((g) => g.items.length > 0);
+---
+
+<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.faq}>
+  <PageHead title={tr(c.title, lang)} lead={tr(c.lead, lang)} />
+
+  {
+    groups.map(({ group, items }) => (
+      <section class="sec" id={group}>
+        <div class="wrap block">
+          <h2>{tr(c.groups[group], lang)}</h2>
+          <FaqList lang={lang} items={items.map((faq) => faq.data)} reveal={false} />
+        </div>
+      </section>
+    ))
+  }
+
+  <FinalCta lang={lang} title={home.final.title} body={home.final.body} />
+</BaseLayout>
+
+<style>
+  .block {
+    padding-block: clamp(2.5rem, 2rem + 3vw, 4rem) clamp(3rem, 2rem + 4vw, 5rem);
+  }
+  h2 {
+    font-size: var(--text-h3);
+    margin-bottom: 1.5rem;
+  }
+</style>

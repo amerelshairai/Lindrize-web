@@ -1,0 +1,96 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHead from '@/components/PageHead.astro';
+import Button from '@/components/Button.astro';
+import WhatsAppLink from '@/components/WhatsAppLink.astro';
+import { ui, tr, settings, ROUTES, type Lang } from '@/lib/i18n';
+import { pageCopy } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = await pageCopy('contactPage', 'contact');
+---
+
+<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.contact}>
+  <PageHead title={tr(c.title, lang)} lead={tr(c.lead, lang)} />
+
+  <section class="ways">
+    <div class="wrap">
+      <div class="way">
+        <div>
+          <h2>{tr(c.call.title, lang)}</h2>
+          <p>{tr(c.call.body, lang)}</p>
+        </div>
+        <Button href={settings.calendlyUrl} book arrow data-hero-cta data-book-source="contact">{tr(ui.book.long, lang)}</Button>
+      </div>
+      <div class="way">
+        <div>
+          <h2>{tr(c.whatsapp.title, lang)}</h2>
+          <p>{tr(c.whatsapp.body, lang)}</p>
+        </div>
+        <WhatsAppLink lang={lang} label={settings.whatsappDisplay} class="ltr big" />
+      </div>
+      <div class="way">
+        <div>
+          <h2>{tr(c.email.title, lang)}</h2>
+          <p>{tr(c.email.body, lang)}</p>
+        </div>
+        <a class="text-link ltr big" href={`mailto:${settings.email}`}>{settings.email}</a>
+      </div>
+      <div class="way">
+        <div>
+          <h2>{tr(c.location.title, lang)}</h2>
+        </div>
+        <p class="big">{tr(settings.city, lang)}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .ways .wrap {
+    padding-bottom: var(--space-section);
+  }
+  .way {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2.5rem;
+    align-items: center;
+    padding-block: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
+  .way:first-child {
+    border-top-color: var(--ink);
+  }
+  .way:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+  .way p {
+    color: var(--muted);
+  }
+  .way :global(.btn) {
+    justify-self: start;
+  }
+  .way .big,
+  .way :global(.big) {
+    justify-self: start;
+    font-size: var(--text-lead);
+    color: var(--ink);
+  }
+  .way :global(a.big) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+  @media (max-width: 40rem) {
+    .way {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

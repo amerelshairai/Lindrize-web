@@ -1,0 +1,131 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHead from '@/components/PageHead.astro';
+import FinalCta from '@/components/home/FinalCta.astro';
+import { tr, settings, ROUTES, type Lang } from '@/lib/i18n';
+import { pageCopy, fill } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = await pageCopy('pricingPage', 'pricing');
+const places = settings.foundingPlaces as Record<string, number | null>;
+---
+
+<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.pricing}>
+  <PageHead title={tr(c.title, lang)} lead={tr(c.lead, lang)} />
+
+  <section class="sec">
+    <div class="wrap block">
+      <div class="sec-head">
+        <div class="drawline" data-draw></div>
+        <h2 data-reveal>{tr(c.partsTitle, lang)}</h2>
+      </div>
+      <div class="parts" data-reveal-group>
+        {
+          c.parts.map((part) => (
+            <div class="part" data-reveal>
+              <h3>{tr(part.title, lang)}</h3>
+              <p>{tr(part.body, lang)}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap block">
+      <div class="sec-head">
+        <div class="drawline" data-draw></div>
+        <h2 data-reveal>{tr(c.founding.title, lang)}</h2>
+        <p data-reveal>{tr(c.founding.body, lang)}</p>
+      </div>
+      <ul class="tiers" role="list" data-reveal-group>
+        {
+          c.founding.tiers.map((tier) => {
+            const left = places[tier.key];
+            return (
+              <li data-reveal>
+                <span class="percent ltr">{tier.percent}</span>
+                <span class="label">{tr(tier.label, lang)}</span>
+                {typeof left === 'number' && <span class="left">{fill(c.founding.placesLeft, lang, { n: left })}</span>}
+              </li>
+            );
+          })
+        }
+      </ul>
+      <p class="note">{tr(c.founding.note, lang)}</p>
+    </div>
+  </section>
+
+  <FinalCta lang={lang} title={c.next.title} body={c.next.body} design />
+</BaseLayout>
+
+<style>
+  .block {
+    padding-bottom: var(--space-section);
+  }
+  .parts {
+    border-top: 1px solid var(--ink);
+  }
+  .part {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 0.5rem 2.5rem;
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .part h3 {
+    font-size: 1.375rem;
+    line-height: 1.3;
+  }
+  .part p {
+    max-width: 58ch;
+    color: var(--muted);
+  }
+  .tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tiers li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--ink);
+  }
+  .percent {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 2rem + 2.5vw, 3.75rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .label {
+    color: var(--muted);
+    max-width: 24ch;
+  }
+  .left {
+    font-size: var(--text-md);
+    font-weight: 500;
+  }
+  .note {
+    margin-top: 2rem;
+    color: var(--muted);
+  }
+  @media (max-width: 48rem) {
+    .part,
+    .tiers {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import '@/scripts/motion';
+</script>

@@ -1,0 +1,9 @@
+---
+import PricingPage from '@/components/pages/PricingPage.astro';
+import { langPaths, type LangProps } from '@/lib/routes';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as LangProps;
+---
+
+<PricingPage lang={lang} />

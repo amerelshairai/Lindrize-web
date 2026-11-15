@@ -1,0 +1,9 @@
+---
+import LegalPage from '@/components/pages/LegalPage.astro';
+import { langPaths, type LangProps } from '@/lib/routes';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as LangProps;
+---
+
+<LegalPage lang={lang} id="terms" />

@@ -1,0 +1,9 @@
+---
+import FaqPage from '@/components/pages/FaqPage.astro';
+import { langPaths, type LangProps } from '@/lib/routes';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as LangProps;
+---
+
+<FaqPage lang={lang} />

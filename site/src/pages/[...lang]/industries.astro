@@ -1,0 +1,9 @@
+---
+import IndustriesPage from '@/components/pages/IndustriesPage.astro';
+import { langPaths, type LangProps } from '@/lib/routes';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as LangProps;
+---
+
+<IndustriesPage lang={lang} />

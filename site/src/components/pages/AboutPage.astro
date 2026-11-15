@@ -1,0 +1,153 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHead from '@/components/PageHead.astro';
+import FinalCta from '@/components/home/FinalCta.astro';
+import { tr, settings, ROUTES, type Lang } from '@/lib/i18n';
+import { pageCopy } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = await pageCopy('aboutPage', 'about');
+const home = (await getEntry('home', 'home'))?.data;
+if (!home) throw new Error('home.yaml is missing');
+---
+
+<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.about}>
+  <PageHead title={tr(c.title, lang)} lead={tr(c.lead, lang)} />
+
+  <section class="sec" id="at-a-glance">
+    <div class="wrap block">
+      <div class="sec-head">
+        <div class="drawline" data-draw></div>
+        <h2 data-reveal>{tr(c.glanceTitle, lang)}</h2>
+      </div>
+      <dl class="glance">
+        {
+          c.glance.map((row) => (
+            <div>
+              <dt>{tr(row.label, lang)}</dt>
+              <dd>{tr(row.value, lang)}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap block">
+      <div class="sec-head">
+        <div class="drawline" data-draw></div>
+        <h2 data-reveal>{tr(c.differentTitle, lang)}</h2>
+      </div>
+      <ul class="different" role="list" data-reveal-group>
+        {
+          c.different.map((item) => (
+            <li data-reveal>
+              <h3>{tr(item.title, lang)}</h3>
+              <p>{tr(item.body, lang)}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap block founder">
+      <h2>{tr(c.founderTitle, lang)}</h2>
+      <p class="name" lang="en" dir="ltr">{settings.founder}</p>
+      <p class="role">{tr(c.founderRole, lang)}, Lindrize · {tr(settings.city, lang)}</p>
+    </div>
+  </section>
+
+  <FinalCta lang={lang} title={home.final.title} body={home.final.body} />
+</BaseLayout>
+
+<style>
+  .block {
+    padding-bottom: var(--space-section);
+  }
+  .glance {
+    margin: 0;
+    border-top: 1px solid var(--ink);
+  }
+  .glance div {
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+    gap: 0.25rem 2.5rem;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .glance dt {
+    font-weight: 500;
+  }
+  .glance dd {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--muted);
+  }
+  .different {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .different li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--ink);
+  }
+  .different h3 {
+    font-size: 1.375rem;
+    line-height: 1.3;
+  }
+  .different p {
+    color: var(--muted);
+  }
+  .founder {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: var(--space-section);
+  }
+  .founder h2 {
+    font-family: inherit;
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .name {
+    font-family: var(--font-serif);
+    font-size: var(--text-h2);
+    line-height: 1.15;
+  }
+  :global([dir='rtl']) .name {
+    text-align: right;
+  }
+  .role {
+    color: var(--muted);
+  }
+  @media (max-width: 56rem) {
+    .different {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 40rem) {
+    .glance div,
+    .different {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import '@/scripts/motion';
+</script>

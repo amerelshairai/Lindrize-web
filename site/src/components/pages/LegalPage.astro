@@ -1,0 +1,67 @@
+---
+/**
+ * Privacy Policy and Terms. The owner writes the text in src/content/pages/privacy.yaml and
+ * terms.yaml. Until `ready` is true, the page shows its headings with a notice, stays out of
+ * search engines, and blocks the launch check.
+ */
+import { getEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHead from '@/components/PageHead.astro';
+import { tr, type Lang } from '@/lib/i18n';
+
+interface Props {
+  lang: Lang;
+  id: 'privacy' | 'terms';
+}
+const { lang, id } = Astro.props;
+const entry = await getEntry('legal', id);
+if (!entry) throw new Error(`src/content/pages/${id}.yaml is missing`);
+const c = entry.data;
+const paragraphs = (body: string): string[] => body.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+---
+
+<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={`/${id}/`} noindex={!c.ready}>
+  <PageHead title={tr(c.title, lang)}>
+    {!c.ready && <p class="notice" data-launch-block>{tr(c.notice, lang)}</p>}
+  </PageHead>
+
+  <div class="wrap body">
+    {
+      c.sections.map((section) => (
+        <section>
+          <h2>{tr(section.title, lang)}</h2>
+          {section.body && paragraphs(tr(section.body, lang)).map((p) => <p>{p}</p>)}
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .notice {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--line-strong);
+    font-size: var(--text-md);
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: var(--space-section);
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 44rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  section p {
+    color: var(--muted);
+  }
+</style>

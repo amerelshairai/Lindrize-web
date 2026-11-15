@@ -1,0 +1,144 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHead from '@/components/PageHead.astro';
+import Button from '@/components/Button.astro';
+import FinalCta from '@/components/home/FinalCta.astro';
+import { ui, tr, localPath, systemPath, ROUTES, type Lang } from '@/lib/i18n';
+import { getIndustries, getSystem, pageCopy } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = await pageCopy('industriesPage', 'industries');
+const home = (await getEntry('home', 'home'))?.data;
+if (!home) throw new Error('home.yaml is missing');
+const industries = await Promise.all(
+  (await getIndustries()).map(async (industry) => ({
+    industry,
+    systems: await Promise.all(industry.data.systems.map((n) => getSystem(n))),
+  })),
+);
+---
+
+<BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={ROUTES.industries}>
+  <PageHead title={tr(c.title, lang)} lead={tr(c.lead, lang)} />
+
+  {
+    industries.map(({ industry, systems }) => (
+      <section class="sec" id={industry.id}>
+        <div class="wrap field">
+          <div class="about">
+            <h2 data-reveal>{tr(industry.data.name, lang)}</h2>
+            <p>{tr(industry.data.intro, lang)}</p>
+            {industry.data.also && <p class="also">{tr(industry.data.also, lang)}</p>}
+          </div>
+          <div class="fit">
+            <h3>{tr(c.bestFit, lang)}</h3>
+            <ul role="list">
+              {systems.map((system) => (
+                <li>
+                  <a href={localPath(lang, systemPath(system.id))}>
+                    <span>{tr(system.data.name, lang)}</span>
+                    <span class:list={['status', system.data.status]}>{tr(ui.status[system.data.status], lang)}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p class="more">
+              <Button
+                href={industry.id === 'travel' ? localPath(lang, ROUTES.solutions) : `${localPath(lang, ROUTES.solutions)}?industry=${industry.id}`}
+                variant="alt"
+                size="sm"
+                arrow
+              >
+                {tr(industry.id === 'travel' ? c.seeEvery : c.seeAll, lang)}
+              </Button>
+            </p>
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <FinalCta lang={lang} title={home.final.title} body={home.final.body} />
+</BaseLayout>
+
+<style>
+  .field {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem clamp(2rem, 6vw, 5rem);
+    padding-block: clamp(3rem, 2rem + 4vw, 5rem);
+  }
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .about h2 {
+    font-size: var(--text-h3);
+    max-width: 18ch;
+  }
+  .about p {
+    max-width: 46ch;
+    color: var(--muted);
+  }
+  .about .also {
+    color: var(--ink);
+    font-size: var(--text-md);
+  }
+  .fit h3 {
+    font-family: inherit;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--muted);
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    font-weight: 500;
+    transition:
+      background-color var(--fast) ease,
+      padding 200ms ease;
+  }
+  li a:hover {
+    background: var(--soft);
+    padding-inline: 0.75rem;
+  }
+  .status {
+    flex: none;
+    font-size: var(--text-sm);
+    font-weight: 400;
+    color: var(--muted);
+  }
+  .status.live-demo {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .more {
+    margin-top: 1.25rem;
+  }
+  @media (max-width: 48rem) {
+    .field {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import '@/scripts/motion';
+</script>

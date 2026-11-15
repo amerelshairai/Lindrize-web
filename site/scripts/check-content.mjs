@@ -78,7 +78,8 @@ for (const page of all) {
   // Structured data must never claim ratings or reviews before real ones exist (SPEC 12).
   if (/"(aggregateRating|review)"\s*:/i.test(html)) honesty.push(`${url}: structured data contains ratings or reviews`);
 
-  if (/\sdata-stub\b/.test(html)) stubs.push(url);
+  if (/\sdata-stub\b/.test(html)) stubs.push(`${url} is still a "being written" page`);
+  if (/\sdata-launch-block\b/.test(html)) stubs.push(`${url} is waiting for its text from the owner`);
 }
 
 report(`Page structure (${all.length} pages)`, structure);
@@ -86,7 +87,7 @@ report('Plain wording ("never say" list)', wording);
 report('Honesty (no unfinished text, no private data, no ratings)', honesty);
 
 if (launch) {
-  report('Launch gate: every page is written', stubs.map((u) => `${u} is still a "being written" page`));
+  report('Launch gate: every page is written', stubs);
 } else if (stubs.length > 0) {
-  console.log(`• ${stubs.length} page(s) are still "being written" notices. This is expected until Phase 2 and blocks launch.`);
+  console.log(`• ${stubs.length} page(s) are not finished yet (run with --launch to list them). This blocks launch, not previews.`);
 }
