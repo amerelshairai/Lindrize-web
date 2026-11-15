@@ -15,7 +15,7 @@ what `SPEC.md` asks for. Newest phase first.
 | **Astro 7.4.7 instead of the newest version or the newest two-week-old one.** | 7.4.4 (the newest release older than two weeks) has two published security advisories, fixed in 7.4.7. 7.4.7 was 9 days old at install. `npm audit` reports 0 issues. | PLAN 1: "versions released at least 2 weeks earlier". This is the one exception, made for a security fix. |
 | **`ignore-scripts=true` and exact versions in `site/.npmrc`.** | Packages cannot run install scripts on the build machine, a common route for supply-chain attacks. | Not specified. |
 | **GitHub Actions pinned to exact commits, read-only permissions, and a separate dependency audit job.** | A moved tag can never run different code in the pipeline. | Not specified. |
-| **Dependabot: one grouped update proposal a month, ignoring releases younger than 14 days.** | Keeps dependencies patched without daily noise, and keeps the two-week rule. | Not specified. |
+| **Dependabot: one grouped update proposal a month, ignoring releases younger than 14 days.** TypeScript 7 and Playwright are excluded and updated by hand. | Keeps dependencies patched without daily noise, and keeps the two-week rule. The type checker does not support TypeScript 7 yet, and Playwright must move together with its override. | Not specified. |
 | **The booking dialog only ever frames `https://calendly.com`,** and video ids are checked at build time and again in the browser. | Defence in depth: a wrong setting cannot make the site frame another address. | Not specified. |
 
 ### Privacy
@@ -49,6 +49,8 @@ what `SPEC.md` asks for. Newest phase first.
 | Decision | Why | Replaced |
 |---|---|---|
 | **Fonts come from installed packages through Astro's font system,** limited to Latin and Arabic letters and five files (Sans 400/500, Serif 400, Arabic 400/500), with matched fallback fonts. | Self-hosted, small, and text does not jump when a font arrives. | PLAN named `@fontsource` CSS imports. |
+| **Styles travel inside each page** instead of as a separate file. | One request less before anything shows (about 0.1 s faster on a phone). The pages stay under 20 KB compressed. | PLAN did not say. |
+| **The Lighthouse check discards a warm-up run and, if a run misses a target, judges the middle of three.** | Timing on GitHub's shared machines varies from run to run. Accessibility, best-practice and SEO scores are not affected. | — |
 | **The two hero buttons are always stacked on phones.** | A font arriving could re-wrap them and push the page down (measured layout shift 0.099 on Arabic phones, now 0). | — |
 | **The phone booking bar appears only after the page's own booking button scrolls away.** | Avoids two identical buttons on the first screen. | SPEC 5 did not say when it appears. |
 

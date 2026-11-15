@@ -21,7 +21,8 @@ const variants = (pkg, subset, weights) =>
 export default defineConfig({
   site: 'https://www.lindrize.online',
   trailingSlash: 'always',
-  build: { format: 'directory', inlineStylesheets: 'auto' },
+  // Styles are small, so they travel inside each page: one request less before anything shows.
+  build: { format: 'directory', inlineStylesheets: 'always' },
   devToolbar: { enabled: false },
 
   // Short link for emails and profiles. The server turns this into a real redirect in Phase 5.
