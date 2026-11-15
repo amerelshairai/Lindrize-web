@@ -78,9 +78,10 @@ const ogImage = absoluteUrl('/og-image.png');
     <meta name="color-scheme" content="light dark" />
     <meta name="format-detection" content="telephone=no" />
 
+    {/* Fonts used at the top of the page are fetched early, so text does not move when they arrive. */}
     <Font cssVariable="--font-plex-serif" preload={lang === 'en'} />
     <Font cssVariable="--font-plex-sans" preload={[{ weight: 400 }]} />
-    <Font cssVariable="--font-plex-arabic" preload={[{ weight: lang === 'ar' ? 500 : 400 }]} />
+    <Font cssVariable="--font-plex-arabic" preload={lang === 'ar' ? true : [{ weight: 400 }]} />
   </head>
   <body>
     <a class="skip" href="#main">{tr(ui.skip, lang)}</a>

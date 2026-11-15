@@ -13,7 +13,8 @@ const { lang, items } = Astro.props;
   {
     items.map((item) => (
       <div class="item" data-reveal>
-        <h3>{tr(item.data.question, lang)}</h3>
+        {/* Questions may use the words owners search for (SPEC 11), so the wording check skips them. */}
+        <h3 data-allow-terms>{tr(item.data.question, lang)}</h3>
         <p>{tr(item.data.answer, lang)}</p>
       </div>
     ))

@@ -109,6 +109,10 @@
     "frameTitle": {
       "en": "Calendly booking calendar",
       "ar": "تقويم الحجز على Calendly"
+    },
+    "barLabel": {
+      "en": "Quick actions",
+      "ar": "إجراءات سريعة"
     }
   },
   "whatsapp": {

@@ -184,7 +184,7 @@ const rows = [
   }
 
   /* The pinned, step-by-step version: wide and tall screens only. */
-  @media (min-width: 56.01rem) and (min-height: 44rem) {
+  @media (min-width: 56.01rem) and (min-height: 45rem) {
     .sticky {
       position: sticky;
       top: calc(var(--header-h) + 2rem);
@@ -215,7 +215,7 @@ const rows = [
 <script>
   /** Changes the pinned example as each step scrolls into the middle of the screen. */
   const story = document.querySelector<HTMLElement>('[data-story]');
-  const wide = window.matchMedia('(min-width: 56.01rem) and (min-height: 44rem)');
+  const wide = window.matchMedia('(min-width: 56.01rem) and (min-height: 45rem)');
   const motion = document.documentElement.classList.contains('motion');
 
   if (story && motion && 'IntersectionObserver' in window) {

@@ -194,6 +194,7 @@ const isCurrent = (route: string): boolean => page === route || (route !== '/' &
       toggle.setAttribute('aria-expanded', String(open));
       const label = open ? toggle.dataset['labelClose'] : toggle.dataset['labelOpen'];
       if (label) toggle.setAttribute('aria-label', label);
+      document.dispatchEvent(new CustomEvent('lz:menu', { detail: open }));
     };
     const isOpen = (): boolean => nav.hasAttribute('data-open');
     toggle.addEventListener('click', () => set(!isOpen()));

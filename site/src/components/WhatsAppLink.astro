@@ -4,10 +4,10 @@ import Icon from './Icon.astro';
 import { ui, tr, whatsappUrl, type Lang } from '@/lib/i18n';
 interface Props {
   lang: Lang;
-  message?: string;
+  message?: string | undefined;
   /** "icon" shows only the icon (with a spoken label); "text" shows the icon and a label. */
   variant?: 'icon' | 'text';
-  label?: string;
+  label?: string | undefined;
   class?: string;
 }
 const { lang, message = tr(ui.whatsapp.defaultMessage, lang), variant = 'text', label = tr(ui.whatsapp.label, lang), class: className } = Astro.props;

@@ -110,15 +110,17 @@ body {
   line-height: 1.6;
   overflow-wrap: break-word;
 }
-:lang(ar) {
+/* An element that declares a language sets the typeface for everything inside it.
+   :where() keeps these rules weak, so headings can still choose serif. */
+:where([lang='ar']) {
   font-family: var(--font-arabic);
   letter-spacing: 0;
 }
+:where([lang='en']) {
+  font-family: var(--font-sans);
+}
 html:lang(ar) body {
   line-height: 1.85;
-}
-:lang(en) {
-  font-family: var(--font-sans);
 }
 h1,
 h2,

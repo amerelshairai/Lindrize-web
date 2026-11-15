@@ -153,4 +153,12 @@ const hasVideo = settings.videoId !== '';
       grid-template-columns: 1fr;
     }
   }
+  /* On phones the two buttons are always stacked, so a font arriving can never re-wrap them
+     and push the page down. */
+  @media (max-width: 30rem) {
+    .actions {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
 </style>

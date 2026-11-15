@@ -1,7 +1,7 @@
 ---
 /**
  * Phone-only bar with the two main actions. It appears once the page's own booking button has
- * scrolled away, and hides while the booking dialog is open or the footer is on screen.
+ * scrolled away, and hides while the menu or the booking dialog is open, or the footer is on screen.
  */
 import Button from './Button.astro';
 import WhatsAppLink from './WhatsAppLink.astro';
@@ -13,10 +13,10 @@ interface Props {
 const { lang, whatsappMessage } = Astro.props;
 ---
 
-<div class="sticky-bar js-only" data-sticky-bar data-hidden>
+<aside class="sticky-bar js-only" aria-label={tr(ui.book.barLabel, lang)} data-sticky-bar data-hidden>
   <Button href={settings.calendlyUrl} book>{tr(ui.book.sticky, lang)}</Button>
   <WhatsAppLink lang={lang} variant="icon" message={whatsappMessage} />
-</div>
+</aside>
 
 <style>
   .sticky-bar {
@@ -59,11 +59,11 @@ const { lang, whatsappMessage } = Astro.props;
 <script>
   const bar = document.querySelector<HTMLElement>('[data-sticky-bar]');
   if (bar && 'IntersectionObserver' in window) {
-    const state = { heroCta: false, footer: false, dialog: false };
+    const state = { heroCta: false, footer: false, dialog: false, menu: false };
     const heroCta = document.querySelector('[data-hero-cta]');
     const footer = document.querySelector('[data-site-foot]');
     const update = (): void => {
-      bar.toggleAttribute('data-hidden', state.heroCta || state.footer || state.dialog);
+      bar.toggleAttribute('data-hidden', state.heroCta || state.footer || state.dialog || state.menu);
     };
     const watch = (el: Element | null, key: 'heroCta' | 'footer'): void => {
       if (!el) return;
@@ -80,6 +80,10 @@ const { lang, whatsappMessage } = Astro.props;
     });
     document.addEventListener('lz:book-close', () => {
       state.dialog = false;
+      update();
+    });
+    document.addEventListener('lz:menu', (event) => {
+      state.menu = (event as CustomEvent<boolean>).detail;
       update();
     });
     if (!heroCta) update();
