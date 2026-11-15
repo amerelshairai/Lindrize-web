@@ -48,11 +48,13 @@ export default defineConfig({
         "img-src 'self' data:",
         "font-src 'self'",
         "connect-src 'self'",
-        "frame-src https://calendly.com https://www.youtube-nocookie.com",
+        "frame-src https://calendly.com https://www.youtube-nocookie.com https://challenges.cloudflare.com",
         "object-src 'none'",
         "base-uri 'self'",
         "form-action 'self'",
       ],
+      // The only outside script: Cloudflare's human check, loaded when the email form is used.
+      scriptDirective: { resources: ["'self'", 'https://challenges.cloudflare.com'] },
     },
   },
 

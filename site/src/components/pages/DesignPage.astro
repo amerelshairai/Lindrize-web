@@ -1,0 +1,758 @@
+---
+/**
+ * "Design your agent" (SPEC 4): business, problem, system, extras, a few numbers, then the design.
+ * Everything is rendered here at build time. The script only shows one step at a time, keeps the
+ * visitor's answers on their own device, and plays the example. Nothing is sent anywhere unless
+ * the visitor books, opens WhatsApp or emails themselves the design.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHead from '@/components/PageHead.astro';
+import Button from '@/components/Button.astro';
+import Icon from '@/components/Icon.astro';
+import SystemBoard from '@/components/SystemBoard.astro';
+import { ui, tr, settings, localPath, systemPath, splitAt, whatsappUrl, ROUTES, type Lang } from '@/lib/i18n';
+import { getSystems, getIndustries, pageCopy, GROUP_ORDER } from '@/lib/content';
+import { isComplete } from '@/lib/estimate';
+import { breadcrumbs } from '@/lib/schema';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = await pageCopy('designPage', 'design');
+const systemCopy = await pageCopy('systemPage', 'system');
+const solutions = await pageCopy('solutionsPage', 'solutions');
+const systems = await getSystems();
+const industries = await getIndustries();
+const estimateOn = isComplete(c.assumptions);
+const [privacyBefore, privacyAfter] = splitAt(tr(c.email.privacy, lang), 'link');
+const t = (text: { en: string; ar: string }): string => tr(text, lang);
+const rangeGroups = [
+  { name: 'messages', group: c.ranges.messages },
+  { name: 'staff', group: c.ranges.staff },
+  { name: 'afterHours', group: c.ranges.afterHours },
+] as const;
+const summaryRows = ['type', 'size', 'problem', 'system', 'features', 'messages', 'staff', 'afterHours'] as const;
+const faces = { neutral: 'M8.5 15.5h7', good: 'M8 14.2q4 3.8 8 0', bad: 'M8 16.8q4-3.8 8 0' };
+---
+
+<BaseLayout
+  lang={lang}
+  title={t(c.seo.title)}
+  description={t(c.seo.description)}
+  page={ROUTES.design}
+  hideStickyBar
+  schema={[breadcrumbs(lang, [{ name: t(c.title), page: ROUTES.design }])]}
+>
+  <PageHead title={t(c.title)} lead={t(c.lead)} />
+
+  <section
+    class="builder"
+    data-builder
+    data-lang={lang}
+    data-progress-text={t(c.progress)}
+    data-next={t(c.next)}
+    data-skip-or-next={t(c.skip)}
+    data-play={t(c.board.play)}
+    data-pause={t(c.board.pause)}
+    data-none={t(c.book.labels.none)}
+    data-summary-title={t(c.book.summaryTitle)}
+    data-whatsapp={settings.whatsappNumber}
+    data-assumptions={estimateOn ? JSON.stringify(c.assumptions) : undefined}
+  >
+    <div class="wrap">
+      <noscript>
+        <p class="noscript">{t(c.noScript)}</p>
+        <p><a class="btn btn-main" href={settings.calendlyUrl}>{tr(ui.book.long, lang)}</a></p>
+      </noscript>
+
+      <div class="grid js-only">
+        <div class="steps">
+          <p class="progress" data-progress role="status"></p>
+
+          <form data-builder-form novalidate>
+            <fieldset data-step="business">
+              <legend><h2 tabindex="-1">{t(c.business.title)}</h2></legend>
+              <div class="q" role="radiogroup" aria-labelledby="q-type">
+                <p class="q-label" id="q-type">{t(c.business.typeLabel)}</p>
+                <div class="choices">
+                  {industries.map((i) => (
+                    <label><input type="radio" name="type" value={i.id} data-text={t(i.data.name)} required /><span>{t(i.data.name)}</span></label>
+                  ))}
+                </div>
+              </div>
+              <div class="q" role="radiogroup" aria-labelledby="q-size">
+                <p class="q-label" id="q-size">{t(c.business.sizeLabel)}</p>
+                <div class="choices row">
+                  {c.business.sizes.map((s) => (
+                    <label><input type="radio" name="size" value={s.id} data-text={t(s.label)} required /><span>{t(s.label)}</span></label>
+                  ))}
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset data-step="problem" hidden>
+              <legend><h2 tabindex="-1">{t(c.problem.title)}</h2></legend>
+              <div class="q" role="radiogroup" aria-labelledby="q-problem">
+                <p class="q-label" id="q-problem">{t(c.problem.label)}</p>
+                <div class="choices">
+                  {c.problem.options.map((o) => (
+                    <label><input type="radio" name="problem" value={o.id} data-system={o.system} data-text={t(o.label)} required /><span>{t(o.label)}</span></label>
+                  ))}
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset data-step="system" hidden>
+              <legend><h2 tabindex="-1">{t(c.system.title)}</h2></legend>
+              <p class="q-label">{t(c.system.suggested)}</p>
+              <div class="field">
+                <label for="design-system">{t(c.system.label)}</label>
+                <select id="design-system" name="system">
+                  {GROUP_ORDER.map((group) => (
+                    <optgroup label={t(solutions.groups[group].name)}>
+                      {systems.filter((s) => s.data.group === group).map((s) => (
+                        <option value={s.data.number} data-text={t(s.data.name)}>{t(s.data.name)}</option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+              </div>
+              {systems.map((s) => (
+                <div class="system-info" data-system-info={s.data.number} hidden>
+                  <p>{t(s.data.summary)}</p>
+                  <p class="meta">
+                    <span class:list={['status', s.data.status]}>{tr(ui.status[s.data.status], lang)}</span>
+                    <a class="text-link" href={localPath(lang, systemPath(s.id))}>{t(c.system.page)}</a>
+                  </p>
+                </div>
+              ))}
+            </fieldset>
+
+            <fieldset data-step="features" hidden>
+              <legend><h2 tabindex="-1">{t(c.features.title)}</h2></legend>
+              <p class="q-label">{t(c.features.label)}</p>
+              {systems.map((s) => (
+                <div class="choices" data-features-for={s.data.number} hidden>
+                  {s.data.features.map((f) => (
+                    <label><input type="checkbox" name="feature" value={f.id} data-text={t(f.name)} /><span>{t(f.name)}</span></label>
+                  ))}
+                </div>
+              ))}
+            </fieldset>
+
+            <fieldset data-step="ranges" data-optional hidden>
+              <legend><h2 tabindex="-1">{t(c.ranges.title)}</h2></legend>
+              <p class="q-label">{t(c.ranges.lead)}</p>
+              {rangeGroups.map(({ name, group }) => (
+                <div class="q" role="radiogroup" aria-labelledby={`q-${name}`}>
+                  <p class="q-label strong" id={`q-${name}`}>{t(group.label)}</p>
+                  <div class="choices row">
+                    {group.options.map((o) => (
+                      <label><input type="radio" name={name} value={o.id} data-low={o.low} data-high={o.high} data-text={t(o.label)} /><span>{t(o.label)}</span></label>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              {estimateOn && (
+                <div class="money">
+                  <div class="field">
+                    <label for="design-currency">{t(c.ranges.currencyLabel)}</label>
+                    <select id="design-currency" name="currency">
+                      {c.currencies.map((cur) => <option value={cur.code} data-rate={cur.rate}>{cur.code}</option>)}
+                    </select>
+                  </div>
+                  <div class="q" role="radiogroup" aria-labelledby="q-salary">
+                    <p class="q-label strong" id="q-salary">{t(c.ranges.salary.label)}</p>
+                    <div class="choices row">
+                      {c.ranges.salary.options.map((o) => (
+                        <label><input type="radio" name="salary" value={o.id} data-low={o.low} data-high={o.high} data-money /><span data-money-label></span></label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </fieldset>
+
+            {estimateOn && (
+              <fieldset data-step="estimate" data-result hidden>
+                <legend><h2 tabindex="-1">{t(c.estimate.title)}</h2></legend>
+                <p class="estimate-line" data-estimate-hours data-template={t(c.estimate.hours)}></p>
+                <p class="estimate-line" data-estimate-cost data-template={t(c.estimate.cost)} hidden></p>
+                <p class="q-label strong">{t(c.estimate.warning)}</p>
+                <div class="how">
+                  <h3>{t(c.estimate.how)}</h3>
+                  <p data-estimate-how data-template={t(c.estimate.howBody)}></p>
+                </div>
+              </fieldset>
+            )}
+          </form>
+
+          <div class="result" data-step="book" data-result hidden>
+            <h2 tabindex="-1">{t(c.book.title)}</h2>
+            <p class="q-label">{t(c.book.lead)}</p>
+            <dl class="summary" data-summary>
+              {summaryRows.map((row) => (
+                <div data-row={row}>
+                  <dt>{t(c.book.labels[row])}</dt>
+                  <dd></dd>
+                </div>
+              ))}
+            </dl>
+            <div class="actions">
+              <Button href={settings.calendlyUrl} book arrow data-book-source="design" data-design-book>{tr(ui.book.long, lang)}</Button>
+              <a class="btn btn-alt" href={whatsappUrl(t(c.book.summaryTitle))} target="_blank" rel="noopener" data-astro-prefetch="false" data-design-whatsapp>
+                <Icon name="whatsapp" />
+                {t(c.book.whatsapp)}
+              </a>
+            </div>
+
+            <form class="email" data-email-form data-sitekey={settings.turnstileSiteKey} data-endpoint="/api/design" novalidate>
+              <h3>{t(c.email.title)}</h3>
+              <div class="email-row">
+                <div class="field">
+                  <label for="design-email">{t(c.email.label)}</label>
+                  <input id="design-email" type="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="design-email-note design-email-error" />
+                </div>
+                <button type="submit" class="btn btn-alt">{t(c.email.send)}</button>
+              </div>
+              <div class="trap" aria-hidden="true">
+                <label>{t(c.email.trap)}<input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+              </div>
+              <div data-turnstile></div>
+              <p class="error" id="design-email-error" role="alert" data-email-error hidden></p>
+              <p class="status" role="status" data-email-status></p>
+              <p class="note" id="design-email-note">
+                {privacyBefore}<a class="text-link" href={localPath(lang, ROUTES.privacy)}>{tr(ui.nav.privacy, lang)}</a>{privacyAfter}
+              </p>
+              <span
+                hidden
+                data-email-text
+                data-sending={t(c.email.sending)}
+                data-sent={t(c.email.sent)}
+                data-error-email={t(c.email.errors.email)}
+                data-error-check={t(c.email.errors.check)}
+                data-error-toomany={t(c.email.errors.tooMany)}
+                data-error-failed={t(c.email.errors.failed)}></span>
+            </form>
+          </div>
+
+          <p class="error" role="alert" data-step-error hidden>{t(c.chooseOne)}</p>
+          <div class="nav">
+            <button type="button" class="btn btn-alt" data-back hidden>{t(c.back)}</button>
+            <button type="button" class="btn btn-main" data-next>{t(c.next)}</button>
+            <button type="button" class="clear" data-clear>{t(c.clear)}</button>
+          </div>
+          <p class="status" role="status" data-clear-status data-text={t(c.cleared)}></p>
+        </div>
+
+        <aside class="preview" aria-labelledby="preview-title">
+          <div class="preview-head">
+            <h2 id="preview-title">{t(c.board.title)}</h2>
+            <div class="player motion-only">
+              <button type="button" class="btn btn-alt btn-sm" data-play>{t(c.board.play)}</button>
+              <button type="button" class="btn btn-alt btn-sm" data-replay>{t(c.board.replay)}</button>
+            </div>
+          </div>
+          <div class="compare" role="group" aria-label={t(c.board.compare)} data-compare hidden>
+            <button type="button" aria-pressed="true" data-compare-with>{t(c.board.with)}</button>
+            <button type="button" aria-pressed="false" data-compare-without>{t(c.board.without)}</button>
+          </div>
+          {systems.map((s) => (
+            <div data-board-for={s.data.number} hidden>
+              <SystemBoard lang={lang} story={s.data.story} copy={systemCopy} />
+            </div>
+          ))}
+          <div data-board-for="without" hidden>
+            <SystemBoard lang={lang} story={c.board.withoutStory} copy={systemCopy} />
+          </div>
+
+          <div class="mood" data-mood data-kind="done" hidden>
+            <svg class="face" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="8.8" cy="9.6" r=".9" fill="currentColor"></circle>
+              <circle cx="15.2" cy="9.6" r=".9" fill="currentColor"></circle>
+              <path class="mouth neutral" d={faces.neutral}></path>
+              <path class="mouth good" d={faces.good}></path>
+              <path class="mouth bad" d={faces.bad}></path>
+            </svg>
+            {(['waiting', 'answered', 'done', 'lost'] as const).map((kind) => (
+              <p data-mood-text={kind} hidden>
+                <b>{t(c.board.moods[kind].title)}</b>
+                <span>{t(c.board.moods[kind].body)}</span>
+              </p>
+            ))}
+          </div>
+
+          <div class="extras" data-extras-box hidden>
+            <h3>{t(c.board.extras)}</h3>
+            <ul role="list" data-extras></ul>
+          </div>
+
+          <p class="illustration">{t(c.book.illustration)}</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .builder .wrap {
+    padding-bottom: var(--space-section);
+  }
+  .noscript {
+    margin-bottom: 1rem;
+    font-size: var(--text-lead);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .progress {
+    min-height: 1.5rem;
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  legend {
+    padding: 0;
+    margin-bottom: 0.25rem;
+  }
+  h2 {
+    font-size: var(--text-h3);
+  }
+  h2:focus {
+    outline: none;
+  }
+  .q {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .q-label {
+    color: var(--muted);
+    max-width: 48ch;
+  }
+  .q-label.strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .choices {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--line);
+  }
+  .choices label {
+    position: relative;
+    display: flex;
+  }
+  .choices input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .choices span {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+    border-inline-start: 2px solid transparent;
+    font-size: var(--text-md);
+    line-height: 1.45;
+    transition:
+      background-color var(--fast) ease,
+      border-color var(--fast) ease;
+  }
+  .choices span::before {
+    content: '';
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+  }
+  .choices input[type='checkbox'] + span::before {
+    border-radius: 0;
+  }
+  .choices input:hover + span {
+    background: var(--soft);
+  }
+  .choices input:checked + span {
+    border-inline-start-color: var(--ink);
+    font-weight: 500;
+  }
+  .choices input:checked + span::before {
+    background: var(--ink);
+    border-color: var(--ink);
+    box-shadow: inset 0 0 0 3px var(--bg);
+  }
+  .choices input:focus-visible + span {
+    outline: 2px solid var(--ink);
+    outline-offset: -2px;
+  }
+  .choices.row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-top: 0;
+  }
+  .choices.row label {
+    margin-inline-end: -1px;
+    margin-bottom: -1px;
+  }
+  .choices.row span {
+    border: 1px solid var(--line-strong);
+    padding-inline: 1rem;
+  }
+  .choices.row span::before {
+    display: none;
+  }
+  .choices.row input:checked + span {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 0;
+  }
+  .field label {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--muted);
+  }
+  select,
+  input[type='email'] {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: inherit;
+    font-size: var(--text-md);
+  }
+  .system-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--muted);
+  }
+  .system-info .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    font-size: var(--text-md);
+  }
+  .status.live-demo {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .money {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .estimate-line {
+    font-family: var(--font-serif);
+    font-size: var(--text-h3);
+    line-height: 1.25;
+  }
+  .estimate-line:lang(ar) {
+    font-family: var(--font-arabic);
+    font-weight: 500;
+  }
+  .how {
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: var(--text-md);
+  }
+  .how h3,
+  .email h3,
+  .extras h3 {
+    font-family: inherit;
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .result {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .summary {
+    margin: 0;
+    border-top: 1px solid var(--ink);
+    font-size: var(--text-md);
+  }
+  .summary div {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 0.25rem 1.5rem;
+    padding-block: 0.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .summary dt {
+    color: var(--muted);
+  }
+  .summary dd {
+    margin: 0;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .actions :global(svg:not(.arrow)) {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: none;
+  }
+  .email {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  /* The email option appears only once the human check has a site key (set in Phase 5). */
+  .email[data-sitekey=''] {
+    display: none;
+  }
+  .email-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+  .email-row .field {
+    flex: 1;
+  }
+  .trap {
+    position: absolute;
+    inset-inline-start: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .note {
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  .error {
+    font-size: var(--text-md);
+    font-weight: 500;
+    padding-inline-start: 0.75rem;
+    border-inline-start: 2px solid var(--ink);
+  }
+  .status {
+    min-height: 1.5rem;
+    font-size: var(--text-md);
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+  .clear {
+    margin-inline-start: auto;
+    min-height: 2.75rem;
+    padding-inline: 0.5rem;
+    border: 0;
+    background: transparent;
+    font-size: var(--text-sm);
+    color: var(--muted);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .clear:hover {
+    color: var(--ink);
+  }
+  .steps > .error {
+    margin-top: 1rem;
+  }
+
+  .preview {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--line);
+  }
+  .preview-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+  }
+  .preview :global(.step) {
+    padding: 0.6rem 0.8rem;
+  }
+  .preview h2 {
+    font-family: inherit;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .compare {
+    display: inline-flex;
+    align-self: flex-start;
+  }
+  .compare button {
+    min-height: 2.5rem;
+    padding: 0.35rem 0.9rem;
+    margin-inline-end: -1px;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .compare button[aria-pressed='true'] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+  /* In this narrow panel the example is always one list, as on a phone. */
+  .preview :global(.heads) {
+    display: none;
+  }
+  .preview :global(.board ol) {
+    grid-template-columns: 1fr !important;
+    max-width: none !important;
+  }
+  .preview :global(.step) {
+    grid-column: 1;
+    grid-row: auto;
+    position: static;
+  }
+  .preview :global(.who) {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+  .preview :global(.step.pending) {
+    visibility: hidden;
+  }
+  :global(html.motion) .preview :global(.step.entering) {
+    animation: step-in 260ms ease both;
+  }
+  @keyframes step-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+  .mood {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.75rem 1rem;
+    background: var(--soft);
+    border: 1px solid var(--line);
+  }
+  .face {
+    flex: none;
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .mouth {
+    display: none;
+  }
+  .mood[data-kind='waiting'] .neutral,
+  .mood[data-kind='answered'] .good,
+  .mood[data-kind='done'] .good,
+  .mood[data-kind='lost'] .bad {
+    display: inline;
+  }
+  .mood p {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--text-md);
+    line-height: 1.45;
+  }
+  .mood b {
+    font-weight: 500;
+  }
+  .mood span {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+  .extras ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .extras :global(li) {
+    padding: 0.15rem 0.6rem;
+    border: 1px solid var(--line-strong);
+    font-size: var(--text-sm);
+  }
+  .player {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .illustration {
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  @media (min-width: 62.01rem) {
+    .preview {
+      position: sticky;
+      top: calc(var(--header-h) + 1.5rem);
+      max-height: calc(100vh - var(--header-h) - 3rem);
+      overflow-y: auto;
+    }
+  }
+  @media (max-width: 62rem) {
+    .grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 30rem) {
+    .email-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .summary div {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>
+
+<script>
+  import '@/scripts/design';
+</script>

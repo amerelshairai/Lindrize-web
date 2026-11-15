@@ -53,7 +53,7 @@ export async function industriesOf(system: System): Promise<string[]> {
 
 /** A page's wording. Each page has one file in src/content/pages. */
 export async function pageCopy<
-  C extends 'solutionsPage' | 'systemPage' | 'industriesPage' | 'pricingPage' | 'faqPage' | 'aboutPage' | 'contactPage',
+  C extends 'solutionsPage' | 'systemPage' | 'industriesPage' | 'pricingPage' | 'faqPage' | 'aboutPage' | 'contactPage' | 'designPage',
 >(collection: C, id: string): Promise<CollectionEntry<C>['data']> {
   const entry = await getEntry(collection, id);
   if (!entry) throw new Error(`src/content/pages/${id}.yaml is missing`);

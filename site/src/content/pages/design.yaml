@@ -1,0 +1,193 @@
+seo:
+  title:
+    en: "Design your agent for your travel agency | Lindrize"
+    ar: "صمّم مساعدك لمكتب السفر | Lindrize"
+  description:
+    en: "Tell us about your agency and your biggest problem, choose a system and its extras, and watch an example of how it would work. Then book a 15-minute call."
+    ar: "أخبرنا عن مكتبك وأكبر مشكلة تواجهك، واختر النظام وإضافاته، وشاهد مثالاً على طريقة عمله. ثم احجز مكالمة مدتها 15 دقيقة."
+title: { en: "Design your agent", ar: "صمّم مساعدك" }
+lead:
+  en: "Five short steps, about two minutes. Nothing is sent anywhere until you choose to book, message us or email yourself the design."
+  ar: "خمس خطوات قصيرة، في نحو دقيقتين. لا يُرسَل شيء إلى أي مكان إلا إذا اخترت أن تحجز أو تراسلنا أو ترسل التصميم إلى بريدك."
+noScript:
+  en: "This tool needs JavaScript. You can still book a call or message us on WhatsApp."
+  ar: "هذه الأداة تحتاج إلى JavaScript. ما زال بإمكانك حجز مكالمة أو مراسلتنا على WhatsApp."
+# {n} and {total} are replaced by numbers.
+progress: { en: "Step {n} of {total}", ar: "الخطوة {n} من {total}" }
+back: { en: "Back", ar: "السابق" }
+next: { en: "Next", ar: "التالي" }
+# The button on a step whose questions are optional.
+skip: { en: "Next (you can skip these)", ar: "التالي (يمكنك تخطّي هذه الأسئلة)" }
+chooseOne: { en: "Choose one to continue.", ar: "اختر واحداً للمتابعة." }
+clear: { en: "Clear my answers", ar: "امسح إجاباتي" }
+cleared: { en: "Your answers were cleared from this device.", ar: "مُسحت إجاباتك من هذا الجهاز." }
+
+business:
+  title: { en: "Your business", ar: "عملك" }
+  typeLabel: { en: "What kind of business is it?", ar: "ما نوع عملك؟" }
+  sizeLabel: { en: "How many people work there?", ar: "كم شخصاً يعمل فيه؟" }
+  sizes:
+    - { id: solo, label: { en: "Just me", ar: "أنا فقط" } }
+    - { id: small, label: { en: "2 to 5", ar: "من 2 إلى 5" } }
+    - { id: medium, label: { en: "6 to 15", ar: "من 6 إلى 15" } }
+    - { id: large, label: { en: "16 or more", ar: "16 أو أكثر" } }
+
+problem:
+  title: { en: "Your biggest problem", ar: "أكبر مشكلة تواجهك" }
+  label: { en: "Which of these sounds most like you?", ar: "أيّ هذه العبارات أقرب إلى حالك؟" }
+  # Each problem suggests one system (by number). The visitor can change it in the next step.
+  options:
+    - { id: miss-night, system: 1, label: { en: "We miss messages at night and on weekends.", ar: "تفوتنا الرسائل ليلاً وفي عطلة نهاية الأسبوع." } }
+    - { id: slow-replies, system: 1, label: { en: "Customers wait too long for a reply.", ar: "ينتظر العملاء الردّ طويلاً." } }
+    - { id: went-quiet, system: 2, label: { en: "Customers ask for a price, then disappear.", ar: "يسأل العملاء عن السعر ثم يختفون." } }
+    - { id: past-customers, system: 3, label: { en: "Past customers do not come back.", ar: "العملاء السابقون لا يعودون." } }
+    - { id: slow-quotes, system: 4, label: { en: "Preparing quotes takes too long.", ar: "إعداد عروض الأسعار يأخذ وقتاً طويلاً." } }
+    - { id: ad-leads, system: 5, label: { en: "People who fill in our ads go cold before we reply.", ar: "من يملأ نماذج إعلاناتنا يفقد اهتمامه قبل أن نردّ." } }
+    - { id: payments, system: 8, label: { en: "We spend hours chasing deposits and instalments.", ar: "نقضي ساعات في ملاحقة العربون والأقساط." } }
+    - { id: documents, system: 9, label: { en: "Collecting passports and papers takes days.", ar: "جمع جوازات السفر والأوراق يأخذ أياماً." } }
+    - { id: group-lists, system: 13, label: { en: "Group sign-ups and lists take days.", ar: "تسجيل المجموعات وقوائمها يأخذ أياماً." } }
+    - { id: reviews, system: 12, label: { en: "We rarely get reviews.", ar: "قلّما نحصل على تقييمات." } }
+    - { id: no-overview, system: 16, label: { en: "I do not know what my team is working on.", ar: "لا أعرف ما الذي يعمل عليه فريقي." } }
+
+system:
+  title: { en: "Your main system", ar: "نظامك الأساسي" }
+  suggested: { en: "For that problem, we suggest this system. You can choose another.", ar: "لهذه المشكلة نقترح هذا النظام، وبإمكانك اختيار غيره." }
+  label: { en: "System", ar: "النظام" }
+  page: { en: "Read about this system", ar: "اقرأ عن هذا النظام" }
+
+features:
+  title: { en: "Extras", ar: "الإضافات" }
+  label: { en: "Add what you would like. You can choose none.", ar: "أضف ما تريد، ويمكنك ألّا تختار شيئاً." }
+
+ranges:
+  title: { en: "A few numbers", ar: "بعض الأرقام" }
+  lead: { en: "Rough ranges are enough. They help the call start from the right place.", ar: "تكفي أرقام تقريبية. تساعد على أن تبدأ المكالمة من النقطة الصحيحة." }
+  # low and high are the bounds used by the estimate. They are never shown.
+  messages:
+    label: { en: "Customer messages a day", ar: "رسائل العملاء في اليوم" }
+    options:
+      - { id: m1, low: 1, high: 20, label: { en: "Up to 20", ar: "حتى 20" } }
+      - { id: m2, low: 20, high: 50, label: { en: "20 to 50", ar: "من 20 إلى 50" } }
+      - { id: m3, low: 50, high: 150, label: { en: "50 to 150", ar: "من 50 إلى 150" } }
+      - { id: m4, low: 150, high: 300, label: { en: "More than 150", ar: "أكثر من 150" } }
+  staff:
+    label: { en: "People who answer messages", ar: "عدد من يردّون على الرسائل" }
+    options:
+      - { id: s1, low: 1, high: 1, label: { en: "1", ar: "1" } }
+      - { id: s2, low: 2, high: 3, label: { en: "2 to 3", ar: "من 2 إلى 3" } }
+      - { id: s3, low: 4, high: 6, label: { en: "4 to 6", ar: "من 4 إلى 6" } }
+      - { id: s4, low: 7, high: 12, label: { en: "7 or more", ar: "7 أو أكثر" } }
+  afterHours:
+    label: { en: "Messages that arrive after hours", ar: "الرسائل التي تصل خارج أوقات الدوام" }
+    options:
+      - { id: a1, low: 0, high: 0.1, label: { en: "Very few", ar: "قليلة جداً" } }
+      - { id: a2, low: 0.1, high: 0.25, label: { en: "About a quarter", ar: "نحو الربع" } }
+      - { id: a3, low: 0.25, high: 0.5, label: { en: "About half", ar: "نحو النصف" } }
+      - { id: a4, low: 0.5, high: 0.8, label: { en: "Most of them", ar: "معظمها" } }
+  # The two questions below and the currency are asked only when the estimate is switched on.
+  currencyLabel: { en: "Currency", ar: "العملة" }
+  salary:
+    label: { en: "Average monthly salary of those people", ar: "متوسط الراتب الشهري لهؤلاء" }
+    # Bounds in US dollars. They are shown in the visitor's currency, rounded.
+    options:
+      - { id: p1, low: 300, high: 500 }
+      - { id: p2, low: 500, high: 800 }
+      - { id: p3, low: 800, high: 1200 }
+      - { id: p4, low: 1200, high: 2000 }
+  booking:
+    label: { en: "Average value of one booking", ar: "متوسط قيمة الحجز الواحد" }
+    options:
+      - { id: b1, low: 100, high: 300 }
+      - { id: b2, low: 300, high: 700 }
+      - { id: b3, low: 700, high: 1500 }
+      - { id: b4, low: 1500, high: 4000 }
+
+# Fixed exchange rates per 1 US dollar, for showing ranges and the estimate. Most of these
+# currencies are pegged to the dollar. The Kuwaiti dinar is not: check it from time to time.
+currencies:
+  - { code: USD, rate: 1 }
+  - { code: JOD, rate: 0.709 }
+  - { code: SAR, rate: 3.75 }
+  - { code: AED, rate: 3.6725 }
+  - { code: QAR, rate: 3.64 }
+  - { code: KWD, rate: 0.307 }
+  - { code: BHD, rate: 0.376 }
+  - { code: OMR, rate: 0.3845 }
+
+# The estimate step appears only when all three numbers below are filled in by the owner
+# (SPEC 4.1). They are shown to visitors under "How we worked this out". Never guess them.
+#   routineShare:      share of customer messages the assistant can answer by itself (0 to 1)
+#   minutesPerReply:   minutes a staff member spends on one routine reply
+#   workHoursPerMonth: working hours in a month for one staff member
+assumptions:
+  routineShare: null
+  minutesPerReply: null
+  workHoursPerMonth: null
+
+estimate:
+  title: { en: "What it could free up", ar: "ما الذي قد يوفّره لك" }
+  hours: { en: "{low} to {high} hours a week of routine replies", ar: "من {low} إلى {high} ساعة أسبوعياً من الردود المتكررة" }
+  cost: { en: "Worth about {low} to {high} {currency} a month of staff time", ar: "تعادل نحو {low} إلى {high} {currency} شهرياً من وقت الموظفين" }
+  warning: { en: "An estimate, not a guarantee.", ar: "هذا تقدير وليس ضماناً." }
+  how: { en: "How we worked this out", ar: "كيف حسبنا ذلك" }
+  howBody:
+    en: "Your messages a day, times the share the assistant can answer by itself ({share}%), times {minutes} minutes for each reply. The cost uses the salary range you chose and {hours} working hours a month. Your team's time is freed for confirming bookings, not removed."
+    ar: "عدد رسائلك اليومية، مضروباً في نسبة ما يستطيع المساعد الإجابة عنه بنفسه ({share}%)، مضروباً في {minutes} دقيقة لكل ردّ. وتُحسب القيمة من نطاق الراتب الذي اخترته و{hours} ساعة عمل شهرياً. وقت فريقك يتفرّغ لتأكيد الحجوزات ولا يُستغنى عنه."
+
+book:
+  title: { en: "Your design", ar: "تصميمك" }
+  lead: { en: "Take it to a 15-minute call. Your choices are filled in for you.", ar: "خذه معك إلى مكالمة مدتها 15 دقيقة. اختياراتك تُعبَّأ تلقائياً." }
+  summaryTitle: { en: "Lindrize: my agent design", ar: "Lindrize: تصميم مساعدي" }
+  labels:
+    type: { en: "Business", ar: "نوع العمل" }
+    size: { en: "Team size", ar: "حجم الفريق" }
+    problem: { en: "Biggest problem", ar: "أكبر مشكلة" }
+    system: { en: "System", ar: "النظام" }
+    features: { en: "Extras", ar: "الإضافات" }
+    messages: { en: "Messages a day", ar: "الرسائل في اليوم" }
+    staff: { en: "People answering", ar: "من يردّون" }
+    afterHours: { en: "After hours", ar: "خارج الدوام" }
+    none: { en: "None", ar: "لا شيء" }
+  whatsapp: { en: "Send this to us on WhatsApp", ar: "أرسله لنا على WhatsApp" }
+  illustration:
+    en: "This is an illustration of your setup. The real system is built for you after the call."
+    ar: "هذا رسم توضيحي لإعدادك. النظام الحقيقي يُبنى لك بعد المكالمة."
+
+email:
+  title: { en: "Email me my design", ar: "أرسل تصميمي إلى بريدي" }
+  label: { en: "Your email", ar: "بريدك الإلكتروني" }
+  send: { en: "Send", ar: "أرسل" }
+  # {link} is replaced by a link to the Privacy Policy.
+  privacy:
+    en: "We'll use your email only to send your design and follow up about it. See our {link}."
+    ar: "نستخدم بريدك فقط لإرسال تصميمك ومتابعته معك. اطّلع على {link}."
+  # Shown to people only if they somehow see the hidden trap field.
+  trap: { en: "Leave this field empty", ar: "اترك هذا الحقل فارغاً" }
+  sending: { en: "Sending…", ar: "جارٍ الإرسال…" }
+  sent: { en: "Sent. Check your inbox for your design.", ar: "أُرسل. تجد تصميمك في بريدك." }
+  errors:
+    email: { en: "Please enter an email like name@agency.com.", ar: "يرجى إدخال بريد مثل name@agency.com." }
+    check: { en: "The human check has not finished. Wait a moment and press Send again.", ar: "لم يكتمل التحقق البشري بعد. انتظر لحظة ثم اضغط «أرسل» مجدداً." }
+    tooMany: { en: "Too many tries. Please wait a while, or send it to us on WhatsApp.", ar: "محاولات كثيرة. انتظر قليلاً، أو أرسله لنا على WhatsApp." }
+    failed: { en: "We could not send it. Please send it to us on WhatsApp or book a call.", ar: "تعذّر الإرسال. يرجى إرساله لنا على WhatsApp أو حجز مكالمة." }
+
+board:
+  title: { en: "How it would work", ar: "كيف سيعمل" }
+  play: { en: "Play", ar: "تشغيل" }
+  pause: { en: "Pause", ar: "إيقاف مؤقت" }
+  replay: { en: "Replay", ar: "إعادة" }
+  extras: { en: "Your extras", ar: "إضافاتك" }
+  with: { en: "With the assistant", ar: "مع المساعد" }
+  without: { en: "Without an assistant", ar: "بدون مساعد" }
+  compare: { en: "Compare", ar: "قارن" }
+  moods:
+    waiting: { title: { en: "Waiting", ar: "ينتظر" }, body: { en: "The customer has asked and is waiting.", ar: "العميل سأل وهو ينتظر." } }
+    answered: { title: { en: "Answered", ar: "حصل على إجابة" }, body: { en: "The customer got an answer straight away.", ar: "حصل العميل على إجابة فوراً." } }
+    done: { title: { en: "Looked after", ar: "تمّت خدمته" }, body: { en: "Your team has taken it from here.", ar: "فريقك أكمل من هنا." } }
+    lost: { title: { en: "Gone elsewhere", ar: "ذهب إلى غيرك" }, body: { en: "The customer stopped waiting.", ar: "العميل لم ينتظر أكثر." } }
+  # The same customer on a normal night with nobody to answer. Shown for the Sales Assistant.
+  withoutStory:
+    - { who: customer, text: { en: "A customer asks about a family trip at 11:40 PM.", ar: "عميل يسأل عن رحلة عائلية الساعة 11:40 مساءً." } }
+    - { who: team, text: { en: "The office is closed. The message waits until morning.", ar: "المكتب مغلق، والرسالة تنتظر حتى الصباح." } }
+    - { who: team, text: { en: "Staff open it at 9:30 AM and reply.", ar: "يفتحها الموظفون الساعة 9:30 صباحاً ويردّون." } }
+    - { who: customer, text: { en: "The customer has already booked with another agency.", ar: "العميل حجز لدى مكتب آخر." } }

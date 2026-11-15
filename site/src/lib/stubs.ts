@@ -4,4 +4,4 @@
  * The launch check (scripts/check-content.mjs --launch) fails while this list is not empty,
  * so the site can never go live with an unfinished page.
  */
-export const STUB_PAGES: readonly string[] = ['/design-your-agent/'];
+export const STUB_PAGES: readonly string[] = [];

@@ -145,6 +145,83 @@ const contactPage = defineCollection({
   }),
 });
 
+const option = z.object({ id: z.string().regex(/^[a-z0-9-]+$/), label: text });
+const bounded = z.object({ id: z.string().regex(/^[a-z0-9-]+$/), low: z.number().min(0), high: z.number().min(0) });
+const story = z.array(z.object({ who: z.enum(['customer', 'system', 'team']), text })).min(4).max(7);
+
+/** "Design your agent": its wording, its choices and the owner's estimate assumptions. */
+const designPage = defineCollection({
+  loader: page('design'),
+  schema: z.object({
+    seo,
+    title: text,
+    lead: text,
+    noScript: text,
+    progress: text,
+    back: text,
+    next: text,
+    skip: text,
+    chooseOne: text,
+    clear: text,
+    cleared: text,
+    business: z.object({ title: text, typeLabel: text, sizeLabel: text, sizes: z.array(option).min(2) }),
+    problem: z.object({
+      title: text,
+      label: text,
+      options: z.array(option.extend({ system: z.number().int().min(1).max(30) })).min(3),
+    }),
+    system: z.object({ title: text, suggested: text, label: text, page: text }),
+    features: z.object({ title: text, label: text }),
+    ranges: z.object({
+      title: text,
+      lead: text,
+      messages: z.object({ label: text, options: z.array(bounded.extend({ label: text })).min(2) }),
+      staff: z.object({ label: text, options: z.array(bounded.extend({ label: text })).min(2) }),
+      afterHours: z.object({ label: text, options: z.array(bounded.extend({ label: text })).min(2) }),
+      currencyLabel: text,
+      salary: z.object({ label: text, options: z.array(bounded).min(2) }),
+      booking: z.object({ label: text, options: z.array(bounded).min(2) }),
+    }),
+    currencies: z.array(z.object({ code: z.string().length(3), rate: z.number().positive() })).min(1),
+    assumptions: z.object({
+      routineShare: z.number().gt(0).max(1).nullable(),
+      minutesPerReply: z.number().positive().nullable(),
+      workHoursPerMonth: z.number().positive().nullable(),
+    }),
+    estimate: z.object({ title: text, hours: text, cost: text, warning: text, how: text, howBody: text }),
+    book: z.object({
+      title: text,
+      lead: text,
+      summaryTitle: text,
+      labels: each(['type', 'size', 'problem', 'system', 'features', 'messages', 'staff', 'afterHours', 'none'] as const, text),
+      whatsapp: text,
+      illustration: text,
+    }),
+    email: z.object({
+      title: text,
+      label: text,
+      send: text,
+      privacy: text,
+      trap: text,
+      sending: text,
+      sent: text,
+      errors: each(['email', 'check', 'tooMany', 'failed'] as const, text),
+    }),
+    board: z.object({
+      title: text,
+      play: text,
+      pause: text,
+      replay: text,
+      extras: text,
+      with: text,
+      without: text,
+      compare: text,
+      moods: each(['waiting', 'answered', 'done', 'lost'] as const, z.object({ title: text, body: text })),
+      withoutStory: story,
+    }),
+  }),
+});
+
 /**
  * Privacy Policy and Terms. The owner writes the text. While `ready` is false the page shows its
  * headings and a notice, is hidden from search engines, and blocks the launch check.
@@ -269,6 +346,7 @@ export const collections = {
   faqPage,
   aboutPage,
   contactPage,
+  designPage,
   legal,
   chats,
   faqs,

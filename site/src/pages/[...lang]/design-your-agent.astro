@@ -1,0 +1,9 @@
+---
+import DesignPage from '@/components/pages/DesignPage.astro';
+import { langPaths, type LangProps } from '@/lib/routes';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as LangProps;
+---
+
+<DesignPage lang={lang} />
