@@ -1,0 +1,814 @@
+{
+  "types": {
+    "travel": {
+      "en": "Travel agencies and tour operators",
+      "ar": "مكاتب السفر ومنظّمو الرحلات"
+    },
+    "umrah": {
+      "en": "Hajj and Umrah offices",
+      "ar": "مكاتب الحج والعمرة"
+    },
+    "inbound": {
+      "en": "Inbound tour operators",
+      "ar": "منظّمو الرحلات الوافدة"
+    },
+    "hotels": {
+      "en": "Hotels, camps and guesthouses",
+      "ar": "الفنادق والمخيمات وبيوت الضيافة"
+    },
+    "car-rental": {
+      "en": "Car rental",
+      "ar": "تأجير السيارات"
+    },
+    "visa": {
+      "en": "Visa offices",
+      "ar": "مكاتب التأشيرات"
+    },
+    "study-abroad": {
+      "en": "Study-abroad agencies",
+      "ar": "مكاتب الدراسة في الخارج"
+    },
+    "venues": {
+      "en": "Event and wedding venues",
+      "ar": "قاعات المناسبات والأفراح"
+    }
+  },
+  "sizes": {
+    "solo": {
+      "en": "Just me",
+      "ar": "أنا فقط"
+    },
+    "small": {
+      "en": "2 to 5",
+      "ar": "من 2 إلى 5"
+    },
+    "medium": {
+      "en": "6 to 15",
+      "ar": "من 6 إلى 15"
+    },
+    "large": {
+      "en": "16 or more",
+      "ar": "16 أو أكثر"
+    }
+  },
+  "problems": {
+    "miss-night": {
+      "en": "We miss messages at night and on weekends.",
+      "ar": "تفوتنا الرسائل ليلاً وفي عطلة نهاية الأسبوع."
+    },
+    "slow-replies": {
+      "en": "Customers wait too long for a reply.",
+      "ar": "ينتظر العملاء الردّ طويلاً."
+    },
+    "went-quiet": {
+      "en": "Customers ask for a price, then disappear.",
+      "ar": "يسأل العملاء عن السعر ثم يختفون."
+    },
+    "past-customers": {
+      "en": "Past customers do not come back.",
+      "ar": "العملاء السابقون لا يعودون."
+    },
+    "slow-quotes": {
+      "en": "Preparing quotes takes too long.",
+      "ar": "إعداد عروض الأسعار يأخذ وقتاً طويلاً."
+    },
+    "ad-leads": {
+      "en": "People who fill in our ads go cold before we reply.",
+      "ar": "من يملأ نماذج إعلاناتنا يفقد اهتمامه قبل أن نردّ."
+    },
+    "payments": {
+      "en": "We spend hours chasing deposits and instalments.",
+      "ar": "نقضي ساعات في ملاحقة العربون والأقساط."
+    },
+    "documents": {
+      "en": "Collecting passports and papers takes days.",
+      "ar": "جمع جوازات السفر والأوراق يأخذ أياماً."
+    },
+    "group-lists": {
+      "en": "Group sign-ups and lists take days.",
+      "ar": "تسجيل المجموعات وقوائمها يأخذ أياماً."
+    },
+    "reviews": {
+      "en": "We rarely get reviews.",
+      "ar": "قلّما نحصل على تقييمات."
+    },
+    "no-overview": {
+      "en": "I do not know what my team is working on.",
+      "ar": "لا أعرف ما الذي يعمل عليه فريقي."
+    }
+  },
+  "systems": {
+    "1": {
+      "name": {
+        "en": "AI Travel Sales Assistant",
+        "ar": "مساعد مبيعات السفر"
+      },
+      "features": {
+        "voice-notes": {
+          "en": "Understands voice notes",
+          "ar": "فهم الرسائل الصوتية"
+        },
+        "extra-language": {
+          "en": "An extra language for foreign visitors",
+          "ar": "لغة إضافية للزوار الأجانب"
+        },
+        "website-chat": {
+          "en": "The same assistant on your website",
+          "ar": "المساعد نفسه على موقعك الإلكتروني"
+        },
+        "daily-summary": {
+          "en": "A daily summary for the owner",
+          "ar": "ملخص يومي لصاحب المكتب"
+        }
+      }
+    },
+    "2": {
+      "name": {
+        "en": "Quote Follow-up",
+        "ar": "متابعة عروض الأسعار"
+      },
+      "features": {
+        "second-follow-up": {
+          "en": "A second follow-up a few days later",
+          "ar": "متابعة ثانية بعد بضعة أيام"
+        },
+        "current-offer": {
+          "en": "Mention a current offer in the follow-up",
+          "ar": "ذكر عرض حالي في رسالة المتابعة"
+        },
+        "ask-why": {
+          "en": "Ask why the customer decided not to book",
+          "ar": "سؤال العميل عن سبب عدم الحجز"
+        }
+      }
+    },
+    "3": {
+      "name": {
+        "en": "Customer Reactivation",
+        "ar": "استعادة العملاء السابقين"
+      },
+      "features": {
+        "by-trip": {
+          "en": "Group customers by the trips they took",
+          "ar": "تصنيف العملاء حسب رحلاتهم السابقة"
+        },
+        "season-calendar": {
+          "en": "A calendar for Eid, summer and Umrah season",
+          "ar": "تقويم لمواسم العيد والصيف والعمرة"
+        },
+        "stop-list": {
+          "en": "A stop list for customers who opt out",
+          "ar": "قائمة إيقاف لمن لا يرغب في استلام العروض"
+        }
+      }
+    },
+    "4": {
+      "name": {
+        "en": "Instant Quote & Itinerary",
+        "ar": "عرض السعر وبرنامج الرحلة الفوري"
+      },
+      "features": {
+        "branding": {
+          "en": "Your logo, colours and terms on every PDF",
+          "ar": "شعارك وألوانك وشروطك على كل ملف PDF"
+        },
+        "two-languages": {
+          "en": "Arabic and English versions",
+          "ar": "نسختان بالعربية والإنجليزية"
+        },
+        "day-plan": {
+          "en": "A day-by-day plan with timings",
+          "ar": "برنامج يومي مع الأوقات"
+        }
+      }
+    },
+    "5": {
+      "name": {
+        "en": "Ad Lead Responder",
+        "ar": "الردّ على عملاء الإعلانات"
+      },
+      "features": {
+        "ad-source": {
+          "en": "Tell staff which ad each lead came from",
+          "ar": "إخبار الموظفين بالإعلان الذي جاء منه كل عميل"
+        },
+        "no-answer": {
+          "en": "Follow up with people who do not answer",
+          "ar": "متابعة من لا يردّ"
+        },
+        "first-questions": {
+          "en": "Ask a few questions before passing the lead to staff",
+          "ar": "طرح بضعة أسئلة قبل تحويل العميل إلى الموظفين"
+        }
+      }
+    },
+    "6": {
+      "name": {
+        "en": "Website Chat & Booking Request",
+        "ar": "محادثة الموقع وطلب الحجز"
+      },
+      "features": {
+        "two-languages": {
+          "en": "Chat in Arabic and English",
+          "ar": "محادثة بالعربية والإنجليزية"
+        },
+        "site-colours": {
+          "en": "Colours that match your website",
+          "ar": "ألوان تطابق موقعك"
+        },
+        "starter-questions": {
+          "en": "Suggested questions to start the chat",
+          "ar": "أسئلة مقترحة لبدء المحادثة"
+        }
+      }
+    },
+    "7": {
+      "name": {
+        "en": "Booking Confirmation & Travel Updates",
+        "ar": "تأكيد الحجز وتحديثات الرحلة"
+      },
+      "features": {
+        "day-before": {
+          "en": "A reminder the day before departure",
+          "ar": "تذكير قبل السفر بيوم"
+        },
+        "two-languages": {
+          "en": "Details in Arabic and English",
+          "ar": "التفاصيل بالعربية والإنجليزية"
+        },
+        "seen-check": {
+          "en": "Ask the traveller to confirm they saw a change",
+          "ar": "طلب تأكيد المسافر أنه اطّلع على التغيير"
+        }
+      }
+    },
+    "8": {
+      "name": {
+        "en": "Payment Reminders",
+        "ar": "تذكير الدفعات"
+      },
+      "features": {
+        "late-reminder": {
+          "en": "A second reminder when a payment is late",
+          "ar": "تذكير ثانٍ عند تأخر الدفعة"
+        },
+        "late-list": {
+          "en": "A list of late payments for staff",
+          "ar": "قائمة بالدفعات المتأخرة للموظفين"
+        },
+        "group-plans": {
+          "en": "Instalment plans for groups",
+          "ar": "خطط أقساط للمجموعات"
+        }
+      }
+    },
+    "9": {
+      "name": {
+        "en": "Document Collector",
+        "ar": "جمع المستندات"
+      },
+      "features": {
+        "until-complete": {
+          "en": "Reminders until the file is complete",
+          "ar": "تذكيرات حتى يكتمل الملف"
+        },
+        "per-trip": {
+          "en": "A checklist for each type of trip",
+          "ar": "قائمة خاصة بكل نوع رحلة"
+        },
+        "passport-expiry": {
+          "en": "Tell staff when a passport is close to expiring",
+          "ar": "تنبيه الموظفين عند اقتراب انتهاء جواز سفر"
+        }
+      }
+    },
+    "10": {
+      "name": {
+        "en": "Pre-trip Concierge",
+        "ar": "مرافق ما قبل الرحلة"
+      },
+      "features": {
+        "weather": {
+          "en": "The weather forecast for the destination",
+          "ar": "توقعات الطقس في الوجهة"
+        },
+        "packing-list": {
+          "en": "A packing list for each type of trip",
+          "ar": "قائمة أغراض لكل نوع رحلة"
+        },
+        "evening-before": {
+          "en": "A short message the evening before",
+          "ar": "رسالة قصيرة في المساء السابق للسفر"
+        }
+      }
+    },
+    "11": {
+      "name": {
+        "en": "In-trip Support Line",
+        "ar": "خط الدعم أثناء الرحلة"
+      },
+      "features": {
+        "duty-alert": {
+          "en": "An urgent alert to the staff member on duty",
+          "ar": "تنبيه عاجل للموظف المناوب"
+        },
+        "two-languages": {
+          "en": "Answers in Arabic and English",
+          "ar": "إجابات بالعربية والإنجليزية"
+        },
+        "daily-note": {
+          "en": "A daily note of what travellers asked",
+          "ar": "ملخص يومي بما سأل عنه المسافرون"
+        }
+      }
+    },
+    "12": {
+      "name": {
+        "en": "Review & Referral",
+        "ar": "التقييمات والترشيحات"
+      },
+      "features": {
+        "refer-friend": {
+          "en": "Invite travellers to refer a friend",
+          "ar": "دعوة المسافرين إلى ترشيح صديق"
+        },
+        "same-day": {
+          "en": "Pass complaints to staff the same day",
+          "ar": "تحويل الشكاوى إلى الموظفين في اليوم نفسه"
+        },
+        "monthly-count": {
+          "en": "A monthly count of reviews requested",
+          "ar": "إحصاء شهري لطلبات التقييم"
+        }
+      }
+    },
+    "13": {
+      "name": {
+        "en": "Group Registration",
+        "ar": "تسجيل المجموعات"
+      },
+      "features": {
+        "waiting-list": {
+          "en": "A waiting list when the group is full",
+          "ar": "قائمة انتظار عند اكتمال المجموعة"
+        },
+        "with-passports": {
+          "en": "Collect passport copies with the form",
+          "ar": "جمع صور جوازات السفر مع النموذج"
+        },
+        "two-languages": {
+          "en": "A form in Arabic and English",
+          "ar": "نموذج بالعربية والإنجليزية"
+        }
+      }
+    },
+    "14": {
+      "name": {
+        "en": "Offer Broadcasts",
+        "ar": "إرسال العروض"
+      },
+      "features": {
+        "by-interest": {
+          "en": "Customer groups by interest",
+          "ar": "مجموعات العملاء حسب الاهتمام"
+        },
+        "send-time": {
+          "en": "Send at the time you choose",
+          "ar": "الإرسال في الوقت الذي تختاره"
+        },
+        "reply-count": {
+          "en": "A count of replies for each offer",
+          "ar": "إحصاء الردود على كل عرض"
+        }
+      }
+    },
+    "15": {
+      "name": {
+        "en": "AI Phone Receptionist",
+        "ar": "موظف الاستقبال الهاتفي"
+      },
+      "features": {
+        "two-languages": {
+          "en": "Calls in Arabic and English",
+          "ar": "مكالمات بالعربية والإنجليزية"
+        },
+        "call-summary": {
+          "en": "A written summary of each call",
+          "ar": "ملخص مكتوب لكل مكالمة"
+        },
+        "urgent-transfer": {
+          "en": "Urgent calls passed to a staff mobile",
+          "ar": "تحويل المكالمات العاجلة إلى هاتف أحد الموظفين"
+        }
+      }
+    },
+    "16": {
+      "name": {
+        "en": "Leads & Bookings Dashboard",
+        "ar": "لوحة الاستفسارات والحجوزات"
+      },
+      "features": {
+        "filters": {
+          "en": "Filter by staff member or by app",
+          "ar": "تصفية حسب الموظف أو التطبيق"
+        },
+        "waiting-too-long": {
+          "en": "Highlight inquiries that have waited too long",
+          "ar": "إبراز الاستفسارات التي طال انتظارها"
+        },
+        "export": {
+          "en": "Export to a spreadsheet",
+          "ar": "تصدير إلى جدول بيانات"
+        }
+      }
+    },
+    "17": {
+      "name": {
+        "en": "Owner Daily Summary",
+        "ar": "الملخص اليومي لصاحب المكتب"
+      },
+      "features": {
+        "weekly": {
+          "en": "A weekly summary as well",
+          "ar": "ملخص أسبوعي أيضاً"
+        },
+        "compare": {
+          "en": "Compare with last week",
+          "ar": "مقارنة بالأسبوع الماضي"
+        },
+        "more-people": {
+          "en": "Send it to more than one person",
+          "ar": "إرساله إلى أكثر من شخص"
+        }
+      }
+    },
+    "18": {
+      "name": {
+        "en": "Staff Handoff & Task Assignment",
+        "ar": "توزيع العملاء والمهام على الموظفين"
+      },
+      "features": {
+        "rules": {
+          "en": "Rules by destination or type of trip",
+          "ar": "قواعد حسب الوجهة أو نوع الرحلة"
+        },
+        "waiting-reminder": {
+          "en": "A reminder when a lead waits too long",
+          "ar": "تذكير عند طول انتظار العميل"
+        },
+        "on-leave": {
+          "en": "Reassign leads when someone is on leave",
+          "ar": "إعادة التوزيع عند إجازة أحد الموظفين"
+        }
+      }
+    },
+    "19": {
+      "name": {
+        "en": "Package & Price Updater",
+        "ar": "تحديث الباقات والأسعار"
+      },
+      "features": {
+        "odd-values": {
+          "en": "A warning about missing or unusual prices",
+          "ar": "تنبيه عند وجود أسعار ناقصة أو غير معتادة"
+        },
+        "change-record": {
+          "en": "A record of every price change",
+          "ar": "سجل بكل تغيير في الأسعار"
+        },
+        "season-prices": {
+          "en": "Season prices with start and end dates",
+          "ar": "أسعار موسمية بتاريخ بداية ونهاية"
+        }
+      }
+    },
+    "20": {
+      "name": {
+        "en": "Supplier Booking Requests",
+        "ar": "طلبات الحجز من المورّدين"
+      },
+      "features": {
+        "supplier-reminders": {
+          "en": "Reminders to suppliers who have not replied",
+          "ar": "تذكير المورّدين الذين لم يردّوا"
+        },
+        "second-supplier": {
+          "en": "Ask a second supplier when the first declines",
+          "ar": "سؤال مورّد ثانٍ عند اعتذار الأول"
+        },
+        "trip-view": {
+          "en": "One view of what is confirmed for each trip",
+          "ar": "عرض واحد لما تأكّد في كل رحلة"
+        }
+      }
+    },
+    "21": {
+      "name": {
+        "en": "Guide & Transport Scheduler",
+        "ar": "جدولة المرشدين والنقل"
+      },
+      "features": {
+        "clash-warnings": {
+          "en": "Clash warnings",
+          "ar": "تنبيهات التعارض"
+        },
+        "own-schedule": {
+          "en": "Send each guide and driver their own schedule",
+          "ar": "إرسال جدول خاص لكل مرشد وسائق"
+        },
+        "days-off": {
+          "en": "Days off and holidays",
+          "ar": "أيام الراحة والإجازات"
+        }
+      }
+    },
+    "22": {
+      "name": {
+        "en": "Rooming List & Manifest Generator",
+        "ar": "قوائم الغرف والركّاب"
+      },
+      "features": {
+        "families-together": {
+          "en": "Keep families together",
+          "ar": "إبقاء أفراد العائلة معاً"
+        },
+        "per-hotel": {
+          "en": "A separate list for each hotel",
+          "ar": "قائمة منفصلة لكل فندق"
+        },
+        "on-cancel": {
+          "en": "Update the lists when someone cancels",
+          "ar": "تحديث القوائم عند إلغاء أحد المسافرين"
+        }
+      }
+    },
+    "23": {
+      "name": {
+        "en": "Visa Application Tracker",
+        "ar": "متابعة طلبات التأشيرات"
+      },
+      "features": {
+        "deadline-warnings": {
+          "en": "Deadline warnings",
+          "ar": "تنبيهات المواعيد النهائية"
+        },
+        "traveller-status": {
+          "en": "Tell the traveller when the status changes",
+          "ar": "إبلاغ المسافر عند تغيّر الحالة"
+        },
+        "passport-expiry": {
+          "en": "A passport expiry check",
+          "ar": "فحص تاريخ انتهاء جواز السفر"
+        }
+      }
+    },
+    "24": {
+      "name": {
+        "en": "Payments & Instalments Ledger",
+        "ar": "سجل الدفعات والأقساط"
+      },
+      "features": {
+        "late-list": {
+          "en": "A list of late payments",
+          "ar": "قائمة بالدفعات المتأخرة"
+        },
+        "accountant-export": {
+          "en": "An export for the accountant",
+          "ar": "تصدير للمحاسب"
+        },
+        "with-reminders": {
+          "en": "Send reminders from the ledger",
+          "ar": "إرسال التذكيرات من السجل"
+        }
+      }
+    },
+    "25": {
+      "name": {
+        "en": "Supplier Invoices & Commission Tracker",
+        "ar": "فواتير المورّدين والعمولات"
+      },
+      "features": {
+        "due-this-week": {
+          "en": "Invoices due this week",
+          "ar": "الفواتير المستحَقة هذا الأسبوع"
+        },
+        "margin": {
+          "en": "The margin on each booking",
+          "ar": "هامش الربح في كل حجز"
+        },
+        "monthly-report": {
+          "en": "A monthly commission report",
+          "ar": "تقرير شهري بالعمولات"
+        }
+      }
+    },
+    "26": {
+      "name": {
+        "en": "Complaint & Refund Tracker",
+        "ar": "متابعة الشكاوى والاستردادات"
+      },
+      "features": {
+        "deadlines": {
+          "en": "A deadline and reminders for each case",
+          "ar": "موعد نهائي وتذكيرات لكل حالة"
+        },
+        "monthly-list": {
+          "en": "A monthly list of what customers complained about",
+          "ar": "قائمة شهرية بما اشتكى منه العملاء"
+        },
+        "serious-cases": {
+          "en": "Tell the owner about serious cases straight away",
+          "ar": "إبلاغ صاحب المكتب بالحالات الخطيرة فوراً"
+        }
+      }
+    },
+    "27": {
+      "name": {
+        "en": "Reputation Monitor",
+        "ar": "مراقبة السمعة"
+      },
+      "features": {
+        "two-languages": {
+          "en": "Suggested replies in Arabic and English",
+          "ar": "ردود مقترحة بالعربية والإنجليزية"
+        },
+        "weekly-count": {
+          "en": "A weekly count of new reviews",
+          "ar": "إحصاء أسبوعي للتقييمات الجديدة"
+        },
+        "low-rating-alert": {
+          "en": "An urgent alert for low ratings",
+          "ar": "تنبيه عاجل عند التقييمات المنخفضة"
+        }
+      }
+    },
+    "28": {
+      "name": {
+        "en": "Staff Knowledge Assistant",
+        "ar": "مساعد المعرفة للموظفين"
+      },
+      "features": {
+        "source": {
+          "en": "Shows which document the answer came from",
+          "ar": "إظهار المستند الذي جاءت منه الإجابة"
+        },
+        "two-languages": {
+          "en": "Questions in Arabic and English",
+          "ar": "أسئلة بالعربية والإنجليزية"
+        },
+        "unanswered": {
+          "en": "A list of questions it could not answer",
+          "ar": "قائمة بالأسئلة التي لم يستطع الإجابة عنها"
+        }
+      }
+    },
+    "29": {
+      "name": {
+        "en": "Offer Content Generator",
+        "ar": "مولّد محتوى العروض"
+      },
+      "features": {
+        "two-languages": {
+          "en": "Captions in Arabic and English",
+          "ar": "نصوص بالعربية والإنجليزية"
+        },
+        "website-text": {
+          "en": "Text for your website that search engines can find",
+          "ar": "نصوص لموقعك تستطيع محركات البحث العثور عليها"
+        },
+        "weekly-plan": {
+          "en": "A weekly plan of what to post",
+          "ar": "خطة أسبوعية لما يُنشَر"
+        }
+      }
+    },
+    "30": {
+      "name": {
+        "en": "Partner Inbox Triage",
+        "ar": "فرز بريد الشركاء"
+      },
+      "features": {
+        "telegram-alerts": {
+          "en": "Urgent alerts on Telegram",
+          "ar": "تنبيهات عاجلة على Telegram"
+        },
+        "short-summary": {
+          "en": "A short summary of each email",
+          "ar": "ملخص قصير لكل رسالة"
+        },
+        "folders": {
+          "en": "Folders by airline, hotel or partner",
+          "ar": "مجلدات حسب شركة الطيران أو الفندق أو الشريك"
+        }
+      }
+    }
+  },
+  "messages": {
+    "m1": {
+      "en": "Up to 20",
+      "ar": "حتى 20"
+    },
+    "m2": {
+      "en": "20 to 50",
+      "ar": "من 20 إلى 50"
+    },
+    "m3": {
+      "en": "50 to 150",
+      "ar": "من 50 إلى 150"
+    },
+    "m4": {
+      "en": "More than 150",
+      "ar": "أكثر من 150"
+    }
+  },
+  "staff": {
+    "s1": {
+      "en": "1",
+      "ar": "1"
+    },
+    "s2": {
+      "en": "2 to 3",
+      "ar": "من 2 إلى 3"
+    },
+    "s3": {
+      "en": "4 to 6",
+      "ar": "من 4 إلى 6"
+    },
+    "s4": {
+      "en": "7 or more",
+      "ar": "7 أو أكثر"
+    }
+  },
+  "afterHours": {
+    "a1": {
+      "en": "Very few",
+      "ar": "قليلة جداً"
+    },
+    "a2": {
+      "en": "About a quarter",
+      "ar": "نحو الربع"
+    },
+    "a3": {
+      "en": "About half",
+      "ar": "نحو النصف"
+    },
+    "a4": {
+      "en": "Most of them",
+      "ar": "معظمها"
+    }
+  },
+  "salary": {
+    "p1": true,
+    "p2": true,
+    "p3": true,
+    "p4": true
+  },
+  "currencies": {
+    "USD": true,
+    "JOD": true,
+    "SAR": true,
+    "AED": true,
+    "QAR": true,
+    "KWD": true,
+    "BHD": true,
+    "OMR": true
+  },
+  "labels": {
+    "type": {
+      "en": "Business",
+      "ar": "نوع العمل"
+    },
+    "size": {
+      "en": "Team size",
+      "ar": "حجم الفريق"
+    },
+    "problem": {
+      "en": "Biggest problem",
+      "ar": "أكبر مشكلة"
+    },
+    "system": {
+      "en": "System",
+      "ar": "النظام"
+    },
+    "features": {
+      "en": "Extras",
+      "ar": "الإضافات"
+    },
+    "messages": {
+      "en": "Messages a day",
+      "ar": "الرسائل في اليوم"
+    },
+    "staff": {
+      "en": "People answering",
+      "ar": "من يردّون"
+    },
+    "afterHours": {
+      "en": "After hours",
+      "ar": "خارج الدوام"
+    },
+    "none": {
+      "en": "None",
+      "ar": "لا شيء"
+    }
+  }
+}

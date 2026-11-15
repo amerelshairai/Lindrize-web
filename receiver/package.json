@@ -1,0 +1,17 @@
+{
+  "name": "lindrize-receiver",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Receives \"Email me my design\" from the Lindrize website and emails it to the visitor and the owner.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "nodemailer": "10.3.1"
+  }
+}
