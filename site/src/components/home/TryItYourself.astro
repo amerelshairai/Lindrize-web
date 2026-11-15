@@ -13,12 +13,14 @@ interface Props {
   lang: Lang;
   content: CollectionEntry<'home'>['data']['tryIt'];
   chats: Array<CollectionEntry<'chats'>>;
+  /** Sit directly under a section heading, without the block's own top line and spacing. */
+  flush?: boolean;
 }
-const { lang, content, chats } = Astro.props;
+const { lang, content, chats, flush = false } = Astro.props;
 const [buttonBefore, buttonAfter] = splitAt(tr(content.button, lang), 'handle');
 ---
 
-<div class="try" data-tabs>
+<div class:list={['try', flush && 'flush']} data-tabs>
   <div class="copy">
     <h3 data-reveal>{tr(content.title, lang)}</h3>
     <p class="body">{tr(content.body, lang)}</p>
@@ -62,6 +64,11 @@ const [buttonBefore, buttonAfter] = splitAt(tr(content.button, lang), 'handle');
     margin-top: clamp(3rem, 2rem + 4vw, 5rem);
     padding-block: clamp(2.5rem, 2rem + 3vw, 4rem) var(--space-section);
     border-top: 1px solid var(--line);
+  }
+  .try.flush {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
   }
   .copy {
     display: flex;

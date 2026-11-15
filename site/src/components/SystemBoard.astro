@@ -1,0 +1,151 @@
+---
+/**
+ * "See it work": the system's example, step by step, in lanes (customer, the system, your team).
+ * Each step sits in the lane of whoever acts. On phones the lanes become one list with labels.
+ * This is the still version. "Design your agent" (Phase 3) plays the same steps one at a time.
+ */
+import type { CollectionEntry } from 'astro:content';
+import { tr, type Lang } from '@/lib/i18n';
+import { fill } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+  story: CollectionEntry<'systems'>['data']['story'];
+  copy: CollectionEntry<'systemPage'>['data'];
+}
+const { lang, story, copy } = Astro.props;
+const order = ['customer', 'system', 'team'] as const;
+const lanes = order.filter((lane) => story.some((step) => step.who === lane));
+---
+
+<figure class="board" data-lanes={lanes.length}>
+  <figcaption>{tr(copy.example, lang)}</figcaption>
+  <div class="heads" aria-hidden="true">
+    {lanes.map((lane) => <span>{tr(copy.lanes[lane], lang)}</span>)}
+  </div>
+  <ol role="list">
+    {
+      story.map((step, i) => (
+        <li class:list={['step', `lane-${lanes.indexOf(step.who) + 1}`, `row-${i + 1}`, step.who]}>
+          <span class="n" aria-hidden="true">{i + 1}</span>
+          <span class="sr-only">{fill(copy.step, lang, { n: i + 1 })}.</span>
+          <span class="who">{tr(copy.lanes[step.who], lang)}</span>
+          <p>{tr(step.text, lang)}</p>
+        </li>
+      ))
+    }
+  </ol>
+</figure>
+
+<style>
+  .board {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  figcaption {
+    order: 9;
+    margin-top: 1rem;
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  .heads,
+  ol {
+    display: grid;
+    gap: 0.75rem 1.5rem;
+  }
+  .board[data-lanes='3'] .heads,
+  .board[data-lanes='3'] ol {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .board[data-lanes='2'] .heads,
+  .board[data-lanes='2'] ol {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 48rem;
+  }
+  .heads {
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--ink);
+    font-size: var(--text-md);
+    font-weight: 500;
+  }
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 0.75rem;
+    align-items: start;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--line);
+    font-size: var(--text-md);
+    line-height: 1.5;
+  }
+  .step.system {
+    background: var(--soft);
+  }
+  .n {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .who {
+    grid-column: 2;
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  .step p {
+    grid-column: 2;
+  }
+  .lane-1 { grid-column: 1; }
+  .lane-2 { grid-column: 2; }
+  .lane-3 { grid-column: 3; }
+  .row-1 { grid-row: 1; }
+  .row-2 { grid-row: 2; }
+  .row-3 { grid-row: 3; }
+  .row-4 { grid-row: 4; }
+  .row-5 { grid-row: 5; }
+  .row-6 { grid-row: 6; }
+  .row-7 { grid-row: 7; }
+
+  /* Wide screens: the lane titles sit on top, so each step's own label is for screen readers only. */
+  @media (min-width: 48.01rem) {
+    .who {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .step {
+      position: relative;
+    }
+  }
+  @media (max-width: 48rem) {
+    .heads {
+      display: none;
+    }
+    .board[data-lanes] ol {
+      grid-template-columns: 1fr;
+      max-width: none;
+      border-top: 1px solid var(--ink);
+      padding-top: 0.75rem;
+    }
+    .step {
+      grid-column: 1;
+      grid-row: auto;
+    }
+  }
+</style>

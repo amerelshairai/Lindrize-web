@@ -1,21 +1,21 @@
 ---
 /** Questions and answers, always fully visible (never folded away). */
-import type { CollectionEntry } from 'astro:content';
-import { tr, type Lang } from '@/lib/i18n';
+import { tr, type Lang, type Text } from '@/lib/i18n';
 interface Props {
   lang: Lang;
-  items: Array<CollectionEntry<'faqs'>>;
+  items: Array<{ question: Text; answer: Text }>;
+  reveal?: boolean;
 }
-const { lang, items } = Astro.props;
+const { lang, items, reveal = true } = Astro.props;
 ---
 
-<div class="faq" data-reveal-group>
+<div class="faq" data-reveal-group={reveal ? '' : undefined}>
   {
     items.map((item) => (
-      <div class="item" data-reveal>
+      <div class="item" data-reveal={reveal ? '' : undefined}>
         {/* Questions may use the words owners search for (SPEC 11), so the wording check skips them. */}
-        <h3 data-allow-terms>{tr(item.data.question, lang)}</h3>
-        <p>{tr(item.data.answer, lang)}</p>
+        <h3 data-allow-terms>{tr(item.question, lang)}</h3>
+        <p>{tr(item.answer, lang)}</p>
       </div>
     ))
   }

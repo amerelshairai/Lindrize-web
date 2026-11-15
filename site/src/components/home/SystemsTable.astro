@@ -1,18 +1,38 @@
 ---
-/** Systems listed as a clean table of rows (direction B), each row a link to its page. */
+/**
+ * Systems listed as a clean table of rows (direction B), each row a link to its page.
+ * With `filterable`, each row carries what the Solutions page needs to search and filter.
+ */
 import type { CollectionEntry } from 'astro:content';
 import { ui, tr, localPath, systemPath, type Lang } from '@/lib/i18n';
+import { industriesOf } from '@/lib/content';
 interface Props {
   lang: Lang;
   systems: Array<CollectionEntry<'systems'>>;
+  filterable?: boolean;
+  /** Rows slide in on scroll. Turn off where rows appear and disappear, as in search results. */
+  reveal?: boolean;
 }
-const { lang, systems } = Astro.props;
+const { lang, systems, filterable = false, reveal = true } = Astro.props;
+const rows = await Promise.all(
+  systems.map(async (system) => ({
+    system,
+    filter: filterable
+      ? {
+          'data-system': system.id,
+          'data-group': system.data.group,
+          'data-industries': (await industriesOf(system)).join(' '),
+          'data-search': `${tr(system.data.name, lang)} ${tr(system.data.summary, lang)} ${system.data.name.en}`.toLowerCase(),
+        }
+      : {},
+  })),
+);
 ---
 
-<ul class="table" role="list" data-reveal-group>
+<ul class="table" role="list" data-reveal-group={reveal ? '' : undefined}>
   {
-    systems.map((system) => (
-      <li data-reveal>
+    rows.map(({ system, filter }) => (
+      <li data-reveal={reveal ? '' : undefined} {...filter}>
         <a href={localPath(lang, systemPath(system.id))}>
           <b>{tr(system.data.name, lang)}</b>
           <span class="summary">{tr(system.data.summary, lang)}</span>

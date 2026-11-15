@@ -1,0 +1,47 @@
+---
+/** The top of every inner page: a thin rule, the page's one main heading and a short lead. */
+interface Props {
+  title: string;
+  lead?: string | undefined;
+}
+const { title, lead } = Astro.props;
+---
+
+<section class="page-head">
+  <div class="wrap">
+    <slot name="before" />
+    <div class="inner">
+      <slot name="meta" />
+      <h1>{title}</h1>
+      {lead && <p class="lead">{lead}</p>}
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .wrap {
+    padding-block: clamp(2rem, 1.5rem + 3vw, 4rem) clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  }
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--ink);
+  }
+  h1 {
+    max-width: 20ch;
+    font-size: clamp(2.25rem, 1.4rem + 3.6vw, 3.5rem);
+    line-height: 1.08;
+  }
+  h1:lang(ar) {
+    line-height: 1.4;
+  }
+  .lead {
+    max-width: 58ch;
+    font-size: var(--text-lead);
+    color: var(--muted);
+  }
+</style>

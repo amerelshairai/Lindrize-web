@@ -2,14 +2,16 @@
 /** The closing block shown at the end of every page: book a call, or message on WhatsApp. */
 import Button from '@/components/Button.astro';
 import WhatsAppLink from '@/components/WhatsAppLink.astro';
-import { ui, tr, settings, type Lang, type Text } from '@/lib/i18n';
+import { ui, tr, settings, localPath, ROUTES, type Lang, type Text } from '@/lib/i18n';
 interface Props {
   lang: Lang;
   title: Text;
   body: Text;
-  whatsappMessage?: string;
+  whatsappMessage?: string | undefined;
+  /** Also offer "Design your agent" next to the booking button. */
+  design?: boolean;
 }
-const { lang, title, body, whatsappMessage } = Astro.props;
+const { lang, title, body, whatsappMessage, design = false } = Astro.props;
 ---
 
 <section class="final">
@@ -18,6 +20,7 @@ const { lang, title, body, whatsappMessage } = Astro.props;
     <p data-reveal>{tr(body, lang)}</p>
     <div class="actions" data-reveal>
       <Button href={settings.calendlyUrl} book arrow data-book-source="final">{tr(ui.book.long, lang)}</Button>
+      {design && <Button href={localPath(lang, ROUTES.design)} variant="alt">{tr(ui.design.cta, lang)}</Button>}
       <WhatsAppLink lang={lang} message={whatsappMessage} />
     </div>
   </div>

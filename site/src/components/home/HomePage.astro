@@ -12,6 +12,7 @@ import FeedbackSection from './FeedbackSection.astro';
 import FaqList from './FaqList.astro';
 import FinalCta from './FinalCta.astro';
 import { tr, localPath, ROUTES, type Lang } from '@/lib/i18n';
+import { getSystem } from '@/lib/content';
 
 interface Props {
   lang: Lang;
@@ -26,12 +27,7 @@ const chats = (await getCollection('chats')).sort((a, b) => a.data.order - b.dat
 const [mainChat, ...sampleChats] = chats;
 if (!mainChat) throw new Error('At least one demo chat is needed in src/content/chats');
 
-const allSystems = await getCollection('systems');
-const featured = c.systems.featured.map((number) => {
-  const system = allSystems.find((s) => s.data.number === number);
-  if (!system) throw new Error(`home.yaml features system ${number}, which has no file in src/content/systems`);
-  return system;
-});
+const featured = await Promise.all(c.systems.featured.map((number) => getSystem(number)));
 
 const homeFaqs = (await getCollection('faqs'))
   .filter((faq) => faq.data.home !== undefined)
@@ -87,7 +83,7 @@ const homeFaqs = (await getCollection('faqs'))
         <div class="drawline" data-draw></div>
         <h2 data-reveal>{tr(c.faq.title, lang)}</h2>
       </div>
-      <FaqList lang={lang} items={homeFaqs} />
+      <FaqList lang={lang} items={homeFaqs.map((faq) => faq.data)} />
       <p class="more" data-reveal>
         <Button href={localPath(lang, ROUTES.faq)} variant="alt" arrow>{tr(c.faq.all, lang)}</Button>
       </p>

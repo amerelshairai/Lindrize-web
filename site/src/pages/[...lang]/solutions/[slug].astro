@@ -1,0 +1,18 @@
+---
+import SystemPage from '@/components/pages/SystemPage.astro';
+import { LANGS, type Lang } from '@/lib/i18n';
+import { getSystems, type System } from '@/lib/content';
+
+export async function getStaticPaths() {
+  const systems = await getSystems();
+  return LANGS.flatMap((lang) =>
+    systems.map((system) => ({
+      params: { lang: lang === 'en' ? undefined : lang, slug: system.id },
+      props: { lang, system },
+    })),
+  );
+}
+const { lang, system } = Astro.props as { lang: Lang; system: System };
+---
+
+<SystemPage lang={lang} system={system} />

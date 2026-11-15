@@ -1,0 +1,197 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHead from '@/components/PageHead.astro';
+import Button from '@/components/Button.astro';
+import WhatsAppLink from '@/components/WhatsAppLink.astro';
+import SystemBoard from '@/components/SystemBoard.astro';
+import VideoSlot from '@/components/VideoSlot.astro';
+import SystemsTable from '@/components/home/SystemsTable.astro';
+import FaqList from '@/components/home/FaqList.astro';
+import FinalCta from '@/components/home/FinalCta.astro';
+import TryItYourself from '@/components/home/TryItYourself.astro';
+import { ui, tr, settings, localPath, systemPath, ROUTES, type Lang } from '@/lib/i18n';
+import { getSystem, pageCopy, systemSeo, fill, type System } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+  system: System;
+}
+const { lang, system } = Astro.props;
+const s = system.data;
+const c = await pageCopy('systemPage', 'system');
+const solutions = await pageCopy('solutionsPage', 'solutions');
+const home = (await getEntry('home', 'home'))?.data;
+if (!home) throw new Error('home.yaml is missing');
+const seo = systemSeo(system, c, lang);
+const name = tr(s.name, lang);
+const related = await Promise.all(s.related.map((n) => getSystem(n)));
+const whatsapp = fill(c.whatsapp, lang, { name });
+// The Sales Assistant is the one system with a live demo: its page adds the demo chats and the video.
+const hasDemo = s.status === 'live-demo';
+const chats = hasDemo ? (await getCollection('chats')).sort((a, b) => a.data.order - b.data.order) : [];
+---
+
+<BaseLayout lang={lang} title={seo.title} description={seo.description} page={systemPath(system.id)} whatsappMessage={whatsapp}>
+  <PageHead title={name} lead={tr(s.does, lang)}>
+    <nav slot="before" class="crumbs" aria-label={tr(c.breadcrumb, lang)}>
+      <ol role="list">
+        <li><a href={localPath(lang, ROUTES.solutions)}>{tr(ui.nav.solutions, lang)}</a></li>
+        <li aria-current="page">{name}</li>
+      </ol>
+    </nav>
+    <p slot="meta" class="meta">
+      <span>{tr(solutions.groups[s.group].name, lang)}</span>
+      <span class:list={['status', s.status]}>{tr(ui.status[s.status], lang)}</span>
+    </p>
+    {lang === 'ar' && <p class="english-name" lang="en" dir="ltr">{s.name.en}</p>}
+    <div class="actions">
+      <Button href={settings.calendlyUrl} book arrow data-hero-cta data-book-source={`system-${s.number}`}>{tr(ui.book.long, lang)}</Button>
+      <WhatsAppLink lang={lang} message={whatsapp} />
+    </div>
+    <p class="setup">{tr(c.setup, lang)}</p>
+  </PageHead>
+
+  <section class="sec">
+    <div class="wrap block">
+      <div class="sec-head">
+        <div class="drawline" data-draw></div>
+        <h2 data-reveal>{tr(c.seeItWork, lang)}</h2>
+      </div>
+      <SystemBoard lang={lang} story={s.story} copy={c} />
+      {hasDemo && settings.videoId !== '' && <div class="video"><VideoSlot lang={lang} /></div>}
+    </div>
+  </section>
+
+  {
+    hasDemo && (
+      <section class="sec">
+        <div class="wrap">
+          <div class="sec-head">
+            <div class="drawline" data-draw />
+            <h2 data-reveal>{tr(c.demoTitle, lang)}</h2>
+          </div>
+          <TryItYourself lang={lang} content={home.tryIt} chats={chats} flush />
+        </div>
+      </section>
+    )
+  }
+
+  <section class="sec">
+    <div class="wrap never">
+      <h2>{tr(c.neverTitle, lang)}</h2>
+      <p>{tr(s.never, lang)}</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap block">
+      <div class="sec-head">
+        <div class="drawline" data-draw></div>
+        <h2 data-reveal>{tr(c.faqTitle, lang)}</h2>
+      </div>
+      <FaqList lang={lang} items={s.faqs} />
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap block">
+      <div class="sec-head">
+        <div class="drawline" data-draw></div>
+        <h2 data-reveal>{tr(c.relatedTitle, lang)}</h2>
+      </div>
+      <SystemsTable lang={lang} systems={related} />
+    </div>
+  </section>
+
+  <FinalCta lang={lang} title={c.finalTitle} body={home.final.body} whatsappMessage={whatsapp} />
+</BaseLayout>
+
+<style>
+  .crumbs {
+    margin-bottom: 1.25rem;
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .crumbs li + li::before {
+    content: '/';
+    margin-inline-end: 0.5rem;
+  }
+  .crumbs a {
+    display: inline-block;
+    padding-block: 0.4rem;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  .meta .status {
+    padding-inline-start: 1rem;
+    border-inline-start: 1px solid var(--line-strong);
+  }
+  .meta .live-demo {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .english-name {
+    margin-top: -0.75rem;
+    font-size: var(--text-md);
+    color: var(--muted);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    margin-top: 0.5rem;
+  }
+  .setup {
+    font-size: var(--text-md);
+    color: var(--muted);
+  }
+  .block {
+    padding-bottom: var(--space-section);
+  }
+  .video {
+    margin-top: 3rem;
+  }
+  .never {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-block: var(--space-section);
+  }
+  .never h2 {
+    font-family: inherit;
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .never p {
+    max-width: 28ch;
+    font-family: var(--font-serif);
+    font-size: clamp(1.625rem, 1.2rem + 1.8vw, 2.375rem);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+  .never p:lang(ar) {
+    font-family: var(--font-arabic);
+    font-weight: 500;
+    line-height: 1.6;
+  }
+</style>
+
+<script>
+  import '@/scripts/motion';
+</script>
