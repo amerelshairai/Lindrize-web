@@ -1,0 +1,71 @@
+number: 28
+group: run-office
+status: on-request
+name:
+  en: "Staff Knowledge Assistant"
+  ar: "مساعد المعرفة للموظفين"
+summary:
+  en: "Staff ask about policies, visa rules or package details and get an instant answer."
+  ar: "يسأل الموظفون عن السياسات أو شروط التأشيرات أو تفاصيل الباقات فيحصلون على إجابة فورية."
+does:
+  en: "Your staff ask it about your policies, visa rules or package details and get an answer in seconds, taken from the documents you gave it."
+  ar: "يسأله موظفوك عن سياسات المكتب أو شروط التأشيرات أو تفاصيل الباقات، فيحصلون على إجابة خلال ثوانٍ، مأخوذة من المستندات التي زوّدته بها."
+never:
+  en: "It never talks to customers. It answers your staff only, from your own documents."
+  ar: "لا يتحدّث مع العملاء. يجيب موظفيك فقط، ومن مستنداتك أنت."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "A new staff member asks about the cancellation policy for Umrah."
+      ar: "موظف جديد يسأل عن سياسة الإلغاء في رحلات العمرة."
+  - who: system
+    text:
+      en: "The assistant answers and names the document it used."
+      ar: "المساعد يجيب ويذكر المستند الذي اعتمد عليه."
+  - who: team
+    text:
+      en: "They ask what is included in a Dubai package."
+      ar: "ثم يسأل عمّا تشمله إحدى باقات دبي."
+  - who: system
+    text:
+      en: "It lists what is included, from the package sheet."
+      ar: "فيعرض ما تشمله الباقة من جدول الباقات."
+  - who: team
+    text:
+      en: "The staff member answers the customer with confidence."
+      ar: "الموظف يجيب العميل بثقة."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: source
+    name:
+      en: "Shows which document the answer came from"
+      ar: "إظهار المستند الذي جاءت منه الإجابة"
+  - id: two-languages
+    name:
+      en: "Questions in Arabic and English"
+      ar: "أسئلة بالعربية والإنجليزية"
+  - id: unanswered
+    name:
+      en: "A list of questions it could not answer"
+      ar: "قائمة بالأسئلة التي لم يستطع الإجابة عنها"
+faqs:
+  - question:
+      en: "Where does it get its answers?"
+      ar: "من أين يأتي بإجاباته؟"
+    answer:
+      en: "From the documents you give it: policies, package sheets and internal notes."
+      ar: "من المستندات التي تزوّده بها: السياسات، وجداول الباقات، والملاحظات الداخلية."
+  - question:
+      en: "What if the answer is not in the documents?"
+      ar: "ماذا لو لم تكن الإجابة في المستندات؟"
+    answer:
+      en: "It says so, and the question is added to a list for you to fill in."
+      ar: "يقول ذلك، ويُضاف السؤال إلى قائمة لتكملها أنت."
+  - question:
+      en: "Who can use it?"
+      ar: "من يستطيع استخدامه؟"
+    answer:
+      en: "Your staff only."
+      ar: "موظفوك فقط."
+related: [19, 18, 1]

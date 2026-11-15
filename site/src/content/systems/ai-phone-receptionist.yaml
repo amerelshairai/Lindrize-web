@@ -1,0 +1,71 @@
+number: 15
+group: win-bookings
+status: on-request
+name:
+  en: "AI Phone Receptionist"
+  ar: "موظف الاستقبال الهاتفي"
+summary:
+  en: "Answers the landline after hours and logs the request."
+  ar: "يردّ على الهاتف الأرضي خارج أوقات الدوام ويسجّل الطلب."
+does:
+  en: "It answers your landline after hours, asks what the caller needs and logs the request for your staff to call back in the morning."
+  ar: "يردّ على هاتف المكتب الأرضي خارج أوقات الدوام، ويسأل المتصل عمّا يحتاجه، ويسجّل الطلب ليعاود موظفوك الاتصال به في الصباح."
+never:
+  en: "It never confirms a booking or gives a final price on the phone. It takes the request, and your staff call back."
+  ar: "لا يؤكّد حجزاً ولا يعطي سعراً نهائياً على الهاتف. يسجّل الطلب، وموظفوك يعاودون الاتصال."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: customer
+    text:
+      en: "A customer calls the office at 10 PM."
+      ar: "عميل يتصل بالمكتب الساعة 10 مساءً."
+  - who: system
+    text:
+      en: "The receptionist answers and asks what they need."
+      ar: "موظف الاستقبال يردّ ويسأله عمّا يحتاجه."
+  - who: customer
+    text:
+      en: "They want an Umrah trip for two in January."
+      ar: "يريد رحلة عمرة لشخصين في يناير."
+  - who: system
+    text:
+      en: "The request is logged with the caller's number."
+      ar: "يُسجَّل الطلب مع رقم المتصل."
+  - who: team
+    text:
+      en: "In the morning, staff call back with an offer."
+      ar: "في الصباح يعاود الموظفون الاتصال به بعرض."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: two-languages
+    name:
+      en: "Calls in Arabic and English"
+      ar: "مكالمات بالعربية والإنجليزية"
+  - id: call-summary
+    name:
+      en: "A written summary of each call"
+      ar: "ملخص مكتوب لكل مكالمة"
+  - id: urgent-transfer
+    name:
+      en: "Urgent calls passed to a staff mobile"
+      ar: "تحويل المكالمات العاجلة إلى هاتف أحد الموظفين"
+faqs:
+  - question:
+      en: "Why is this one \"On request\"?"
+      ar: "لماذا يحمل هذا النظام وسم «عند الطلب»؟"
+    answer:
+      en: "It is more advanced than the message systems and is built to order. We explain what is involved on the call."
+      ar: "لأنه أكثر تقدّماً من أنظمة الرسائل ويُبنى حسب الطلب. نشرح لك ما يتطلّبه في المكالمة."
+  - question:
+      en: "When does it answer?"
+      ar: "متى يردّ؟"
+    answer:
+      en: "Outside your working hours, or whenever nobody picks up. You choose in setup."
+      ar: "خارج أوقات دوامك، أو كلما لم يردّ أحد. أنت تختار عند الإعداد."
+  - question:
+      en: "What does my team get?"
+      ar: "ماذا يستلم فريقي؟"
+    answer:
+      en: "A note for each call with what the caller asked for and their number."
+      ar: "ملاحظة عن كل مكالمة فيها ما طلبه المتصل ورقمه."
+related: [1, 16, 18]

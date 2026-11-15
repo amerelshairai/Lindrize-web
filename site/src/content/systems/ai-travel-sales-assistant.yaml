@@ -1,10 +1,86 @@
-id: ai-travel-sales-assistant
 number: 1
 group: win-bookings
 status: live-demo
 name:
   en: "AI Travel Sales Assistant"
-  ar: "مساعد مبيعات السفر (AI Travel Sales Assistant)"
+  ar: "مساعد مبيعات السفر"
 summary:
   en: "Answers Instagram, WhatsApp and Messenger in seconds and sends your staff a booking request."
   ar: "يردّ على رسائل Instagram و WhatsApp و Messenger خلال ثوانٍ ويرسل لموظفيك طلب حجز."
+does:
+  en: "It answers your customers on Instagram, WhatsApp and Messenger within seconds, day and night, in Jordanian Arabic or English. It recommends your packages, quotes from your price list, collects the traveller's details and sends your staff a ready booking request on Telegram."
+  ar: "يردّ على عملائك في Instagram و WhatsApp و Messenger خلال ثوانٍ، ليلاً ونهاراً، باللهجة الأردنية أو بالإنجليزية. يقترح باقاتك، ويعرض الأسعار من قائمة أسعارك، ويجمع بيانات المسافر، ثم يرسل لموظفيك طلب حجز جاهزاً على Telegram."
+never:
+  en: "It never confirms a booking and never takes a payment. Your staff review every request and keep the final word."
+  ar: "لا يؤكّد حجزاً ولا يستلم دفعةً أبداً. موظفوك يراجعون كل طلب، والكلمة الأخيرة لهم."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: customer
+    text:
+      en: "A customer asks about a family trip at 11:40 PM."
+      ar: "عميل يسأل عن رحلة عائلية الساعة 11:40 مساءً."
+  - who: system
+    text:
+      en: "The assistant asks how many travellers and which month."
+      ar: "المساعد يسأل عن عدد المسافرين وشهر السفر."
+  - who: system
+    text:
+      en: "It recommends a package and quotes from the price list."
+      ar: "يقترح باقة ويعرض سعرها من قائمة الأسعار."
+  - who: customer
+    text:
+      en: "The customer gives a name and a phone number."
+      ar: "العميل يرسل اسمه ورقم هاتفه."
+  - who: team
+    text:
+      en: "Staff receive a ready booking request on Telegram."
+      ar: "يصل الموظفين طلب حجز جاهز على Telegram."
+  - who: team
+    text:
+      en: "A staff member confirms the booking with the customer."
+      ar: "أحد الموظفين يؤكّد الحجز مع العميل."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: voice-notes
+    name:
+      en: "Understands voice notes"
+      ar: "فهم الرسائل الصوتية"
+  - id: extra-language
+    name:
+      en: "An extra language for foreign visitors"
+      ar: "لغة إضافية للزوار الأجانب"
+  - id: website-chat
+    name:
+      en: "The same assistant on your website"
+      ar: "المساعد نفسه على موقعك الإلكتروني"
+  - id: daily-summary
+    name:
+      en: "A daily summary for the owner"
+      ar: "ملخص يومي لصاحب المكتب"
+faqs:
+  - question:
+      en: "Which apps does it answer on?"
+      ar: "على أي تطبيقات يردّ؟"
+    answer:
+      en: "Instagram, WhatsApp and Messenger. Customers write to your agency's own accounts, as they do today."
+      ar: "Instagram و WhatsApp و Messenger. يراسل العملاء حسابات مكتبك نفسها كما يفعلون اليوم."
+  - question:
+      en: "How does my team receive a booking request?"
+      ar: "كيف يستلم فريقي طلب الحجز؟"
+    answer:
+      en: "As a message on Telegram with the traveller's name, phone number, the package, the dates and the quoted price. Your staff take it from there."
+      ar: "رسالة على Telegram فيها اسم المسافر ورقم هاتفه والباقة والتواريخ والسعر المعروض. ومن هناك يكمل موظفوك."
+  - question:
+      en: "What happens when a customer asks something it cannot answer?"
+      ar: "ماذا يحدث إذا سأل العميل سؤالاً لا يستطيع الإجابة عنه؟"
+    answer:
+      en: "It is set up to answer from your packages and price list. When a question falls outside them, it hands the conversation to your staff."
+      ar: "هو مُعَدّ ليجيب من باقاتك وقائمة أسعارك. وإذا خرج السؤال عنهما، حوّل المحادثة إلى موظفيك."
+related: [2, 5, 16]
+seo:
+  title:
+    en: "AI Travel Sales Assistant for Instagram and WhatsApp | Lindrize"
+    ar: "مساعد مبيعات السفر على Instagram و WhatsApp | Lindrize"
+  description:
+    en: "An AI assistant that answers your travel agency's Instagram, WhatsApp and Messenger in seconds, quotes from your price list and sends staff a ready booking request."
+    ar: "مساعد بالذكاء الاصطناعي يردّ على رسائل مكتبك السياحي في Instagram و WhatsApp و Messenger خلال ثوانٍ، يعرض الأسعار من قائمتك ويرسل لموظفيك طلب حجز جاهزاً."

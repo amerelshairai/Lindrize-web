@@ -1,0 +1,71 @@
+number: 17
+group: run-office
+status: on-request
+name:
+  en: "Owner Daily Summary"
+  ar: "الملخص اليومي لصاحب المكتب"
+summary:
+  en: "Each morning: inquiries, bookings, response times and top destinations."
+  ar: "كل صباح: الاستفسارات والحجوزات وأوقات الردّ وأكثر الوجهات طلباً."
+does:
+  en: "Each morning it sends the owner one short message: yesterday's inquiries, bookings, response times and the destinations people asked about most."
+  ar: "كل صباح يرسل لصاحب المكتب رسالة قصيرة واحدة: استفسارات الأمس، والحجوزات، وأوقات الردّ، وأكثر الوجهات التي سأل عنها العملاء."
+never:
+  en: "It never sends your numbers to anyone except the people you name."
+  ar: "لا يرسل أرقامك لأحد غير من تسمّيهم."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: system
+    text:
+      en: "Overnight, the system counts yesterday's inquiries and bookings."
+      ar: "خلال الليل يحصي النظام استفسارات الأمس وحجوزاته."
+  - who: team
+    text:
+      en: "In the morning, the owner gets one message on Telegram."
+      ar: "في الصباح تصل صاحب المكتب رسالة واحدة على Telegram."
+  - who: team
+    text:
+      en: "It lists the inquiries, the booking requests and the slowest reply."
+      ar: "فيها الاستفسارات وطلبات الحجز وأبطأ ردّ."
+  - who: team
+    text:
+      en: "The owner sees that Dubai was asked about most."
+      ar: "يرى صاحب المكتب أن دبي كانت الأكثر سؤالاً."
+  - who: team
+    text:
+      en: "They ask staff to prepare a Dubai offer."
+      ar: "فيطلب من الموظفين تجهيز عرض لدبي."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: weekly
+    name:
+      en: "A weekly summary as well"
+      ar: "ملخص أسبوعي أيضاً"
+  - id: compare
+    name:
+      en: "Compare with last week"
+      ar: "مقارنة بالأسبوع الماضي"
+  - id: more-people
+    name:
+      en: "Send it to more than one person"
+      ar: "إرساله إلى أكثر من شخص"
+faqs:
+  - question:
+      en: "Where does it get the numbers?"
+      ar: "من أين يأتي بالأرقام؟"
+    answer:
+      en: "From the systems you use with it. It counts what they recorded."
+      ar: "من الأنظمة التي تستخدمها معه. يحصي ما سجّلته."
+  - question:
+      en: "How do I receive it?"
+      ar: "كيف أستلمه؟"
+    answer:
+      en: "As a message on Telegram or WhatsApp, at the time you choose."
+      ar: "رسالة على Telegram أو WhatsApp في الوقت الذي تختاره."
+  - question:
+      en: "Can I get it weekly?"
+      ar: "هل أستطيع استلامه أسبوعياً؟"
+    answer:
+      en: "Yes. A weekly summary can be added."
+      ar: "نعم. يمكن إضافة ملخص أسبوعي."
+related: [16, 18, 27]

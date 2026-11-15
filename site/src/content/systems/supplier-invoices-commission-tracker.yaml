@@ -1,0 +1,71 @@
+number: 25
+group: run-office
+status: on-request
+name:
+  en: "Supplier Invoices & Commission Tracker"
+  ar: "فواتير المورّدين والعمولات"
+summary:
+  en: "Tracks what is owed to suppliers and what is earned."
+  ar: "يتابع ما عليك للمورّدين وما تكسبه."
+does:
+  en: "It tracks what you owe each supplier and what you earn on each booking, so you know your margin before the month ends."
+  ar: "يتابع ما عليك لكل مورّد وما تكسبه من كل حجز، فتعرف هامش ربحك قبل نهاية الشهر."
+never:
+  en: "It never pays a supplier. It shows what is due, and you decide."
+  ar: "لا يدفع لمورّد. يُظهر ما هو مستحَق، والقرار لك."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff record a hotel invoice against a group booking."
+      ar: "الموظفون يسجّلون فاتورة فندق على حجز مجموعة."
+  - who: system
+    text:
+      en: "The system matches it to the booking and shows the margin."
+      ar: "النظام يربطها بالحجز ويُظهر هامش الربح."
+  - who: system
+    text:
+      en: "It lists the supplier invoices due this week."
+      ar: "ويعرض فواتير المورّدين المستحَقة هذا الأسبوع."
+  - who: team
+    text:
+      en: "The owner approves the payments."
+      ar: "صاحب المكتب يوافق على الدفعات."
+  - who: team
+    text:
+      en: "The month's commission report goes to the accountant."
+      ar: "يُرسَل تقرير عمولات الشهر إلى المحاسب."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: due-this-week
+    name:
+      en: "Invoices due this week"
+      ar: "الفواتير المستحَقة هذا الأسبوع"
+  - id: margin
+    name:
+      en: "The margin on each booking"
+      ar: "هامش الربح في كل حجز"
+  - id: monthly-report
+    name:
+      en: "A monthly commission report"
+      ar: "تقرير شهري بالعمولات"
+faqs:
+  - question:
+      en: "Where do the numbers come from?"
+      ar: "من أين تأتي الأرقام؟"
+    answer:
+      en: "From the invoices and bookings your staff record."
+      ar: "من الفواتير والحجوزات التي يسجّلها موظفوك."
+  - question:
+      en: "Does it pay suppliers?"
+      ar: "هل يدفع للمورّدين؟"
+    answer:
+      en: "No. It shows what is due and when."
+      ar: "لا. يُظهر المبالغ المستحَقة ومواعيدها."
+  - question:
+      en: "Who can see the margins?"
+      ar: "من يستطيع رؤية هوامش الربح؟"
+    answer:
+      en: "Only the people you choose."
+      ar: "من تختارهم فقط."
+related: [24, 20, 17]

@@ -1,0 +1,71 @@
+number: 6
+group: win-bookings
+status: on-request
+name:
+  en: "Website Chat & Booking Request"
+  ar: "محادثة الموقع وطلب الحجز"
+summary:
+  en: "The same assistant on the agency's website."
+  ar: "المساعد نفسه على موقع المكتب الإلكتروني."
+does:
+  en: "It puts the same assistant on your agency's website. Visitors ask in a chat window, get answers from your packages and price list, and your staff receive a ready booking request."
+  ar: "يضع المساعد نفسه على موقع مكتبك. يسأل الزوار في نافذة محادثة، ويحصلون على إجابات من باقاتك وقائمة أسعارك، ويصل موظفيك طلب حجز جاهز."
+never:
+  en: "It never confirms a booking and never takes a payment on the website. Your staff do both."
+  ar: "لا يؤكّد حجزاً ولا يستلم دفعةً على الموقع. موظفوك هم من يقومون بالأمرين."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: customer
+    text:
+      en: "A visitor opens your website and asks about honeymoon trips."
+      ar: "زائر يفتح موقعك ويسأل عن رحلات شهر العسل."
+  - who: system
+    text:
+      en: "The chat recommends a package and quotes from the price list."
+      ar: "المحادثة تقترح باقة وتعرض سعرها من قائمة الأسعار."
+  - who: customer
+    text:
+      en: "The visitor leaves a name and a phone number."
+      ar: "الزائر يترك اسمه ورقم هاتفه."
+  - who: team
+    text:
+      en: "Staff receive the booking request on Telegram."
+      ar: "يصل الموظفين طلب الحجز على Telegram."
+  - who: team
+    text:
+      en: "A staff member calls the visitor to confirm."
+      ar: "أحد الموظفين يتصل بالزائر للتأكيد."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: two-languages
+    name:
+      en: "Chat in Arabic and English"
+      ar: "محادثة بالعربية والإنجليزية"
+  - id: site-colours
+    name:
+      en: "Colours that match your website"
+      ar: "ألوان تطابق موقعك"
+  - id: starter-questions
+    name:
+      en: "Suggested questions to start the chat"
+      ar: "أسئلة مقترحة لبدء المحادثة"
+faqs:
+  - question:
+      en: "Do I need a new website?"
+      ar: "هل أحتاج إلى موقع جديد؟"
+    answer:
+      en: "No. The chat is added to the website you already have."
+      ar: "لا. تُضاف المحادثة إلى موقعك الحالي."
+  - question:
+      en: "Is it the same assistant as on Instagram and WhatsApp?"
+      ar: "هل هو المساعد نفسه الموجود على Instagram و WhatsApp؟"
+    answer:
+      en: "Yes. It uses the same packages, prices and rules, so customers get the same answers everywhere."
+      ar: "نعم. يستخدم الباقات والأسعار والقواعد نفسها، فيحصل العملاء على الإجابات نفسها في كل مكان."
+  - question:
+      en: "What if I do not have a website?"
+      ar: "ماذا لو لم يكن لديّ موقع؟"
+    answer:
+      en: "Then start with the AI Travel Sales Assistant on Instagram and WhatsApp."
+      ar: "ابدأ إذن بمساعد مبيعات السفر على Instagram و WhatsApp."
+related: [1, 4, 16]

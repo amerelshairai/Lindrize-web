@@ -1,0 +1,71 @@
+number: 10
+group: look-after
+status: on-request
+name:
+  en: "Pre-trip Concierge"
+  ar: "مرافق ما قبل الرحلة"
+summary:
+  en: "Meeting point, what to bring, guide contact and weather, sent before departure."
+  ar: "نقطة التجمّع وما يجب إحضاره ورقم المرشد وحالة الطقس، تُرسَل قبل السفر."
+does:
+  en: "Before departure, it sends each traveller what they need to know: the meeting point, what to bring, the guide's contact and the weather."
+  ar: "قبل السفر، يرسل لكل مسافر ما يحتاج إلى معرفته: نقطة التجمّع، وما يجب إحضاره، ورقم المرشد، وحالة الطقس."
+never:
+  en: "It never changes the trip plan. It only sends the details your staff have set."
+  ar: "لا يغيّر خطة الرحلة. يرسل فقط التفاصيل التي حدّدها موظفوك."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff enter the meeting point and the guide's number for a Petra trip."
+      ar: "الموظفون يدخلون نقطة التجمّع ورقم المرشد لرحلة إلى البترا."
+  - who: system
+    text:
+      en: "Two days before departure, travellers get a message with everything they need."
+      ar: "قبل السفر بيومين تصل المسافرين رسالة فيها كل ما يحتاجونه."
+  - who: customer
+    text:
+      en: "A traveller asks what time the bus leaves."
+      ar: "مسافر يسأل عن موعد انطلاق الحافلة."
+  - who: system
+    text:
+      en: "The system answers from the trip details."
+      ar: "النظام يجيب من تفاصيل الرحلة."
+  - who: team
+    text:
+      en: "Staff see that every traveller has received the message."
+      ar: "يرى الموظفون أن الرسالة وصلت إلى كل مسافر."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: weather
+    name:
+      en: "The weather forecast for the destination"
+      ar: "توقعات الطقس في الوجهة"
+  - id: packing-list
+    name:
+      en: "A packing list for each type of trip"
+      ar: "قائمة أغراض لكل نوع رحلة"
+  - id: evening-before
+    name:
+      en: "A short message the evening before"
+      ar: "رسالة قصيرة في المساء السابق للسفر"
+faqs:
+  - question:
+      en: "When are the messages sent?"
+      ar: "متى تُرسَل الرسائل؟"
+    answer:
+      en: "On the days before departure that you choose in setup."
+      ar: "في الأيام التي تختارها قبل السفر عند الإعداد."
+  - question:
+      en: "Can travellers reply with questions?"
+      ar: "هل يستطيع المسافرون الردّ بأسئلة؟"
+    answer:
+      en: "Yes. Simple questions are answered from the trip details. Anything else goes to your staff."
+      ar: "نعم. الأسئلة البسيطة يُجاب عنها من تفاصيل الرحلة، وما عداها يصل إلى موظفيك."
+  - question:
+      en: "Does it work for groups?"
+      ar: "هل يعمل مع المجموعات؟"
+    answer:
+      en: "Yes. Every traveller in the group receives the same details."
+      ar: "نعم. كل مسافر في المجموعة يستلم التفاصيل نفسها."
+related: [7, 11, 13]

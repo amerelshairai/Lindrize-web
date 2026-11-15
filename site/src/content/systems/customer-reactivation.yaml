@@ -1,4 +1,3 @@
-id: customer-reactivation
 number: 3
 group: win-bookings
 status: on-request
@@ -8,3 +7,65 @@ name:
 summary:
   en: "Brings past travellers back with offers for Eid, summer and Umrah season."
   ar: "يعيد المسافرين السابقين بعروض موسمية للعيد والصيف وموسم العمرة."
+does:
+  en: "It brings past travellers back. Before Eid, summer or Umrah season, it sends your previous customers an offer that fits the trip they took before, and passes anyone interested to your staff."
+  ar: "يعيد إليك المسافرين السابقين. قبل العيد أو الصيف أو موسم العمرة، يرسل لعملائك السابقين عرضاً يناسب رحلتهم السابقة، ويحوّل المهتمين إلى موظفيك."
+never:
+  en: "It only messages customers who agreed to hear from you, and it never sends an offer you have not approved."
+  ar: "لا يراسل إلا العملاء الذين وافقوا على استلام رسائلك، ولا يرسل عرضاً لم توافق عليه."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff choose the season and approve the offer."
+      ar: "الموظفون يختارون الموسم ويوافقون على العرض."
+  - who: system
+    text:
+      en: "The system picks past travellers who took a similar trip."
+      ar: "النظام يختار المسافرين السابقين الذين قاموا برحلة مشابهة."
+  - who: customer
+    text:
+      en: "A past Umrah traveller receives this year's offer."
+      ar: "معتمر سابق يستلم عرض هذا العام."
+  - who: customer
+    text:
+      en: "They reply that they want to go again."
+      ar: "يردّ بأنه يريد السفر مجدداً."
+  - who: team
+    text:
+      en: "Staff get the request together with the customer's past trips."
+      ar: "يصل الموظفين الطلب مع رحلات العميل السابقة."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: by-trip
+    name:
+      en: "Group customers by the trips they took"
+      ar: "تصنيف العملاء حسب رحلاتهم السابقة"
+  - id: season-calendar
+    name:
+      en: "A calendar for Eid, summer and Umrah season"
+      ar: "تقويم لمواسم العيد والصيف والعمرة"
+  - id: stop-list
+    name:
+      en: "A stop list for customers who opt out"
+      ar: "قائمة إيقاف لمن لا يرغب في استلام العروض"
+faqs:
+  - question:
+      en: "Where does the customer list come from?"
+      ar: "من أين تأتي قائمة العملاء؟"
+    answer:
+      en: "From your own records of past bookings. We go through them with you in setup."
+      ar: "من سجلات حجوزاتك السابقة. نراجعها معك عند الإعداد."
+  - question:
+      en: "Who writes the offers?"
+      ar: "من يكتب العروض؟"
+    answer:
+      en: "You do, or we draft them for you to approve. Nothing is sent without your approval."
+      ar: "أنت تكتبها، أو نُعدّ لك مسودة لتوافق عليها. لا يُرسَل شيء دون موافقتك."
+  - question:
+      en: "Can customers stop receiving offers?"
+      ar: "هل يستطيع العملاء إيقاف العروض؟"
+    answer:
+      en: "Yes. Anyone who asks to stop is removed from future messages."
+      ar: "نعم. من يطلب الإيقاف يُحذَف من الرسائل القادمة."
+related: [14, 2, 12]

@@ -1,0 +1,71 @@
+number: 23
+group: run-office
+status: on-request
+name:
+  en: "Visa Application Tracker"
+  ar: "متابعة طلبات التأشيرات"
+summary:
+  en: "Status and deadlines per traveller."
+  ar: "حالة كل مسافر ومواعيده النهائية."
+does:
+  en: "It tracks each traveller's visa: what has been submitted, what is still waiting and which deadlines are close."
+  ar: "يتابع تأشيرة كل مسافر: ما قُدِّم، وما زال قيد الانتظار، وأي المواعيد النهائية اقتربت."
+never:
+  en: "It never submits an application and never predicts a decision. It keeps your staff on time."
+  ar: "لا يقدّم طلب تأشيرة ولا يتوقّع نتيجته. يساعد موظفيك على الالتزام بالمواعيد."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff add six travellers who need visas."
+      ar: "الموظفون يضيفون ستة مسافرين يحتاجون إلى تأشيرات."
+  - who: system
+    text:
+      en: "The system lists what each traveller still needs."
+      ar: "النظام يعرض ما ينقص كل مسافر."
+  - who: system
+    text:
+      en: "It warns that one application must be sent within three days."
+      ar: "وينبّه إلى أن أحد الطلبات يجب تقديمه خلال ثلاثة أيام."
+  - who: team
+    text:
+      en: "Staff submit it and update the status."
+      ar: "الموظفون يقدّمونه ويحدّثون حالته."
+  - who: team
+    text:
+      en: "The owner sees every visa and its status in one view."
+      ar: "صاحب المكتب يرى كل تأشيرة وحالتها في عرض واحد."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: deadline-warnings
+    name:
+      en: "Deadline warnings"
+      ar: "تنبيهات المواعيد النهائية"
+  - id: traveller-status
+    name:
+      en: "Tell the traveller when the status changes"
+      ar: "إبلاغ المسافر عند تغيّر الحالة"
+  - id: passport-expiry
+    name:
+      en: "A passport expiry check"
+      ar: "فحص تاريخ انتهاء جواز السفر"
+faqs:
+  - question:
+      en: "Does it apply for visas?"
+      ar: "هل يقدّم طلبات التأشيرات؟"
+    answer:
+      en: "No. Your staff apply. The system tracks each application and its deadline."
+      ar: "لا. موظفوك هم من يقدّمون. النظام يتابع كل طلب وموعده النهائي."
+  - question:
+      en: "Which visas can it track?"
+      ar: "أي التأشيرات يتابع؟"
+    answer:
+      en: "Any visa your agency handles. We set up the steps with you."
+      ar: "أي تأشيرة يتعامل معها مكتبك. نُعدّ الخطوات معك."
+  - question:
+      en: "Can travellers see their status?"
+      ar: "هل يستطيع المسافرون معرفة حالة طلبهم؟"
+    answer:
+      en: "Yes. A status message to the traveller can be added."
+      ar: "نعم. يمكن إضافة رسالة تبلّغ المسافر بالحالة."
+related: [9, 7, 13]

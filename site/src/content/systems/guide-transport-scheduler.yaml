@@ -1,0 +1,71 @@
+number: 21
+group: run-office
+status: on-request
+name:
+  en: "Guide & Transport Scheduler"
+  ar: "جدولة المرشدين والنقل"
+summary:
+  en: "Plans guides, drivers and buses, and spots clashes."
+  ar: "يرتّب المرشدين والسائقين والحافلات ويكشف التعارضات."
+does:
+  en: "It plans your guides, drivers and buses on one calendar and warns you when two trips need the same person or vehicle."
+  ar: "يرتّب مرشديك وسائقيك وحافلاتك في تقويم واحد، وينبّهك عندما تحتاج رحلتان الشخص نفسه أو المركبة نفسها."
+never:
+  en: "It never assigns anyone without your staff's approval."
+  ar: "لا يسند مهمة لأحد دون موافقة موظفيك."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff add a new Wadi Rum trip for Friday."
+      ar: "الموظفون يضيفون رحلة جديدة إلى وادي رم يوم الجمعة."
+  - who: system
+    text:
+      en: "The system suggests a guide and a bus that are free."
+      ar: "النظام يقترح مرشداً وحافلة متاحين."
+  - who: system
+    text:
+      en: "It warns that the usual driver is already booked that day."
+      ar: "وينبّه إلى أن السائق المعتاد محجوز في ذلك اليوم."
+  - who: team
+    text:
+      en: "Staff choose another driver and approve."
+      ar: "الموظفون يختارون سائقاً آخر ويوافقون."
+  - who: system
+    text:
+      en: "The guide and the driver each get their schedule."
+      ar: "يصل المرشد والسائق جدول كلٍّ منهما."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: clash-warnings
+    name:
+      en: "Clash warnings"
+      ar: "تنبيهات التعارض"
+  - id: own-schedule
+    name:
+      en: "Send each guide and driver their own schedule"
+      ar: "إرسال جدول خاص لكل مرشد وسائق"
+  - id: days-off
+    name:
+      en: "Days off and holidays"
+      ar: "أيام الراحة والإجازات"
+faqs:
+  - question:
+      en: "Who can see the calendar?"
+      ar: "من يستطيع رؤية التقويم؟"
+    answer:
+      en: "Your operations staff. Guides and drivers receive only their own schedule."
+      ar: "موظفو التشغيل لديك. أما المرشدون والسائقون فيستلم كلٌّ منهم جدوله فقط."
+  - question:
+      en: "What is a clash?"
+      ar: "ما المقصود بالتعارض؟"
+    answer:
+      en: "Two trips that need the same guide, driver or bus at the same time."
+      ar: "رحلتان تحتاجان المرشد نفسه أو السائق نفسه أو الحافلة نفسها في الوقت نفسه."
+  - question:
+      en: "Can guides confirm their jobs?"
+      ar: "هل يستطيع المرشدون تأكيد مهامهم؟"
+    answer:
+      en: "Yes. A confirmation step can be added."
+      ar: "نعم. يمكن إضافة خطوة تأكيد."
+related: [20, 22, 10]

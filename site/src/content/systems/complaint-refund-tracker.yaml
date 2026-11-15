@@ -1,0 +1,71 @@
+number: 26
+group: run-office
+status: on-request
+name:
+  en: "Complaint & Refund Tracker"
+  ar: "متابعة الشكاوى والاستردادات"
+summary:
+  en: "Every case logged, assigned and closed on time."
+  ar: "كل حالة تُسجَّل وتُسنَد وتُغلَق في موعدها."
+does:
+  en: "It logs every complaint and refund request, gives it an owner on your team and a deadline, and shows which cases are still open."
+  ar: "يسجّل كل شكوى وكل طلب استرداد، ويحدّد له موظفاً مسؤولاً وموعداً نهائياً، ويُظهر الحالات التي ما زالت مفتوحة."
+never:
+  en: "It never approves a refund or replies to a complaint. A person on your team decides every case."
+  ar: "لا يوافق على استرداد ولا يردّ على شكوى. أحد أفراد فريقك يقرّر في كل حالة."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: customer
+    text:
+      en: "A traveller complains that the hotel room was not as promised."
+      ar: "مسافر يشتكي من أن غرفة الفندق لم تكن كما وُعِد."
+  - who: system
+    text:
+      en: "The system logs the case and assigns it to a staff member."
+      ar: "النظام يسجّل الحالة ويسندها إلى أحد الموظفين."
+  - who: system
+    text:
+      en: "Two days later, it reminds them that the deadline is tomorrow."
+      ar: "بعد يومين يذكّره بأن الموعد النهائي غداً."
+  - who: team
+    text:
+      en: "The staff member agrees a solution with the traveller."
+      ar: "الموظف يتفق مع المسافر على حل."
+  - who: team
+    text:
+      en: "The case is closed with a note of what was done."
+      ar: "تُغلَق الحالة مع ملاحظة بما تمّ."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: deadlines
+    name:
+      en: "A deadline and reminders for each case"
+      ar: "موعد نهائي وتذكيرات لكل حالة"
+  - id: monthly-list
+    name:
+      en: "A monthly list of what customers complained about"
+      ar: "قائمة شهرية بما اشتكى منه العملاء"
+  - id: serious-cases
+    name:
+      en: "Tell the owner about serious cases straight away"
+      ar: "إبلاغ صاحب المكتب بالحالات الخطيرة فوراً"
+faqs:
+  - question:
+      en: "How does a complaint get into the tracker?"
+      ar: "كيف تدخل الشكوى إلى النظام؟"
+    answer:
+      en: "A staff member logs it, or it comes in from another system such as the In-trip Support Line."
+      ar: "يسجّلها أحد الموظفين، أو تصل من نظام آخر مثل خط الدعم أثناء الرحلة."
+  - question:
+      en: "Who decides refunds?"
+      ar: "من يقرّر الاستردادات؟"
+    answer:
+      en: "Your team. The tracker records the decision and the date."
+      ar: "فريقك. النظام يسجّل القرار وتاريخه."
+  - question:
+      en: "Can I see patterns?"
+      ar: "هل أستطيع رؤية ما يتكرر؟"
+    answer:
+      en: "Yes. A monthly list shows what customers complained about most."
+      ar: "نعم. قائمة شهرية تُظهر أكثر ما اشتكى منه العملاء."
+related: [11, 12, 27]

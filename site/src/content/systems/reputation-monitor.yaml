@@ -1,0 +1,71 @@
+number: 27
+group: run-office
+status: on-request
+name:
+  en: "Reputation Monitor"
+  ar: "مراقبة السمعة"
+summary:
+  en: "Alerts on new Google or TripAdvisor reviews, with suggested replies."
+  ar: "تنبيهات بالتقييمات الجديدة على Google أو TripAdvisor مع ردود مقترحة."
+does:
+  en: "It alerts you when a new review appears on Google or TripAdvisor and drafts a reply for your staff to edit and post."
+  ar: "ينبّهك عند ظهور تقييم جديد على Google أو TripAdvisor، ويُعدّ مسودة ردّ يعدّلها موظفوك ثم ينشرونها."
+never:
+  en: "It never posts a reply by itself. A person on your team reads, edits and posts every answer."
+  ar: "لا ينشر ردّاً من تلقاء نفسه. أحد أفراد فريقك يقرأ كل ردّ ويعدّله وينشره."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: customer
+    text:
+      en: "A traveller leaves a low rating on Google."
+      ar: "مسافر يترك تقييماً منخفضاً على Google."
+  - who: system
+    text:
+      en: "Staff get an alert with the review."
+      ar: "يصل الموظفين تنبيه فيه نص التقييم."
+  - who: system
+    text:
+      en: "The system drafts a calm, polite reply."
+      ar: "النظام يُعدّ مسودة ردّ هادئة ولبقة."
+  - who: team
+    text:
+      en: "A staff member edits the draft and posts it."
+      ar: "أحد الموظفين يعدّل المسودة وينشرها."
+  - who: team
+    text:
+      en: "The owner sees new reviews in the daily summary."
+      ar: "صاحب المكتب يرى التقييمات الجديدة في الملخص اليومي."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: two-languages
+    name:
+      en: "Suggested replies in Arabic and English"
+      ar: "ردود مقترحة بالعربية والإنجليزية"
+  - id: weekly-count
+    name:
+      en: "A weekly count of new reviews"
+      ar: "إحصاء أسبوعي للتقييمات الجديدة"
+  - id: low-rating-alert
+    name:
+      en: "An urgent alert for low ratings"
+      ar: "تنبيه عاجل عند التقييمات المنخفضة"
+faqs:
+  - question:
+      en: "Which sites does it watch?"
+      ar: "أي المواقع يراقب؟"
+    answer:
+      en: "Google and TripAdvisor."
+      ar: "Google و TripAdvisor."
+  - question:
+      en: "Does it reply for me?"
+      ar: "هل يردّ نيابة عني؟"
+    answer:
+      en: "No. It drafts a reply. Your staff decide what to post."
+      ar: "لا. يُعدّ مسودة ردّ، وموظفوك يقرّرون ما يُنشَر."
+  - question:
+      en: "How do I get the alerts?"
+      ar: "كيف تصلني التنبيهات؟"
+    answer:
+      en: "As a message on Telegram or WhatsApp, or in your daily summary."
+      ar: "رسالة على Telegram أو WhatsApp، أو ضمن ملخصك اليومي."
+related: [12, 26, 17]

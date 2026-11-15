@@ -1,0 +1,71 @@
+number: 19
+group: run-office
+status: on-request
+name:
+  en: "Package & Price Updater"
+  ar: "تحديث الباقات والأسعار"
+summary:
+  en: "Staff edit one sheet, and the assistant, website and quotes update."
+  ar: "يعدّل الموظفون جدولاً واحداً فيتحدّث المساعد والموقع وعروض الأسعار."
+does:
+  en: "Your staff edit one sheet of packages and prices. The assistant, your website and your quotes then use the new prices without anyone retyping them."
+  ar: "يعدّل موظفوك جدولاً واحداً للباقات والأسعار، فيستخدم المساعد وموقعك وعروض أسعارك الأسعار الجديدة دون أن يعيد أحد كتابتها."
+never:
+  en: "It never changes a price by itself. Only your staff edit the sheet."
+  ar: "لا يغيّر سعراً من تلقاء نفسه. موظفوك وحدهم يعدّلون الجدول."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "A staff member changes the Sharm El Sheikh family price in the sheet."
+      ar: "أحد الموظفين يغيّر سعر باقة شرم الشيخ العائلية في الجدول."
+  - who: system
+    text:
+      en: "The system checks the sheet for missing or unusual values."
+      ar: "النظام يفحص الجدول بحثاً عن قيم ناقصة أو غير معتادة."
+  - who: system
+    text:
+      en: "The assistant, the website and new quotes pick up the new price."
+      ar: "المساعد والموقع وعروض الأسعار الجديدة تستخدم السعر الجديد."
+  - who: customer
+    text:
+      en: "A customer who asks that evening gets the new price."
+      ar: "عميل يسأل في المساء فيحصل على السعر الجديد."
+  - who: team
+    text:
+      en: "Staff see a note of what changed and when."
+      ar: "يرى الموظفون ملاحظة بما تغيّر ومتى."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: odd-values
+    name:
+      en: "A warning about missing or unusual prices"
+      ar: "تنبيه عند وجود أسعار ناقصة أو غير معتادة"
+  - id: change-record
+    name:
+      en: "A record of every price change"
+      ar: "سجل بكل تغيير في الأسعار"
+  - id: season-prices
+    name:
+      en: "Season prices with start and end dates"
+      ar: "أسعار موسمية بتاريخ بداية ونهاية"
+faqs:
+  - question:
+      en: "What is the sheet?"
+      ar: "ما هو الجدول؟"
+    answer:
+      en: "A spreadsheet of your packages and prices that we set up with you."
+      ar: "جدول بيانات لباقاتك وأسعارك نُعدّه معك."
+  - question:
+      en: "How fast do changes appear?"
+      ar: "متى تظهر التغييرات؟"
+    answer:
+      en: "Shortly after staff save them."
+      ar: "بعد أن يحفظها الموظفون بوقت قصير."
+  - question:
+      en: "What if someone makes a typing mistake?"
+      ar: "ماذا لو أخطأ أحدهم في الكتابة؟"
+    answer:
+      en: "The system flags values that look wrong, such as an empty price, so staff can check them."
+      ar: "ينبّه النظام إلى القيم التي تبدو خاطئة، كسعر فارغ، ليراجعها الموظفون."
+related: [1, 4, 6]

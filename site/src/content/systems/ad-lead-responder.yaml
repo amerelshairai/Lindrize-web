@@ -1,0 +1,71 @@
+number: 5
+group: win-bookings
+status: on-request
+name:
+  en: "Ad Lead Responder"
+  ar: "الردّ على عملاء الإعلانات"
+summary:
+  en: "Replies on WhatsApp within seconds to people who fill in a Meta or Google ad form."
+  ar: "يردّ عبر WhatsApp خلال ثوانٍ على من يملأ نموذج إعلان على Meta أو Google."
+does:
+  en: "It replies on WhatsApp within seconds to people who fill in your Meta or Google ad form, while they are still interested, and passes the serious ones to your staff."
+  ar: "يردّ عبر WhatsApp خلال ثوانٍ على من يملأ نموذج إعلانك على Meta أو Google، وهو ما زال مهتماً، ثم يحوّل الجادّين منهم إلى موظفيك."
+never:
+  en: "It never promises a price or a seat that is not in your price list, and it never confirms a booking."
+  ar: "لا يَعِد بسعر أو مقعد غير موجود في قائمة أسعارك، ولا يؤكّد حجزاً."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: customer
+    text:
+      en: "Someone fills in your Sharm El Sheikh ad form on Instagram."
+      ar: "شخص يملأ نموذج إعلانك عن شرم الشيخ على Instagram."
+  - who: system
+    text:
+      en: "Seconds later, they get a WhatsApp message about that offer."
+      ar: "بعد ثوانٍ تصله رسالة WhatsApp عن ذلك العرض."
+  - who: customer
+    text:
+      en: "They ask about dates and children's prices."
+      ar: "يسأل عن التواريخ وأسعار الأطفال."
+  - who: system
+    text:
+      en: "The system answers from the price list and collects their details."
+      ar: "النظام يجيب من قائمة الأسعار ويجمع بياناته."
+  - who: team
+    text:
+      en: "Staff receive a booking request that names the ad it came from."
+      ar: "يصل الموظفين طلب حجز يذكر الإعلان الذي جاء منه."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: ad-source
+    name:
+      en: "Tell staff which ad each lead came from"
+      ar: "إخبار الموظفين بالإعلان الذي جاء منه كل عميل"
+  - id: no-answer
+    name:
+      en: "Follow up with people who do not answer"
+      ar: "متابعة من لا يردّ"
+  - id: first-questions
+    name:
+      en: "Ask a few questions before passing the lead to staff"
+      ar: "طرح بضعة أسئلة قبل تحويل العميل إلى الموظفين"
+faqs:
+  - question:
+      en: "Which ad forms does it work with?"
+      ar: "مع أي نماذج إعلانات يعمل؟"
+    answer:
+      en: "Lead forms on Meta (Facebook and Instagram) and on Google."
+      ar: "نماذج العملاء المحتملين على Meta (Facebook و Instagram) وعلى Google."
+  - question:
+      en: "What does the first message say?"
+      ar: "ماذا تقول الرسالة الأولى؟"
+    answer:
+      en: "It mentions the offer the person asked about and asks what they need. You approve the wording in setup."
+      ar: "تذكر العرض الذي سأل عنه الشخص وتسأله عمّا يحتاجه. أنت توافق على صياغتها عند الإعداد."
+  - question:
+      en: "What if the person does not reply?"
+      ar: "ماذا لو لم يردّ الشخص؟"
+    answer:
+      en: "The lead still goes to your staff with the details from the form."
+      ar: "يصل العميل إلى موظفيك على أي حال مع البيانات التي أدخلها في النموذج."
+related: [1, 2, 16]

@@ -1,0 +1,71 @@
+number: 30
+group: run-office
+status: on-request
+name:
+  en: "Partner Inbox Triage"
+  ar: "فرز بريد الشركاء"
+summary:
+  en: "Sorts emails from airlines, hotels and B2B partners and flags the urgent ones."
+  ar: "يفرز رسائل شركات الطيران والفنادق والشركاء ويميّز العاجل منها."
+does:
+  en: "It sorts the emails you get from airlines, hotels and B2B partners, and flags the urgent ones, such as a schedule change, so they are not missed."
+  ar: "يفرز الرسائل الإلكترونية الواردة من شركات الطيران والفنادق والشركاء، ويميّز العاجل منها، كتغيير موعد رحلة، حتى لا يفوتك."
+never:
+  en: "It never replies to a partner or deletes an email. It sorts and flags, and your staff answer."
+  ar: "لا يردّ على شريك ولا يحذف رسالة. يفرز ويميّز، وموظفوك هم من يردّون."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: system
+    text:
+      en: "Partner emails arrive overnight."
+      ar: "رسائل الشركاء تصل خلال الليل."
+  - who: system
+    text:
+      en: "The system sorts them: offers, invoices and schedule changes."
+      ar: "النظام يفرزها: عروض، وفواتير، وتغييرات في المواعيد."
+  - who: system
+    text:
+      en: "It flags a flight time change for a group leaving tomorrow."
+      ar: "ويميّز تغييراً في موعد رحلة جوية لمجموعة تسافر غداً."
+  - who: team
+    text:
+      en: "Staff see the flagged email first and call the group."
+      ar: "يرى الموظفون الرسالة المميَّزة أولاً فيتصلون بالمجموعة."
+  - who: team
+    text:
+      en: "The rest are read later, already sorted."
+      ar: "أما البقية فتُقرَأ لاحقاً وهي مفروزة."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: telegram-alerts
+    name:
+      en: "Urgent alerts on Telegram"
+      ar: "تنبيهات عاجلة على Telegram"
+  - id: short-summary
+    name:
+      en: "A short summary of each email"
+      ar: "ملخص قصير لكل رسالة"
+  - id: folders
+    name:
+      en: "Folders by airline, hotel or partner"
+      ar: "مجلدات حسب شركة الطيران أو الفندق أو الشريك"
+faqs:
+  - question:
+      en: "Does it read all our email?"
+      ar: "هل يقرأ كل بريدنا؟"
+    answer:
+      en: "Only the inbox you connect, such as your partners or reservations address."
+      ar: "يقرأ فقط صندوق البريد الذي تربطه به، مثل عنوان الشركاء أو الحجوزات."
+  - question:
+      en: "What counts as urgent?"
+      ar: "ما الذي يُعَدّ عاجلاً؟"
+    answer:
+      en: "You decide in setup. Schedule changes and cancellations are typical examples."
+      ar: "أنت تحدّد ذلك عند الإعداد. من الأمثلة المعتادة: تغييرات المواعيد والإلغاءات."
+  - question:
+      en: "Does it reply to partners?"
+      ar: "هل يردّ على الشركاء؟"
+    answer:
+      en: "No. Your staff reply."
+      ar: "لا. موظفوك هم من يردّون."
+related: [20, 18, 7]

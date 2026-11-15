@@ -1,0 +1,71 @@
+number: 7
+group: look-after
+status: on-request
+name:
+  en: "Booking Confirmation & Travel Updates"
+  ar: "تأكيد الحجز وتحديثات الرحلة"
+summary:
+  en: "Confirmations, flight and hotel details, and change alerts."
+  ar: "تأكيد الحجز وتفاصيل الطيران والفندق وتنبيهات التغيير."
+does:
+  en: "After your staff confirm a booking, it sends the traveller their confirmation, flight and hotel details, and an alert whenever something changes."
+  ar: "بعد أن يؤكّد موظفوك الحجز، يرسل للمسافر تأكيد الحجز وتفاصيل الرحلة الجوية والفندق، وينبّهه عند أي تغيير."
+never:
+  en: "It never confirms a booking by itself. It only sends what your staff have confirmed."
+  ar: "لا يؤكّد حجزاً من تلقاء نفسه. يرسل فقط ما أكّده موظفوك."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "A staff member marks a booking as confirmed."
+      ar: "أحد الموظفين يسجّل الحجز على أنه مؤكَّد."
+  - who: system
+    text:
+      en: "The system sends the traveller a confirmation with the trip details."
+      ar: "النظام يرسل للمسافر تأكيداً مع تفاصيل الرحلة."
+  - who: team
+    text:
+      en: "Later, staff update the flight time."
+      ar: "لاحقاً يعدّل الموظفون موعد الرحلة الجوية."
+  - who: system
+    text:
+      en: "The traveller gets a change alert straight away."
+      ar: "يصل المسافر تنبيه بالتغيير فوراً."
+  - who: customer
+    text:
+      en: "The traveller replies that they have seen it."
+      ar: "المسافر يردّ بأنه اطّلع عليه."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: day-before
+    name:
+      en: "A reminder the day before departure"
+      ar: "تذكير قبل السفر بيوم"
+  - id: two-languages
+    name:
+      en: "Details in Arabic and English"
+      ar: "التفاصيل بالعربية والإنجليزية"
+  - id: seen-check
+    name:
+      en: "Ask the traveller to confirm they saw a change"
+      ar: "طلب تأكيد المسافر أنه اطّلع على التغيير"
+faqs:
+  - question:
+      en: "Where do the trip details come from?"
+      ar: "من أين تأتي تفاصيل الرحلة؟"
+    answer:
+      en: "From what your staff enter when they confirm the booking."
+      ar: "مما يدخله موظفوك عند تأكيد الحجز."
+  - question:
+      en: "How do travellers receive the messages?"
+      ar: "كيف تصل الرسائل إلى المسافرين؟"
+    answer:
+      en: "On the messaging app they used to book with you."
+      ar: "على تطبيق المراسلة الذي حجزوا عبره معك."
+  - question:
+      en: "What if a traveller has a question?"
+      ar: "ماذا لو كان لدى المسافر سؤال؟"
+    answer:
+      en: "Their reply goes to your staff."
+      ar: "يصل ردّه إلى موظفيك."
+related: [10, 8, 11]

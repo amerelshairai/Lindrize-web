@@ -1,0 +1,71 @@
+number: 14
+group: win-bookings
+status: on-request
+name:
+  en: "Offer Broadcasts"
+  ar: "إرسال العروض"
+summary:
+  en: "New packages sent to opted-in customers, grouped by interest."
+  ar: "إرسال الباقات الجديدة إلى العملاء الموافقين على استلامها، حسب اهتماماتهم."
+does:
+  en: "It sends your new packages to customers who agreed to hear from you, grouped by what interests them: Umrah, family trips or honeymoons."
+  ar: "يرسل باقاتك الجديدة إلى العملاء الذين وافقوا على استلام عروضك، مصنّفين حسب اهتماماتهم: العمرة، أو الرحلات العائلية، أو شهر العسل."
+never:
+  en: "It never messages anyone who has not agreed to receive offers, and anyone can stop them with one reply."
+  ar: "لا يراسل أحداً لم يوافق على استلام العروض، ويستطيع أي عميل إيقافها بردّ واحد."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff add a new Sharm El Sheikh family package."
+      ar: "الموظفون يضيفون باقة عائلية جديدة إلى شرم الشيخ."
+  - who: system
+    text:
+      en: "The system selects customers interested in family trips."
+      ar: "النظام يختار العملاء المهتمين بالرحلات العائلية."
+  - who: customer
+    text:
+      en: "They receive the offer on WhatsApp."
+      ar: "يصلهم العرض على WhatsApp."
+  - who: customer
+    text:
+      en: "One of them asks for the price for five people."
+      ar: "أحدهم يسأل عن السعر لخمسة أشخاص."
+  - who: team
+    text:
+      en: "Staff receive the request and continue the conversation."
+      ar: "يصل الطلب إلى الموظفين فيكملون المحادثة."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: by-interest
+    name:
+      en: "Customer groups by interest"
+      ar: "مجموعات العملاء حسب الاهتمام"
+  - id: send-time
+    name:
+      en: "Send at the time you choose"
+      ar: "الإرسال في الوقت الذي تختاره"
+  - id: reply-count
+    name:
+      en: "A count of replies for each offer"
+      ar: "إحصاء الردود على كل عرض"
+faqs:
+  - question:
+      en: "Who receives the offers?"
+      ar: "من يستلم العروض؟"
+    answer:
+      en: "Only customers who agreed to receive them."
+      ar: "العملاء الذين وافقوا على استلامها فقط."
+  - question:
+      en: "How do customers stop them?"
+      ar: "كيف يوقف العملاء العروض؟"
+    answer:
+      en: "By replying that they want to stop. They are removed from future offers."
+      ar: "بالردّ بأنهم يريدون الإيقاف، فيُحذَفون من العروض القادمة."
+  - question:
+      en: "Who writes the offer?"
+      ar: "من يكتب العرض؟"
+    answer:
+      en: "You do, or we draft it for you to approve."
+      ar: "أنت تكتبه، أو نُعدّ لك مسودة لتوافق عليها."
+related: [3, 29, 1]

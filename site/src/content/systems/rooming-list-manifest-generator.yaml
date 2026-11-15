@@ -1,0 +1,71 @@
+number: 22
+group: run-office
+status: on-request
+name:
+  en: "Rooming List & Manifest Generator"
+  ar: "قوائم الغرف والركّاب"
+summary:
+  en: "Room and bus lists for groups, especially Umrah."
+  ar: "قوائم الغرف والحافلات للمجموعات، وخصوصاً مجموعات العمرة."
+does:
+  en: "It builds the room list and the bus list for a group from the registrations, which matters most for Umrah groups, and updates them when someone joins or cancels."
+  ar: "يُعدّ قائمة الغرف وقائمة الحافلة للمجموعة من بيانات التسجيل، وهو أهم ما يكون في مجموعات العمرة، ويحدّثهما عند انضمام مسافر أو إلغائه."
+never:
+  en: "It never sends a list to a hotel or a bus company before your staff approve it."
+  ar: "لا يرسل قائمة إلى فندق أو شركة حافلات قبل أن يعتمدها موظفوك."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Registration closes for an Umrah group."
+      ar: "يُغلَق التسجيل لمجموعة عمرة."
+  - who: system
+    text:
+      en: "The system places families together in rooms."
+      ar: "النظام يضع أفراد كل عائلة معاً في الغرف."
+  - who: system
+    text:
+      en: "It marks two travellers who have no room-mate."
+      ar: "ويشير إلى مسافرَين ليس لهما شريك غرفة."
+  - who: team
+    text:
+      en: "Staff place them and approve the list."
+      ar: "الموظفون يحدّدون غرفتيهما ويعتمدون القائمة."
+  - who: team
+    text:
+      en: "The room list and the bus list go to the hotel and the bus company."
+      ar: "تُرسَل قائمة الغرف وقائمة الحافلة إلى الفندق وشركة الحافلات."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: families-together
+    name:
+      en: "Keep families together"
+      ar: "إبقاء أفراد العائلة معاً"
+  - id: per-hotel
+    name:
+      en: "A separate list for each hotel"
+      ar: "قائمة منفصلة لكل فندق"
+  - id: on-cancel
+    name:
+      en: "Update the lists when someone cancels"
+      ar: "تحديث القوائم عند إلغاء أحد المسافرين"
+faqs:
+  - question:
+      en: "Where do the names come from?"
+      ar: "من أين تأتي الأسماء؟"
+    answer:
+      en: "From your registrations, such as the Group Registration system, or from a list you provide."
+      ar: "من تسجيلاتك، كنظام تسجيل المجموعات، أو من قائمة تزوّدنا بها."
+  - question:
+      en: "What format are the lists in?"
+      ar: "ما صيغة القوائم؟"
+    answer:
+      en: "A file your hotel and bus company can open, such as PDF or Excel."
+      ar: "ملف يستطيع الفندق وشركة الحافلات فتحه، مثل PDF أو Excel."
+  - question:
+      en: "Can staff change the rooms?"
+      ar: "هل يستطيع الموظفون تغيير الغرف؟"
+    answer:
+      en: "Yes. Staff can move anyone before approving the list."
+      ar: "نعم. يستطيع الموظفون نقل أي مسافر قبل اعتماد القائمة."
+related: [13, 20, 9]

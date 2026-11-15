@@ -1,0 +1,71 @@
+number: 18
+group: run-office
+status: on-request
+name:
+  en: "Staff Handoff & Task Assignment"
+  ar: "توزيع العملاء والمهام على الموظفين"
+summary:
+  en: "Routes each lead to the right staff member and tracks it."
+  ar: "يوجّه كل عميل محتمل إلى الموظف المناسب ويتابعه."
+does:
+  en: "It sends each new lead to the right staff member, such as Umrah requests to your Umrah specialist, and tracks it until someone closes it."
+  ar: "يوجّه كل عميل محتمل جديد إلى الموظف المناسب، كتحويل طلبات العمرة إلى مسؤول العمرة لديك، ويتابعه حتى يُغلَق."
+never:
+  en: "It never closes a lead by itself. A staff member decides when a request is done."
+  ar: "لا يغلق طلباً من تلقاء نفسه. أحد الموظفين يقرّر متى ينتهي الطلب."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: system
+    text:
+      en: "A new Umrah request arrives."
+      ar: "طلب عمرة جديد يصل."
+  - who: system
+    text:
+      en: "The system assigns it to the Umrah specialist and notifies them."
+      ar: "النظام يسنده إلى مسؤول العمرة ويبلّغه."
+  - who: team
+    text:
+      en: "The specialist is busy, and two hours pass."
+      ar: "المسؤول مشغول، وتمرّ ساعتان."
+  - who: system
+    text:
+      en: "The system reminds them and tells the manager."
+      ar: "النظام يذكّره ويبلّغ المدير."
+  - who: team
+    text:
+      en: "The specialist calls the customer and closes the task."
+      ar: "المسؤول يتصل بالعميل ويغلق المهمة."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: rules
+    name:
+      en: "Rules by destination or type of trip"
+      ar: "قواعد حسب الوجهة أو نوع الرحلة"
+  - id: waiting-reminder
+    name:
+      en: "A reminder when a lead waits too long"
+      ar: "تذكير عند طول انتظار العميل"
+  - id: on-leave
+    name:
+      en: "Reassign leads when someone is on leave"
+      ar: "إعادة التوزيع عند إجازة أحد الموظفين"
+faqs:
+  - question:
+      en: "How does it know who should get a lead?"
+      ar: "كيف يعرف من يستلم العميل؟"
+    answer:
+      en: "From rules you set, such as by destination, type of trip or language."
+      ar: "من قواعد تحدّدها أنت، مثل الوجهة أو نوع الرحلة أو اللغة."
+  - question:
+      en: "What if nobody responds?"
+      ar: "ماذا لو لم يردّ أحد؟"
+    answer:
+      en: "It reminds the staff member, then tells the person you name as manager."
+      ar: "يذكّر الموظف، ثم يبلّغ من تسمّيه مديراً."
+  - question:
+      en: "Where do staff see their tasks?"
+      ar: "أين يرى الموظفون مهامهم؟"
+    answer:
+      en: "In the messaging app your team already uses, or on the dashboard."
+      ar: "في تطبيق المراسلة الذي يستخدمه فريقك، أو على اللوحة."
+related: [16, 17, 1]

@@ -1,0 +1,71 @@
+number: 12
+group: look-after
+status: on-request
+name:
+  en: "Review & Referral"
+  ar: "التقييمات والترشيحات"
+summary:
+  en: "Asks travellers for a Google review and a referral after the trip."
+  ar: "يطلب من المسافرين تقييماً على Google وترشيح صديق بعد الرحلة."
+does:
+  en: "After the trip, it thanks each traveller, asks for a Google review and invites them to refer a friend. Complaints are passed to your staff."
+  ar: "بعد الرحلة، يشكر كل مسافر، ويطلب منه تقييماً على Google، ويدعوه إلى ترشيح صديق. أما الشكاوى فتُحوَّل إلى موظفيك."
+never:
+  en: "It never writes or posts a review for anyone, and it never offers a reward for a good review."
+  ar: "لا يكتب تقييماً ولا ينشره عن أحد، ولا يعرض مكافأة مقابل تقييم جيد."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: system
+    text:
+      en: "Two days after the trip, each traveller gets a thank-you message."
+      ar: "بعد الرحلة بيومين تصل كل مسافر رسالة شكر."
+  - who: customer
+    text:
+      en: "A traveller says the trip was excellent."
+      ar: "مسافر يقول إن الرحلة كانت ممتازة."
+  - who: system
+    text:
+      en: "The system sends the link to your Google review page."
+      ar: "النظام يرسل رابط صفحة تقييمك على Google."
+  - who: customer
+    text:
+      en: "Another traveller complains about the bus."
+      ar: "مسافر آخر يشتكي من الحافلة."
+  - who: team
+    text:
+      en: "Staff receive the complaint and call the traveller."
+      ar: "تصل الشكوى إلى الموظفين فيتصلون بالمسافر."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: refer-friend
+    name:
+      en: "Invite travellers to refer a friend"
+      ar: "دعوة المسافرين إلى ترشيح صديق"
+  - id: same-day
+    name:
+      en: "Pass complaints to staff the same day"
+      ar: "تحويل الشكاوى إلى الموظفين في اليوم نفسه"
+  - id: monthly-count
+    name:
+      en: "A monthly count of reviews requested"
+      ar: "إحصاء شهري لطلبات التقييم"
+faqs:
+  - question:
+      en: "Does it ask every traveller?"
+      ar: "هل يطلب التقييم من كل مسافر؟"
+    answer:
+      en: "Yes. Every traveller gets the same request, which is what Google's review rules ask for."
+      ar: "نعم. يصل الطلب نفسه إلى كل مسافر، وهذا ما تنص عليه قواعد التقييم لدى Google."
+  - question:
+      en: "What about unhappy travellers?"
+      ar: "وماذا عن المسافرين غير الراضين؟"
+    answer:
+      en: "Their feedback goes to your staff, so you can put things right."
+      ar: "تصل ملاحظاتهم إلى موظفيك لتتمكّن من معالجة الأمر."
+  - question:
+      en: "Where do reviews appear?"
+      ar: "أين تظهر التقييمات؟"
+    answer:
+      en: "On your agency's Google Business Profile."
+      ar: "على الملف التجاري لمكتبك على Google."
+related: [27, 3, 26]

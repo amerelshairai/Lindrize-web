@@ -1,0 +1,71 @@
+number: 9
+group: look-after
+status: on-request
+name:
+  en: "Document Collector"
+  ar: "جمع المستندات"
+summary:
+  en: "Checklist and reminders for passport copies, photos and visa papers."
+  ar: "قائمة وتذكيرات لصور جوازات السفر والصور الشخصية وأوراق التأشيرة."
+does:
+  en: "It gives each traveller a checklist of what you need, such as passport copies, photos and visa papers, reminds them until it is complete, and keeps the files in one place for your staff."
+  ar: "يعطي كل مسافر قائمة بما تحتاجه منه، مثل صور جواز السفر والصور الشخصية وأوراق التأشيرة، ويذكّره حتى تكتمل، ويحفظ الملفات في مكان واحد لموظفيك."
+never:
+  en: "It never decides whether a document is acceptable. Your staff check every file."
+  ar: "لا يقرّر إن كان المستند مقبولاً. موظفوك يراجعون كل ملف."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff confirm an Umrah booking for a family of four."
+      ar: "الموظفون يؤكّدون حجز عمرة لعائلة من أربعة أفراد."
+  - who: system
+    text:
+      en: "Each traveller gets a checklist: passport copy and photo."
+      ar: "يصل كل مسافر قائمة: صورة جواز السفر وصورة شخصية."
+  - who: customer
+    text:
+      en: "The father sends three of the four passports."
+      ar: "الأب يرسل ثلاثة جوازات من أربعة."
+  - who: system
+    text:
+      en: "Two days later, a reminder asks for the missing one."
+      ar: "بعد يومين يطلب تذكيرٌ الجواز الناقص."
+  - who: team
+    text:
+      en: "Staff see that the file is complete and start the visa application."
+      ar: "يرى الموظفون أن الملف اكتمل فيبدؤون طلب التأشيرة."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: until-complete
+    name:
+      en: "Reminders until the file is complete"
+      ar: "تذكيرات حتى يكتمل الملف"
+  - id: per-trip
+    name:
+      en: "A checklist for each type of trip"
+      ar: "قائمة خاصة بكل نوع رحلة"
+  - id: passport-expiry
+    name:
+      en: "Tell staff when a passport is close to expiring"
+      ar: "تنبيه الموظفين عند اقتراب انتهاء جواز سفر"
+faqs:
+  - question:
+      en: "Which documents can it collect?"
+      ar: "ما المستندات التي يجمعها؟"
+    answer:
+      en: "Whatever your trips need: passport copies, personal photos, visa papers, licences or ID."
+      ar: "كل ما تحتاجه رحلاتك: صور جوازات السفر، الصور الشخصية، أوراق التأشيرة، الرخص أو الهويات."
+  - question:
+      en: "Where are the documents kept?"
+      ar: "أين تُحفَظ المستندات؟"
+    answer:
+      en: "In one place that your staff can open. We agree where in setup."
+      ar: "في مكان واحد يستطيع موظفوك فتحه. نتفق عليه عند الإعداد."
+  - question:
+      en: "Who checks the documents?"
+      ar: "من يراجع المستندات؟"
+    answer:
+      en: "Your staff. The system collects and reminds. It does not approve."
+      ar: "موظفوك. النظام يجمع ويذكّر، ولا يعتمد المستندات."
+related: [23, 13, 8]

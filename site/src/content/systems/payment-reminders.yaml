@@ -1,0 +1,71 @@
+number: 8
+group: look-after
+status: on-request
+name:
+  en: "Payment Reminders"
+  ar: "تذكير الدفعات"
+summary:
+  en: "Reminders for deposits and instalments, with payment instructions. It never takes payment."
+  ar: "تذكير بالعربون والأقساط مع تعليمات الدفع. ولا يستلم أي دفعة."
+does:
+  en: "It reminds travellers about deposits and instalments before they are due, with your payment instructions. Your staff see who has been reminded."
+  ar: "يذكّر المسافرين بالعربون والأقساط قبل موعد استحقاقها، مع تعليمات الدفع الخاصة بمكتبك. ويرى موظفوك من وصله التذكير."
+never:
+  en: "It never takes a payment and never asks for card details. Payment always happens with your staff, the way you already accept it."
+  ar: "لا يستلم دفعةً ولا يطلب بيانات بطاقة. الدفع يتم دائماً مع موظفيك وبالطريقة التي تعتمدها."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff record a booking with a deposit and two instalments."
+      ar: "الموظفون يسجّلون حجزاً بعربون وقسطين."
+  - who: system
+    text:
+      en: "A few days before each due date, the system sends a reminder."
+      ar: "قبل كل موعد استحقاق ببضعة أيام يرسل النظام تذكيراً."
+  - who: customer
+    text:
+      en: "The traveller sees the amount, the date and how to pay."
+      ar: "المسافر يرى المبلغ والتاريخ وطريقة الدفع."
+  - who: customer
+    text:
+      en: "They pay at the office or by bank transfer."
+      ar: "يدفع في المكتب أو بحوالة بنكية."
+  - who: team
+    text:
+      en: "Staff mark the payment as received, and the reminders stop."
+      ar: "الموظفون يسجّلون استلام الدفعة فتتوقف التذكيرات."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: late-reminder
+    name:
+      en: "A second reminder when a payment is late"
+      ar: "تذكير ثانٍ عند تأخر الدفعة"
+  - id: late-list
+    name:
+      en: "A list of late payments for staff"
+      ar: "قائمة بالدفعات المتأخرة للموظفين"
+  - id: group-plans
+    name:
+      en: "Instalment plans for groups"
+      ar: "خطط أقساط للمجموعات"
+faqs:
+  - question:
+      en: "Can travellers pay through the reminder?"
+      ar: "هل يستطيع المسافر الدفع عبر رسالة التذكير؟"
+    answer:
+      en: "No. The reminder explains how to pay, and payment is made to your agency directly."
+      ar: "لا. التذكير يشرح طريقة الدفع، والدفع يتم لمكتبك مباشرة."
+  - question:
+      en: "Who decides the due dates?"
+      ar: "من يحدّد مواعيد الاستحقاق؟"
+    answer:
+      en: "Your staff, when they record the booking."
+      ar: "موظفوك، عند تسجيل الحجز."
+  - question:
+      en: "What happens when someone pays?"
+      ar: "ماذا يحدث عندما يدفع المسافر؟"
+    answer:
+      en: "Staff mark the payment as received and the reminders stop."
+      ar: "يسجّل الموظفون استلام الدفعة فتتوقف التذكيرات."
+related: [24, 7, 9]

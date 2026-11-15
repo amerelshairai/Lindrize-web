@@ -1,4 +1,3 @@
-id: leads-bookings-dashboard
 number: 16
 group: run-office
 status: on-request
@@ -8,3 +7,65 @@ name:
 summary:
   en: "One place for every inquiry, its status and who is handling it."
   ar: "مكان واحد لكل استفسار، وحالته، ومن يتابعه."
+does:
+  en: "It shows every inquiry in one place: where it came from, its status and who is handling it. Nothing waits unseen on someone's phone."
+  ar: "يعرض كل استفسار في مكان واحد: مصدره، وحالته، ومن يتابعه. فلا يبقى استفسار منسياً في هاتف أحد."
+never:
+  en: "It never changes a booking or contacts a customer. It shows your team what needs attention."
+  ar: "لا يغيّر حجزاً ولا يتواصل مع عميل. يُظهر لفريقك ما يحتاج إلى متابعة."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: system
+    text:
+      en: "A new inquiry arrives from Instagram and appears on the dashboard."
+      ar: "استفسار جديد يصل من Instagram ويظهر على اللوحة."
+  - who: team
+    text:
+      en: "A staff member takes it and marks it \"in progress\"."
+      ar: "أحد الموظفين يستلمه ويغيّر حالته إلى «قيد المتابعة»."
+  - who: system
+    text:
+      en: "The dashboard shows two inquiries that nobody has answered since yesterday."
+      ar: "اللوحة تُظهر استفسارين لم يردّ عليهما أحد منذ الأمس."
+  - who: team
+    text:
+      en: "The owner assigns them to a staff member."
+      ar: "صاحب المكتب يسندهما إلى أحد الموظفين."
+  - who: team
+    text:
+      en: "By evening, every inquiry has a status."
+      ar: "مع المساء يكون لكل استفسار حالة."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: filters
+    name:
+      en: "Filter by staff member or by app"
+      ar: "تصفية حسب الموظف أو التطبيق"
+  - id: waiting-too-long
+    name:
+      en: "Highlight inquiries that have waited too long"
+      ar: "إبراز الاستفسارات التي طال انتظارها"
+  - id: export
+    name:
+      en: "Export to a spreadsheet"
+      ar: "تصدير إلى جدول بيانات"
+faqs:
+  - question:
+      en: "Where do the inquiries come from?"
+      ar: "من أين تأتي الاستفسارات؟"
+    answer:
+      en: "From the systems you use with it, such as the AI Travel Sales Assistant and the Ad Lead Responder."
+      ar: "من الأنظمة التي تستخدمها معه، مثل مساعد مبيعات السفر ونظام الردّ على عملاء الإعلانات."
+  - question:
+      en: "Who can see the dashboard?"
+      ar: "من يستطيع رؤية اللوحة؟"
+    answer:
+      en: "The people you choose: the owner, and the staff who handle inquiries."
+      ar: "من تختارهم: صاحب المكتب والموظفون الذين يتابعون الاستفسارات."
+  - question:
+      en: "Do I need new software?"
+      ar: "هل أحتاج إلى برنامج جديد؟"
+    answer:
+      en: "No. It opens on a phone or a computer. We agree the tool with you in setup."
+      ar: "لا. تُفتَح اللوحة من الهاتف أو الحاسوب، ونتفق معك على الأداة عند الإعداد."
+related: [17, 18, 1]

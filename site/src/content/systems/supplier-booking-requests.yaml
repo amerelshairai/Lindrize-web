@@ -1,0 +1,71 @@
+number: 20
+group: run-office
+status: on-request
+name:
+  en: "Supplier Booking Requests"
+  ar: "طلبات الحجز من المورّدين"
+summary:
+  en: "Sends hotel, bus and guide requests and tracks the confirmations."
+  ar: "يرسل طلبات الفنادق والحافلات والمرشدين ويتابع التأكيدات."
+does:
+  en: "It sends your hotel, bus and guide requests to suppliers and tracks which ones have confirmed, so staff know what is still open."
+  ar: "يرسل طلبات الفنادق والحافلات والمرشدين إلى المورّدين، ويتابع من أكّد منهم، فيعرف موظفوك ما بقي معلّقاً."
+never:
+  en: "It never accepts a supplier's price or terms. Your staff approve every confirmation."
+  ar: "لا يقبل سعر مورّد أو شروطه. موظفوك يعتمدون كل تأكيد."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff enter what a group needs: rooms, a bus and a guide."
+      ar: "الموظفون يدخلون ما تحتاجه المجموعة: غرف وحافلة ومرشد."
+  - who: system
+    text:
+      en: "The system sends each supplier a clear request."
+      ar: "النظام يرسل لكل مورّد طلباً واضحاً."
+  - who: system
+    text:
+      en: "The hotel and the guide confirm. The bus company does not reply."
+      ar: "الفندق والمرشد يؤكّدان، وشركة الحافلات لا تردّ."
+  - who: system
+    text:
+      en: "The next day, it reminds the bus company and tells staff."
+      ar: "في اليوم التالي يذكّر شركة الحافلات ويبلّغ الموظفين."
+  - who: team
+    text:
+      en: "Staff see everything confirmed and close the file."
+      ar: "يرى الموظفون أن كل شيء مؤكَّد فيغلقون الملف."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: supplier-reminders
+    name:
+      en: "Reminders to suppliers who have not replied"
+      ar: "تذكير المورّدين الذين لم يردّوا"
+  - id: second-supplier
+    name:
+      en: "Ask a second supplier when the first declines"
+      ar: "سؤال مورّد ثانٍ عند اعتذار الأول"
+  - id: trip-view
+    name:
+      en: "One view of what is confirmed for each trip"
+      ar: "عرض واحد لما تأكّد في كل رحلة"
+faqs:
+  - question:
+      en: "How are requests sent?"
+      ar: "كيف تُرسَل الطلبات؟"
+    answer:
+      en: "By email or message, in the way each supplier prefers."
+      ar: "بالبريد الإلكتروني أو برسالة، بالطريقة التي يفضّلها كل مورّد."
+  - question:
+      en: "Do suppliers need to install anything?"
+      ar: "هل يحتاج المورّدون إلى تثبيت شيء؟"
+    answer:
+      en: "No. They reply as they do today."
+      ar: "لا. يردّون كما يفعلون اليوم."
+  - question:
+      en: "Who agrees prices?"
+      ar: "من يتفق على الأسعار؟"
+    answer:
+      en: "Your staff. The system only sends requests and tracks answers."
+      ar: "موظفوك. النظام يرسل الطلبات ويتابع الردود فقط."
+related: [21, 25, 22]

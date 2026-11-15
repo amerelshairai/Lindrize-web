@@ -1,0 +1,71 @@
+number: 11
+group: look-after
+status: on-request
+name:
+  en: "In-trip Support Line"
+  ar: "خط الدعم أثناء الرحلة"
+summary:
+  en: "Round-the-clock answers during the trip, with emergencies passed straight to staff."
+  ar: "إجابات على مدار الساعة أثناء الرحلة، مع تحويل الحالات الطارئة إلى الموظفين فوراً."
+does:
+  en: "During the trip, travellers can ask at any hour and get an answer from the trip details. Emergencies are passed straight to your staff."
+  ar: "أثناء الرحلة، يسأل المسافرون في أي ساعة ويحصلون على إجابة من تفاصيل الرحلة. أما الحالات الطارئة فتُحوَّل فوراً إلى موظفيك."
+never:
+  en: "It never handles an emergency by itself. Anything urgent goes to a person on your team at once."
+  ar: "لا يتعامل مع حالة طارئة من تلقاء نفسه. كل ما هو عاجل يصل فوراً إلى أحد أفراد فريقك."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: customer
+    text:
+      en: "At 1 AM, a traveller asks when breakfast starts."
+      ar: "الساعة 1 فجراً، مسافر يسأل عن موعد الإفطار."
+  - who: system
+    text:
+      en: "The system answers from the hotel details."
+      ar: "النظام يجيب من تفاصيل الفندق."
+  - who: customer
+    text:
+      en: "Another traveller writes that they have lost their passport."
+      ar: "مسافر آخر يكتب أنه فقد جواز سفره."
+  - who: system
+    text:
+      en: "The system marks it as urgent and alerts staff straight away."
+      ar: "النظام يصنّف الحالة عاجلة وينبّه الموظفين فوراً."
+  - who: team
+    text:
+      en: "The staff member on duty calls the traveller."
+      ar: "الموظف المناوب يتصل بالمسافر."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: duty-alert
+    name:
+      en: "An urgent alert to the staff member on duty"
+      ar: "تنبيه عاجل للموظف المناوب"
+  - id: two-languages
+    name:
+      en: "Answers in Arabic and English"
+      ar: "إجابات بالعربية والإنجليزية"
+  - id: daily-note
+    name:
+      en: "A daily note of what travellers asked"
+      ar: "ملخص يومي بما سأل عنه المسافرون"
+faqs:
+  - question:
+      en: "What counts as an emergency?"
+      ar: "ما الذي يُعَدّ حالة طارئة؟"
+    answer:
+      en: "You decide in setup. Lost passports, missed flights and medical problems are typical examples."
+      ar: "أنت تحدّد ذلك عند الإعداد. من الأمثلة المعتادة: فقدان جواز السفر، وفوات الرحلة الجوية، والمشكلات الصحية."
+  - question:
+      en: "Who is alerted?"
+      ar: "من الذي يُنبَّه؟"
+    answer:
+      en: "The staff member you name for each trip."
+      ar: "الموظف الذي تسمّيه لكل رحلة."
+  - question:
+      en: "What can it answer by itself?"
+      ar: "ما الذي يجيب عنه بنفسه؟"
+    answer:
+      en: "Questions covered by the trip details, such as times, addresses and what is included."
+      ar: "الأسئلة التي تغطيها تفاصيل الرحلة، مثل المواعيد والعناوين وما يشمله البرنامج."
+related: [10, 7, 26]

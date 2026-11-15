@@ -1,0 +1,71 @@
+number: 29
+group: run-office
+status: on-request
+name:
+  en: "Offer Content Generator"
+  ar: "مولّد محتوى العروض"
+summary:
+  en: "Instagram posts and captions from the package sheet."
+  ar: "منشورات Instagram ونصوصها من جدول الباقات."
+does:
+  en: "It drafts Instagram posts and captions for your packages from the package sheet, in Arabic or English, ready for your staff to edit and publish."
+  ar: "يُعدّ مسودات منشورات Instagram ونصوصها لباقاتك من جدول الباقات، بالعربية أو بالإنجليزية، جاهزة ليعدّلها موظفوك وينشروها."
+never:
+  en: "It never publishes anything. Your staff approve every post, and prices come only from your sheet."
+  ar: "لا ينشر شيئاً. موظفوك يوافقون على كل منشور، والأسعار تؤخذ من جدولك فقط."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff add a new Dubai family package to the sheet."
+      ar: "الموظفون يضيفون باقة عائلية جديدة إلى دبي في الجدول."
+  - who: system
+    text:
+      en: "The system drafts three captions in Arabic and English."
+      ar: "النظام يُعدّ ثلاثة نصوص بالعربية والإنجليزية."
+  - who: team
+    text:
+      en: "A staff member picks one and edits a line."
+      ar: "أحد الموظفين يختار نصاً ويعدّل سطراً فيه."
+  - who: team
+    text:
+      en: "They publish it on Instagram."
+      ar: "ثم ينشره على Instagram."
+  - who: customer
+    text:
+      en: "Customers who ask about it are answered from the same sheet."
+      ar: "العملاء الذين يسألون عنه يُجابون من الجدول نفسه."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: two-languages
+    name:
+      en: "Captions in Arabic and English"
+      ar: "نصوص بالعربية والإنجليزية"
+  - id: website-text
+    name:
+      en: "Text for your website that search engines can find"
+      ar: "نصوص لموقعك تستطيع محركات البحث العثور عليها"
+  - id: weekly-plan
+    name:
+      en: "A weekly plan of what to post"
+      ar: "خطة أسبوعية لما يُنشَر"
+faqs:
+  - question:
+      en: "Does it create the images?"
+      ar: "هل يُعدّ الصور؟"
+    answer:
+      en: "It writes the text. Images can be discussed on the call."
+      ar: "يكتب النصوص. أما الصور فيمكن مناقشتها في المكالمة."
+  - question:
+      en: "Does it post for me?"
+      ar: "هل ينشر نيابة عني؟"
+    answer:
+      en: "No. Your staff publish each post."
+      ar: "لا. موظفوك ينشرون كل منشور."
+  - question:
+      en: "Will the prices be right?"
+      ar: "هل ستكون الأسعار صحيحة؟"
+    answer:
+      en: "Prices are taken from your package sheet, and staff check each post before publishing."
+      ar: "تؤخذ الأسعار من جدول باقاتك، ويراجع الموظفون كل منشور قبل نشره."
+related: [14, 19, 3]

@@ -1,4 +1,3 @@
-id: group-registration
 number: 13
 group: look-after
 status: on-request
@@ -8,3 +7,65 @@ name:
 summary:
   en: "Sign-up forms for Umrah, school and company trips, with automatic lists."
   ar: "نماذج تسجيل لرحلات العمرة والمدارس والشركات، مع قوائم تُجهَّز تلقائياً."
+does:
+  en: "It gives you a sign-up form for Umrah groups, school trips and company trips. Each registration lands in one list, so your staff never retype names."
+  ar: "يوفّر لك نموذج تسجيل لمجموعات العمرة ورحلات المدارس والشركات. كل تسجيل يدخل في قائمة واحدة، فلا يعيد موظفوك كتابة الأسماء."
+never:
+  en: "It never confirms a seat. A registration is a request until your staff approve it."
+  ar: "لا يؤكّد مقعداً. التسجيل طلب إلى أن يوافق عليه موظفوك."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "Staff open registration for a school trip."
+      ar: "الموظفون يفتحون التسجيل لرحلة مدرسية."
+  - who: customer
+    text:
+      en: "Parents fill in the form on their phones."
+      ar: "أولياء الأمور يملؤون النموذج من هواتفهم."
+  - who: system
+    text:
+      en: "Each registration is added to one list."
+      ar: "كل تسجيل يُضاف إلى قائمة واحدة."
+  - who: system
+    text:
+      en: "The system tells staff when the group is full."
+      ar: "النظام يخبر الموظفين عند اكتمال المجموعة."
+  - who: team
+    text:
+      en: "Staff approve the list and start the bookings."
+      ar: "الموظفون يعتمدون القائمة ويبدؤون الحجوزات."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: waiting-list
+    name:
+      en: "A waiting list when the group is full"
+      ar: "قائمة انتظار عند اكتمال المجموعة"
+  - id: with-passports
+    name:
+      en: "Collect passport copies with the form"
+      ar: "جمع صور جوازات السفر مع النموذج"
+  - id: two-languages
+    name:
+      en: "A form in Arabic and English"
+      ar: "نموذج بالعربية والإنجليزية"
+faqs:
+  - question:
+      en: "Who fills in the form?"
+      ar: "من يملأ النموذج؟"
+    answer:
+      en: "The travellers, or a parent or coordinator on their behalf, from a phone."
+      ar: "المسافرون أنفسهم، أو وليّ الأمر أو المنسّق نيابة عنهم، من الهاتف."
+  - question:
+      en: "What does my team get?"
+      ar: "ماذا يستلم فريقي؟"
+    answer:
+      en: "One list with every registration, ready to export."
+      ar: "قائمة واحدة فيها كل التسجيلات، جاهزة للتصدير."
+  - question:
+      en: "Can it limit the number of places?"
+      ar: "هل يمكن تحديد عدد المقاعد؟"
+    answer:
+      en: "Yes. When the group is full, new sign-ups go to a waiting list or are told the trip is full."
+      ar: "نعم. عند اكتمال المجموعة، تدخل التسجيلات الجديدة في قائمة انتظار أو يُبلَّغ أصحابها باكتمال الرحلة."
+related: [22, 9, 8]

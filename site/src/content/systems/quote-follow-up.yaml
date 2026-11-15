@@ -1,4 +1,3 @@
-id: quote-follow-up
 number: 2
 group: win-bookings
 status: on-request
@@ -8,3 +7,65 @@ name:
 summary:
   en: "Follows up with customers who got a price and went quiet."
   ar: "يتابع العملاء الذين حصلوا على سعر ثم توقفوا عن الردّ."
+does:
+  en: "It follows up with customers who asked for a price and then went quiet. A short, polite message goes out after a wait that you set, and anyone who replies is passed to your staff."
+  ar: "يتابع العملاء الذين سألوا عن سعر ثم توقفوا عن الردّ. يرسل رسالة قصيرة ولبقة بعد مدة تحدّدها أنت، ومن يردّ يُحوَّل إلى موظفيك."
+never:
+  en: "It never sends more follow-ups than you allow, and it never changes a price. A customer who says no is left alone."
+  ar: "لا يرسل رسائل متابعة أكثر مما تسمح به، ولا يغيّر سعراً. والعميل الذي يرفض لا يُراسَل مجدداً."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: customer
+    text:
+      en: "A customer gets a price for a Dubai trip and stops replying."
+      ar: "عميل يحصل على سعر رحلة إلى دبي ثم يتوقف عن الردّ."
+  - who: system
+    text:
+      en: "The next morning, the system sends one polite follow-up."
+      ar: "في صباح اليوم التالي يرسل النظام رسالة متابعة لبقة واحدة."
+  - who: customer
+    text:
+      en: "The customer answers: still interested, for four people."
+      ar: "العميل يردّ: ما زال مهتماً، والرحلة لأربعة أشخاص."
+  - who: system
+    text:
+      en: "The system collects the missing details."
+      ar: "النظام يجمع البيانات الناقصة."
+  - who: team
+    text:
+      en: "Staff receive the booking request and take over."
+      ar: "يصل الموظفين طلب الحجز فيكملون المحادثة."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: second-follow-up
+    name:
+      en: "A second follow-up a few days later"
+      ar: "متابعة ثانية بعد بضعة أيام"
+  - id: current-offer
+    name:
+      en: "Mention a current offer in the follow-up"
+      ar: "ذكر عرض حالي في رسالة المتابعة"
+  - id: ask-why
+    name:
+      en: "Ask why the customer decided not to book"
+      ar: "سؤال العميل عن سبب عدم الحجز"
+faqs:
+  - question:
+      en: "What does the follow-up message say?"
+      ar: "ماذا تقول رسالة المتابعة؟"
+    answer:
+      en: "You approve the wording in setup. It is short, polite and written in your agency's voice."
+      ar: "أنت توافق على صياغتها عند الإعداد. هي قصيرة ولبقة ومكتوبة بأسلوب مكتبك."
+  - question:
+      en: "What happens when the customer replies?"
+      ar: "ماذا يحدث عندما يردّ العميل؟"
+    answer:
+      en: "The conversation continues as normal, and the booking request goes to your staff."
+      ar: "تستمر المحادثة كالمعتاد، ويصل طلب الحجز إلى موظفيك."
+  - question:
+      en: "Can a customer ask not to be contacted again?"
+      ar: "هل يستطيع العميل أن يطلب عدم مراسلته مجدداً؟"
+    answer:
+      en: "Yes. A customer who says no is not messaged again."
+      ar: "نعم. العميل الذي يرفض لا يُراسَل مرة أخرى."
+related: [1, 3, 16]

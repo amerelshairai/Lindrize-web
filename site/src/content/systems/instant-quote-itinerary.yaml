@@ -1,0 +1,71 @@
+number: 4
+group: win-bookings
+status: on-request
+name:
+  en: "Instant Quote & Itinerary"
+  ar: "عرض السعر وبرنامج الرحلة الفوري"
+summary:
+  en: "Turns a chat into a branded PDF quote or day-by-day itinerary in minutes."
+  ar: "يحوّل المحادثة إلى عرض سعر PDF بهوية مكتبك أو برنامج رحلة يوماً بيوم خلال دقائق."
+does:
+  en: "It turns a conversation into a branded PDF quote or a day-by-day itinerary in minutes, using your packages and prices. Your staff check it and send it."
+  ar: "يحوّل المحادثة إلى عرض سعر PDF يحمل هوية مكتبك، أو إلى برنامج رحلة يوماً بيوم، خلال دقائق، اعتماداً على باقاتك وأسعارك. موظفوك يراجعونه ثم يرسلونه."
+never:
+  en: "It never sends a quote on its own. A staff member reviews every document before it reaches the customer."
+  ar: "لا يرسل عرض سعر من تلقاء نفسه. أحد الموظفين يراجع كل مستند قبل وصوله إلى العميل."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: customer
+    text:
+      en: "A couple asks for five nights in Dubai with a desert safari."
+      ar: "زوجان يطلبان خمس ليالٍ في دبي مع رحلة سفاري."
+  - who: system
+    text:
+      en: "The system drafts a day-by-day itinerary with prices from the price list."
+      ar: "النظام يُعدّ برنامجاً يوماً بيوم بأسعار من قائمة الأسعار."
+  - who: team
+    text:
+      en: "A staff member reviews the PDF and changes one hotel."
+      ar: "أحد الموظفين يراجع ملف PDF ويغيّر فندقاً واحداً."
+  - who: team
+    text:
+      en: "They send it to the customer."
+      ar: "ثم يرسله إلى العميل."
+  - who: customer
+    text:
+      en: "The customer receives a clear quote with your agency's name on it."
+      ar: "العميل يستلم عرض سعر واضحاً يحمل اسم مكتبك."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: branding
+    name:
+      en: "Your logo, colours and terms on every PDF"
+      ar: "شعارك وألوانك وشروطك على كل ملف PDF"
+  - id: two-languages
+    name:
+      en: "Arabic and English versions"
+      ar: "نسختان بالعربية والإنجليزية"
+  - id: day-plan
+    name:
+      en: "A day-by-day plan with timings"
+      ar: "برنامج يومي مع الأوقات"
+faqs:
+  - question:
+      en: "What does the PDF look like?"
+      ar: "كيف يبدو ملف PDF؟"
+    answer:
+      en: "It carries your logo, your colours and your terms. We design the template with you in setup."
+      ar: "يحمل شعارك وألوانك وشروطك. نصمّم القالب معك عند الإعداد."
+  - question:
+      en: "Where do the prices come from?"
+      ar: "من أين تأتي الأسعار؟"
+    answer:
+      en: "From the price list you give us. If a price is missing, the quote goes to your staff to complete."
+      ar: "من قائمة الأسعار التي تزوّدنا بها. وإذا غاب سعر، وصل العرض إلى موظفيك لإكماله."
+  - question:
+      en: "Can staff edit the quote?"
+      ar: "هل يستطيع الموظفون تعديل العرض؟"
+    answer:
+      en: "Yes. Staff can change anything before sending it."
+      ar: "نعم. يستطيع الموظفون تعديل أي شيء قبل إرساله."
+related: [1, 2, 19]

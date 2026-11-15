@@ -1,0 +1,71 @@
+number: 24
+group: run-office
+status: on-request
+name:
+  en: "Payments & Instalments Ledger"
+  ar: "سجل الدفعات والأقساط"
+summary:
+  en: "Who paid, who owes, and an export for the accountant."
+  ar: "من دفع، ومن عليه مبلغ، مع تصدير للمحاسب."
+does:
+  en: "It keeps one record of who has paid, who still owes and when each instalment is due, and exports it for your accountant."
+  ar: "يحفظ سجلاً واحداً بمن دفع، ومن بقي عليه مبلغ، وموعد استحقاق كل قسط، ويصدّره لمحاسبك."
+never:
+  en: "It never takes or moves money. It records the payments your staff enter."
+  ar: "لا يستلم مالاً ولا يحوّله. يسجّل الدفعات التي يدخلها موظفوك."
+# The steps shown on the system's board. Always presented as an example.
+story:
+  - who: team
+    text:
+      en: "A staff member records a deposit for a booking."
+      ar: "أحد الموظفين يسجّل عربوناً لحجز."
+  - who: system
+    text:
+      en: "The ledger shows the balance and the next due date."
+      ar: "السجل يُظهر المبلغ المتبقي وموعد الاستحقاق التالي."
+  - who: system
+    text:
+      en: "It lists the bookings with late instalments."
+      ar: "ويعرض الحجوزات ذات الأقساط المتأخرة."
+  - who: team
+    text:
+      en: "Staff call those travellers."
+      ar: "الموظفون يتصلون بهؤلاء المسافرين."
+  - who: team
+    text:
+      en: "At the end of the month, the owner exports the ledger for the accountant."
+      ar: "في نهاية الشهر يصدّر صاحب المكتب السجل للمحاسب."
+# Extra features offered for this system in "Design your agent".
+features:
+  - id: late-list
+    name:
+      en: "A list of late payments"
+      ar: "قائمة بالدفعات المتأخرة"
+  - id: accountant-export
+    name:
+      en: "An export for the accountant"
+      ar: "تصدير للمحاسب"
+  - id: with-reminders
+    name:
+      en: "Send reminders from the ledger"
+      ar: "إرسال التذكيرات من السجل"
+faqs:
+  - question:
+      en: "Is this an accounting program?"
+      ar: "هل هذا برنامج محاسبة؟"
+    answer:
+      en: "No. It is a clear record of traveller payments that your accountant can read or import."
+      ar: "لا. هو سجل واضح بدفعات المسافرين يستطيع محاسبك قراءته أو استيراده."
+  - question:
+      en: "Who enters payments?"
+      ar: "من يدخل الدفعات؟"
+    answer:
+      en: "Your staff, when they receive them."
+      ar: "موظفوك، عند استلامها."
+  - question:
+      en: "Can it remind travellers?"
+      ar: "هل يذكّر المسافرين؟"
+    answer:
+      en: "Yes, together with the Payment Reminders system."
+      ar: "نعم، مع نظام تذكير الدفعات."
+related: [8, 25, 16]
