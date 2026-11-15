@@ -36,7 +36,7 @@ test('axe: Home on a phone with the menu open', async ({ browser }) => {
 });
 
 test('axe: placeholder and not-found pages', async ({ page }) => {
-  for (const url of ['/pricing/', '/ar/pricing/', '/404.html']) {
+  for (const url of ['/design-your-agent/', '/ar/design-your-agent/', '/404.html', '/ar/404/']) {
     await page.goto(url);
     const results = await new AxeBuilder({ page }).withTags(WCAG).analyze();
     expect(results.violations.map((v) => `${url} ${v.id}: ${v.help}`)).toEqual([]);

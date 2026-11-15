@@ -94,11 +94,16 @@ const statuses = ['live-demo', 'available', 'on-request'] as const;
   }
   .filters {
     display: grid;
-    grid-template-columns: minmax(14rem, 1fr) auto minmax(12rem, 16rem);
+    grid-template-columns: 1fr minmax(12rem, 18rem);
     gap: 1.25rem 2rem;
     align-items: end;
     padding-block: 1.5rem;
     border-block: 1px solid var(--line);
+  }
+  /* Search and field share the first row; the group choices take the whole second row. */
+  fieldset.field {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
   .field {
     display: flex;

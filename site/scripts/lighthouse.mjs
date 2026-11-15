@@ -12,7 +12,9 @@ import { startServer } from './serve.mjs';
 
 const PORT = 4322;
 const BASE = `http://127.0.0.1:${PORT}`;
-const PAGES = process.argv.slice(2).length > 0 ? process.argv.slice(2) : ['/', '/ar/'];
+// One of each kind of page, in both languages.
+const DEFAULT_PAGES = ['/', '/ar/', '/solutions/', '/ar/solutions/ai-travel-sales-assistant/', '/pricing/', '/ar/faq/'];
+const PAGES = process.argv.slice(2).length > 0 ? process.argv.slice(2) : DEFAULT_PAGES;
 const TARGET = { score: 95, lcp: 2500, cls: 0.1, bytes: 300 * 1024 };
 
 const sandboxChrome = '/opt/pw-browsers/chromium';
@@ -75,7 +77,7 @@ try {
     }
     const { scores, lcp, cls, tbt, bytes, fontBytes, problems, weak } = run;
     console.log(
-      `${problems.length ? '✗' : '✓'} ${path.padEnd(8)} performance ${scores.performance} · accessibility ${scores.accessibility} · ` +
+      `${problems.length ? '✗' : '✓'} ${path.padEnd(40)} performance ${scores.performance} · accessibility ${scores.accessibility} · ` +
         `best practices ${scores['best-practices']} · SEO ${scores.seo} · LCP ${(lcp / 1000).toFixed(2)} s · CLS ${cls.toFixed(3)} · ` +
         `TBT ${Math.round(tbt)} ms · ${(bytes / 1024).toFixed(0)} KB + ${(fontBytes / 1024).toFixed(0)} KB fonts` +
         (runs > 1 ? ` (middle of ${runs} runs)` : ''),

@@ -45,5 +45,11 @@ for (const page of all) {
 }
 
 report(`Internal links (${checked} checked on ${all.length} pages)`, [...broken]);
+// WhatsApp links differ only in their pre-typed message, so they are counted per site.
+const hosts = new Map();
+for (const url of external) {
+  const host = new URL(url).host;
+  hosts.set(host, (hosts.get(host) ?? 0) + 1);
+}
 console.log(`• ${external.size} external link(s), checked against the live web in Phase 4:`);
-for (const url of [...external].sort()) console.log(`    ${url}`);
+for (const [host, count] of [...hosts].sort()) console.log(`    ${host} (${count})`);
