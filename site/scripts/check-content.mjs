@@ -19,6 +19,8 @@ const PLACEHOLDERS = [/\b(todo|tbd|fixme|lorem ipsum|placeholder)\b/i, /\[your[^
 const PRIVATE = ['amerelshair.ai@'];
 
 const structure = [];
+const seenTitles = new Map();
+const seenDescriptions = new Map();
 const wording = [];
 const honesty = [];
 const stubs = [];
@@ -43,6 +45,11 @@ for (const page of all) {
 
   const noindex = /<meta[^>]+name="robots"[^>]+noindex/i.test(html);
   if (!noindex) {
+    // Every page that search engines may list needs its own title and description (SPEC 11).
+    for (const [seen, value, what] of [[seenTitles, title, 'title'], [seenDescriptions, description, 'description']]) {
+      if (seen.has(value)) structure.push(`${url}: has the same ${what} as ${seen.get(value)}`);
+      else seen.set(value, url);
+    }
     if (title.length > 65) structure.push(`${url}: title is ${title.length} characters (keep to 65 or fewer)`);
     if (description.length > 170) structure.push(`${url}: description is ${description.length} characters (keep to 170 or fewer)`);
     if (!/<link[^>]+rel="canonical"/i.test(html)) structure.push(`${url}: missing canonical link`);

@@ -13,6 +13,7 @@ const { title, lead } = Astro.props;
     <div class="inner">
       <slot name="meta" />
       <h1>{title}</h1>
+      <slot name="after-title" />
       {lead && <p class="lead">{lead}</p>}
       <slot />
     </div>

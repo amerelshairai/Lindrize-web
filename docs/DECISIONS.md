@@ -4,6 +4,31 @@ Changes the building model made on its own under the decision rule in `PLAN.md`.
 non-critical: it makes the site safer, faster, more accessible or more honest, and stays inside
 what `SPEC.md` asks for. Newest phase first.
 
+## Phase 2 (15 November 2026)
+
+### Honesty and rules of other services
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **Review & Referral asks every traveller for a review,** not only happy ones, and never offers a reward. | Google's review rules forbid asking only satisfied customers and forbid rewards. Asking "happy travellers" only could get an agency's reviews removed. Complaints still go to staff. | The system list said "Asks happy travellers for a Google review". |
+| **Every system is labelled "On request" except the Sales Assistant ("Live demo").** A legend on the Solutions page explains the labels. | The owner has not yet said which systems can be delivered within two weeks. | — |
+| **System pages describe what each system does and state what it never does,** using only what follows from the owner's one-line description. No numbers, timings or tool names were invented. Where a detail is the agency's choice, the page says "you decide in setup". | The site must not promise specifics for systems that are built to order. | — |
+| **Follow-up and broadcast systems state that customers must have agreed to receive messages** and can stop them. | This is what WhatsApp and Meta require for business messages, and what the owner's description ("opted-in customers") says. | — |
+| **Words like "chatbot", "شات بوت" and Arabic spellings of app names (واتساب، إنستغرام) appear only in page titles and descriptions** of Home and the Sales Assistant page. | These are the words owners type into Google (see `docs/KEYWORDS.md`). Page text keeps "assistant" and English app names, as decided in the interview. | — |
+| **"Where is Lindrize based" says the systems are "built for" agencies in Jordan and the GCC,** not that Lindrize "works with" them. | There are no clients to point to yet. | Draft wording. |
+| **The founding-client section shows the three discounts without "places left"** until the numbers are set in `settings.json`. | The number of places per tier is still an open question. | — |
+
+### Structure and content
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **Each system page shows its example as lanes** (customer, the system, your team), one step per row. On phones it becomes one list. | It shows who does what, in order, and reads well without animation. Phase 3's "Design your agent" will play the same steps. | SPEC 2.3 said "the system's live board or a chat". |
+| **Feature lists were drafted now but are not shown on system pages.** They appear in "Design your agent" (Phase 3). | SPEC 2.3 does not list features on the page, and they need the owner's review first. | — |
+| **Privacy and Terms show their headings and a "being written" notice,** are hidden from search engines, and block the launch check until `ready: true`. | The owner writes both. The site cannot go live without them. | PLAN called this the launch gate. |
+| **One file builds each page in both languages** (`src/pages/[...lang]/`). | Half the files, and the two languages cannot drift apart. | PLAN showed a separate `ar/` folder. |
+| **Solutions filters accept a link** such as `/solutions/?industry=umrah`. | Each field on the Industries page can open the list already filtered. | — |
+| **No search-volume numbers in `docs/KEYWORDS.md`.** | The keyword tool could not connect. Terms were chosen from live search results and should be revised from Search Console after launch. | SPEC 11: "researched". |
+
 ## Phase 1 (14–15 November 2026)
 
 ### Security

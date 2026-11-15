@@ -328,6 +328,8 @@ This cloud session is temporary, so the files must live on GitHub before real wo
 
 **Checks:** section 12 on every page.
 
+**Status:** done on 15 November 2026. Results and the owner's review list are in `docs/PHASE-2-REVIEW.md`.
+
 ---
 
 ## 8. Phase 3: Builder, email receiver, SEO and AI files

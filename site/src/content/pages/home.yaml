@@ -62,8 +62,8 @@ tryIt:
     en: "Ask it what your customers ask."
     ar: "اسأله ما يسأله عملاؤك."
   body:
-    en: "Three questions from our demo. Choose one to see the answer, then send your own."
-    ar: "ثلاثة أسئلة من عرضنا التجريبي. اختر سؤالاً لترى الإجابة، ثم أرسل سؤالك أنت."
+    en: "Questions from our demo. Choose one to see the answer, then send your own."
+    ar: "أسئلة من عرضنا التجريبي. اختر سؤالاً لترى الإجابة، ثم أرسل سؤالك أنت."
   tabsLabel: { en: "Sample questions", ar: "أسئلة كأمثلة" }
   # {handle} is replaced by the demo account's handle.
   button:

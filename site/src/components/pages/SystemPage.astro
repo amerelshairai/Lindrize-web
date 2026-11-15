@@ -44,7 +44,7 @@ const chats = hasDemo ? (await getCollection('chats')).sort((a, b) => a.data.ord
       <span>{tr(solutions.groups[s.group].name, lang)}</span>
       <span class:list={['status', s.status]}>{tr(ui.status[s.status], lang)}</span>
     </p>
-    {lang === 'ar' && <p class="english-name" lang="en" dir="ltr">{s.name.en}</p>}
+    {lang === 'ar' && <p slot="after-title" class="english-name" lang="en" dir="ltr">{s.name.en}</p>}
     <div class="actions">
       <Button href={settings.calendlyUrl} book arrow data-hero-cta data-book-source={`system-${s.number}`}>{tr(ui.book.long, lang)}</Button>
       <WhatsAppLink lang={lang} message={whatsapp} />
@@ -145,9 +145,11 @@ const chats = hasDemo ? (await getCollection('chats')).sort((a, b) => a.data.ord
     font-weight: 500;
   }
   .english-name {
+    align-self: stretch;
     margin-top: -0.75rem;
     font-size: var(--text-md);
     color: var(--muted);
+    text-align: right;
   }
   .actions {
     display: flex;
