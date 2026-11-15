@@ -1,0 +1,12 @@
+order: 3
+name:
+  en: "Inbound tour operators"
+  ar: "منظّمو الرحلات الوافدة"
+intro:
+  en: "For operators who receive visitors from abroad: clear quotes for travellers and partners, and guides and transport that are confirmed in time."
+  ar: "لمن يستقبلون زواراً من الخارج: عروض أسعار واضحة للمسافرين والشركاء، ومرشدون ووسائل نقل تتأكّد في وقتها."
+# System numbers that fit this field best, in the order shown.
+systems: [1, 4, 20, 21, 27]
+also:
+  en: "The assistant can be set up in more languages for foreign visitors."
+  ar: "يمكن إعداد المساعد بلغات إضافية للزوار الأجانب."

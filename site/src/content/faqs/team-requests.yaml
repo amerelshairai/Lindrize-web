@@ -1,0 +1,8 @@
+group: product
+order: 5
+question:
+  en: "How does my team get booking requests?"
+  ar: "كيف تصل طلبات الحجز إلى فريقي؟"
+answer:
+  en: "As a message on Telegram with the traveller's details, the package and the quoted price."
+  ar: "رسالة على Telegram فيها بيانات المسافر والباقة والسعر المعروض."

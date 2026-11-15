@@ -1,0 +1,24 @@
+# Wording shared by all 30 system pages.
+breadcrumb: { en: "Breadcrumb", ar: "مسار الصفحة" }
+seeItWork: { en: "See it work", ar: "شاهده يعمل" }
+example: { en: "Example. Not a real client.", ar: "مثال توضيحي، وليس عميلاً حقيقياً." }
+lanes:
+  customer: { en: "Customer", ar: "العميل" }
+  system: { en: "The system", ar: "النظام" }
+  team: { en: "Your team", ar: "فريقك" }
+# {n} is replaced by the step number.
+step: { en: "Step {n}", ar: "الخطوة {n}" }
+neverTitle: { en: "What it never does", ar: "ما لا يفعله أبداً" }
+faqTitle: { en: "Questions about this system", ar: "أسئلة عن هذا النظام" }
+relatedTitle: { en: "Works well with", ar: "يعمل جيداً مع" }
+setup:
+  en: "We set everything up for you. Bring your questions to the 15-minute call."
+  ar: "نحن نتولّى الإعداد كاملاً. أحضر أسئلتك إلى مكالمة الـ 15 دقيقة."
+finalTitle: { en: "See how it would work for your agency.", ar: "اعرف كيف سيعمل لمكتبك." }
+# {name} is replaced by the system's name.
+whatsapp: { en: "Hi, I'm interested in {name}.", ar: "مرحباً، أنا مهتم بنظام «{name}»." }
+titleSuffix: { en: "for travel agencies", ar: "لمكاتب السفر" }
+descriptionSuffix:
+  en: "One of 30 systems Lindrize builds for travel agencies."
+  ar: "أحد 30 نظاماً تبنيها Lindrize لمكاتب السفر والسياحة."
+demoTitle: { en: "Try it yourself", ar: "جرّبه بنفسك" }

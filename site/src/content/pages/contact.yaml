@@ -1,0 +1,22 @@
+seo:
+  title:
+    en: "Contact Lindrize: book a call or message us | Lindrize"
+    ar: "تواصل مع Lindrize: احجز مكالمة أو راسلنا | Lindrize"
+  description:
+    en: "Book a 15-minute Google Meet call, message Lindrize on WhatsApp at +962 78 553 6571, or email amer.ai@lindrize.online. Based in Amman, Jordan."
+    ar: "احجز مكالمة 15 دقيقة عبر Google Meet، أو راسل Lindrize على WhatsApp على الرقم ‎+962 78 553 6571، أو عبر البريد amer.ai@lindrize.online. المقر: عمّان، الأردن."
+title: { en: "Contact", ar: "تواصل معنا" }
+lead:
+  en: "Three ways to reach us. The call is the quickest way to see whether a system fits your agency."
+  ar: "ثلاث طرق للتواصل معنا. والمكالمة أسرع طريقة لمعرفة إن كان النظام يناسب مكتبك."
+call:
+  title: { en: "Book a 15-minute call", ar: "احجز مكالمة 15 دقيقة" }
+  body: { en: "On Google Meet. Pick a time that suits you.", ar: "عبر Google Meet. اختر الوقت الذي يناسبك." }
+whatsapp:
+  title: { en: "WhatsApp", ar: "WhatsApp" }
+  body: { en: "Send us a message.", ar: "أرسل لنا رسالة." }
+email:
+  title: { en: "Email", ar: "البريد الإلكتروني" }
+  body: { en: "For anything longer.", ar: "لكل ما يحتاج إلى تفصيل." }
+location:
+  title: { en: "Where we are", ar: "أين نحن" }

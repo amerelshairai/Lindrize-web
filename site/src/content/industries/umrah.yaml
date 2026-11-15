@@ -1,0 +1,9 @@
+order: 2
+name:
+  en: "Hajj and Umrah offices"
+  ar: "مكاتب الحج والعمرة"
+intro:
+  en: "Umrah means groups, documents and instalments. These systems keep the lists, the papers and the payments in order."
+  ar: "العمرة تعني مجموعات ومستندات وأقساطاً. هذه الأنظمة تبقي القوائم والأوراق والدفعات مرتّبة."
+# System numbers that fit this field best, in the order shown.
+systems: [1, 8, 9, 13, 22, 10]

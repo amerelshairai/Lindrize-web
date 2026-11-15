@@ -1,0 +1,12 @@
+order: 4
+name:
+  en: "Hotels, camps and guesthouses"
+  ar: "الفنادق والمخيمات وبيوت الضيافة"
+intro:
+  en: "For places to stay in Wadi Rum, at the Dead Sea, in Petra and beyond: answer booking questions, prepare guests before arrival and ask for a review afterwards."
+  ar: "لأماكن الإقامة في وادي رم والبحر الميت والبترا وغيرها: الردّ على أسئلة الحجز، وتجهيز الضيوف قبل الوصول، وطلب تقييم بعد الإقامة."
+# System numbers that fit this field best, in the order shown.
+systems: [1, 7, 10, 12, 27]
+also:
+  en: "Also for this field: room upgrade offers before arrival."
+  ar: "ولهذا القطاع أيضاً: عروض ترقية الغرف قبل الوصول."

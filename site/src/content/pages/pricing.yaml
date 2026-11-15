@@ -1,0 +1,54 @@
+seo:
+  title:
+    en: "How pricing works | Lindrize"
+    ar: "كيف يُحدَّد السعر | Lindrize"
+  description:
+    en: "A one-time setup fee and a monthly fee, a 10-day live trial with real customers and a 3-month minimum. Your exact price comes on a 15-minute call."
+    ar: "رسوم إعداد لمرة واحدة ورسوم شهرية، وتجربة حيّة لمدة 10 أيام مع عملاء حقيقيين، وحدّ أدنى 3 أشهر. تعرف سعرك بالتحديد في مكالمة مدتها 15 دقيقة."
+title: { en: "How pricing works", ar: "كيف يُحدَّد السعر" }
+lead:
+  en: "Every agency's setup is different, so there is no price list here. This page explains how payment works. You get your exact price on the 15-minute call."
+  ar: "إعداد كل مكتب يختلف عن غيره، لذلك لا توجد قائمة أسعار هنا. هذه الصفحة تشرح طريقة الدفع، وتعرف سعرك بالتحديد في مكالمة الـ 15 دقيقة."
+partsTitle: { en: "What you pay for", ar: "ما الذي تدفع مقابله" }
+parts:
+  - title: { en: "A one-time setup fee", ar: "رسوم إعداد لمرة واحدة" }
+    body:
+      en: "It covers building the system around your packages, your prices and your accounts, and testing it with you."
+      ar: "تغطي بناء النظام وفق باقاتك وأسعارك وحساباتك، واختباره معك."
+  - title: { en: "A monthly fee", ar: "رسوم شهرية" }
+    body:
+      en: "It covers running the system. There are two monthly plans: one for the service alone, and one that also includes the AI usage, managed for you."
+      ar: "تغطي تشغيل النظام. هناك خطتان شهريتان: واحدة للخدمة فقط، وأخرى تشمل أيضاً استخدام الذكاء الاصطناعي ونديره نحن عنك."
+  - title: { en: "A 10-day live trial", ar: "تجربة حيّة لمدة 10 أيام" }
+    body:
+      en: "The system works with your real customers for 10 days, so you judge it on real conversations."
+      ar: "يعمل النظام مع عملائك الحقيقيين لمدة 10 أيام، فتحكم عليه من محادثات حقيقية."
+  - title: { en: "A 3-month minimum", ar: "حدّ أدنى 3 أشهر" }
+    body:
+      en: "The shortest subscription period is 3 months."
+      ar: "أقصر مدة للاشتراك هي 3 أشهر."
+founding:
+  title: { en: "Founding clients", ar: "العملاء المؤسسون" }
+  body:
+    en: "Our first clients get a discount on the setup fee. The earliest get the most."
+    ar: "عملاؤنا الأوائل يحصلون على خصم على رسوم الإعداد، والأسبق يحصل على الخصم الأكبر."
+  tiers:
+    - key: tier30
+      percent: "30%"
+      label: { en: "off setup for the first founding clients", ar: "خصم على الإعداد لأوائل العملاء المؤسسين" }
+    - key: tier20
+      percent: "20%"
+      label: { en: "off setup for the next", ar: "خصم على الإعداد لمن يليهم" }
+    - key: tier15
+      percent: "15%"
+      label: { en: "off setup after that", ar: "خصم على الإعداد بعد ذلك" }
+  # {n} is replaced by the number of places left, set in settings.json. Hidden while not set.
+  placesLeft: { en: "{n} places left", ar: "المقاعد المتبقية: {n}" }
+  note:
+    en: "Ask on the call which discount is open now."
+    ar: "اسأل في المكالمة عن الخصم المتاح حالياً."
+next:
+  title: { en: "Get your price", ar: "اعرف سعرك" }
+  body:
+    en: "Design your agent first, so the call starts from what you need. Or book the call straight away."
+    ar: "صمّم مساعدك أولاً لتبدأ المكالمة مما تحتاجه، أو احجز المكالمة مباشرة."

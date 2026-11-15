@@ -1,5 +1,5 @@
-id: pricing
 group: price
+order: 1
 home: 4
 question:
   en: "How does pricing work?"

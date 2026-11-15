@@ -1,0 +1,8 @@
+group: price
+order: 2
+question:
+  en: "Why are there no prices on this website?"
+  ar: "لماذا لا توجد أسعار على هذا الموقع؟"
+answer:
+  en: "Because the price depends on which systems you choose and how your agency works. You get your exact price on the 15-minute call."
+  ar: "لأن السعر يعتمد على الأنظمة التي تختارها وطريقة عمل مكتبك. تعرف سعرك بالتحديد في مكالمة الـ 15 دقيقة."

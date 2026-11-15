@@ -1,0 +1,35 @@
+# Set ready to true only when every section below has its text. The site cannot go live before that.
+ready: false
+seo:
+  title:
+    en: "Terms | Lindrize"
+    ar: "الشروط | Lindrize"
+  description:
+    en: "The terms for using the Lindrize website."
+    ar: "شروط استخدام موقع Lindrize."
+title:
+  en: "Terms"
+  ar: "الشروط"
+notice:
+  en: "This page is being written. It will be published in full before the site goes live."
+  ar: "هذه الصفحة قيد الإعداد، وستُنشَر كاملة قبل إطلاق الموقع."
+# Add a `body:` with `en:` and `ar:` text under each section's title when it is written.
+sections:
+  - title:
+      en: "About this website"
+      ar: "عن هذا الموقع"
+  - title:
+      en: "Prices and services"
+      ar: "الأسعار والخدمات"
+  - title:
+      en: "The \"Design your agent\" estimate"
+      ar: "تقدير «صمّم مساعدك»"
+  - title:
+      en: "The demo agency"
+      ar: "المكتب التجريبي"
+  - title:
+      en: "Ownership of content"
+      ar: "ملكية المحتوى"
+  - title:
+      en: "Governing law"
+      ar: "القانون الحاكم"

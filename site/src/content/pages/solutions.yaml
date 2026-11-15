@@ -1,0 +1,39 @@
+seo:
+  title:
+    en: "30 systems for travel agencies | Lindrize"
+    ar: "30 نظاماً لمكاتب السفر والسياحة | Lindrize"
+  description:
+    en: "Systems that answer your customers, look after travellers and run your office: quote follow-up, Umrah group lists, payment reminders and more. Search or filter."
+    ar: "أنظمة تردّ على عملائك وتعتني بالمسافرين وتدير مكتبك: متابعة عروض الأسعار، قوائم مجموعات العمرة، تذكير الدفعات وغيرها. ابحث أو صفِّ."
+title:
+  en: "30 systems for travel agencies"
+  ar: "30 نظاماً لمكاتب السفر والسياحة"
+lead:
+  en: "Start with one system and add more when you're ready. Search by name, or filter by what you need."
+  ar: "ابدأ بنظام واحد، وأضف غيره متى شئت. ابحث بالاسم، أو صفِّ حسب ما تحتاجه."
+searchLabel: { en: "Search systems", ar: "ابحث في الأنظمة" }
+searchPlaceholder: { en: "For example: follow-up", ar: "مثلاً: متابعة" }
+groupLabel: { en: "What you need", ar: "ما تحتاجه" }
+industryLabel: { en: "Your field", ar: "مجال عملك" }
+all: { en: "All", ar: "الكل" }
+allIndustries: { en: "All fields", ar: "كل المجالات" }
+# {n} is replaced by the number of systems shown.
+count: { en: "{n} systems shown", ar: "عدد الأنظمة المعروضة: {n}" }
+empty:
+  en: "No system matches. Try a different word, or tell us what you need on a call."
+  ar: "لا يوجد نظام مطابق. جرّب كلمة أخرى، أو أخبرنا بما تحتاجه في مكالمة."
+legendTitle: { en: "What the labels mean", ar: "معنى الوسوم" }
+legend:
+  live-demo: { en: "You can try it today on our demo account.", ar: "تستطيع تجربته اليوم على حسابنا التجريبي." }
+  available: { en: "Ready to set up for your agency.", ar: "جاهز للإعداد لمكتبك." }
+  on-request: { en: "Built for your agency when you ask for it.", ar: "يُبنى لمكتبك عند طلبه." }
+groups:
+  win-bookings:
+    name: { en: "Win more bookings", ar: "اكسب حجوزات أكثر" }
+    intro: { en: "Answer faster and follow up, so fewer customers go elsewhere.", ar: "ردّ أسرع ومتابعة أفضل، فيقلّ عدد العملاء الذين يذهبون إلى غيرك." }
+  look-after:
+    name: { en: "Look after travellers", ar: "اعتنِ بالمسافرين" }
+    intro: { en: "Keep travellers informed from booking to the trip home.", ar: "أبقِ المسافرين على اطّلاع من الحجز حتى العودة." }
+  run-office:
+    name: { en: "Run your office", ar: "أدِر مكتبك" }
+    intro: { en: "Give your team one clear view of leads, suppliers and money.", ar: "امنح فريقك صورة واحدة واضحة عن العملاء والمورّدين والمال." }

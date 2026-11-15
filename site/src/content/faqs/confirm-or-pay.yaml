@@ -1,5 +1,5 @@
-id: confirm-or-pay
 group: limits
+order: 1
 home: 2
 question:
   en: "Can it confirm a booking or take a payment?"

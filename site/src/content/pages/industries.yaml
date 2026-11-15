@@ -1,0 +1,16 @@
+seo:
+  title:
+    en: "Industries: travel, Umrah, hotels and more | Lindrize"
+    ar: "القطاعات: السفر والعمرة والفنادق وغيرها | Lindrize"
+  description:
+    en: "The systems Lindrize builds for travel agencies, adapted for Hajj and Umrah offices, inbound operators, hotels and camps, car rental, visa offices and venues."
+    ar: "أنظمة Lindrize لمكاتب السفر، مكيَّفة لمكاتب الحج والعمرة ومنظّمي الرحلات الوافدة والفنادق والمخيمات وتأجير السيارات ومكاتب التأشيرات والقاعات."
+title:
+  en: "Built for travel. Adapted for the fields around it."
+  ar: "مبنية للسفر، ومكيَّفة للمجالات القريبة منه."
+lead:
+  en: "Our work starts with travel agencies and tour operators. The same systems are adapted for the fields below, around how each one works."
+  ar: "عملنا يبدأ بمكاتب السفر ومنظّمي الرحلات. والأنظمة نفسها تُكيَّف للمجالات التالية وفق طريقة عمل كل مجال."
+bestFit: { en: "Best-fit systems", ar: "الأنظمة الأنسب" }
+seeAll: { en: "See these systems", ar: "تصفّح هذه الأنظمة" }
+seeEvery: { en: "See all 30 systems", ar: "تصفّح الأنظمة الثلاثين" }

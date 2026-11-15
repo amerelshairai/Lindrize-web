@@ -1,0 +1,9 @@
+order: 1
+name:
+  en: "Travel agencies and tour operators"
+  ar: "مكاتب السفر ومنظّمو الرحلات"
+intro:
+  en: "Every system was designed around how agencies sell packages, Umrah and custom trips. Most start with the assistant that answers their messages."
+  ar: "صُمِّم كل نظام وفق طريقة بيع المكاتب للباقات والعمرة والرحلات الخاصة. والبداية المعتادة هي المساعد الذي يردّ على الرسائل."
+# System numbers that fit this field best, in the order shown.
+systems: [1, 2, 4, 16]

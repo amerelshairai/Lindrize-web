@@ -1,0 +1,8 @@
+group: price
+order: 5
+question:
+  en: "What is the founding-client discount?"
+  ar: "ما هو خصم العملاء المؤسسين؟"
+answer:
+  en: "Our first clients get a discount on the setup fee: 30%, then 20%, then 15%. Ask on the call which one is open now."
+  ar: "عملاؤنا الأوائل يحصلون على خصم على رسوم الإعداد: 30%، ثم 20%، ثم 15%. اسأل في المكالمة عن الخصم المتاح حالياً."

@@ -1,5 +1,5 @@
-id: is-it-a-chatbot
 group: product
+order: 2
 home: 3
 question:
   en: "Is this a chatbot?"

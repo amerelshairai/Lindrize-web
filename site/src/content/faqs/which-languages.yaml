@@ -1,0 +1,8 @@
+group: languages
+order: 1
+question:
+  en: "Which languages does it reply in?"
+  ar: "بأي لغات يردّ؟"
+answer:
+  en: "Jordanian Arabic and English. If your customers write in another language, tell us on the call."
+  ar: "باللهجة الأردنية وبالإنجليزية. وإذا كان عملاؤك يكتبون بلغة أخرى، فأخبرنا في المكالمة."

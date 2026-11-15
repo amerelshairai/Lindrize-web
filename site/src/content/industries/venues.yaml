@@ -1,0 +1,12 @@
+order: 8
+name:
+  en: "Event and wedding venues"
+  ar: "قاعات المناسبات والأفراح"
+intro:
+  en: "Answer date and price questions, follow up on quotes and remind customers about deposits."
+  ar: "الردّ على أسئلة التواريخ والأسعار، ومتابعة عروض الأسعار، وتذكير العملاء بالعربون."
+# System numbers that fit this field best, in the order shown.
+systems: [1, 8, 2]
+also:
+  en: "Also for this field: coordination messages on the day of the event."
+  ar: "ولهذا القطاع أيضاً: رسائل تنسيق في يوم المناسبة."

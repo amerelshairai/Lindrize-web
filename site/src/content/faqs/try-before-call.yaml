@@ -1,5 +1,5 @@
-id: try-before-call
 group: setup
+order: 1
 home: 5
 question:
   en: "How can I try it before the call?"

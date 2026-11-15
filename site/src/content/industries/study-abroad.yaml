@@ -1,0 +1,12 @@
+order: 7
+name:
+  en: "Study-abroad agencies"
+  ar: "مكاتب الدراسة في الخارج"
+intro:
+  en: "Ask students the questions that show which programme fits, collect their documents and pass each one to the right adviser."
+  ar: "طرح الأسئلة التي تبيّن البرنامج المناسب لكل طالب، وجمع مستنداته، وتحويله إلى المستشار المناسب."
+# System numbers that fit this field best, in the order shown.
+systems: [1, 9, 18]
+also:
+  en: "Also for this field: an application deadline tracker."
+  ar: "ولهذا القطاع أيضاً: متابعة المواعيد النهائية للتقديم."

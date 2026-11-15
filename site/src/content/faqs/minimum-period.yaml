@@ -1,0 +1,8 @@
+group: price
+order: 4
+question:
+  en: "Is there a minimum period?"
+  ar: "هل يوجد حدّ أدنى لمدة الاشتراك؟"
+answer:
+  en: "Yes. The shortest period is 3 months."
+  ar: "نعم. أقصر مدة هي 3 أشهر."

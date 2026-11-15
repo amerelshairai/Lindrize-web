@@ -1,0 +1,8 @@
+group: setup
+order: 3
+question:
+  en: "What happens on the 15-minute call?"
+  ar: "ماذا يحدث في مكالمة الـ 15 دقيقة؟"
+answer:
+  en: "You tell us how your agency answers messages today, you see the assistant working, and you ask anything you like. The call takes place on Google Meet."
+  ar: "تخبرنا كيف يردّ مكتبك على الرسائل اليوم، وتشاهد المساعد وهو يعمل، وتسأل ما تشاء. تُعقَد المكالمة عبر Google Meet."

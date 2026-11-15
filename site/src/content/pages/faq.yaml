@@ -1,0 +1,18 @@
+seo:
+  title:
+    en: "Questions travel agency owners ask | Lindrize"
+    ar: "أسئلة يطرحها أصحاب مكاتب السفر | Lindrize"
+  description:
+    en: "Clear answers about the AI Travel Sales Assistant: what it does, what it never does, languages, pricing, the 10-day live trial and how to start."
+    ar: "إجابات واضحة عن مساعد مبيعات السفر: ماذا يفعل، وما لا يفعله أبداً، واللغات، والأسعار، والتجربة الحيّة لمدة 10 أيام، وكيف تبدأ."
+title: { en: "Questions owners ask", ar: "أسئلة يطرحها أصحاب المكاتب" }
+lead:
+  en: "Short, plain answers. If yours is not here, ask it on the call or on WhatsApp."
+  ar: "إجابات قصيرة وواضحة. وإذا لم تجد سؤالك هنا، فاطرحه في المكالمة أو على WhatsApp."
+groups:
+  product: { en: "What it does", ar: "ماذا يفعل" }
+  limits: { en: "What it does not do", ar: "ما لا يفعله" }
+  languages: { en: "Languages", ar: "اللغات" }
+  price: { en: "Price", ar: "السعر" }
+  setup: { en: "Getting started", ar: "البداية" }
+  safety: { en: "Trust and safety", ar: "الثقة والأمان" }

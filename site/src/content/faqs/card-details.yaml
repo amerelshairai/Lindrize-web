@@ -1,0 +1,8 @@
+group: safety
+order: 1
+question:
+  en: "Does it ever ask customers for card details?"
+  ar: "هل يطلب من العملاء بيانات بطاقاتهم؟"
+answer:
+  en: "No. Payment is never taken in the chat. Your staff arrange it directly with the customer."
+  ar: "لا. لا يتم الدفع داخل المحادثة أبداً. موظفوك يرتّبونه مع العميل مباشرة."

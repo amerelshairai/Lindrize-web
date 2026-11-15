@@ -1,5 +1,5 @@
-id: what-it-does
 group: product
+order: 1
 home: 1
 question:
   en: "What does the assistant do?"

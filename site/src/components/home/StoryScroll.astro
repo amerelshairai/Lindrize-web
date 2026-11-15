@@ -10,7 +10,7 @@ import { ui, tr, type Lang } from '@/lib/i18n';
 
 interface Props {
   lang: Lang;
-  content: CollectionEntry<'pages'>['data']['story'];
+  content: CollectionEntry<'home'>['data']['story'];
   chat: CollectionEntry<'chats'>['data'];
 }
 const { lang, content, chat } = Astro.props;

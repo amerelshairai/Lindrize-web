@@ -1,0 +1,8 @@
+group: product
+order: 6
+question:
+  en: "Do you only build the assistant?"
+  ar: "هل تبنون المساعد فقط؟"
+answer:
+  en: "No. We build 30 systems for travel agencies, from quote follow-up to room lists for Umrah groups. You can start with one and add more later."
+  ar: "لا. نبني 30 نظاماً لمكاتب السفر والسياحة، من متابعة عروض الأسعار إلى قوائم غرف مجموعات العمرة. تستطيع البدء بنظام واحد ثم إضافة غيره لاحقاً."

@@ -18,7 +18,7 @@ interface Props {
 }
 const { lang } = Astro.props;
 
-const page = await getEntry('pages', 'home');
+const page = await getEntry('home', 'home');
 if (!page) throw new Error('src/content/pages/home.yaml is missing');
 const c = page.data;
 

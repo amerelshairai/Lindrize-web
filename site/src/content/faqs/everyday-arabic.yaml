@@ -1,0 +1,8 @@
+group: languages
+order: 2
+question:
+  en: "Does it understand everyday Jordanian Arabic?"
+  ar: "هل يفهم اللهجة الأردنية اليومية؟"
+answer:
+  en: "Yes. It replies in Jordanian Arabic, the way your customers write. You can test this yourself on our demo account."
+  ar: "نعم. يردّ باللهجة الأردنية كما يكتب عملاؤك. تستطيع اختبار ذلك بنفسك على حسابنا التجريبي."

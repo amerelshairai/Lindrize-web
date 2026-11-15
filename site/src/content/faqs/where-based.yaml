@@ -1,0 +1,8 @@
+group: setup
+order: 4
+question:
+  en: "Where is Lindrize based, and which countries is it for?"
+  ar: "أين مقر Lindrize ولأي دول هو؟"
+answer:
+  en: "Lindrize is based in Amman, Jordan. Our systems are built for travel agencies and tour operators in Jordan and the GCC."
+  ar: "مقر Lindrize في عمّان، الأردن. أنظمتنا مبنية لمكاتب السفر ومنظّمي الرحلات في الأردن ودول الخليج العربي."

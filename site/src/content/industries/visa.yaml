@@ -1,0 +1,9 @@
+order: 6
+name:
+  en: "Visa offices"
+  ar: "مكاتب التأشيرات"
+intro:
+  en: "Tell each customer what their nationality needs from the list you provide, collect the papers and track every application."
+  ar: "إخبار كل عميل بما تتطلّبه جنسيته من القائمة التي تزوّدنا بها، وجمع الأوراق، ومتابعة كل طلب."
+# System numbers that fit this field best, in the order shown.
+systems: [1, 9, 23]

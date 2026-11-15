@@ -1,0 +1,8 @@
+group: limits
+order: 2
+question:
+  en: "Will it replace my staff?"
+  ar: "هل سيحلّ محلّ موظفيّ؟"
+answer:
+  en: "No. It answers the first questions and prepares the booking request. Your staff confirm bookings, take payments and handle anything unusual."
+  ar: "لا. يجيب عن الأسئلة الأولى ويجهّز طلب الحجز. أما تأكيد الحجوزات واستلام الدفعات ومعالجة الحالات غير المعتادة فتبقى لموظفيك."

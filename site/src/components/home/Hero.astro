@@ -8,7 +8,7 @@ import { ui, tr, settings, localPath, splitAt, ROUTES, type Lang } from '@/lib/i
 
 interface Props {
   lang: Lang;
-  content: CollectionEntry<'pages'>['data']['hero'];
+  content: CollectionEntry<'home'>['data']['hero'];
   chat: CollectionEntry<'chats'>['data'];
 }
 const { lang, content, chat } = Astro.props;

@@ -1,0 +1,44 @@
+# Set ready to true only when every section below has its text. The site cannot go live before that.
+ready: false
+seo:
+  title:
+    en: "Privacy Policy | Lindrize"
+    ar: "سياسة الخصوصية | Lindrize"
+  description:
+    en: "How Lindrize handles the little information this website collects."
+    ar: "كيف تتعامل Lindrize مع المعلومات القليلة التي يجمعها هذا الموقع."
+title:
+  en: "Privacy Policy"
+  ar: "سياسة الخصوصية"
+notice:
+  en: "This page is being written. It will be published in full before the site goes live."
+  ar: "هذه الصفحة قيد الإعداد، وستُنشَر كاملة قبل إطلاق الموقع."
+# Add a `body:` with `en:` and `ar:` text under each section's title when it is written.
+sections:
+  - title:
+      en: "Who we are and how to contact us"
+      ar: "من نحن وكيف تتواصل معنا"
+  - title:
+      en: "What we collect when you email yourself a design"
+      ar: "ما نجمعه عندما ترسل تصميمك إلى بريدك"
+  - title:
+      en: "Booking a call, WhatsApp, the human check and video"
+      ar: "حجز المكالمة و WhatsApp والتحقق البشري والفيديو"
+  - title:
+      en: "Anonymous visitor counting"
+      ar: "إحصاء الزوار دون تحديد هويتهم"
+  - title:
+      en: "What is saved on your device"
+      ar: "ما يُحفَظ على جهازك"
+  - title:
+      en: "How long we keep emails"
+      ar: "مدة احتفاظنا بالرسائل"
+  - title:
+      en: "Your rights"
+      ar: "حقوقك"
+  - title:
+      en: "We never sell data"
+      ar: "لا نبيع البيانات أبداً"
+  - title:
+      en: "Changes to this policy"
+      ar: "التغييرات على هذه السياسة"

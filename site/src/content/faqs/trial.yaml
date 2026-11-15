@@ -1,0 +1,8 @@
+group: price
+order: 3
+question:
+  en: "Is there a trial?"
+  ar: "هل توجد فترة تجربة؟"
+answer:
+  en: "Yes. There is a 10-day live trial with your real customers."
+  ar: "نعم. هناك تجربة حيّة لمدة 10 أيام مع عملائك الحقيقيين."

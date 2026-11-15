@@ -1,0 +1,8 @@
+group: product
+order: 4
+question:
+  en: "How fast does it reply?"
+  ar: "ما سرعة ردّه؟"
+answer:
+  en: "Within seconds, at any hour of the day or night."
+  ar: "خلال ثوانٍ، في أي ساعة من الليل أو النهار."

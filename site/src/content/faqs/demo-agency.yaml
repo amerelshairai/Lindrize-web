@@ -1,0 +1,8 @@
+group: safety
+order: 2
+question:
+  en: "Is Darb Al-Yasmeen a real agency?"
+  ar: "هل «درب الياسمين» مكتب حقيقي؟"
+answer:
+  en: "No. It is a fictional agency we built for the demo. Its packages and prices are sample data."
+  ar: "لا. هو مكتب غير حقيقي أنشأناه للعرض التجريبي، وباقاته وأسعاره بيانات تجريبية."

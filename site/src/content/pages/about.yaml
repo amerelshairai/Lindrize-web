@@ -1,0 +1,71 @@
+seo:
+  title:
+    en: "About Lindrize: AI sales assistants for travel | Lindrize"
+    ar: "عن Lindrize: مساعدو مبيعات لمكاتب السفر | Lindrize"
+  description:
+    en: "Lindrize is a founder-led studio in Amman, Jordan. It builds AI sales assistants and office systems for travel agencies in Jordan and the GCC."
+    ar: "Lindrize استوديو يديره مؤسسه في عمّان، الأردن. يبني مساعدي مبيعات بالذكاء الاصطناعي وأنظمة مكتبية لمكاتب السفر في الأردن ودول الخليج العربي."
+title: { en: "About Lindrize", ar: "عن Lindrize" }
+lead:
+  en: "Lindrize builds AI sales assistants and office systems for travel agencies and tour operators."
+  ar: "Lindrize تبني مساعدي مبيعات بالذكاء الاصطناعي وأنظمة مكتبية لمكاتب السفر ومنظّمي الرحلات."
+glanceTitle: { en: "Lindrize at a glance", ar: "Lindrize في سطور" }
+glance:
+  - label: { en: "Who", ar: "من نحن" }
+    value:
+      en: "Lindrize, founded and run by Amer El-shair."
+      ar: "Lindrize، أسسها ويديرها Amer El-shair."
+  - label: { en: "Where", ar: "أين" }
+    value: { en: "Amman, Jordan.", ar: "عمّان، الأردن." }
+  - label: { en: "Built for", ar: "لمن نبني" }
+    value:
+      en: "Travel agencies and tour operators in Jordan and the GCC: Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain and Oman."
+      ar: "مكاتب السفر ومنظّمو الرحلات في الأردن ودول الخليج العربي: السعودية والإمارات وقطر والكويت والبحرين وعُمان."
+  - label: { en: "What we build", ar: "ماذا نبني" }
+    value:
+      en: "The AI Travel Sales Assistant and 29 more systems for answering customers, looking after travellers and running the office."
+      ar: "مساعد مبيعات السفر و29 نظاماً آخر للردّ على العملاء والعناية بالمسافرين وإدارة المكتب."
+  - label: { en: "What the assistant does", ar: "ماذا يفعل المساعد" }
+    value:
+      en: "It answers customer messages on Instagram, WhatsApp and Messenger within seconds, day and night. It recommends the agency's packages, quotes from its price list, collects the traveller's details and sends staff a ready booking request on Telegram."
+      ar: "يردّ على رسائل العملاء في Instagram و WhatsApp و Messenger خلال ثوانٍ، ليلاً ونهاراً. يقترح باقات المكتب، ويعرض الأسعار من قائمة أسعاره، ويجمع بيانات المسافر، ويرسل للموظفين طلب حجز جاهزاً على Telegram."
+  - label: { en: "What it never does", ar: "ما لا يفعله أبداً" }
+    value:
+      en: "It never confirms a booking and never takes a payment. Staff keep the final word."
+      ar: "لا يؤكّد حجزاً ولا يستلم دفعةً أبداً. الكلمة الأخيرة للموظفين."
+  - label: { en: "Languages", ar: "اللغات" }
+    value:
+      en: "The assistant replies in Jordanian Arabic and English. This website is in English and Arabic."
+      ar: "يردّ المساعد باللهجة الأردنية وبالإنجليزية. وهذا الموقع بالعربية والإنجليزية."
+  - label: { en: "How to start", ar: "كيف تبدأ" }
+    value:
+      en: "Book a 15-minute call on Google Meet."
+      ar: "احجز مكالمة مدتها 15 دقيقة عبر Google Meet."
+differentTitle: { en: "What makes Lindrize different", ar: "ما الذي يميّز Lindrize" }
+different:
+  - title: { en: "Built only for travel", ar: "مبنية للسفر فقط" }
+    body:
+      en: "Every system starts from how agencies sell packages, Umrah and custom trips."
+      ar: "كل نظام ينطلق من طريقة بيع المكاتب للباقات والعمرة والرحلات الخاصة."
+  - title: { en: "It writes like your customers", ar: "يكتب كما يكتب عملاؤك" }
+    body:
+      en: "The assistant replies in Jordanian Arabic as well as English."
+      ar: "يردّ المساعد باللهجة الأردنية كما يردّ بالإنجليزية."
+  - title: { en: "Your staff keep the final word", ar: "الكلمة الأخيرة لموظفيك" }
+    body:
+      en: "Nothing is confirmed and no payment is taken without a person on your team."
+      ar: "لا يُؤكَّد حجز ولا تُستلَم دفعة دون أحد أفراد فريقك."
+  - title: { en: "We do the setup", ar: "نحن نتولّى الإعداد" }
+    body:
+      en: "You do not need a technical team."
+      ar: "لا تحتاج إلى فريق تقني."
+  - title: { en: "You try it with real customers", ar: "تجرّبه مع عملاء حقيقيين" }
+    body:
+      en: "There is a 10-day live trial."
+      ar: "هناك تجربة حيّة لمدة 10 أيام."
+  - title: { en: "You talk to the founder", ar: "تتحدّث مع المؤسس" }
+    body:
+      en: "The person on your call is the person who builds your system."
+      ar: "من يحدّثك في المكالمة هو من يبني نظامك."
+founderTitle: { en: "Founder", ar: "المؤسس" }
+founderRole: { en: "Founder", ar: "المؤسس" }

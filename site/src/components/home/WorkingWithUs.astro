@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import { tr, type Lang } from '@/lib/i18n';
 interface Props {
   lang: Lang;
-  steps: CollectionEntry<'pages'>['data']['working']['steps'];
+  steps: CollectionEntry<'home'>['data']['working']['steps'];
 }
 const { lang, steps } = Astro.props;
 ---
