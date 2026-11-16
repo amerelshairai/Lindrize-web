@@ -24,7 +24,7 @@ export const goodBody = (overrides = {}) => ({
 });
 
 /** Starts the receiver with the three outside services replaced by recorders. */
-export async function start({ human = true, mailFails = false, notifyFails = false } = {}) {
+export async function start({ human = true, mailFails = false, notifyFails = false, settings = {}, choices = catalog } = {}) {
   const sent = { mails: [], alerts: [], checks: [], events: [] };
   const outside = {
     verifyHuman: async (token, ip) => {
@@ -40,7 +40,7 @@ export async function start({ human = true, mailFails = false, notifyFails = fal
       sent.alerts.push(text);
     },
   };
-  const server = createServer(createApp({ config, catalog, outside, log: (e) => sent.events.push(e) }));
+  const server = createServer(createApp({ config: { ...config, ...settings }, catalog: choices, outside, log: (e) => sent.events.push(e) }));
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   const url = `http://127.0.0.1:${server.address().port}`;
   const post = (body, { headers = {}, raw } = {}) =>

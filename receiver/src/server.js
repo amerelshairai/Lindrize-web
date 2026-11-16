@@ -3,11 +3,13 @@ import { readFileSync } from 'node:fs';
 import { loadConfig } from './config.js';
 import { createOutside } from './outside.js';
 import { createApp } from './app.js';
+import { createCatalog } from './catalog.js';
 
 const config = loadConfig();
-const catalog = JSON.parse(readFileSync(new URL('../catalog.json', import.meta.url), 'utf8'));
+const bundled = JSON.parse(readFileSync(new URL('../catalog.json', import.meta.url), 'utf8'));
 // Logs record what happened, never who: no email addresses and no visitor addresses.
 const log = (event) => console.log(`${new Date().toISOString()} ${event}`);
+const catalog = createCatalog({ bundled, path: config.catalogPath, log });
 
 const server = createServer(createApp({ config, catalog, outside: createOutside(config), log }));
 server.requestTimeout = 10_000;

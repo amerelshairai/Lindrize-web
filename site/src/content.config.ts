@@ -11,6 +11,14 @@ const text = z.object({
   ar: z.string().trim().min(1, 'Arabic text is missing'),
 });
 
+/**
+ * An optional field. The editing screen may save an optional field that was left blank as an
+ * empty value; that is treated the same as leaving it out.
+ */
+const blank = (v: unknown): boolean =>
+  v === null || v === undefined || v === '' || (typeof v === 'object' && Object.values(v as object).every(blank));
+const optional = <T extends z.ZodTypeAny>(schema: T) => z.preprocess((v) => (blank(v) ? undefined : v), schema.optional());
+
 const yaml = (folder: string) => glob({ pattern: '*.yaml', base: `./src/content/${folder}` });
 /** One page's wording, kept in src/content/pages/<name>.yaml. */
 const page = (name: string) => glob({ pattern: `${name}.yaml`, base: './src/content/pages' });
@@ -234,7 +242,7 @@ const legal = defineCollection({
       seo,
       title: text,
       notice: text,
-      sections: z.array(z.object({ title: text, body: text.optional() })).min(1),
+      sections: z.array(z.object({ title: text, body: optional(text) })).min(1),
     })
     .refine((d) => !d.ready || d.sections.every((s) => s.body), {
       message: 'ready is true, but some sections have no text yet',
@@ -248,7 +256,7 @@ const chats = defineCollection({
     /** The language the customer writes in. Chats are shown in their original language on every page. */
     lang: z.enum(['en', 'ar']),
     /** Package id in content/demo/packages.csv that the answer is built from. */
-    package: z.string().optional(),
+    package: optional(z.string()),
     title: text,
     messages: z
       .array(
@@ -259,9 +267,7 @@ const chats = defineCollection({
         }),
       )
       .min(2),
-    request: z
-      .object({ customer: text, package: text, travellers: text, departure: text, total: text })
-      .optional(),
+    request: optional(z.object({ customer: text, package: text, travellers: text, departure: text, total: text })),
   }),
 });
 
@@ -272,7 +278,7 @@ const faqs = defineCollection({
     /** Position inside its group on the FAQ page. */
     order: z.number().int().min(1),
     /** Position among the questions shown on Home (1 to 6). Leave out to keep it off Home. */
-    home: z.number().int().min(1).max(6).optional(),
+    home: optional(z.number().int().min(1).max(6)),
     question: text,
     answer: text,
   }),
@@ -303,7 +309,7 @@ const systems = defineCollection({
     /** Numbers of up to three systems that work well with this one. */
     related: z.array(z.number().int().min(1).max(30)).min(1).max(3),
     /** Leave out to build the title and description from the name and summary. */
-    seo: seo.optional(),
+    seo: optional(seo),
   }),
 });
 
@@ -315,7 +321,7 @@ const industries = defineCollection({
     intro: text,
     /** System numbers that fit this field best, in the order shown. */
     systems: z.array(z.number().int().min(1).max(30)).min(1),
-    also: text.optional(),
+    also: optional(text),
   }),
 });
 

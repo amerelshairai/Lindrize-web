@@ -1,0 +1,110 @@
+# Publishes the website to the server.
+#
+# - Runs by itself after every change on "main" that passed the "Check" workflow.
+# - Can be started by hand (Actions > Publish > Run workflow). Fill in "version" with an older
+#   commit to go back to it: that is the undo.
+# - Does nothing until the repository variable DEPLOY_ENABLED is set to "true"
+#   (docs/SERVER-SETUP.md, step 9), so it is safe before the server is ready.
+#
+# The key it uses can do only two things on the server: upload a release folder and switch the
+# site to it (server/deploy-gate.sh). It cannot open a shell or touch anything else.
+name: Publish
+
+on:
+  workflow_run:
+    workflows: [Check]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Leave empty for the newest version. To undo, paste an older commit id."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+# One publish at a time, and never cancel one halfway.
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Build and publish
+    if: >-
+      vars.DEPLOY_ENABLED == 'true' &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
+    env:
+      VERSION: ${{ github.event.inputs.version || github.event.workflow_run.head_sha || github.sha }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          ref: ${{ env.VERSION }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version-file: site/.nvmrc
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install exact dependency versions
+        working-directory: site
+        run: npm ci
+
+      - name: Build and re-run the content, link and contrast checks
+        working-directory: site
+        run: npm run check
+
+      - name: Name the release
+        id: release
+        run: |
+          sha="$(git rev-parse --short=7 HEAD)"
+          echo "id=$(date -u +%Y%m%d-%H%M%S)-$sha" >> "$GITHUB_OUTPUT"
+          echo "$sha" > site/dist/version.txt
+
+      - name: Prepare the connection to the server
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          # The server's identity is fixed in advance, so a fake server is refused.
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Upload the release and switch the site to it
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          RELEASE: ${{ steps.release.outputs.id }}
+        run: |
+          SSH="ssh -i $HOME/.ssh/deploy_key -p ${DEPLOY_PORT:-22} -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o BatchMode=yes"
+          rsync -rlt --delete --chmod=D755,F644 -e "$SSH" site/dist/ "deploy@$DEPLOY_HOST:releases/$RELEASE/"
+          $SSH "deploy@$DEPLOY_HOST" "activate $RELEASE"
+          $SSH "deploy@$DEPLOY_HOST" "list"
+
+      - name: Confirm visitors get the new version
+        if: vars.PUBLISH_CHECK_URL != ''
+        env:
+          URL: ${{ vars.PUBLISH_CHECK_URL }}
+        run: |
+          want="$(cat site/dist/version.txt)"
+          for attempt in 1 2 3 4 5; do
+            got="$(curl -fsS --max-time 10 "$URL/version.txt?$(date +%s)" || true)"
+            [ "$got" = "$want" ] && { echo "Live version: $got"; exit 0; }
+            sleep 5
+          done
+          echo "::error::The site answers with version \"$got\", expected \"$want\"."
+          exit 1
+
+      - name: Remove the key from the runner
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

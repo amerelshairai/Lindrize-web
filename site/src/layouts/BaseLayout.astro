@@ -83,8 +83,9 @@ const jsonLd = toJsonLd([organization(), website(), webPage(lang, page, title, d
     <meta name="format-detection" content="telephone=no" />
 
     {/* Fonts used at the top of the page are fetched early, so text does not move when they arrive. */}
-    {/* Cookie-free visitor counting (Umami on our own server). Added in Phase 5 by setting the id. */}
-    {settings.umamiWebsiteId !== '' && <script is:inline defer src="/u/script.js" data-website-id={settings.umamiWebsiteId} data-do-not-track="true" />}
+    {/* Cookie-free visitor counting (Umami on our own server). Off until the id is set in Settings.
+        Only visits to the real address are counted, never the test address. */}
+    {settings.umamiWebsiteId !== '' && <script is:inline defer src="/u/script.js" data-website-id={settings.umamiWebsiteId} data-domains={new URL(settings.siteUrl).hostname} data-do-not-track="true" />}
     {!noindex && <script type="application/ld+json" is:inline set:html={jsonLd} />}
 
     <Font cssVariable="--font-plex-serif" preload={lang === 'en'} />

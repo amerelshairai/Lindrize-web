@@ -12,7 +12,13 @@ export function loadConfig(env = process.env) {
   return {
     port: Number(env.PORT ?? 8080),
     /** Only requests sent by pages of this site are accepted. */
-    allowedOrigin: required(env, 'ALLOWED_ORIGIN'),
+    /** One address, or several separated by commas (used while the site is tested on a second address). */
+    allowedOrigins: required(env, 'ALLOWED_ORIGIN')
+      .split(',')
+      .map((origin) => origin.trim())
+      .filter(Boolean),
+    /** Optional: the published site's own list of choices, so the receiver follows content edits. */
+    catalogPath: env.CATALOG_PATH || null,
     turnstileSecret: required(env, 'TURNSTILE_SECRET'),
     smtp: {
       host: required(env, 'SMTP_HOST'),

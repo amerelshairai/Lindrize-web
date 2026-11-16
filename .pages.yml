@@ -1,0 +1,3916 @@
+# The editing screen (Pages CMS, https://app.pagescms.org). See HOW-TO-EDIT.md.
+# This file is generated: change content files or site/scripts/pages-cms.mjs, then run
+# "npm run cms" in site/. Editing it by hand will be undone by the next run.
+content:
+  - name: settings
+    label: Settings (links, keys, places left)
+    type: file
+    path: site/src/data/settings.json
+    format: json
+    fields:
+      - name: siteName
+        label: Site name
+        type: string
+      - name: siteUrl
+        label: Site url
+        type: string
+      - name: calendlyUrl
+        label: Calendly url
+        type: string
+      - name: whatsappNumber
+        label: Whatsapp number
+        type: string
+      - name: whatsappDisplay
+        label: Whatsapp display
+        type: string
+      - name: email
+        label: Email
+        type: string
+      - name: city
+        label: City
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: founder
+        label: Founder
+        type: string
+      - name: demo
+        label: Demo
+        type: object
+        fields:
+          - name: handle
+            label: Handle
+            type: string
+          - name: chatUrl
+            label: Chat url
+            type: string
+          - name: profileUrl
+            label: Profile url
+            type: string
+      - name: videoId
+        label: Video id
+        description: The part of the YouTube link after "v=". Leave empty to hide the video.
+        type: string
+      - name: turnstileSiteKey
+        label: Turnstile site key
+        description: The public "site key" from Cloudflare Turnstile. Leave empty to hide the email form.
+        type: string
+      - name: umamiWebsiteId
+        label: Umami website id
+        description: The "Website ID" from Umami. Leave empty to switch counting off.
+        type: string
+      - name: foundingPlaces
+        label: Founding places
+        type: object
+        fields:
+          - name: tier30
+            label: Tier30
+            type: number
+          - name: tier20
+            label: Tier20
+            type: number
+          - name: tier15
+            label: Tier15
+            type: number
+  - name: page-home
+    label: "Page: Home"
+    type: file
+    path: site/src/content/pages/home.yaml
+    format: yaml
+    fields:
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: hero
+        label: Hero
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: lead
+            label: Lead
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+          - name: tryLine
+            label: Try line
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: story
+        label: Story
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: steps
+            label: Steps
+            type: object
+            fields:
+              - name: when
+                label: When
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: title
+                label: Title
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: body
+                label: Body
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: text
+                  - name: ar
+                    label: Arabic
+                    type: text
+            list: true
+          - name: clock
+            label: Clock
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+            list: true
+          - name: chips
+            label: Chips
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+            list: true
+          - name: confirmed
+            label: Confirmed
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: tryIt
+        label: Try it
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+          - name: tabsLabel
+            label: Tabs label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: button
+            label: Button
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: note
+            label: Note
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: statement
+        label: Statement
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: systems
+        label: Systems
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+          - name: all
+            label: All
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: featured
+            label: Featured
+            type: number
+            list: true
+      - name: working
+        label: Working
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+          - name: steps
+            label: Steps
+            type: object
+            fields:
+              - name: title
+                label: Title
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: note
+                label: Note
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: text
+                  - name: ar
+                    label: Arabic
+                    type: text
+              - name: body
+                label: Body
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: text
+                  - name: ar
+                    label: Arabic
+                    type: text
+            list: true
+      - name: feedback
+        label: Feedback
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: faq
+        label: Faq
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: all
+            label: All
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: final
+        label: Final
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+  - name: page-solutions
+    label: "Page: Solutions"
+    type: file
+    path: site/src/content/pages/solutions.yaml
+    format: yaml
+    fields:
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: lead
+        label: Lead
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: searchLabel
+        label: Search label
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: searchPlaceholder
+        label: Search placeholder
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: groupLabel
+        label: Group label
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: industryLabel
+        label: Industry label
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: all
+        label: All
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: allIndustries
+        label: All industries
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: count
+        label: Count
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: empty
+        label: Empty
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: legendTitle
+        label: Legend title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: legend
+        label: Legend
+        type: object
+        fields:
+          - name: live-demo
+            label: Live demo
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: available
+            label: Available
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: on-request
+            label: On request
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: groups
+        label: Groups
+        type: object
+        fields:
+          - name: win-bookings
+            label: Win bookings
+            type: object
+            fields:
+              - name: name
+                label: Name
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: intro
+                label: Intro
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: text
+                  - name: ar
+                    label: Arabic
+                    type: text
+          - name: look-after
+            label: Look after
+            type: object
+            fields:
+              - name: name
+                label: Name
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: intro
+                label: Intro
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: text
+                  - name: ar
+                    label: Arabic
+                    type: text
+          - name: run-office
+            label: Run office
+            type: object
+            fields:
+              - name: name
+                label: Name
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: intro
+                label: Intro
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: text
+                  - name: ar
+                    label: Arabic
+                    type: text
+  - name: page-system
+    label: "Page: System page (shared words)"
+    type: file
+    path: site/src/content/pages/system.yaml
+    format: yaml
+    fields:
+      - name: breadcrumb
+        label: Breadcrumb
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: seeItWork
+        label: See it work
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: example
+        label: Example
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: lanes
+        label: Lanes
+        type: object
+        fields:
+          - name: customer
+            label: Customer
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: system
+            label: System
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: team
+            label: Team
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: step
+        label: Step
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: neverTitle
+        label: Never title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: faqTitle
+        label: Faq title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: relatedTitle
+        label: Related title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: setup
+        label: Setup
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: finalTitle
+        label: Final title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: whatsapp
+        label: Whatsapp
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: titleSuffix
+        label: Title suffix
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: descriptionSuffix
+        label: Description suffix
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: demoTitle
+        label: Demo title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+  - name: page-industries
+    label: "Page: Industries"
+    type: file
+    path: site/src/content/pages/industries.yaml
+    format: yaml
+    fields:
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: lead
+        label: Lead
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: bestFit
+        label: Best fit
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: seeAll
+        label: See all
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: seeEvery
+        label: See every
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+  - name: page-pricing
+    label: "Page: Pricing"
+    type: file
+    path: site/src/content/pages/pricing.yaml
+    format: yaml
+    fields:
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: lead
+        label: Lead
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: partsTitle
+        label: Parts title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: parts
+        label: Parts
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+        list: true
+      - name: founding
+        label: Founding
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+          - name: tiers
+            label: Tiers
+            type: object
+            fields:
+              - name: key
+                label: Key
+                type: select
+                options:
+                  values:
+                    - tier30
+                    - tier20
+                    - tier15
+              - name: percent
+                label: Percent
+                type: string
+              - name: label
+                label: Label
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+            list: true
+          - name: placesLeft
+            label: Places left
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: note
+            label: Note
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: next
+        label: Next
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+  - name: page-design
+    label: "Page: Design your agent"
+    type: file
+    path: site/src/content/pages/design.yaml
+    format: yaml
+    fields:
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: lead
+        label: Lead
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: noScript
+        label: No script
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: progress
+        label: Progress
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: back
+        label: Back
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: next
+        label: Next
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: skip
+        label: Skip
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: chooseOne
+        label: Choose one
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: clear
+        label: Clear
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: cleared
+        label: Cleared
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: business
+        label: Business
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: typeLabel
+            label: Type label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: sizeLabel
+            label: Size label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: sizes
+            label: Sizes
+            type: object
+            fields:
+              - name: id
+                label: Id
+                description: Lowercase letters, digits and hyphens. Do not change an existing one.
+                type: string
+              - name: label
+                label: Label
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+            list: true
+      - name: problem
+        label: Problem
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: label
+            label: Label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: options
+            label: Options
+            type: object
+            fields:
+              - name: id
+                label: Id
+                description: Lowercase letters, digits and hyphens. Do not change an existing one.
+                type: string
+              - name: system
+                label: System
+                type: number
+              - name: label
+                label: Label
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+            list: true
+      - name: system
+        label: System
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: suggested
+            label: Suggested
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: label
+            label: Label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: page
+            label: Page
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: features
+        label: Features
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: label
+            label: Label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: ranges
+        label: Ranges
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: lead
+            label: Lead
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+          - name: messages
+            label: Messages
+            type: object
+            fields:
+              - name: label
+                label: Label
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: options
+                label: Options
+                type: object
+                fields:
+                  - name: id
+                    label: Id
+                    description: Lowercase letters, digits and hyphens. Do not change an existing one.
+                    type: string
+                  - name: low
+                    label: Low
+                    type: number
+                  - name: high
+                    label: High
+                    type: number
+                  - name: label
+                    label: Label
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: string
+                      - name: ar
+                        label: Arabic
+                        type: string
+                list: true
+          - name: staff
+            label: Staff
+            type: object
+            fields:
+              - name: label
+                label: Label
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: options
+                label: Options
+                type: object
+                fields:
+                  - name: id
+                    label: Id
+                    description: Lowercase letters, digits and hyphens. Do not change an existing one.
+                    type: string
+                  - name: low
+                    label: Low
+                    type: number
+                  - name: high
+                    label: High
+                    type: number
+                  - name: label
+                    label: Label
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: string
+                      - name: ar
+                        label: Arabic
+                        type: string
+                list: true
+          - name: afterHours
+            label: After hours
+            type: object
+            fields:
+              - name: label
+                label: Label
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: options
+                label: Options
+                type: object
+                fields:
+                  - name: id
+                    label: Id
+                    description: Lowercase letters, digits and hyphens. Do not change an existing one.
+                    type: string
+                  - name: low
+                    label: Low
+                    type: number
+                  - name: high
+                    label: High
+                    type: number
+                  - name: label
+                    label: Label
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: string
+                      - name: ar
+                        label: Arabic
+                        type: string
+                list: true
+          - name: currencyLabel
+            label: Currency label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: salary
+            label: Salary
+            type: object
+            fields:
+              - name: label
+                label: Label
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: options
+                label: Options
+                type: object
+                fields:
+                  - name: id
+                    label: Id
+                    description: Lowercase letters, digits and hyphens. Do not change an existing one.
+                    type: string
+                  - name: low
+                    label: Low
+                    type: number
+                  - name: high
+                    label: High
+                    type: number
+                list: true
+          - name: booking
+            label: Booking
+            type: object
+            fields:
+              - name: label
+                label: Label
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: options
+                label: Options
+                type: object
+                fields:
+                  - name: id
+                    label: Id
+                    description: Lowercase letters, digits and hyphens. Do not change an existing one.
+                    type: string
+                  - name: low
+                    label: Low
+                    type: number
+                  - name: high
+                    label: High
+                    type: number
+                list: true
+      - name: currencies
+        label: Currencies
+        type: object
+        fields:
+          - name: code
+            label: Code
+            type: string
+          - name: rate
+            label: Rate
+            type: number
+        list: true
+      - name: assumptions
+        label: Assumptions
+        type: object
+        fields:
+          - name: routineShare
+            label: Routine share
+            description: A number from 0 to 1. Leave all three empty to hide the estimate.
+            type: number
+          - name: minutesPerReply
+            label: Minutes per reply
+            type: number
+          - name: workHoursPerMonth
+            label: Work hours per month
+            type: number
+      - name: estimate
+        label: Estimate
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: hours
+            label: Hours
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: cost
+            label: Cost
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: warning
+            label: Warning
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: how
+            label: How
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: howBody
+            label: How body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: book
+        label: Book
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: lead
+            label: Lead
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+          - name: summaryTitle
+            label: Summary title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: labels
+            label: Labels
+            type: object
+            fields:
+              - name: type
+                label: Type
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: size
+                label: Size
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: problem
+                label: Problem
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: system
+                label: System
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: features
+                label: Features
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: messages
+                label: Messages
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: staff
+                label: Staff
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: afterHours
+                label: After hours
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: none
+                label: None
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+          - name: whatsapp
+            label: Whatsapp
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: illustration
+            label: Illustration
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: email
+        label: Email
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: label
+            label: Label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: send
+            label: Send
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: privacy
+            label: Privacy
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: trap
+            label: Trap
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: sending
+            label: Sending
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: sent
+            label: Sent
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: errors
+            label: Errors
+            type: object
+            fields:
+              - name: email
+                label: Email
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: check
+                label: Check
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: tooMany
+                label: Too many
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+              - name: failed
+                label: Failed
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: string
+                  - name: ar
+                    label: Arabic
+                    type: string
+      - name: board
+        label: Board
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: play
+            label: Play
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: pause
+            label: Pause
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: replay
+            label: Replay
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: extras
+            label: Extras
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: with
+            label: With
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: without
+            label: Without
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: compare
+            label: Compare
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: moods
+            label: Moods
+            type: object
+            fields:
+              - name: waiting
+                label: Waiting
+                type: object
+                fields:
+                  - name: title
+                    label: Title
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: string
+                      - name: ar
+                        label: Arabic
+                        type: string
+                  - name: body
+                    label: Body
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: text
+                      - name: ar
+                        label: Arabic
+                        type: text
+              - name: answered
+                label: Answered
+                type: object
+                fields:
+                  - name: title
+                    label: Title
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: string
+                      - name: ar
+                        label: Arabic
+                        type: string
+                  - name: body
+                    label: Body
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: text
+                      - name: ar
+                        label: Arabic
+                        type: text
+              - name: done
+                label: Done
+                type: object
+                fields:
+                  - name: title
+                    label: Title
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: string
+                      - name: ar
+                        label: Arabic
+                        type: string
+                  - name: body
+                    label: Body
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: text
+                      - name: ar
+                        label: Arabic
+                        type: text
+              - name: lost
+                label: Lost
+                type: object
+                fields:
+                  - name: title
+                    label: Title
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: string
+                      - name: ar
+                        label: Arabic
+                        type: string
+                  - name: body
+                    label: Body
+                    type: object
+                    fields:
+                      - name: en
+                        label: English
+                        type: text
+                      - name: ar
+                        label: Arabic
+                        type: text
+          - name: withoutStory
+            label: Without story
+            type: object
+            fields:
+              - name: who
+                label: Who
+                type: select
+                options:
+                  values: &a1
+                    - customer
+                    - system
+                    - team
+              - name: text
+                label: Text
+                type: object
+                fields:
+                  - name: en
+                    label: English
+                    type: text
+                  - name: ar
+                    label: Arabic
+                    type: text
+            list: true
+  - name: page-faq
+    label: "Page: FAQ page (headings)"
+    type: file
+    path: site/src/content/pages/faq.yaml
+    format: yaml
+    fields:
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: lead
+        label: Lead
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: groups
+        label: Groups
+        type: object
+        fields:
+          - name: product
+            label: Product
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: limits
+            label: Limits
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: languages
+            label: Languages
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: price
+            label: Price
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: setup
+            label: Setup
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: safety
+            label: Safety
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+  - name: page-about
+    label: "Page: About"
+    type: file
+    path: site/src/content/pages/about.yaml
+    format: yaml
+    fields:
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: lead
+        label: Lead
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: glanceTitle
+        label: Glance title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: glance
+        label: Glance
+        type: object
+        fields:
+          - name: label
+            label: Label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: value
+            label: Value
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+        list: true
+      - name: differentTitle
+        label: Different title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: different
+        label: Different
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+        list: true
+      - name: founderTitle
+        label: Founder title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: founderRole
+        label: Founder role
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+  - name: page-contact
+    label: "Page: Contact"
+    type: file
+    path: site/src/content/pages/contact.yaml
+    format: yaml
+    fields:
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: lead
+        label: Lead
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: call
+        label: Call
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: whatsapp
+        label: Whatsapp
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: email
+        label: Email
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: location
+        label: Location
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+  - name: page-privacy
+    label: "Page: Privacy Policy"
+    type: file
+    path: site/src/content/pages/privacy.yaml
+    format: yaml
+    fields:
+      - name: ready
+        label: Ready
+        description: Switch on only when every section has its text in both languages.
+        type: boolean
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: notice
+        label: Notice
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: sections
+        label: Sections
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+        list: true
+  - name: page-terms
+    label: "Page: Terms"
+    type: file
+    path: site/src/content/pages/terms.yaml
+    format: yaml
+    fields:
+      - name: ready
+        label: Ready
+        description: Switch on only when every section has its text in both languages.
+        type: boolean
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: notice
+        label: Notice
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: sections
+        label: Sections
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+        list: true
+  - name: systems
+    label: Systems (30)
+    type: collection
+    path: site/src/content/systems
+    format: yaml
+    filename: "{primary}.yaml"
+    view:
+      primary: number
+      sort:
+        - number
+      default:
+        sort: number
+        order: asc
+    fields:
+      - name: number
+        label: Number
+        type: number
+      - name: group
+        label: Group
+        type: select
+        options:
+          values:
+            - win-bookings
+            - look-after
+            - run-office
+      - name: status
+        label: Status
+        type: select
+        options:
+          values:
+            - live-demo
+            - available
+            - on-request
+      - name: name
+        label: Name
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: summary
+        label: Summary
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: does
+        label: Does
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: never
+        label: Never
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: story
+        label: Story
+        type: object
+        fields:
+          - name: who
+            label: Who
+            type: select
+            options:
+              values: *a1
+          - name: text
+            label: Text
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+        list: true
+      - name: features
+        label: Features
+        type: object
+        fields:
+          - name: id
+            label: Id
+            description: Lowercase letters, digits and hyphens. Do not change an existing one.
+            type: string
+          - name: name
+            label: Name
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+        list: true
+      - name: faqs
+        label: Questions
+        type: object
+        fields:
+          - name: question
+            label: Question
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: answer
+            label: Answer
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+        list: true
+      - name: related
+        label: Related
+        description: Numbers of up to three systems that work well with this one.
+        type: number
+        list: true
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+  - name: faqs
+    label: FAQ questions
+    type: collection
+    path: site/src/content/faqs
+    format: yaml
+    filename: "{primary}.yaml"
+    view:
+      primary: order
+      sort:
+        - order
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: group
+        label: Group
+        type: select
+        options:
+          values:
+            - product
+            - limits
+            - languages
+            - price
+            - setup
+            - safety
+      - name: order
+        label: Order
+        type: number
+      - name: question
+        label: Question
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: answer
+        label: Answer
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: home
+        label: Home
+        description: Position among the questions on Home (1 to 6). Leave empty to keep it off Home.
+        type: number
+  - name: industries
+    label: Industries (list)
+    type: collection
+    path: site/src/content/industries
+    format: yaml
+    filename: "{primary}.yaml"
+    view:
+      primary: order
+      sort:
+        - order
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: order
+        label: Order
+        type: number
+      - name: name
+        label: Name
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: intro
+        label: Intro
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: systems
+        label: Systems
+        type: number
+        list: true
+      - name: also
+        label: Also
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+  - name: chats
+    label: Demo chats
+    type: collection
+    path: site/src/content/chats
+    format: yaml
+    filename: "{primary}.yaml"
+    view:
+      primary: order
+      sort:
+        - order
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: id
+        label: Id
+        description: Lowercase letters, digits and hyphens. Do not change an existing one.
+        type: string
+      - name: order
+        label: Order
+        type: number
+      - name: lang
+        label: Lang
+        type: select
+        options:
+          values:
+            - en
+            - ar
+      - name: package
+        label: Package
+        type: string
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: messages
+        label: Messages
+        type: object
+        fields:
+          - name: from
+            label: From
+            type: select
+            options:
+              values:
+                - customer
+                - assistant
+          - name: time
+            label: Time
+            type: string
+          - name: text
+            label: Text
+            type: text
+        list: true
+      - name: request
+        label: Request
+        type: object
+        fields:
+          - name: customer
+            label: Customer
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: package
+            label: Package
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: travellers
+            label: Travellers
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: departure
+            label: Departure
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: total
+            label: Total
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+  - name: feedback
+    label: Client feedback
+    type: collection
+    path: site/src/content/feedback
+    format: yaml
+    filename: "{primary}.yaml"
+    view:
+      primary: name
+      sort:
+        - order
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: order
+        label: Order
+        type: number
+      - name: quote
+        label: Quote
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: name
+        label: Name
+        type: string
+      - name: role
+        label: Role
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: agency
+        label: Agency
+        type: string
+      - name: consent
+        label: Consent
+        description: "Must be on: only real clients who agreed to be quoted."
+        type: boolean
+  - name: ui
+    label: Interface words (buttons, menus)
+    type: file
+    path: site/src/data/ui.json
+    format: json
+    fields:
+      - name: skip
+        label: Skip
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: nav
+        label: Nav
+        type: object
+        fields:
+          - name: label
+            label: Label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: solutions
+            label: Solutions
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: industries
+            label: Industries
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: pricing
+            label: Pricing
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: design
+            label: Design
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: faq
+            label: Faq
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: about
+            label: About
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: contact
+            label: Contact
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: privacy
+            label: Privacy
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: terms
+            label: Terms
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: home
+            label: Home
+            description: Position among the questions on Home (1 to 6). Leave empty to keep it off Home.
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: menu
+            label: Menu
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: closeMenu
+            label: Close menu
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: lang
+        label: Lang
+        type: object
+        fields:
+          - name: switchTo
+            label: Switch to
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: switchLabel
+            label: Switch label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: theme
+        label: Theme
+        type: object
+        fields:
+          - name: toDark
+            label: To dark
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: toLight
+            label: To light
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: book
+        label: Book
+        type: object
+        fields:
+          - name: short
+            label: Short
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: long
+            label: Long
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: sticky
+            label: Sticky
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: dialogTitle
+            label: Dialog title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: loading
+            label: Loading
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: newTab
+            label: New tab
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: close
+            label: Close
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: frameTitle
+            label: Frame title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: barLabel
+            label: Bar label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: whatsapp
+        label: Whatsapp
+        type: object
+        fields:
+          - name: label
+            label: Label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: short
+            label: Short
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: defaultMessage
+            label: Default message
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: design
+        label: Design
+        type: object
+        fields:
+          - name: cta
+            label: Cta
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: chat
+        label: Chat
+        type: object
+        fields:
+          - name: customer
+            label: Customer
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: assistant
+            label: Assistant
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: typing
+            label: Typing
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: replay
+            label: Replay
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: demoLabel
+            label: Demo label
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: agencyName
+            label: Agency name
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: agencySub
+            label: Agency sub
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: conversation
+            label: Conversation
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: status
+        label: Status
+        type: object
+        fields:
+          - name: live-demo
+            label: Live demo
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: available
+            label: Available
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: on-request
+            label: On request
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: footer
+        label: Footer
+        type: object
+        fields:
+          - name: tagline
+            label: Tagline
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: explore
+            label: Explore
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: company
+            label: Company
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: getInTouch
+            label: Get in touch
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: legal
+            label: Legal
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: access
+            label: Access
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: offline
+        label: Offline
+        type: object
+        fields:
+          - name: message
+            label: Message
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: retry
+            label: Retry
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: stub
+        label: Stub
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+          - name: home
+            label: Home
+            description: Position among the questions on Home (1 to 6). Leave empty to keep it off Home.
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: notFound
+        label: Not found
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+          - name: home
+            label: Home
+            description: Position among the questions on Home (1 to 6). Leave empty to keep it off Home.
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: video
+        label: Video
+        type: object
+        fields:
+          - name: watch
+            label: Watch
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: play
+            label: Play
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: note
+            label: Note
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+          - name: frameTitle
+            label: Frame title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: request
+        label: Request
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: where
+            label: Where
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: customer
+            label: Customer
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: package
+            label: Package
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: travellers
+            label: Travellers
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: departure
+            label: Departure
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: total
+            label: Total
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: did
+            label: Did
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string

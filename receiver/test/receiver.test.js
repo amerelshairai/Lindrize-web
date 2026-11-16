@@ -4,6 +4,10 @@ import { start, goodBody, catalog, config, ORIGIN } from './helpers.js';
 import { validate } from '../src/validate.js';
 import { summaryLines, visitorEmail, ownerEmail, telegramText } from '../src/compose.js';
 import { createLimiter } from '../src/limits.js';
+import { createCatalog, looksValid } from '../src/catalog.js';
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 test('a good design is emailed to the owner and the visitor, with a Telegram alert', async () => {
   const app = await start();
@@ -176,4 +180,43 @@ test('the limiter forgets after an hour and has a daily ceiling', () => {
   assert.equal(limiter.allow('b'), false, 'daily ceiling reached');
   time += 24 * 60 * 60 * 1000;
   assert.equal(limiter.allow('b'), true);
+});
+
+test('a second site address can be allowed while the site is being tested', async () => {
+  const app = await start({ settings: { allowedOrigins: [ORIGIN, 'https://new.lindrize.online'] } });
+  assert.equal((await app.post(goodBody(), { headers: { origin: 'https://new.lindrize.online' } })).status, 200);
+  assert.equal((await app.post(goodBody(), { headers: { origin: 'https://evil.example' } })).status, 403);
+  await app.stop();
+});
+
+test('the list of choices follows the published site, and a broken file is ignored', async () => {
+  const dir = mkdtempSync(join(tmpdir(), 'catalog-'));
+  const path = join(dir, 'design-catalog.json');
+  let clock = 0;
+  const events = [];
+  const current = createCatalog({ bundled: catalog, path, log: (e) => events.push(e), now: () => clock });
+
+  // No published file yet: the copy shipped with the receiver is used.
+  assert.equal(current(), catalog);
+
+  const edited = structuredClone(catalog);
+  edited.systems['2'].features['brand-new-extra'] = { en: 'Brand new extra', ar: 'إضافة جديدة' };
+  writeFileSync(path, JSON.stringify(edited));
+  assert.equal(current(), catalog, 'not re-read more often than every 30 seconds');
+  clock += 31_000;
+  assert.ok(current().systems['2'].features['brand-new-extra']);
+
+  const app = await start({ choices: current });
+  const body = goodBody();
+  body.design.features = ['brand-new-extra'];
+  assert.equal((await app.post(body)).status, 200);
+  await app.stop();
+
+  writeFileSync(path, '{"types":{}}  ');
+  clock += 31_000;
+  assert.ok(current().systems['2'].features['brand-new-extra'], 'the last good list stays in use');
+  assert.ok(events.includes('catalog-unreadable'));
+  assert.equal(looksValid(catalog), true);
+  assert.equal(looksValid({ types: {} }), false);
+  rmSync(dir, { recursive: true });
 });

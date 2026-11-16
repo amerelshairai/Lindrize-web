@@ -1,0 +1,83 @@
+# The three background services. Started with server/services.sh (see docs/SERVER-SETUP.md).
+#
+# - Nothing here is reachable from the internet directly. Each service listens only on the
+#   server itself (127.0.0.1); Nginx is the only way in.
+# - Secrets come from two files that exist only on the server and are never on GitHub:
+#     /srv/lindrize/.env            (Umami and its database)
+#     /srv/lindrize/.env.receiver   (the email receiver)
+name: lindrize
+
+services:
+  receiver:
+    build: ./repo/receiver
+    env_file: ./.env.receiver
+    environment:
+      PORT: "8080"
+      # The published site's own list of choices, so content edits never need a rebuild.
+      CATALOG_PATH: /site/current/design-catalog.json
+    volumes:
+      - /var/www/lindrize:/site:ro
+    ports:
+      - "127.0.0.1:8081:8080"
+    restart: unless-stopped
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 128m
+    pids_limit: 64
+    logging: &logging
+      driver: json-file
+      options: { max-size: "5m", max-file: "3" }
+
+  umami:
+    # Exact version. Updates are a deliberate change to this line, tested first.
+    image: ghcr.io/umami-software/umami:3.4.1
+    environment:
+      DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD:?set UMAMI_DB_PASSWORD in /srv/lindrize/.env}@db:5432/umami
+      APP_SECRET: ${UMAMI_APP_SECRET:?set UMAMI_APP_SECRET in /srv/lindrize/.env}
+      TWO_FACTOR_ENCRYPTION_KEY: ${UMAMI_TWO_FACTOR_KEY:?set UMAMI_TWO_FACTOR_KEY in /srv/lindrize/.env}
+      # Trust only the visitor address that Nginx passes on.
+      CLIENT_IP_HEADER: x-real-ip
+      # Umami itself sends nothing to anyone.
+      DISABLE_TELEMETRY: "1"
+      DISABLE_UPDATES: "1"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8082:3000"
+    networks: [default, database]
+    init: true
+    restart: unless-stopped
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 512m
+    logging: *logging
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD:?set UMAMI_DB_PASSWORD in /srv/lindrize/.env}
+    volumes:
+      - umami-db:/var/lib/postgresql/data
+    # The database is on its own closed network: only Umami can reach it.
+    networks: [database]
+    restart: unless-stopped
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 256m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    logging: *logging
+
+networks:
+  database:
+    internal: true
+
+volumes:
+  umami-db:

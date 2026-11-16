@@ -1,0 +1,32 @@
+# The last gate before the domain move (docs/LAUNCH-CHECKLIST.md).
+# Started by hand: Actions > Launch check > Run workflow.
+# It fails while anything a visitor would see is unfinished, and says what.
+name: Launch check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  launch:
+    name: Is the site ready to go live?
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version-file: site/.nvmrc
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      - name: Launch rules
+        run: node scripts/check-content.mjs --launch

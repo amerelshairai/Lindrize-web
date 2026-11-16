@@ -1,5 +1,5 @@
 # Runs every check in PLAN.md section 12 on each change.
-# A change can only be published (Phase 5) after this passes.
+# A change is published (publish.yml) only after this passes.
 name: Check
 
 on:
@@ -77,6 +77,43 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm audit --audit-level=moderate
+
+  server:
+    name: Web server rules, publish gate and services file
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version-file: site/.nvmrc
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Build the site the server will serve
+        working-directory: site
+        run: npm ci && npm run build
+      - name: Install Nginx and rsync
+        run: sudo apt-get update -q && sudo apt-get install -y -q nginx-light rsync shellcheck && sudo systemctl stop nginx
+      - name: Scripts are free of common shell mistakes
+        run: shellcheck -S warning -e SC2010 server/*.sh server/test/*.sh
+      - name: Publish gate and undo script
+        run: bash server/test/gate-test.sh
+      - name: Web server rules
+        run: bash server/test/nginx-test.sh
+      - name: Services file is valid
+        run: |
+          mkdir -p /tmp/lz && printf 'UMAMI_DB_PASSWORD=a\nUMAMI_APP_SECRET=b\nUMAMI_TWO_FACTOR_KEY=c\n' > /tmp/lz/.env && touch /tmp/lz/.env.receiver
+          docker compose --project-directory /tmp/lz -f server/docker-compose.yml --env-file /tmp/lz/.env config -q
+      - name: The receiver image builds and answers
+        run: |
+          docker build -t lindrize-receiver receiver
+          docker run -d --name r --read-only --cap-drop ALL -p 127.0.0.1:8081:8080 \
+            -e ALLOWED_ORIGIN=https://www.lindrize.online -e TURNSTILE_SECRET=x -e SMTP_HOST=localhost \
+            -e SMTP_USER=x -e SMTP_PASS=x -e MAIL_FROM=x@example.test -e OWNER_EMAIL=x@example.test lindrize-receiver
+          for i in 1 2 3 4 5 6 7 8 9 10; do curl -fsS http://127.0.0.1:8081/api/health && exit 0; sleep 1; done
+          docker logs r; exit 1
 
   audit:
     name: Known security issues in dependencies

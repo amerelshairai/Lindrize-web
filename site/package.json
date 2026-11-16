@@ -13,11 +13,12 @@
     "typecheck": "astro check",
     "check:content": "node scripts/check-content.mjs",
     "check:links": "node scripts/check-links.mjs",
-    "check": "astro check && astro build && node scripts/check-content.mjs && node scripts/check-links.mjs && node scripts/catalog.mjs --check && node scripts/contrast.mjs",
+    "check": "astro check && astro build && node scripts/check-content.mjs && node scripts/check-links.mjs && node scripts/catalog.mjs --check && node scripts/pages-cms.mjs --check && node scripts/contrast.mjs",
     "test": "playwright test",
     "lighthouse": "node scripts/lighthouse.mjs",
     "serve": "node scripts/serve.mjs",
     "catalog": "node scripts/catalog.mjs",
+    "cms": "node scripts/pages-cms.mjs",
     "check:external": "node scripts/check-external.mjs"
   },
   "dependencies": {
@@ -31,7 +32,8 @@
     "@axe-core/playwright": "4.14.0",
     "@playwright/test": "1.63.0",
     "lighthouse": "13.6.0",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "yaml": "2.9.1"
   },
   "overrides": {
     "playwright-core": "1.63.0"

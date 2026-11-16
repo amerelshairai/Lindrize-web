@@ -36,8 +36,11 @@ function readBody(req) {
   });
 }
 
-export function createApp({ config, catalog, outside, log = () => {}, now }) {
+export function createApp({ config, catalog: catalogSource, outside, log = () => {}, now }) {
   const limiter = createLimiter(config.limits, now);
+  // The catalog can be a fixed object or a function that returns the newest published one.
+  const currentCatalog = typeof catalogSource === 'function' ? catalogSource : () => catalogSource;
+  const origins = new Set(config.allowedOrigins ?? [config.allowedOrigin]);
 
   return async function handle(req, res) {
     const path = new URL(req.url ?? '/', 'http://localhost').pathname;
@@ -45,7 +48,7 @@ export function createApp({ config, catalog, outside, log = () => {}, now }) {
     if (path !== '/api/design') return reply(res, 404, { ok: false, error: 'not_found' });
     if (req.method !== 'POST') return reply(res, 405, { ok: false, error: 'method' });
     // Browsers always send the page's origin with this kind of request. Anything else is refused.
-    if (req.headers.origin !== config.allowedOrigin) return reply(res, 403, { ok: false, error: 'origin' });
+    if (!origins.has(req.headers.origin)) return reply(res, 403, { ok: false, error: 'origin' });
     if (!String(req.headers['content-type'] ?? '').toLowerCase().startsWith('application/json')) {
       return reply(res, 415, { ok: false, error: 'format' });
     }
@@ -57,6 +60,7 @@ export function createApp({ config, catalog, outside, log = () => {}, now }) {
       return reply(res, error instanceof Error && error.message === 'too_large' ? 413 : 400, { ok: false, error: 'body' });
     }
 
+    const catalog = currentCatalog();
     const checked = validate(body, catalog);
     if (!checked.ok) return reply(res, 400, { ok: false, error: checked.reason });
     if (checked.silent) {
