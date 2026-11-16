@@ -396,3 +396,22 @@ html.motion-ready .drawline.shown {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------- High-contrast mode (Windows "contrast themes") ----------
+   The system removes background colours there, so a chosen option is marked with an outline. */
+@media (forced-colors: active) {
+  .choices input:checked + span,
+  .segments input:checked + span,
+  [aria-pressed='true'],
+  [aria-selected='true'] {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  .btn,
+  .icon-btn {
+    border: 1px solid ButtonText;
+  }
+  .load-bar {
+    background: Highlight;
+  }
+}

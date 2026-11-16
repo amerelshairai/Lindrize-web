@@ -128,6 +128,8 @@ const year = new Date().getFullYear();
   }
   .base a {
     color: var(--ink);
+    /* Tall enough to tap (WCAG 2.2 asks for at least 24px). */
+    padding-block: 0.3rem;
   }
   .base .ltr,
   li .ltr,

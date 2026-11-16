@@ -13,11 +13,12 @@
     "typecheck": "astro check",
     "check:content": "node scripts/check-content.mjs",
     "check:links": "node scripts/check-links.mjs",
-    "check": "astro check && astro build && node scripts/check-content.mjs && node scripts/check-links.mjs && node scripts/catalog.mjs --check",
+    "check": "astro check && astro build && node scripts/check-content.mjs && node scripts/check-links.mjs && node scripts/catalog.mjs --check && node scripts/contrast.mjs",
     "test": "playwright test",
     "lighthouse": "node scripts/lighthouse.mjs",
     "serve": "node scripts/serve.mjs",
-    "catalog": "node scripts/catalog.mjs"
+    "catalog": "node scripts/catalog.mjs",
+    "check:external": "node scripts/check-external.mjs"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans": "5.3.0",

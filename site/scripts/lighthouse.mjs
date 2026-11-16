@@ -9,12 +9,19 @@ import { existsSync } from 'node:fs';
 import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
 import { startServer } from './serve.mjs';
+import { pages, isRedirect } from './lib.mjs';
 
 const PORT = 4322;
 const BASE = `http://127.0.0.1:${PORT}`;
 // One of each kind of page, in both languages.
 const DEFAULT_PAGES = ['/', '/ar/', '/solutions/', '/ar/solutions/ai-travel-sales-assistant/', '/pricing/', '/ar/faq/', '/design-your-agent/', '/ar/design-your-agent/'];
-const PAGES = process.argv.slice(2).length > 0 ? process.argv.slice(2) : DEFAULT_PAGES;
+// `--all` tests every page the site builds (slow: used for the Phase 4 pass and before launch).
+const args = process.argv.slice(2);
+const PAGES = args.includes('--all')
+  ? pages().filter((p) => !isRedirect(p.html) && !p.url.includes('404')).map((p) => p.url)
+  : args.length > 0
+    ? args
+    : DEFAULT_PAGES;
 const TARGET = { score: 95, lcp: 2500, cls: 0.1, bytes: 300 * 1024 };
 
 const sandboxChrome = '/opt/pw-browsers/chromium';
@@ -49,7 +56,13 @@ async function measure(path) {
   const fontBytes = sum(requests.filter((r) => r.resourceType === 'Font'));
 
   const problems = [];
-  for (const [name, value] of Object.entries(scores)) if (value < TARGET.score) problems.push(`${name} ${value} < ${TARGET.score}`);
+  // A page deliberately hidden from search engines (Privacy and Terms until they are written)
+  // cannot score on SEO, so that one score is not judged for it.
+  const hidden = lhr.audits['is-crawlable']?.score === 0;
+  for (const [name, value] of Object.entries(scores)) {
+    if (name === 'seo' && hidden) continue;
+    if (value < TARGET.score) problems.push(`${name} ${value} < ${TARGET.score}`);
+  }
   if (lcp > TARGET.lcp) problems.push(`LCP ${(lcp / 1000).toFixed(2)} s > 2.5 s`);
   if (cls > TARGET.cls) problems.push(`CLS ${cls.toFixed(3)} > 0.1`);
   if (bytes > TARGET.bytes) problems.push(`page weight ${(bytes / 1024).toFixed(0)} KB > 300 KB`);
@@ -77,7 +90,7 @@ try {
     }
     const { scores, lcp, cls, tbt, bytes, fontBytes, problems, weak } = run;
     console.log(
-      `${problems.length ? '✗' : '✓'} ${path.padEnd(40)} performance ${scores.performance} · accessibility ${scores.accessibility} · ` +
+      `${problems.length ? '✗' : '✓'} ${path.padEnd(52)} performance ${scores.performance} · accessibility ${scores.accessibility} · ` +
         `best practices ${scores['best-practices']} · SEO ${scores.seo} · LCP ${(lcp / 1000).toFixed(2)} s · CLS ${cls.toFixed(3)} · ` +
         `TBT ${Math.round(tbt)} ms · ${(bytes / 1024).toFixed(0)} KB + ${(fontBytes / 1024).toFixed(0)} KB fonts` +
         (runs > 1 ? ` (middle of ${runs} runs)` : ''),

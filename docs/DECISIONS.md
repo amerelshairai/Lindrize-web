@@ -4,6 +4,17 @@ Changes the building model made on its own under the decision rule in `PLAN.md`.
 non-critical: it makes the site safer, faster, more accessible or more honest, and stays inside
 what `SPEC.md` asks for. Newest phase first.
 
+## Phase 4 (16 November 2026)
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **The footer email link was made taller** (it was 22px, the standard asks for 24px). | Found by the new target-size check on all 82 pages. | — |
+| **Every page is now tested, not one of each kind:** axe in light and dark, reading at 320px, control size, wider text spacing and focus behind the header. | PLAN asked for "every page". | Earlier phases tested page types. |
+| **A colour contrast check runs with the other checks** and writes `docs/CONTRAST.md`. | A colour change can never quietly break contrast. | PLAN asked for a table. |
+| **Chosen options get an outline in Windows high-contrast mode.** | That mode removes background colours, which was the only sign of a chosen segment. | — |
+| **Outside links are checked on GitHub, weekly and on demand,** not inside the main checks. | This build machine cannot reach Calendly, Instagram or WhatsApp, and another company's outage should never block publishing. | PLAN: "a link check across the whole site". |
+| **Lighthouse does not judge the SEO score of pages hidden from search engines.** | Privacy and Terms are hidden on purpose until they are written. | — |
+
 ## Phase 3 (15 November 2026)
 
 ### Security

@@ -395,6 +395,8 @@ This cloud session is temporary, so the files must live on GitHub before real wo
 
 **Owner reviews:** the results report.
 
+**Status:** done on 16 November 2026. The report is `docs/PHASE-4-REVIEW.md`.
+
 ---
 
 ## 10. Phase 5: Server, publishing, Umami, domain move, launch
