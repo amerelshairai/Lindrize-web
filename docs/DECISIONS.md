@@ -4,6 +4,43 @@ Changes the building model made on its own under the decision rule in `PLAN.md`.
 non-critical: it makes the site safer, faster, more accessible or more honest, and stays inside
 what `SPEC.md` asks for. Newest phase first.
 
+## Phase 5 (16 November 2026)
+
+Decided under the decision rule in `PLAN.md`. None of these changes what a visitor sees or
+what data is collected.
+
+### Security
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **The publishing key is locked to one small program** (`server/deploy-gate.sh`). It can upload a release folder, switch the site to it and list releases. Nothing else. | A key stored at GitHub should not be able to open a terminal on the server. If it leaked, the worst case is a changed website, which one undo fixes. | PLAN said "rsync over SSH" without limits. |
+| **No automatic rebuild of the email receiver from GitHub.** `deploy-receiver.yml` is not created. Updates are one command typed on the server. | An automatic rebuild needs a key with full Docker rights, which is as powerful as the administrator. The receiver changes a few times a year. | PLAN section 2 listed `deploy-receiver.yml`. |
+| **The receiver reads the published site's own list of choices** and re-reads it after each publish. | Without it, adding a feature in the editing screen would make the receiver refuse that feature until someone rebuilt it by hand. The file is validated; a broken one is ignored. | The list was fixed inside the receiver. |
+| **The server's identity is pinned in a GitHub secret** (`DEPLOY_KNOWN_HOSTS`). | The publish refuses to talk to a machine pretending to be the server. | — |
+| **Publishing is switched on by a repository variable** (`DEPLOY_ENABLED`). | The workflow can sit in the repository safely before the server exists. | — |
+| **Umami trusts only the visitor address that Nginx passes on,** and its own update and usage reports are switched off. | A visitor could otherwise fake their address with a header. Umami then sends nothing to anyone. | — |
+| **The database sits on a closed network** that only Umami can reach. Every service listens on the server itself only. | Docker ignores the firewall for published ports, so nothing is published to the outside at all. | — |
+| **HSTS without `includeSubDomains` and without preload.** | Other subdomains you may use (for example for n8n) keep working whatever their setup. | — |
+| **Only visits to `www.lindrize.online` are counted** (`data-domains`). | Test visits on the test address would otherwise inflate the numbers. | — |
+
+### Going live
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **A test address, `new.lindrize.online`,** carries the new site before the domain move. It is hidden from search engines and forwards to the real address after launch. | The whole site, the email form and publishing can be tried on the real server while the old site stays live. Adding the record changes no existing record. | PLAN went straight to the move. |
+| **The certificate for the real name is requested right after the DNS change,** accepting about two minutes of certificate warnings at a quiet hour. | The alternative (proving ownership through extra DNS records beforehand) is more steps in the one place where mistakes cost most. | — |
+| **Brotli is optional.** Gzip is always on. | Ubuntu's Nginx needs an extra package for Brotli. The site meets its speed targets with gzip. | PLAN listed brotli and gzip. |
+| **Receiver and Umami secrets are in two separate files.** | The receiver never sees the database password, and the other way round. | PLAN said one `.env`. |
+
+### Editing screen and tests
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **`.pages.yml` is generated from the content files** (`npm run cms`) and checked on every change. | The editing screen saves only the fields it knows. Generating the list guarantees every field of every file is there. | Hand-written file. |
+| **An optional field left blank counts as left out.** | The editing screen may save a blank optional field as an empty value, which would otherwise stop the build with a confusing message. | — |
+| **The Nginx rules, the publish gate and the services file are tested on every change** (`server/test/`), by running the real files on spare ports. | Server rules are where a silent mistake does most harm. The first run caught two. | PLAN had no server tests. |
+| **Umami 3.4.1** (released 23 October 2026) is pinned by exact version. | Follows the two-week rule. 3.5.0 exists; its release date could not be confirmed from here. | PLAN said "official image". |
+
 ## Phase 4 (16 November 2026)
 
 | Decision | Why | Replaced |

@@ -23,8 +23,8 @@ owner, and sends the owner a short Telegram alert. It stores nothing.
 
 ## Settings
 
-Copy `.env.example` to `.env` on the server and fill it in. `docs/SERVER-SETUP.md` (Phase 5) walks
-through each value.
+Copy `.env.example` to `/srv/lindrize/.env.receiver` on the server and fill it in.
+`docs/SERVER-SETUP.md` step 10 walks through each value.
 
 ## For developers
 
@@ -39,3 +39,7 @@ npm test
 `catalog.json` is generated. After changing systems, features or the builder's choices in the
 site, run `npm run catalog` in `site/` and commit the result. The site's check fails if the two
 are out of step.
+
+On the server the receiver also reads the published site's own copy
+(`CATALOG_PATH`, set in `server/docker-compose.yml`) and re-reads it after each publish, so a
+content edit never needs the receiver to be rebuilt. A missing or broken file is ignored.

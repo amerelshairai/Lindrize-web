@@ -461,6 +461,8 @@ Before any change to the server or DNS, the plan for that step is written out an
   - the Umami admin password
 - the written Privacy Policy and Terms
 
+**Status (16 November 2026):** everything that can be prepared without the server is written and tested: `server/`, the Publish and Launch check workflows, `.pages.yml`, and the five guides. Nothing on the server, the domain or DNS has been changed. Next is the owner running step 1 of `docs/SERVER-SETUP.md` (look only) and step 1 of `docs/DNS-MOVE.md` (export only).
+
 ---
 
 ## 11. What the owner provides, by phase

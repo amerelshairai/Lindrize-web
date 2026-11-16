@@ -13,6 +13,9 @@ Fast, bilingual (English/Arabic) site built with Astro. Self-hosted, accessible 
 - `content/demo/`: the fictional demo agency's packages and FAQs (not travel advice).
 - `docs/design-samples/`: the design and motion drafts approved during the interview.
 - `docs/DECISIONS.md`: changes made during the build, and why.
+- `HOW-TO-EDIT.md`: how the owner changes text, and how to undo.
+- `docs/SERVER-SETUP.md`, `docs/DNS-MOVE.md`, `docs/LAUNCH-CHECKLIST.md`, `docs/SEO-SETUP.md`: going live, step by step.
+- `server/`: the web server rules, background services and publish scripts, with their tests.
 
 ## Preview the site on your computer
 
