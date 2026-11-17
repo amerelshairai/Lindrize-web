@@ -3,7 +3,7 @@
 Status: **approved by the owner on 14 November 2026.** The build follows `PLAN.md`.
 
 - Owner: Amer El-shair, founder of Lindrize, Amman, Jordan
-- Domain: www.lindrize.online
+- Domain: lindrize.online (main address; `www.lindrize.online` forwards to it. Owner's decision, 17 November 2026)
 - Written: 13 November 2026, from the 14-round interview plus `SPEC-INPUTS.md`
 - Where the interview and `SPEC-INPUTS.md` disagree, the interview wins. The clashes and how they were settled are listed in section 17.
 
@@ -39,7 +39,7 @@ Status: **approved by the owner on 14 November 2026.** The build follows `PLAN.m
 
 - **Main goal:** book the 15-minute Google Meet call on Calendly:
   https://calendly.com/amerelshair-ai-lindrize/15-minute-call-with-lindrize
-  The site also offers the short link **www.lindrize.online/book**, which forwards to it.
+  The site also offers the short link **lindrize.online/book**, which forwards to it.
 - **Backup actions,** in order: WhatsApp → try the live Instagram demo → watch the 2-minute video.
 - **Audience:** travel agency and tour operator **owners and managers**, who decide and pay. One short section speaks to staff ("what your team gets").
 - **Markets:** Jordan and the GCC, treated equally.
@@ -180,7 +180,7 @@ There is **no contact form**.
 
 - **Claude** drafts all page text in both languages.
 - **The owner** reviews it and proofreads the Arabic (about 1–2 hours).
-- **The owner writes the Privacy Policy and Terms.** Claude supplies a checklist and the page headings (section 14).
+- **Privacy Policy and Terms:** written by Claude at the owner's request (17 November 2026), from the checklists in section 14 and the owner's Ownership and Buy-out Policy. The owner approves them before launch.
 
 ### 2.8 Tone and claims
 
@@ -564,7 +564,7 @@ All fonts are served from the site's own server and trimmed to the letters used.
     - founder Amer El-shair
     - Amman, Jordan
     - serves Jordan, Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain and Oman
-    - phone, email and URL `https://www.lindrize.online`
+    - phone, email and URL `https://lindrize.online`
     - links to public profiles once provided
   - **Service** for each system
   - **FAQPage** on pages with FAQs
@@ -644,7 +644,7 @@ The owner writes them. **Checklist:**
 - the site's content belongs to Lindrize
 - Jordanian law applies
 
-Both pages are linked in the footer. The Privacy Policy is also linked under the email box.
+Both pages, and the owner's **Ownership and Buy-out Policy** (`/ownership/`, added 17 November 2026), are linked in the footer. The Privacy Policy is also linked under the email box.
 
 ---
 
@@ -686,7 +686,7 @@ The owner follows a step-by-step guide, with a check at the end of each step:
 5. Check the new site and send and receive a test email.
 6. Keep the old Vercel site live for 2 weeks after the new one is confirmed working, then delete it.
 
-**Main address:** `www.lindrize.online`. `lindrize.online` forwards to it, and `lindrize.online/book` forwards to Calendly.
+**Main address:** `lindrize.online`. `www.lindrize.online` forwards to it, and `lindrize.online/book` forwards to Calendly. (Changed by the owner on 17 November 2026; the interview had chosen www.)
 
 ### 15.5 Monitoring and backups
 
@@ -726,7 +726,7 @@ The owner follows a step-by-step guide, with a check at the end of each step:
 | Fonts | Outfit headings, IBM Plex Mono labels | Interview: IBM Plex Serif, Sans and Sans Arabic. Outfit only inside the logo. |
 | Decorations | `.lz-corner`, `.lz-dots`, dot dividers | Interview: not used |
 | Form notifications | n8n to Telegram and Google Sheets | Interview: no n8n. Receiver to inbox, plus a direct Telegram alert (confirmed by owner). |
-| Main URL | `https://lindrize.online` | Interview: `https://www.lindrize.online` |
+| Main URL | `https://lindrize.online` | **Owner confirmed `https://lindrize.online`** (17 November 2026) |
 | Demo account | @darb_alyasmeen, "Darb Al-Yasmeen Travel" | **Owner confirmed @darb_alyasmeen** (replaces @Yasmeen_aldarb) |
 | Share image | Navy, Outfit | **Owner confirmed: keep for launch** |
 

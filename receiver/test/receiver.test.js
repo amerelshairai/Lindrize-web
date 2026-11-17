@@ -24,7 +24,7 @@ test('a good design is emailed to the owner and the visitor, with a Telegram ale
   assert.match(toOwner.text, /Extras: A second follow-up a few days later/);
   assert.equal(toVisitor.to, 'owner@agency.com');
   assert.equal(toVisitor.subject, 'Your Lindrize agent design');
-  assert.match(toVisitor.text, /https:\/\/www\.lindrize\.online\/book/);
+  assert.match(toVisitor.text, /https:\/\/lindrize\.online\/book/);
   assert.equal(toOwner.html, undefined, 'emails are plain text only');
 
   assert.equal(app.sent.alerts.length, 1);

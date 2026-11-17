@@ -31,6 +31,8 @@ const GROUP_CHOICES = {
 const HELP = {
   id: 'Lowercase letters, digits and hyphens. Do not change an existing one.',
   ready: 'Switch on only when every section has its text in both languages.',
+  approved: 'Switch on when you have read and accepted the text. The site cannot go live before that.',
+  updated: 'The day the text last changed, as 2026-11-17. Shown at the top of the page.',
   consent: 'Must be on: only real clients who agreed to be quoted.',
   videoId: 'The part of the YouTube link after "v=". Leave empty to hide the video.',
   turnstileSiteKey: 'The public "site key" from Cloudflare Turnstile. Leave empty to hide the email form.',
@@ -47,7 +49,7 @@ const EXTRA = {
 };
 
 /** Fields that always get a tall text box, whatever their current length. */
-const LONG = new Set(['body', 'answer', 'lead', 'intro', 'summary', 'does', 'never', 'description', 'quote', 'note', 'text', 'also', 'statement', 'howBody', 'notice']);
+const LONG = new Set(['intro', 'body', 'answer', 'lead', 'intro', 'summary', 'does', 'never', 'description', 'quote', 'note', 'text', 'also', 'statement', 'howBody', 'notice']);
 
 const label = (key) =>
   ({ en: 'English', ar: 'Arabic', seo: 'Search result', faqs: 'Questions', ui: 'Interface words' })[key] ??
@@ -98,7 +100,7 @@ const fields = (sample, scope) => {
 const PAGES = [
   ['home', 'Home'], ['solutions', 'Solutions'], ['system', 'System page (shared words)'], ['industries', 'Industries'],
   ['pricing', 'Pricing'], ['design', 'Design your agent'], ['faq', 'FAQ page (headings)'], ['about', 'About'],
-  ['contact', 'Contact'], ['privacy', 'Privacy Policy'], ['terms', 'Terms'],
+  ['contact', 'Contact'], ['privacy', 'Privacy Policy'], ['terms', 'Terms'], ['ownership', 'Ownership and Buy-out Policy'],
 ];
 const COLLECTIONS = [
   ['systems', 'Systems (30)', { primary: 'number', sort: 'number' }],
@@ -125,7 +127,7 @@ const content = [
     type: 'file',
     path: `site/src/content/pages/${file}.yaml`,
     format: 'yaml',
-    fields: fields(read(`src/content/pages/${file}.yaml`), ['privacy', 'terms'].includes(file) ? 'legal' : file),
+    fields: fields(read(`src/content/pages/${file}.yaml`), ['privacy', 'terms', 'ownership'].includes(file) ? 'legal' : file),
   })),
   ...COLLECTIONS.map(([dir, name, view]) => {
     const samples = folder(dir).map((f) => read(`src/content/${dir}/${f}`));

@@ -19,7 +19,7 @@ const variants = (pkg, subset, weights) =>
   );
 
 export default defineConfig({
-  site: 'https://www.lindrize.online',
+  site: 'https://lindrize.online',
   trailingSlash: 'always',
   // Styles are small, so they travel inside each page: one request less before anything shows.
   build: { format: 'directory', inlineStylesheets: 'always' },

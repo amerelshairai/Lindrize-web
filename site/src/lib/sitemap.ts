@@ -17,7 +17,7 @@ export async function indexablePages(): Promise<string[]> {
     ROUTES.about,
     ROUTES.contact,
   ];
-  for (const id of ['privacy', 'terms'] as const) {
+  for (const id of ['privacy', 'terms', 'ownership'] as const) {
     if ((await getEntry('legal', id))?.data.ready) pages.push(`/${id}/`);
   }
   return pages.filter((page) => !STUB_PAGES.includes(page));

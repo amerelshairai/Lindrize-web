@@ -3,13 +3,13 @@ import { readFileSync } from 'node:fs';
 import { createApp } from '../src/app.js';
 
 export const catalog = JSON.parse(readFileSync(new URL('../catalog.json', import.meta.url), 'utf8'));
-export const ORIGIN = 'https://www.lindrize.online';
+export const ORIGIN = 'https://lindrize.online';
 
 export const config = {
   allowedOrigin: ORIGIN,
   mailFrom: 'Lindrize <site@example.test>',
   ownerEmail: 'owner@example.test',
-  bookingUrl: 'https://www.lindrize.online/book',
+  bookingUrl: 'https://lindrize.online/book',
   limits: { perVisitorPerHour: 3, totalPerDay: 50 },
 };
 

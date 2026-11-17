@@ -44,6 +44,10 @@
       "en": "Terms",
       "ar": "الشروط"
     },
+    "ownership": {
+      "en": "Ownership and buy-out",
+      "ar": "الملكية وشراء النظام"
+    },
     "home": {
       "en": "Lindrize home",
       "ar": "الصفحة الرئيسية لـ Lindrize"
@@ -297,6 +301,12 @@
     "did": {
       "en": "What the assistant did",
       "ar": "ما قام به المساعد"
+    }
+  },
+  "legal": {
+    "updated": {
+      "en": "Last updated",
+      "ar": "آخر تحديث"
     }
   }
 }

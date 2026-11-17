@@ -1,35 +1,115 @@
-# Set ready to true only when every section below has its text. The site cannot go live before that.
-ready: false
+# ready: every section has its text in both languages (the page shows in full).
+# approved: the owner has read and accepted the text. The site cannot go live before that.
+# updated: change to the day the text last changed (shown at the top of the page).
+ready: true
+approved: false
+updated: "2026-11-17"
 seo:
   title:
     en: "Terms | Lindrize"
     ar: "الشروط | Lindrize"
   description:
-    en: "The terms for using the Lindrize website."
-    ar: "شروط استخدام موقع Lindrize."
+    en: "The terms for using the Lindrize website: what it is for, how prices are agreed, what the estimate and the demo are, and which law applies."
+    ar: "شروط استخدام موقع Lindrize: الغرض منه، وكيف يُتّفق على الأسعار، وما هو التقدير والحساب التجريبي، والقانون المطبَّق."
 title:
   en: "Terms"
   ar: "الشروط"
 notice:
   en: "This page is being written. It will be published in full before the site goes live."
   ar: "هذه الصفحة قيد الإعداد، وستُنشَر كاملة قبل إطلاق الموقع."
-# Add a `body:` with `en:` and `ar:` text under each section's title when it is written.
+intro:
+  en: "These terms apply when you use this website. They are short on purpose. If you become a client, your Service Agreement sets out the terms of the service itself."
+  ar: "تنطبق هذه الشروط عند استخدامك هذا الموقع، وهي مختصرة عن قصد. وإذا أصبحت عميلاً لدينا، فإن اتفاقية الخدمة هي التي تحدّد شروط الخدمة نفسها."
 sections:
   - title:
       en: "About this website"
       ar: "عن هذا الموقع"
+    body:
+      en: |
+        This website gives general information about Lindrize and the systems we build for travel businesses. It is run by Amer El-shair, Amman, Jordan.
+
+        We try to keep it accurate, but it can contain mistakes or be out of date, and we may change it at any time. When we find a mistake, we correct it. By using the site you accept these terms.
+      ar: |
+        يقدّم هذا الموقع معلومات عامة عن Lindrize وعن الأنظمة التي نبنيها لأعمال السفر. ويديره عامر الشاعر، عمّان، الأردن.
+
+        نحرص على أن تكون معلوماته دقيقة، لكنه قد يتضمّن أخطاء أو معلومات قديمة، وقد نغيّره في أي وقت. وعندما نجد خطأً نصحّحه. وباستخدامك الموقع فإنك توافق على هذه الشروط.
   - title:
       en: "Prices and services"
       ar: "الأسعار والخدمات"
+    body:
+      en: |
+        There is no price list on this website. The exact service, price and conditions for each client are set out in a written proposal and Service Agreement. If anything on this website differs from them, the agreement applies.
+
+        The system pages describe what each system can do. What we build for you is what your agreement says.
+      ar: |
+        لا توجد قائمة أسعار في هذا الموقع. الخدمة والسعر والشروط لكل عميل تُحدَّد في عرض سعر مكتوب وفي اتفاقية الخدمة. وإذا اختلف أي شيء في هذا الموقع عنهما، تُطبَّق الاتفاقية.
+
+        تصف صفحات الأنظمة ما يمكن أن يقدّمه كل نظام، أما ما نبنيه لك فهو ما تنصّ عليه اتفاقيتك.
   - title:
       en: "The \"Design your agent\" estimate"
       ar: "تقدير «صمّم مساعدك»"
+    body:
+      en: |
+        Any result shown in "Design your agent" is an estimate worked out from your own answers and the assumptions shown with it. It is not a promise of savings, bookings or results.
+      ar: |
+        أي نتيجة تظهر في «صمّم مساعدك» هي تقدير محسوب من إجاباتك أنت ومن الافتراضات المعروضة معه، وليست وعداً بتوفير أو بحجوزات أو بنتائج.
   - title:
       en: "The demo agency"
       ar: "المكتب التجريبي"
+    body:
+      en: |
+        Darb Al-Yasmeen (@darb_alyasmeen) is a fictional travel agency created for the demo. Its packages, prices, dates and answers are sample data. They are not real offers, and they are not travel, visa or health advice. Nothing can be booked through it.
+      ar: |
+        «درب الياسمين» (‎@darb_alyasmeen) مكتب سفر وهمي أُنشئ للتجربة. باقاته وأسعاره ومواعيده وإجاباته بيانات تجريبية، وليست عروضاً حقيقية، ولا نصيحة سفر أو تأشيرات أو صحة. ولا يمكن حجز أي شيء من خلاله.
   - title:
       en: "Ownership of content"
       ar: "ملكية المحتوى"
+    body:
+      en: |
+        The text, design, logo and the name Lindrize belong to Lindrize. They may not be copied or reused without our written permission. Sharing links to the site is always welcome.
+
+        Who owns what in a client's system is explained in our Ownership and Buy-out Policy.
+      ar: |
+        النصوص والتصميم والشعار واسم Lindrize ملك لـ Lindrize، ولا يجوز نسخها أو إعادة استخدامها دون إذن مكتوب منا. ومشاركة روابط الموقع مرحَّب بها دائماً.
+
+        أما ملكية مكوّنات نظام العميل فتوضّحها سياسة الملكية وشراء النظام.
+  - title:
+      en: "Fair use"
+      ar: "الاستخدام المقبول"
+    body:
+      en: |
+        Please do not send designs to email addresses that are not yours, and do not try to break into, overload or disrupt the site or the demo account.
+      ar: |
+        يُرجى عدم إرسال التصاميم إلى عناوين بريد لا تملكها، وعدم محاولة اختراق الموقع أو الحساب التجريبي أو إثقالهما أو تعطيلهما.
+  - title:
+      en: "Other websites and services"
+      ar: "المواقع والخدمات الأخرى"
+    body:
+      en: |
+        The site links to and uses services run by other companies, such as Calendly, WhatsApp, Instagram, YouTube and Cloudflare. Their own terms apply when you use them, and we are not responsible for them.
+      ar: |
+        يرتبط الموقع بخدمات تديرها شركات أخرى ويستخدمها، مثل Calendly و WhatsApp و Instagram و YouTube و Cloudflare. وتنطبق شروطها هي عند استخدامها، ولسنا مسؤولين عنها.
+  - title:
+      en: "Responsibility"
+      ar: "المسؤولية"
+    body:
+      en: |
+        We provide the website as it is. As far as the law allows, we are not responsible for loss caused by relying on information on the website rather than on a written agreement with us. Nothing in these terms takes away a right you have under the law.
+      ar: |
+        نقدّم الموقع كما هو. وفي حدود ما يسمح به القانون، لسنا مسؤولين عن أي خسارة تنتج عن الاعتماد على معلومات الموقع بدلاً من اتفاق مكتوب معنا. ولا يسلبك أي شيء في هذه الشروط حقاً يمنحك إياه القانون.
   - title:
       en: "Governing law"
       ar: "القانون الحاكم"
+    body:
+      en: |
+        These terms are governed by the laws of the Hashemite Kingdom of Jordan.
+      ar: |
+        تخضع هذه الشروط لقوانين المملكة الأردنية الهاشمية.
+  - title:
+      en: "Changes and contact"
+      ar: "التعديلات والتواصل"
+    body:
+      en: |
+        We may update these terms and will show the date of the latest version at the top of this page. Questions: amer.ai@lindrize.online · +962 78 553 6571.
+      ar: |
+        قد نحدّث هذه الشروط، وسنعرض تاريخ آخر نسخة في أعلى هذه الصفحة. للاستفسار: amer.ai@lindrize.online · ‎+962 78 553 6571.

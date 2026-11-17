@@ -25,7 +25,7 @@ for (const page of all) {
       const value = decode(raw);
       if (/^(mailto:|tel:|data:|blob:)/i.test(value)) continue;
       if (/^https?:\/\//i.test(value)) {
-        if (!value.startsWith('https://www.lindrize.online')) external.add(value);
+        if (!value.startsWith('https://lindrize.online/')) external.add(value);
         continue;
       }
       checked++;

@@ -36,7 +36,7 @@ screenshot and I adjust the form description (`.pages.yml`).
 |---|---|
 | Settings | Calendly link, WhatsApp number, email, YouTube video, founding-client places, the Turnstile and Umami ids |
 | Page: Home … Page: Contact | The wording of each page, English and Arabic side by side |
-| Page: Privacy Policy, Page: Terms | The legal text, and the `ready` switch |
+| Page: Privacy Policy, Page: Terms, Page: Ownership and Buy-out Policy | The legal text, its date, and the `ready` and `approved` switches |
 | Systems (30) | Each system: name, summary, steps, features, its three questions, status |
 | FAQ questions | Each question and answer, its group, and whether it shows on Home |
 | Industries (list) | The eight fields and which systems fit them |
@@ -60,7 +60,7 @@ screenshot and I adjust the form description (`.pages.yml`).
 | Mark a system as available | Systems → the system → Status → `available` |
 | Add a client quote | Client feedback → Add an entry |
 | Update places left | Settings → Founding places (leave empty to hide the numbers) |
-| Publish the Privacy Policy | Page: Privacy Policy → fill each section's Body in both languages → switch Ready on |
+| Approve a legal page | Page: Privacy Policy (or Terms, or Ownership) → set Updated to today → switch Approved on |
 | Show the savings estimate | Page: Design your agent → Assumptions (all three numbers) |
 
 ---

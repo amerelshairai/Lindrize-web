@@ -5,7 +5,7 @@ import { expect, test } from '@playwright/test';
 
 /** Search and AI files are checked straight from the built site. */
 const DIST = fileURLToPath(new URL('../dist', import.meta.url));
-const SITE = 'https://www.lindrize.online';
+const SITE = 'https://lindrize.online';
 const read = (path: string): string => readFileSync(join(DIST, path), 'utf8');
 const fileFor = (url: string): string => {
   const path = url.replace(SITE, '');
@@ -28,7 +28,7 @@ test('sitemap: valid, in both languages, and every address exists', () => {
   const xml = read('sitemap.xml');
   expect(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(true);
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1] ?? '');
-  expect(locs.length).toBe(76); // 38 pages in 2 languages
+  expect(locs.length).toBe(82); // 41 pages in 2 languages
   expect(new Set(locs).size).toBe(locs.length);
   for (const loc of locs) {
     expect(loc.startsWith(`${SITE}/`), loc).toBe(true);
@@ -36,7 +36,7 @@ test('sitemap: valid, in both languages, and every address exists', () => {
     expect(read(fileFor(loc).replace(DIST, '')), `${loc} must be indexable`).not.toContain('name="robots" content="noindex"');
   }
   expect(xml.match(/hreflang="x-default"/g)?.length).toBe(locs.length);
-  for (const hidden of ['/privacy/', '/terms/', '/404/', '/404.html', '/book/']) {
+  for (const hidden of ['/404/', '/404.html', '/book/']) {
     expect(locs.filter((loc) => loc.endsWith(hidden)), `${hidden} must stay out of the sitemap`).toEqual([]);
   }
 });
@@ -56,7 +56,7 @@ test('llms.txt: facts match the site, and every link works', () => {
   expect(llms).toContain('fictional agency');
   expect(llms).toContain('+962 78 553 6571');
   expect(llms).not.toContain('amerelshair.ai@');
-  const links = [...llms.matchAll(/\]\((https:\/\/www\.lindrize\.online[^)]*)\)/g)].map((m) => m[1] ?? '');
+  const links = [...llms.matchAll(/\]\((https:\/\/lindrize\.online[^)]*)\)/g)].map((m) => m[1] ?? '');
   expect(links.length).toBeGreaterThanOrEqual(40);
   for (const link of links) expect(existsSync(fileFor(link)), `${link} in llms.txt does not exist`).toBe(true);
 });

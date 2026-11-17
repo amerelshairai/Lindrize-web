@@ -46,6 +46,7 @@ export const ROUTES = {
   contact: '/contact/',
   privacy: '/privacy/',
   terms: '/terms/',
+  ownership: '/ownership/',
 } as const;
 
 export const systemPath = (slug: string): string => `/solutions/${slug}/`;

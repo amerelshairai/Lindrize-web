@@ -1,44 +1,183 @@
-# Set ready to true only when every section below has its text. The site cannot go live before that.
-ready: false
+# ready: every section has its text in both languages (the page shows in full).
+# approved: the owner has read and accepted the text. The site cannot go live before that.
+# updated: change to the day the text last changed (shown at the top of the page).
+ready: true
+approved: false
+updated: "2026-11-17"
 seo:
   title:
     en: "Privacy Policy | Lindrize"
     ar: "سياسة الخصوصية | Lindrize"
   description:
-    en: "How Lindrize handles the little information this website collects."
-    ar: "كيف تتعامل Lindrize مع المعلومات القليلة التي يجمعها هذا الموقع."
+    en: "What the Lindrize website collects, why, which outside services it uses, how long anything is kept, and how to ask for your data to be deleted."
+    ar: "ما الذي يجمعه موقع Lindrize ولماذا، والخدمات الخارجية التي يستخدمها، ومدة الاحتفاظ بالمعلومات، وكيف تطلب حذف بياناتك."
 title:
   en: "Privacy Policy"
   ar: "سياسة الخصوصية"
 notice:
   en: "This page is being written. It will be published in full before the site goes live."
   ar: "هذه الصفحة قيد الإعداد، وستُنشَر كاملة قبل إطلاق الموقع."
-# Add a `body:` with `en:` and `ar:` text under each section's title when it is written.
+intro:
+  en: "This website collects very little. This page explains, in plain words, what it is, why, and who else is involved."
+  ar: "هذا الموقع يجمع القليل جداً من المعلومات. توضّح هذه الصفحة بكلمات بسيطة ما هي هذه المعلومات، ولماذا نجمعها، ومن يشارك في التعامل معها."
 sections:
   - title:
       en: "Who we are and how to contact us"
       ar: "من نحن وكيف تتواصل معنا"
+    body:
+      en: |
+        This website belongs to Lindrize, a business run by Amer El-shair in Amman, Jordan. Where this policy says "we", it means Lindrize.
+
+        For any question about your information, or to use the rights below, email amer.ai@lindrize.online or send a WhatsApp message to +962 78 553 6571.
+
+        This policy covers this website and the demo account @darb_alyasmeen. If you become a client, your Service Agreement and our Ownership and Buy-out Policy explain how we handle your business's data.
+      ar: |
+        هذا الموقع ملك لـ Lindrize، وهي نشاط تجاري يديره عامر الشاعر في عمّان، الأردن. وحيثما تقول هذه السياسة «نحن» فالمقصود Lindrize.
+
+        لأي سؤال عن معلوماتك، أو لاستخدام حقوقك المذكورة أدناه، راسلنا على amer.ai@lindrize.online أو عبر WhatsApp على الرقم ‎+962 78 553 6571.
+
+        تشمل هذه السياسة هذا الموقع والحساب التجريبي ‎@darb_alyasmeen. وإذا أصبحت عميلاً لدينا، فإن اتفاقية الخدمة وسياسة الملكية وشراء النظام توضّحان كيف نتعامل مع بيانات نشاطك التجاري.
   - title:
       en: "What we collect when you email yourself a design"
       ar: "ما نجمعه عندما ترسل تصميمك إلى بريدك"
+    body:
+      en: |
+        The website has no sign-up and no contact form. The only place you type personal information is the box under "Email me my design". When you use it, we receive:
+
+        - the email address you type
+        - the choices you made in "Design your agent": your type of business and its size, the problem, the system, the features and the ranges you picked
+        - the language of the page
+
+        We use them to send you your design and to follow up with you about it. We do not add you to a newsletter or a mailing list.
+
+        Two emails are sent through Google Workspace, our email provider: your copy, and a copy to our inbox. We also receive a short alert on Telegram that contains your choices but not your email address.
+
+        To stop abuse, our server keeps your internet address in its memory for up to one hour, to limit how many designs can be sent. It is never written down.
+      ar: |
+        لا يوجد في الموقع تسجيل ولا نموذج تواصل. المكان الوحيد الذي تكتب فيه معلومات شخصية هو الخانة تحت «أرسل تصميمي إلى بريدي». وعند استخدامها نستلم:
+
+        - عنوان البريد الإلكتروني الذي تكتبه
+        - اختياراتك في «صمّم مساعدك»: نوع نشاطك وحجمه، والمشكلة، والنظام، والميزات، والنطاقات التي اخترتها
+        - لغة الصفحة
+
+        نستخدمها لنرسل إليك تصميمك ولنتابعه معك. ولا نضيفك إلى نشرة بريدية أو قائمة مراسلات.
+
+        تُرسَل رسالتان عبر Google Workspace، وهو مزوّد البريد لدينا: نسختك، ونسخة إلى بريدنا. ونستلم أيضاً تنبيهاً قصيراً على Telegram يتضمّن اختياراتك دون عنوان بريدك.
+
+        لمنع إساءة الاستخدام، يحتفظ خادمنا بعنوان الإنترنت الخاص بك في ذاكرته لمدة أقصاها ساعة واحدة، ليحدّ من عدد التصاميم التي يمكن إرسالها. ولا يُسجَّل هذا العنوان في أي مكان.
   - title:
       en: "Booking a call, WhatsApp, the human check and video"
       ar: "حجز المكالمة و WhatsApp والتحقق البشري والفيديو"
+    body:
+      en: |
+        These services are run by other companies. Each one loads only when you use it, and handles your information under its own privacy policy. Once you use one, it may set its own cookies.
+
+        - **Calendly** shows our booking calendar when you press "Book a call". If you made a design, the booking form is filled in with it; you can change or delete that text before you book. Calendly then sends us your name, your email and your answers so we can hold the call.
+        - **WhatsApp** (Meta) opens when you press a WhatsApp button. The message is written for you, but it is sent only if you press send.
+        - **Cloudflare Turnstile** checks that a person, not a program, is using the "Email me my design" box. It loads only when you use that box, and it looks at technical details such as your internet address and browser.
+        - **YouTube** plays our video in its privacy-enhanced mode, and only after you press play.
+        - **Instagram** (Meta) opens when you follow a link to the demo account.
+      ar: |
+        تدير هذه الخدمات شركات أخرى. كل واحدة منها لا تُحمَّل إلا عندما تستخدمها، وتتعامل مع معلوماتك وفق سياسة الخصوصية الخاصة بها. وبعد أن تستخدم إحداها، قد تضع ملفات تعريف الارتباط (الكوكيز) الخاصة بها.
+
+        - **Calendly** يعرض تقويم الحجز عندما تضغط «احجز مكالمة». وإذا صمّمت مساعدك، يُملأ نموذج الحجز بتصميمك، ويمكنك تعديل هذا النص أو حذفه قبل الحجز. ثم يرسل إلينا Calendly اسمك وبريدك وإجاباتك لنعقد المكالمة.
+        - **WhatsApp** (من Meta) يُفتح عندما تضغط زر WhatsApp. تُكتب الرسالة نيابةً عنك، لكنها لا تُرسَل إلا إذا ضغطت إرسال.
+        - **Cloudflare Turnstile** يتحقق من أن من يستخدم خانة «أرسل تصميمي إلى بريدي» شخص وليس برنامجاً. لا يُحمَّل إلا عندما تستخدم هذه الخانة، ويطّلع على تفاصيل تقنية مثل عنوان الإنترنت والمتصفح.
+        - **YouTube** يعرض الفيديو في وضع الخصوصية المحسّنة، ولا يبدأ إلا بعد أن تضغط تشغيل.
+        - **Instagram** (من Meta) يُفتح عندما تتبع رابطاً إلى الحساب التجريبي.
+  - title:
+      en: "The demo account on Instagram"
+      ar: "الحساب التجريبي على Instagram"
+    body:
+      en: |
+        @darb_alyasmeen belongs to Darb Al-Yasmeen, a fictional travel agency we created so you can try the assistant. When you message it from your Instagram account, Instagram (Meta) passes your messages to our assistant, which writes its replies with the help of an AI provider (OpenAI).
+
+        Please use made-up details when you try it: no real phone numbers, passport details or payment information. We may read demo conversations to improve the demo, and we delete them within 12 months.
+      ar: |
+        الحساب ‎@darb_alyasmeen يعود إلى «درب الياسمين»، وهو مكتب سفر وهمي أنشأناه لتجرّب المساعد. عندما تراسله من حسابك على Instagram، ينقل Instagram (من Meta) رسائلك إلى مساعدنا، الذي يكتب ردوده بالاستعانة بمزوّد ذكاء اصطناعي (OpenAI).
+
+        يُرجى استخدام بيانات غير حقيقية عند التجربة: لا أرقام هواتف حقيقية، ولا بيانات جوازات سفر، ولا معلومات دفع. قد نقرأ المحادثات التجريبية لتحسين التجربة، ونحذفها خلال 12 شهراً.
   - title:
       en: "Anonymous visitor counting"
       ar: "إحصاء الزوار دون تحديد هويتهم"
+    body:
+      en: |
+        We count visits with Umami, which runs on our own server, rented from Hostinger, and not on an advertising or analytics company's servers. It sets no cookies.
+
+        For each visit it records the page opened, the website you came from, your type of device and browser, and your country. The country is worked out from your internet address, which is then thrown away and not stored.
+
+        It also counts some actions, with no names attached: opening the booking calendar, pressing WhatsApp, the demo or the video, the steps, systems and features chosen in "Design your agent", and the filters used on the Solutions page. It never records what you type.
+
+        It does not follow you to other websites. If your browser asks websites not to track you ("Do Not Track"), you are not counted at all.
+      ar: |
+        نحصي الزيارات باستخدام Umami، الذي يعمل على خادمنا الخاص المستأجَر من Hostinger، لا على خوادم شركة إعلانات أو تحليلات. ولا يضع أي ملفات تعريف ارتباط (كوكيز).
+
+        يسجّل في كل زيارة الصفحة التي فُتحت، والموقع الذي جئت منه، ونوع جهازك ومتصفحك، وبلدك. ويُستنتَج البلد من عنوان الإنترنت الخاص بك، ثم يُتخلَّص من العنوان ولا يُحفَظ.
+
+        ويحصي أيضاً بعض الأفعال دون أي أسماء: فتح تقويم الحجز، والضغط على WhatsApp أو التجربة أو الفيديو، والخطوات والأنظمة والميزات المختارة في «صمّم مساعدك»، وعوامل التصفية المستخدمة في صفحة الحلول. ولا يسجّل أبداً ما تكتبه.
+
+        لا يتتبّعك إلى مواقع أخرى. وإذا كان متصفحك يطلب من المواقع عدم تتبّعك («Do Not Track»)، فلن تُحتسَب زيارتك أصلاً.
+  - title:
+      en: "Our server's records"
+      ar: "سجلات خادمنا"
+    body:
+      en: |
+        Like every website, our server keeps a short technical record of requests, to protect the site from attacks: the page requested, the time, your browser type and your internet address with its last part removed. Error records can contain the full address. Both are deleted automatically after 14 days.
+      ar: |
+        مثل أي موقع، يحتفظ خادمنا بسجل تقني قصير للطلبات لحماية الموقع من الهجمات: الصفحة المطلوبة، والوقت، ونوع متصفحك، وعنوان الإنترنت الخاص بك بعد حذف جزئه الأخير. وقد تتضمّن سجلات الأخطاء العنوان كاملاً. ويُحذَف كلاهما تلقائياً بعد 14 يوماً.
   - title:
       en: "What is saved on your device"
       ar: "ما يُحفَظ على جهازك"
+    body:
+      en: |
+        The site saves two things in your browser's own storage, on your device only. We cannot see them.
+
+        - Whether you chose light or dark mode.
+        - Your answers in "Design your agent", so they are still there when you come back. "Clear my answers" deletes them.
+
+        The site sets no cookies of its own and no tracking cookies, so there is no cookie banner.
+      ar: |
+        يحفظ الموقع أمرين في مساحة التخزين الخاصة بمتصفحك، على جهازك فقط، ولا نستطيع رؤيتهما:
+
+        - هل اخترت الوضع الفاتح أم الداكن.
+        - إجاباتك في «صمّم مساعدك»، لتجدها عندما تعود. وزر «امسح إجاباتي» يحذفها.
+
+        لا يضع الموقع أي ملفات تعريف ارتباط (كوكيز) خاصة به ولا أي كوكيز للتتبّع، لذلك لا توجد نافذة موافقة على الكوكيز.
   - title:
-      en: "How long we keep emails"
-      ar: "مدة احتفاظنا بالرسائل"
+      en: "How long we keep information"
+      ar: "مدة احتفاظنا بالمعلومات"
+    body:
+      en: |
+        - **Emailed designs:** up to 12 months in our inbox, then deleted, unless you become a client.
+        - **Demo conversations:** deleted within 12 months.
+        - **Server records:** 14 days.
+        - **Visitor counts:** they contain no personal information and are kept as statistics.
+      ar: |
+        - **التصاميم المرسلة بالبريد:** حتى 12 شهراً في بريدنا ثم تُحذَف، إلا إذا أصبحت عميلاً لدينا.
+        - **المحادثات التجريبية:** تُحذَف خلال 12 شهراً.
+        - **سجلات الخادم:** 14 يوماً.
+        - **إحصاءات الزوار:** لا تتضمّن أي معلومات شخصية، وتُحفَظ كأرقام إحصائية.
   - title:
       en: "Your rights"
       ar: "حقوقك"
+    body:
+      en: |
+        You can ask us to show you the information we hold about you, to correct it or to delete it. You can also ask us to stop contacting you. Email amer.ai@lindrize.online. We answer within 30 days, and it costs nothing.
+      ar: |
+        يمكنك أن تطلب منا عرض المعلومات التي نحتفظ بها عنك، أو تصحيحها، أو حذفها. ويمكنك أيضاً أن تطلب منا التوقف عن التواصل معك. راسلنا على amer.ai@lindrize.online، وسنردّ خلال 30 يوماً ودون أي تكلفة.
   - title:
       en: "We never sell data"
       ar: "لا نبيع البيانات أبداً"
+    body:
+      en: |
+        We never sell your information, and we never give it to anyone for advertising. It is shared only with the services named on this page, only so they can do the job described here, or when the law requires it.
+      ar: |
+        لا نبيع معلوماتك أبداً، ولا نعطيها لأي جهة لأغراض الإعلان. ولا نشاركها إلا مع الخدمات المذكورة في هذه الصفحة، وفقط لتؤدي العمل الموصوف هنا، أو عندما يفرض القانون ذلك.
   - title:
       en: "Changes to this policy"
       ar: "التغييرات على هذه السياسة"
+    body:
+      en: |
+        When we change this policy, we update the date at the top of this page.
+      ar: |
+        عندما نغيّر هذه السياسة، نحدّث التاريخ في أعلى هذه الصفحة.

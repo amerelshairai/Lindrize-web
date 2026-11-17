@@ -23,7 +23,7 @@ const pages = walk(DIST)
   .sort();
 
 test('the site builds the pages we expect', () => {
-  expect(pages.length).toBe(82);
+  expect(pages.length).toBe(84);
 });
 
 // Pages are checked in groups so that one failure names its page without stopping the others.

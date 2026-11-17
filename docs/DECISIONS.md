@@ -4,6 +4,18 @@ Changes the building model made on its own under the decision rule in `PLAN.md`.
 non-critical: it makes the site safer, faster, more accessible or more honest, and stays inside
 what `SPEC.md` asks for. Newest phase first.
 
+## Phase 5, owner's answers (17 November 2026)
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **Main address `https://lindrize.online`; `www` forwards to it.** Site address, canonical links, sitemap, receiver, web server rules and tests all changed. | Owner's decision. | `www.lindrize.online` from the interview. |
+| **Privacy Policy and Terms written by Claude; the owner's Ownership and Buy-out Policy published at `/ownership/`.** All three linked in the footer. | Owner's request. | SPEC said the owner writes them. |
+| **Legal pages have an `approved` switch.** The launch check fails until the owner switches it on in each file. | The texts contain statements only the owner can confirm (`docs/LEGAL-REVIEW.md`). | `ready` alone. |
+| **The three legal pages are exempt from the "never say" wording check.** | Legal text must name things precisely (workflows, prompts, the buy-out platform). | — |
+| **Legal text supports lists and bold** (`- ` and `**`), always shown as plain text, never as HTML. | The Ownership policy uses both. Nothing typed in a file can inject code into the page. | Paragraphs only. |
+| **Web server logs keep only shortened visitor addresses** (`1.2.3.0`). | Collects less, and lets the Privacy Policy say so plainly. | Nginx's default full-address log. |
+| **The Arabic proofread file (`arabic-pages.md`) is generated** from the built site, with the shared menu and footer listed once. | Every visible and later-shown Arabic text, nothing missed and nothing retyped. | — |
+
 ## Phase 5 (16 November 2026)
 
 Decided under the decision rule in `PLAN.md`. None of these changes what a visitor sees or
@@ -21,7 +33,7 @@ what data is collected.
 | **Umami trusts only the visitor address that Nginx passes on,** and its own update and usage reports are switched off. | A visitor could otherwise fake their address with a header. Umami then sends nothing to anyone. | — |
 | **The database sits on a closed network** that only Umami can reach. Every service listens on the server itself only. | Docker ignores the firewall for published ports, so nothing is published to the outside at all. | — |
 | **HSTS without `includeSubDomains` and without preload.** | Other subdomains you may use (for example for n8n) keep working whatever their setup. | — |
-| **Only visits to `www.lindrize.online` are counted** (`data-domains`). | Test visits on the test address would otherwise inflate the numbers. | — |
+| **Only visits to the main address are counted** (`data-domains`). | Test visits on the test address would otherwise inflate the numbers. | — |
 
 ### Going live
 

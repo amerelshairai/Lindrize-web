@@ -87,6 +87,7 @@ for (const page of all) {
 
   if (/\sdata-stub\b/.test(html)) stubs.push(`${url} is still a "being written" page`);
   if (/\sdata-launch-block\b/.test(html)) stubs.push(`${url} is waiting for its text from the owner`);
+  if (/\sdata-awaiting-approval\b/.test(html)) stubs.push(`${url} is waiting for the owner's approval (set approved: true)`);
 }
 
 report(`Page structure (${all.length} pages)`, structure);

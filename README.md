@@ -15,6 +15,8 @@ Fast, bilingual (English/Arabic) site built with Astro. Self-hosted, accessible 
 - `docs/DECISIONS.md`: changes made during the build, and why.
 - `HOW-TO-EDIT.md`: how the owner changes text, and how to undo.
 - `docs/SERVER-SETUP.md`, `docs/DNS-MOVE.md`, `docs/LAUNCH-CHECKLIST.md`, `docs/SEO-SETUP.md`: going live, step by step.
+- `arabic-pages.md`: every Arabic text on the site, page by page, for proofreading (`node scripts/export-arabic.mjs` in `site/` rewrites it).
+- `docs/LEGAL-REVIEW.md`: what the owner confirms before approving the legal pages.
 - `server/`: the web server rules, background services and publish scripts, with their tests.
 
 ## Preview the site on your computer

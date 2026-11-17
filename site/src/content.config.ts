@@ -231,15 +231,21 @@ const designPage = defineCollection({
 });
 
 /**
- * Privacy Policy and Terms. The owner writes the text. While `ready` is false the page shows its
- * headings and a notice, is hidden from search engines, and blocks the launch check.
+ * Privacy Policy, Terms and the Ownership and Buy-out Policy.
+ * While `ready` is false the page shows its headings and a notice and is hidden from search engines.
+ * While `approved` is false (the owner has not accepted the text) the site cannot go live.
+ * Bodies are plain text: a blank line starts a new paragraph, lines starting "- " make a list,
+ * and **two stars** around words make them bold.
  */
 const legal = defineCollection({
-  loader: glob({ pattern: '{privacy,terms}.yaml', base: './src/content/pages' }),
+  loader: glob({ pattern: '{privacy,terms,ownership}.yaml', base: './src/content/pages' }),
   schema: z
     .object({
       ready: z.boolean(),
+      approved: z.boolean(),
+      updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'use the form 2026-11-17'),
       seo,
+      intro: optional(text),
       title: text,
       notice: text,
       sections: z.array(z.object({ title: text, body: optional(text) })).min(1),

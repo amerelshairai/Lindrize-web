@@ -15,7 +15,7 @@ for (const page of pages()) {
   if (isRedirect(page.html)) continue;
   for (const tag of page.html.match(/<a\b[^>]*>/gi) ?? []) {
     const href = decode(attr(tag, 'href') ?? '');
-    if (!/^https?:\/\//.test(href) || href.startsWith('https://www.lindrize.online')) continue;
+    if (!/^https?:\/\//.test(href) || href.startsWith('https://lindrize.online/')) continue;
     const url = new URL(href);
     const key = url.host === 'wa.me' ? `${url.origin}${url.pathname}` : href;
     if (!found.has(key)) found.set(key, { href, on: page.url });

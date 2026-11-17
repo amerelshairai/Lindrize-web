@@ -3,106 +3,94 @@
 Pointing `lindrize.online` at the new server, without touching your email.
 
 **The one rule:** only the website records change. Every record that carries email (MX, SPF,
-DKIM, DMARC and anything Google asked you to add) stays exactly as it is, character for
-character. Your Google Workspace mailbox and your cold-email campaign depend on them.
+DKIM, DMARC) and the Google verification stays exactly as it is, character for character.
+Your Google Workspace mailbox and your cold-email campaign depend on them.
 
-**Status:** waiting for your DNS export (step 1). Nothing has been changed.
+**The main address is `https://lindrize.online`** (your decision, 17 November 2026).
+`www.lindrize.online` forwards to it, and `lindrize.online/book` forwards to your Calendly page.
+
+**Status:** records listed (step 2). Nothing has been changed.
 
 ---
 
-## Step 1. Find where DNS is managed, and export it (changes nothing)
+## Step 1. Where DNS is managed
 
-DNS is managed wherever the domain's **nameservers** point. That may be the company you
-bought the domain from, or Vercel, or Hostinger.
+At **Namecheap**: Domain List → `lindrize.online` → **Manage** → **Advanced DNS**.
 
-1. Open https://www.whatsmydns.net, choose **NS**, type `lindrize.online`. Note the result.
+Two places on that page must never be changed during this move:
 
-| Nameservers contain | DNS is managed at |
-|---|---|
-| `vercel-dns.com` | Vercel → your project → Settings → Domains → the domain → DNS Records |
-| `dns-parking.com` or `hostinger` | Hostinger panel → Domains → DNS / Nameservers |
-| `namecheap`, `registrar-servers.com`, `godaddy`, `domaincontrol.com`, `cloudflare` | That company's DNS page |
+- the **Mail Settings** section (it must stay on the custom MX setting that points at Google)
+- every row marked DO NOT TOUCH below
 
-2. On that DNS page, export every record. If there is an "Export" button, use it. If not,
-   take screenshots that show **every** row, including the full value of long records.
-3. Send me the export or the screenshots. DNS records are public information, so they are
-   safe to share. Never share your login to that account.
+## Step 2. The current records (from your list, 17 November 2026)
 
-## Step 2. The record table (I fill this in from your export)
+| # | Type | Name (Host) | Value | What it is for | Action |
+|---|---|---|---|---|---|
+| 1 | MX | `@` | `SMTP.GOOGLE.COM`, priority 1 | Delivers your email to Google Workspace | **DO NOT TOUCH** |
+| 2 | TXT | `@` | `v=spf1 include:_spf.google.com ~all` | SPF: says Google may send your email | **DO NOT TOUCH** |
+| 3 | TXT | `google._domainkey` | DKIM key | DKIM: signs your outgoing email | **DO NOT TOUCH** |
+| 4 | TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:amer.ai@lindrize.online` | DMARC: policy and reports | **DO NOT TOUCH** |
+| 5 | TXT | `@` | `google-site-verification=…` | Proves to Google that you own the domain | **DO NOT TOUCH** |
+| 6 | CNAME | `www` | old Vercel address | The old website (already removed from Vercel, so it no longer works) | **CHANGE on launch day** |
+| — | A | `@` | none today | The main website address | **ADD on launch day** |
+| — | A | `new` | none today | Test address (`docs/SERVER-SETUP.md` step 8) | **ADD before launch** |
+| — | A | `stats` | none today | Visitor-count dashboard (step 8) | **ADD before launch** |
 
-| # | Type | Name | Value | TTL | What it is for | Action |
-|---|---|---|---|---|---|---|
-| | | | | | | |
+Good to know: because `@` has no website record and `www` points at a Vercel project that no
+longer has the domain, **neither address shows a website today**. There is no old site to keep
+alive, so the move cannot break anything visitors see now. It only fixes it.
 
-When it is filled in, every row has one of three actions:
+Email does not use rows 6 or the new `A` records, so changing them cannot affect it. The new
+email-sending from the website (step 10 of the server guide) goes through the same Google
+mailbox, so the SPF and DKIM records above already cover it.
 
-- **DO NOT TOUCH**: email and verification records (MX, the SPF `TXT` starting `v=spf1`,
-  DKIM records such as `google._domainkey`, the `_dmarc` record, Google site verification,
-  and anything used by your cold-email tool).
-- **CHANGE on move day**: the website records for `@` and `www` only.
-- **ADD**: `new` and `stats` (step 8 of `docs/SERVER-SETUP.md`), which do not affect anything
-  existing.
-
-You confirm the table before anything is changed.
-
-## Step 3. Before move day
+## Step 3. Before launch day
 
 All of this must be true first:
 
 - [ ] `docs/LAUNCH-CHECKLIST.md` is fully ticked, including the "Launch check" on GitHub.
-- [ ] The new site has been live on `https://new.lindrize.online` and you have used it on
+- [ ] The new site has been live on `https://new.lindrize.online`, and you have used it on
       your phone in both languages.
-- [ ] You know the address your cold emails link to (`www.lindrize.online`,
-      `lindrize.online` or `/book`). All three keep working after the move; I only need to
-      know so we test that exact link.
-- [ ] You have chosen a quiet hour (late evening Amman time, not while a campaign is
-      sending).
+- [ ] You have chosen a quiet hour (not while a cold-email campaign is sending).
 
-**One day before:** lower the TTL of the website records (the rows marked CHANGE) to `300`.
-Change nothing else. TTL is how long other computers remember the old answer; lowering it
-makes the move, and an undo, take minutes instead of hours.
+**One day before:** in Advanced DNS, change only the TTL of row 6 (`www`) to **5 min**. Change
+nothing else. TTL is how long other computers remember the old answer; lowering it makes the
+change, and an undo, take minutes instead of hours.
 
-Write down the current values of those rows here, so the undo is one copy-paste:
+Write down the current value of row 6 here, so an undo is one copy-paste:
 
-| Type | Name | Old value (Vercel) |
+| Type | Host | Old value |
 |---|---|---|
-| | `@` | |
-| | `www` | |
+| CNAME | `www` | |
 
-## Step 4. Move day
+## Step 4. Launch day
 
-Expect about two minutes during which some visitors see a certificate warning: the server
-can only get the HTTPS certificate for the real name once the name points at it. That is why
-it is done at a quiet hour.
+1. Send a test email **to** `amer.ai@lindrize.online` from a personal account, and one
+   **from** it to a personal account. Both arrive. This proves email works before you start.
+2. In Advanced DNS:
 
-1. Send a test email **to** your Lindrize address from a personal account, and one **from**
-   it. Both arrive. This proves email works before you start.
-2. In DNS, change only the rows marked CHANGE:
+| Do | Type | Host | Value | TTL |
+|---|---|---|---|---|
+| Add a new record | A Record | `@` | YOUR-IP | 5 min |
+| Edit row 6 (do not delete and re-add) | CNAME | `www` | `lindrize.online.` | 5 min |
 
-| Type | Name | New value | TTL |
-|---|---|---|---|
-| A | `@` | YOUR-IP | 300 |
-| A | `www` | YOUR-IP | 300 |
-
-   If `www` is a `CNAME` today, delete that one `CNAME` and add the `A` record in its place.
-   If there is an `AAAA` record for `@` or `www`, delete it (the server is set up for
-   YOUR-IP only). Touch no other row.
+   Namecheap may add the final dot itself. Touch no other row.
 
 3. On the server, wait until both names answer with YOUR-IP (repeat the two commands until
-   they do, usually within five minutes):
-
-```bash
-dig +short www.lindrize.online @1.1.1.1
-```
+   they do, usually within ten minutes):
 
 ```bash
 dig +short lindrize.online @1.1.1.1
 ```
 
-4. Get the certificate for the real names and switch the real site on:
+```bash
+dig +short www.lindrize.online @1.1.1.1
+```
+
+4. Get the certificate for both names and switch the real site on:
 
 ```bash
-sudo certbot certonly --webroot -w /var/www/certbot --cert-name www.lindrize.online -d www.lindrize.online -d lindrize.online --deploy-hook "systemctl reload nginx"
+sudo certbot certonly --webroot -w /var/www/certbot --cert-name lindrize.online -d lindrize.online -d www.lindrize.online --deploy-hook "systemctl reload nginx"
 ```
 
 ```bash
@@ -111,39 +99,37 @@ sudo ln -s /etc/nginx/sites-available/lindrize.conf /etc/nginx/sites-enabled/ &&
 
 **Check, in this order:**
 
-- [ ] `https://www.lindrize.online` shows the new site with a padlock.
-- [ ] `https://lindrize.online` and `http://lindrize.online` both end up on `https://www.lindrize.online`.
-- [ ] `https://www.lindrize.online/book` opens your Calendly page.
-- [ ] The exact link from your cold emails opens correctly.
+- [ ] `https://lindrize.online` shows the new site with a padlock.
+- [ ] `https://www.lindrize.online`, `http://lindrize.online` and `http://www.lindrize.online` all end up on `https://lindrize.online`.
+- [ ] `https://lindrize.online/book` opens your Calendly page.
 - [ ] Send a test email **to** and **from** your Lindrize address again. Both arrive.
 - [ ] Send yourself a design from "Design your agent". Both emails arrive.
-- [ ] https://www.whatsmydns.net → **MX** → `lindrize.online` shows the same Google servers as before.
+- [ ] https://www.whatsmydns.net → **MX** → `lindrize.online` still shows `smtp.google.com`.
 
 ## Step 5. Undo, if anything is wrong
 
-Put the old values from the table in step 3 back into the two rows. Within about five minutes
-visitors are on the old Vercel site again. Email is unaffected either way, because its
-records were never touched. Then tell me what you saw.
+Delete the `A` record for `@`, and put the old value from step 3 back into row 6. Email is
+unaffected either way, because its records were never touched. Then tell me what you saw.
 
-## Step 6. After the move
+## Step 6. After launch
 
 Same day:
 
 - [ ] On GitHub (Settings → Secrets and variables → Actions → Variables), change
-      `PUBLISH_CHECK_URL` to `https://www.lindrize.online`.
-- [ ] In `/srv/lindrize/.env.receiver`, set `ALLOWED_ORIGIN=https://www.lindrize.online`,
-      then run `sudo /srv/lindrize/repo/server/services.sh up -d`.
+      `PUBLISH_CHECK_URL` to `https://lindrize.online`.
+- [ ] In `/srv/lindrize/.env.receiver`, set `ALLOWED_ORIGIN=https://lindrize.online`, then run
+      `sudo /srv/lindrize/repo/server/services.sh up -d`.
 - [ ] Make the test address forward to the real one:
 
 ```bash
 sudo cp /srv/lindrize/repo/server/nginx/lindrize-preview-after-launch.conf /etc/nginx/sites-available/lindrize-preview.conf && sudo nginx -t && sudo systemctl reload nginx
 ```
 
-- [ ] Change the UptimeRobot monitor to `https://www.lindrize.online/`.
+- [ ] Change the UptimeRobot monitor to `https://lindrize.online/`.
 - [ ] Open the Umami dashboard: your own visit is counted.
 - [ ] Start `docs/SEO-SETUP.md`.
 
-After one week without problems: raise the TTL of `@` and `www` back to `3600`.
+After one week without problems: set the TTL of `@` and `www` back to **Automatic**.
 
-After two weeks: remove the domain from the Vercel project (Vercel → Settings → Domains),
-then delete or archive the old project. Until then the old site stays as the fallback.
+The old Vercel project no longer has the domain. Deleting it is up to you; nothing here
+depends on it.

@@ -1,0 +1,138 @@
+# Supplied by the owner (Lindrize-Ownership-and-Buyout-Policy.md, 17 November 2026).
+# ready: every section has its text in both languages (the page shows in full).
+# approved: the owner has confirmed the buy-out price and had the text reviewed. The site cannot go live before that.
+# updated: change to the day the text last changed (shown at the top of the page).
+ready: true
+approved: false
+updated: "2026-11-17"
+seo:
+  title:
+    en: "Ownership and Buy-out Policy | Lindrize"
+    ar: "سياسة الملكية وشراء النظام | Lindrize"
+  description:
+    en: "What belongs to you, what belongs to Lindrize, what happens to your data if you cancel, and how to buy a copy of your system."
+    ar: "ما يعود لك وما يعود لـ Lindrize، وماذا يحدث لبياناتك عند إلغاء الاشتراك، وكيف تشتري نسخة من نظامك."
+title:
+  en: "Ownership and Buy-out Policy"
+  ar: "سياسة الملكية وشراء النظام"
+notice:
+  en: "This page is being written. It will be published in full before the site goes live."
+  ar: "هذه الصفحة قيد الإعداد، وستُنشَر كاملة قبل إطلاق الموقع."
+intro:
+  en: "Lindrize is operated by Amer El-shair, Amman, Jordan. This policy explains, in plain words, what belongs to you, what belongs to Lindrize, and how you can take a copy of your system if you ever want to. If anything here differs from your signed Service Agreement, the Service Agreement applies."
+  ar: "تُدار Lindrize من قِبل عامر الشاعر، عمّان، الأردن. توضّح هذه السياسة بكلمات بسيطة ما الذي يعود لك، وما الذي يعود لـ Lindrize، وكيف يمكنك الحصول على نسخة من نظامك إن رغبت بذلك. وفي حال اختلف أي شيء هنا عن اتفاقية الخدمة الموقّعة بيننا، تُطبَّق اتفاقية الخدمة."
+sections:
+  - title:
+      en: "What belongs to you"
+      ar: "ما يعود لك"
+    body:
+      en: |
+        - **Your data:** every customer conversation, booking request, lead and report the assistant collects for your business.
+        - **Your content:** your packages, prices, FAQs, policies, photos, brand name and logo.
+        - **Your accounts:** your Instagram, WhatsApp, Facebook and Google accounts stay yours. We only use the access you give us, and you can remove it at any time.
+
+        You can ask for a full export of your data at any time, at no cost.
+      ar: |
+        - **بياناتك:** كل محادثة مع عملائك، وكل طلب حجز، وكل عميل محتمل وتقرير يجمعه المساعد لنشاطك التجاري.
+        - **محتواك:** باقاتك وأسعارك وأسئلتك الشائعة وسياساتك وصورك واسمك التجاري وشعارك.
+        - **حساباتك:** حساباتك على Instagram و WhatsApp و Facebook و Google تبقى ملكك. نستخدم فقط الصلاحيات التي تمنحنا إياها، ويمكنك سحبها في أي وقت.
+
+        يمكنك طلب نسخة كاملة من بياناتك في أي وقت ودون أي تكلفة.
+  - title:
+      en: "What belongs to Lindrize"
+      ar: "ما يعود لـ Lindrize"
+    body:
+      en: |
+        The system we build and run for you: the automation workflows, AI instructions (prompts), code, templates, designs and the know-how behind them. This is how we can keep the monthly fee low and keep improving the service.
+      ar: |
+        النظام الذي نبنيه ونشغّله لك: مسارات الأتمتة، وتعليمات الذكاء الاصطناعي، والأكواد، والقوالب، والتصاميم، والخبرة التي تقف خلفها. وهذا ما يتيح لنا إبقاء الرسوم الشهرية منخفضة وتطوير الخدمة باستمرار.
+  - title:
+      en: "While your subscription is active"
+      ar: "خلال فترة اشتراكك"
+    body:
+      en: |
+        While your monthly subscription is active and paid, you have the right to use the system for your own business. This right cannot be transferred, resold or shared with another company.
+      ar: |
+        طالما أن اشتراكك الشهري فعّال ومدفوع، يحق لك استخدام النظام لنشاطك التجاري الخاص. ولا يجوز نقل هذا الحق أو بيعه أو مشاركته مع أي جهة أخرى.
+  - title:
+      en: "If you cancel"
+      ar: "عند إلغاء الاشتراك"
+    body:
+      en: |
+        - Within **7 days**, we send you a full export of your data (spreadsheet or CSV).
+        - We keep a copy for **30 days** in case you come back, then delete it permanently.
+        - The assistant is switched off and stops replying to your customers.
+        - The system itself stays with Lindrize, unless you choose the buy-out below.
+      ar: |
+        - خلال **7 أيام** نرسل لك نسخة كاملة من بياناتك (جدول بيانات أو ملف CSV).
+        - نحتفظ بنسخة لمدة **30 يوماً** تحسّباً لعودتك، ثم نحذفها نهائياً.
+        - يتوقف المساعد عن العمل وعن الرد على عملائك.
+        - يبقى النظام نفسه ملكاً لـ Lindrize، إلا إذا اخترت خيار الشراء أدناه.
+  - title:
+      en: "Buy-out option: keep a copy of your system"
+      ar: "خيار شراء النظام: احتفظ بنسخة من نظامك"
+    body:
+      en: |
+        If you want to run the system yourself, you can buy a copy of it.
+
+        **You receive:**
+
+        - A copy of your workflows and AI instructions, ready to import into your own n8n account
+        - Written setup notes
+        - One 1-hour handover session
+        - 30 days of questions by email after handover
+
+        **Price:** stated in your proposal. The standard price for the core AI Travel Sales Assistant is **750 JOD**. Extra features are priced separately. The buy-out is paid in full before handover.
+
+        **When:** at any time after the 3-month minimum period, or when you cancel. The monthly subscription ends at handover.
+
+        **Conditions:**
+
+        - The copy is for your own business only. It may not be resold, shared or given to another company or developer to offer as their own product.
+        - After handover, you run the system on your own accounts (AI provider, automation hosting, Meta) and pay for them directly.
+        - The buy-out does not include future updates, monitoring or support, unless you agree a separate support plan with us.
+        - The Lindrize name and brand are not included.
+      ar: |
+        إذا رغبت بتشغيل النظام بنفسك، يمكنك شراء نسخة منه.
+
+        **ستحصل على:**
+
+        - نسخة من مسارات الأتمتة وتعليمات الذكاء الاصطناعي الخاصة بك، جاهزة للاستيراد إلى حسابك على n8n
+        - ملاحظات تشغيل مكتوبة
+        - جلسة تسليم واحدة مدتها ساعة
+        - 30 يوماً للإجابة على أسئلتك عبر البريد الإلكتروني بعد التسليم
+
+        **السعر:** يُحدَّد في عرض السعر الخاص بك. السعر المعتاد للمساعد الأساسي لمبيعات السفر هو **750 ديناراً أردنياً**، وتُسعَّر الميزات الإضافية بشكل منفصل. يُدفع المبلغ كاملاً قبل التسليم.
+
+        **متى:** في أي وقت بعد انتهاء فترة الالتزام الدنيا (3 أشهر)، أو عند إلغاء الاشتراك. وينتهي الاشتراك الشهري عند التسليم.
+
+        **الشروط:**
+
+        - النسخة مخصّصة لنشاطك التجاري فقط، ولا يجوز بيعها أو مشاركتها أو تسليمها لشركة أو مطوّر آخر لتقديمها كمنتج خاص به.
+        - بعد التسليم تشغّل النظام على حساباتك الخاصة (مزوّد الذكاء الاصطناعي، واستضافة الأتمتة، و Meta) وتدفع تكاليفها مباشرة.
+        - لا يشمل الشراء التحديثات المستقبلية أو المراقبة أو الدعم، إلا إذا اتفقنا على خطة دعم منفصلة.
+        - لا يشمل الشراء اسم Lindrize أو علامتها التجارية.
+  - title:
+      en: "Third-party services"
+      ar: "خدمات الأطراف الثالثة"
+    body:
+      en: |
+        The system runs on services such as Meta (Instagram, WhatsApp, Messenger), OpenAI, Google and n8n. They belong to their providers and follow their own terms. Lindrize does not own them and cannot transfer them.
+      ar: |
+        يعمل النظام على خدمات مثل Meta (Instagram و WhatsApp و Messenger) و OpenAI و Google و n8n. هذه الخدمات ملك لمزوّديها وتخضع لشروطهم، ولا تملكها Lindrize ولا تستطيع نقل ملكيتها.
+  - title:
+      en: "Talking about our work"
+      ar: "الحديث عن أعمالنا"
+    body:
+      en: |
+        We may describe our work in general terms without naming you (for example, "an AI assistant for a travel agency in Amman"). We only use your name, logo, results or testimonial with your written consent.
+      ar: |
+        قد نصف عملنا بشكل عام دون ذكر اسمك (مثلاً: «مساعد ذكي لمكتب سياحة وسفر في عمّان»). ولا نستخدم اسمك أو شعارك أو نتائجك أو شهادتك إلا بموافقتك الخطية.
+  - title:
+      en: "Changes and contact"
+      ar: "التعديلات والتواصل"
+    body:
+      en: |
+        We may update this policy and will show the date of the latest version on this page. Questions: amer.ai@lindrize.online · +962 78 553 6571. This policy is governed by the laws of the Hashemite Kingdom of Jordan.
+      ar: |
+        قد نحدّث هذه السياسة، وسنعرض تاريخ آخر نسخة في هذه الصفحة. للاستفسار: amer.ai@lindrize.online · ‎+962 78 553 6571. تخضع هذه السياسة لقوانين المملكة الأردنية الهاشمية.

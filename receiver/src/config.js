@@ -28,7 +28,7 @@ export function loadConfig(env = process.env) {
     },
     mailFrom: required(env, 'MAIL_FROM'),
     ownerEmail: required(env, 'OWNER_EMAIL'),
-    bookingUrl: env.BOOKING_URL ?? 'https://www.lindrize.online/book',
+    bookingUrl: env.BOOKING_URL ?? 'https://lindrize.online/book',
     /** Telegram is optional: without it the owner still gets the email. */
     telegram: env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID ? { token: env.TELEGRAM_BOT_TOKEN, chatId: env.TELEGRAM_CHAT_ID } : null,
     limits: {

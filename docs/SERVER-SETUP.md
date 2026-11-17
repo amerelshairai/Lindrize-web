@@ -12,9 +12,8 @@ something on the server already uses the web ports). Do not go past step 1 until
 
 - **Never paste a password, key or token into our chat, an email or GitHub.** They go into
   files on the server or into GitHub's "Secrets" boxes, and nowhere else.
-- Nothing in steps 1 to 12 touches your current website, your domain's email records or
-  your email. The current site on Vercel stays live until the domain move
-  (`docs/DNS-MOVE.md`).
+- Nothing in steps 1 to 13 touches `lindrize.online`, `www`, your domain's email records or
+  your email. The main address is switched on later, on launch day (`docs/DNS-MOVE.md`).
 - Lines in grey boxes are typed into the server's terminal, one box at a time.
 - `YOUR-IP` means your server's address from the Hostinger panel (four numbers with dots).
 
@@ -38,6 +37,28 @@ Where things live on the server:
 | `/srv/lindrize/repo/` | A copy of the GitHub repository (server files and the receiver) |
 | `/srv/lindrize/.env`, `/srv/lindrize/.env.receiver` | The secrets. Only on the server, readable only by the administrator |
 | `/srv/lindrize/backups/` | Nightly copies of the visitor counts, 14 days |
+
+## Where every secret goes
+
+You enter each of these yourself. None of them ever goes into chat, email or a file on GitHub.
+
+| Secret | Where you get it | Where it goes | Step |
+|---|---|---|---|
+| Your server login password | You choose it | Your password manager (asked for by `sudo`) | 2 |
+| Your SSH key passphrase | You choose it | Your password manager | 2 |
+| Publishing key (`lz-publish`) | Created on the server | GitHub secret `DEPLOY_SSH_KEY`, then deleted from the server | 7, 9 |
+| Server fingerprint | Printed on the server | GitHub secret `DEPLOY_KNOWN_HOSTS` | 9 |
+| Server address | Hostinger panel | GitHub secret `DEPLOY_HOST` | 9 |
+| Turnstile **secret key** | Cloudflare → Turnstile | `/srv/lindrize/.env.receiver`, line `TURNSTILE_SECRET=` | 10 |
+| Google app password | Google account of `amer.ai@lindrize.online` → App passwords | `/srv/lindrize/.env.receiver`, line `SMTP_PASS=` | 10 |
+| Telegram bot token | `@BotFather` in Telegram | `/srv/lindrize/.env.receiver`, line `TELEGRAM_BOT_TOKEN=` | 10 |
+| Telegram chat id | The `getUpdates` page | `/srv/lindrize/.env.receiver`, line `TELEGRAM_CHAT_ID=` | 10 |
+| Umami database password, app secret, two-factor key | Made on the server by one command | `/srv/lindrize/.env` (filled in by that command; you never see them) | 10 |
+| Umami admin password | You choose it | The Umami dashboard itself, and your password manager | 11 |
+
+Not secret (safe in chat, and they go into `site/src/data/settings.json` on GitHub): the
+Turnstile **site key** and the Umami **Website ID**. Not secret either (GitHub **variables**,
+not secrets): `DEPLOY_ENABLED` and `PUBLISH_CHECK_URL`.
 
 ---
 
@@ -303,16 +324,17 @@ Leave the two `lz-publish` files where they are until step 9.
 
 The new site first goes live on a test address, `new.lindrize.online`, so you can check
 everything before the real domain moves. This step **adds** two DNS records. It changes and
-removes nothing, so your email is not affected. First do steps 1 and 2 of `docs/DNS-MOVE.md`
-(export and list every current record), so we both know where DNS is managed and nothing is
-done blind.
+removes nothing, so your email is not affected. Your current records are listed in
+`docs/DNS-MOVE.md`.
 
-1. Where your DNS is managed, add:
+1. In Namecheap: Domain List → `lindrize.online` → **Manage** → **Advanced DNS** →
+   **Add New Record**, twice. Do not touch any existing row, and do not change the "Mail
+   Settings" section further down the page.
 
 | Type | Name | Value | TTL |
 |---|---|---|---|
-| A | `new` | YOUR-IP | 3600 |
-| A | `stats` | YOUR-IP | 3600 |
+| A Record | `new` | YOUR-IP | Automatic |
+| A Record | `stats` | YOUR-IP | Automatic |
 
 2. Wait a few minutes. **Check:** both commands print YOUR-IP:
 
@@ -401,8 +423,8 @@ browser tab open and paste the value into the server file below, never into chat
 
 | What | Where | Notes |
 |---|---|---|
-| **Cloudflare Turnstile** (the human check) | dash.cloudflare.com → Turnstile → Add widget | Free. Hostnames: `www.lindrize.online` and `new.lindrize.online`. Mode: Managed. You get a **site key** (public) and a **secret key**. |
-| **Email-sending password** | myaccount.google.com → Security → 2-Step Verification → App passwords | For the Google Workspace mailbox that sends as `amer.ai@lindrize.online`. Create one named "Lindrize website". If "App passwords" is missing, 2-Step Verification is off or your Workspace admin setting blocks it. |
+| **Cloudflare Turnstile** (the human check) | dash.cloudflare.com → Turnstile → Add widget | Free. Hostnames: `lindrize.online` and `new.lindrize.online`. Mode: Managed. You get a **site key** (public) and a **secret key**. |
+| **Email-sending password** | Signed in as `amer.ai@lindrize.online`: myaccount.google.com → Security → 2-Step Verification → App passwords | Create one named "Lindrize website". If "App passwords" is missing, turn on 2-Step Verification for this mailbox first. If it is still missing, tell me: your Workspace admin settings may block it. |
 | **Telegram alert** (optional) | In Telegram, message `@BotFather` → `/newbot` | You get a bot **token**. Then send your new bot any message and open `https://api.telegram.org/botTOKEN/getUpdates` in a browser: the number after `"chat":{"id":` is your **chat id**. |
 
 1. Create the two secret files:
@@ -429,9 +451,9 @@ sudo nano /srv/lindrize/.env.receiver
 
 | Line | Value |
 |---|---|
-| `ALLOWED_ORIGIN` | `https://www.lindrize.online,https://new.lindrize.online` |
+| `ALLOWED_ORIGIN` | `https://lindrize.online,https://new.lindrize.online` |
 | `TURNSTILE_SECRET` | The Turnstile **secret key** |
-| `SMTP_USER` | The Google Workspace login that owns the app password |
+| `SMTP_USER` | `amer.ai@lindrize.online` |
 | `SMTP_PASS` | The app password, without spaces |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | From BotFather, or leave both empty |
 
@@ -465,7 +487,7 @@ visitor's copy) and, if set up, a Telegram alert.
 1. Open `https://stats.lindrize.online`. Log in with username `admin`, password `umami`.
 2. **Immediately** change the password: profile icon → Profile → Change password. Use a long
    one from your password manager. Until you do, anyone could log in with the default.
-3. Settings → Websites → Add website. Name: `Lindrize`. Domain: `www.lindrize.online`.
+3. Settings → Websites → Add website. Name: `Lindrize`. Domain: `lindrize.online`.
 4. Open the new website's settings and copy its **Website ID** (a long code with dashes). It
    is not a secret.
 5. Put it in `site/src/data/settings.json` as `"umamiWebsiteId"`, or send it to me.
@@ -499,7 +521,7 @@ itself is always safe on GitHub.
 
 1. Create a free account at uptimerobot.com.
 2. Add monitor → HTTP(s) → `https://new.lindrize.online/` for now. After the domain move,
-   change it to `https://www.lindrize.online/`.
+   change it to `https://lindrize.online/`.
 3. Alert contact: your email (and Telegram, if you like).
 
 **Check:** the monitor shows "Up".

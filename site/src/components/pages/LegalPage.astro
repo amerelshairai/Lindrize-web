@@ -1,36 +1,72 @@
 ---
 /**
- * Privacy Policy and Terms. The owner writes the text in src/content/pages/privacy.yaml and
- * terms.yaml. Until `ready` is true, the page shows its headings with a notice, stays out of
- * search engines, and blocks the launch check.
+ * Privacy Policy, Terms and the Ownership and Buy-out Policy, from src/content/pages/<id>.yaml.
+ * Until `ready` is true, the page shows its headings with a notice and stays out of search engines.
+ * Until `approved` is true, the launch check fails.
+ *
+ * The text is shown as plain text (never as HTML): blank lines make paragraphs, lines starting
+ * "- " make a list, and **stars** make words bold.
+ * The sections may name tools precisely (for example in the buy-out terms), so they are exempt
+ * from the "never say" wording check.
  */
 import { getEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHead from '@/components/PageHead.astro';
-import { tr, type Lang } from '@/lib/i18n';
+import { tr, ui, type Lang } from '@/lib/i18n';
 
 interface Props {
   lang: Lang;
-  id: 'privacy' | 'terms';
+  id: 'privacy' | 'terms' | 'ownership';
 }
 const { lang, id } = Astro.props;
 const entry = await getEntry('legal', id);
 if (!entry) throw new Error(`src/content/pages/${id}.yaml is missing`);
 const c = entry.data;
-const paragraphs = (body: string): string[] => body.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+
+type Block = { list: false; text: string } | { list: true; items: string[] };
+const blocks = (body: string): Block[] =>
+  body
+    .split(/\n\s*\n/)
+    .map((chunk) => chunk.trim())
+    .filter(Boolean)
+    .map((chunk) => {
+      const lines = chunk.split('\n').map((line) => line.trim());
+      return lines.every((line) => line.startsWith('- '))
+        ? { list: true, items: lines.map((line) => line.slice(2)) }
+        : { list: false, text: lines.join(' ') };
+    });
+/** Splits "a **b** c" into plain and bold pieces. */
+const pieces = (text: string) => text.split(/\*\*(.+?)\*\*/g).map((part, i) => ({ part, bold: i % 2 === 1 }));
+
+const date = new Date(`${c.updated}T12:00:00Z`);
+const updated = new Intl.DateTimeFormat(lang === 'ar' ? 'ar-JO-u-nu-latn' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(date);
 ---
 
 <BaseLayout lang={lang} title={tr(c.seo.title, lang)} description={tr(c.seo.description, lang)} page={`/${id}/`} noindex={!c.ready}>
   <PageHead title={tr(c.title, lang)}>
     {!c.ready && <p class="notice" data-launch-block>{tr(c.notice, lang)}</p>}
+    {c.ready && <p class="updated">{tr(ui.legal.updated, lang)}: <time datetime={c.updated}>{updated}</time></p>}
+    {c.ready && c.intro && <p class="intro">{tr(c.intro, lang)}</p>}
+    {!c.approved && <span hidden data-awaiting-approval />}
   </PageHead>
 
   <div class="wrap body">
     {
       c.sections.map((section) => (
-        <section>
+        <section data-allow-terms>
           <h2>{tr(section.title, lang)}</h2>
-          {section.body && paragraphs(tr(section.body, lang)).map((p) => <p>{p}</p>)}
+          {section.body &&
+            blocks(tr(section.body, lang)).map((block) =>
+              block.list ? (
+                <ul>
+                  {block.items.map((item) => (
+                    <li>{pieces(item).map(({ part, bold }) => (bold ? <strong>{part}</strong> : part))}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>{pieces(block.text).map(({ part, bold }) => (bold ? <strong>{part}</strong> : part))}</p>
+              ),
+            )}
         </section>
       ))
     }
@@ -42,6 +78,12 @@ const paragraphs = (body: string): string[] => body.split(/\n\s*\n/).map((p) => 
     padding: 0.75rem 1rem;
     border: 1px solid var(--line-strong);
     font-size: var(--text-md);
+  }
+  .updated {
+    color: var(--muted);
+  }
+  .intro {
+    max-width: 44rem;
   }
   .body {
     display: flex;
@@ -61,7 +103,20 @@ const paragraphs = (body: string): string[] => body.split(/\n\s*\n/).map((p) => 
     font-size: 1.5rem;
     line-height: 1.3;
   }
-  section p {
+  section p,
+  section li {
     color: var(--muted);
+  }
+  section strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding-inline-start: 1.25rem;
+    list-style: disc;
   }
 </style>

@@ -1,5 +1,8 @@
 # Privacy Policy and Terms: what to write
 
+**Done:** both texts were written on 17 November 2026 from this checklist. What is left for
+the owner is in `docs/LEGAL-REVIEW.md`. This file stays as the record of what each must cover.
+
 You write both texts (SPEC 14). The pages already exist with their headings. This file lists what
 each section must cover. It is a checklist, not legal advice. Jordan, Saudi Arabia and the UAE each
 have a personal data law, so ask someone qualified to read both texts before launch.

@@ -30,6 +30,7 @@ adapt() {
     -e "s#/etc/letsencrypt/live/[a-z.]+/privkey.pem#$work/key.pem#" \
     -e "s#/var/www/lindrize/current#$work/www/current#" \
     -e "s#/var/www/certbot#$work/certbot#" \
+    -e "s#/var/log/nginx/#$work/#" \
     -e 's#127\.0\.0\.1:8081#127.0.0.1:18081#; s#127\.0\.0\.1:8082#127.0.0.1:18082#' \
     "$1" > "$2"
 }
@@ -77,7 +78,7 @@ get() { curl -sk --noproxy '*' --http2 "${R[@]}" "$@"; }
 status() { get -o /dev/null -w '%{http_code}' "$@"; }
 header() { get -o /dev/null -D - "${@:2}" | tr -d '\r' | grep -i "^$1:" | head -1 | cut -d' ' -f2-; }
 expect() { [[ "$2" == "$3" ]] && ok "$1" || bad "$1 (got \"$2\", expected \"$3\")"; }
-W=https://www.lindrize.online:18443
+W=https://lindrize.online:18443
 
 expect "home page" "$(status $W/)" 200
 expect "Arabic home page" "$(status $W/ar/)" 200
@@ -87,8 +88,8 @@ expect "unknown page shows the not-found page" "$(status $W/nope/)" 404
 [[ "$(get $W/nope/)" == *'<html lang="en"'* ]] && ok "English not-found page" || bad "English not-found page"
 [[ "$(get $W/ar/nope/)" == *'<html lang="ar"'* ]] && ok "Arabic not-found page" || bad "Arabic not-found page"
 expect "/book goes to Calendly" "$(header location $W/book)" "https://calendly.com/amerelshair-ai-lindrize/15-minute-call-with-lindrize"
-expect "lindrize.online goes to www" "$(header location https://lindrize.online:18443/pricing/?a=1)" "https://www.lindrize.online/pricing/?a=1"
-expect "http goes to https" "$(header location http://www.lindrize.online:18080/faq/)" "https://www.lindrize.online/faq/"
+expect "www goes to the main address" "$(header location https://www.lindrize.online:18443/pricing/?a=1)" "https://lindrize.online/pricing/?a=1"
+expect "http goes to https" "$(header location http://lindrize.online:18080/faq/)" "https://lindrize.online/faq/"
 expect "certificate check folder answers on port 80" "$(get http://lindrize.online:18080/.well-known/acme-challenge/probe)" "token"
 expect "hidden files are not served" "$(status $W/.env)" 404
 
@@ -100,7 +101,8 @@ done
 ok "security headers checked on pages, files and the not-found page"
 expect "no server version shown" "$(header server $W/)" "nginx"
 expect "pages are always re-checked" "$(header cache-control $W/)" "no-cache"
-expect "scripts and fonts are kept for a year" "$(header cache-control $W/_astro/$(ls "$repo/site/dist/_astro" | grep '\.js$' | head -1))" "public, max-age=31536000, immutable"
+asset="$(find "$repo/site/dist/_astro" -maxdepth 1 -name '*.js' -printf '%f\n' | head -1)"
+expect "scripts and fonts are kept for a year" "$(header cache-control "$W/_astro/$asset")" "public, max-age=31536000, immutable"
 expect "icons are kept for a day" "$(header cache-control $W/favicon.svg)" "public, max-age=86400"
 expect "pages are compressed" "$(header content-encoding -H 'Accept-Encoding: gzip' $W/)" "gzip"
 expect "sitemap is served as XML" "$(header content-type $W/sitemap.xml)" "text/xml; charset=utf-8"
@@ -116,7 +118,7 @@ expect "an oversized request is refused" "$(head -c 40000 /dev/zero | tr '\0' a 
 [[ "$(get -X POST -d '{}' $W/u/api/send)" == *'"url":"/api/send"'* ]] && ok "counting reaches Umami" || bad "counting reaches Umami"
 expect "the Umami dashboard is not reachable through the site" "$(status $W/u/login)" 404
 
-codes=""; for i in $(seq 1 12); do codes+="$(status -X POST -d '{}' $W/api/design) "; done
+codes=""; for _ in $(seq 1 12); do codes+="$(status -X POST -d '{}' $W/api/design) "; done
 [[ "$codes" == *429* ]] && ok "too many design requests are slowed down" || bad "no request limit: $codes"
 
 P=https://new.lindrize.online:18443
@@ -126,5 +128,11 @@ expect "test address is hidden from search engines" "$(header x-robots-tag $P/)"
 S=https://stats.lindrize.online:18443
 [[ "$(get $S/dashboard)" == *'"name":"umami"'* ]] && ok "stats address reaches Umami" || bad "stats address"
 expect "stats address is hidden from search engines" "$(header x-robots-tag $S/)" "noindex, nofollow"
+
+get -o /dev/null $W/about/ -H 'User-Agent: log-probe'
+sleep 0.3
+probe="$(grep log-probe "$work/lindrize.access.log" | tail -1)"
+[[ "$probe" == 127.0.0.0\ * ]] && ok "the access log keeps only shortened visitor addresses" || bad "access log: $probe"
+[[ "$(grep -c '127\.0\.0\.1' "$work/lindrize.access.log")" == 0 ]] && ok "no full address in the access log" || bad "full address in access log"
 
 [[ "$fails" == 0 ]] && echo "✓ All web server checks passed" || { echo "✗ $fails web server check(s) failed"; tail -5 "$work/error.log"; exit 1; }

@@ -4,7 +4,7 @@ Telling Google and Bing that the new site exists. The site already carries every
 read (titles, descriptions, sitemap, language links, structured data, `llms.txt`). These
 steps are the parts only the owner of the domain can do. About 40 minutes in total.
 
-Do them only after `https://www.lindrize.online` shows the new site.
+Do them only after `https://lindrize.online` shows the new site.
 
 ## 1. Google Search Console (15 minutes)
 
@@ -15,11 +15,11 @@ Do them only after `https://www.lindrize.online` shows the new site.
    `google-site-verification` record already exists from the old site, the property may
    verify at once.
 4. Press Verify (it can take a few minutes after adding the record).
-5. Left menu → **Sitemaps** → type `https://www.lindrize.online/sitemap.xml` → Submit.
-6. Top search box → paste `https://www.lindrize.online/` → **Request indexing**. Repeat for
-   `https://www.lindrize.online/ar/`.
+5. Left menu → **Sitemaps** → type `https://lindrize.online/sitemap.xml` → Submit.
+6. Top search box → paste `https://lindrize.online/` → **Request indexing**. Repeat for
+   `https://lindrize.online/ar/`.
 
-**Check:** Sitemaps shows "Success" within a day, with 76 discovered pages.
+**Check:** Sitemaps shows "Success" within a day, with 82 discovered pages.
 
 What to expect: the old site's pages drop out and the new ones appear over one to three
 weeks. Under **Pages**, "Not found (404)" entries for old addresses are normal.
@@ -43,7 +43,7 @@ Amman". Google verifies by video or post, which can take days.
    consultant".
 3. Choose **service-area business** (no public address) with Amman, Jordan as the area,
    unless you have an office visitors can come to.
-4. Phone: +962 78 553 6571. Website: `https://www.lindrize.online`.
+4. Phone: +962 78 553 6571. Website: `https://lindrize.online`.
 5. Use the same name, phone and website as on the site, exactly. Mismatches weaken trust.
 
 Reviews: ask real clients only, and ask every client, not just happy ones. This is Google's

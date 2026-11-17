@@ -416,7 +416,7 @@ Before any change to the server or DNS, the plan for that step is written out an
    Each step ends with a check command and the result to expect.
 2. **Nginx config:**
    - the site
-   - redirects: `lindrize.online` → `www`, and `/book` → Calendly
+   - redirects: `www.lindrize.online` → `lindrize.online` (the main address, owner's decision of 17 November 2026), and `/book` → Calendly
    - `/api/design` → the receiver
    - `/u/` → the Umami tracker
    - `stats.lindrize.online` → the Umami dashboard
@@ -512,7 +512,7 @@ These run automatically on every change from Phase 1 onward. A phase can't be ca
   npm run dev
   ```
   Then open http://localhost:4321 in a browser. The Arabic pages are at http://localhost:4321/ar/.
-- **After Phase 5:** every saved change goes live at www.lindrize.online within about 2 minutes.
+- **After Phase 5:** every saved change goes live at lindrize.online within about 2 minutes.
 
 ---
 

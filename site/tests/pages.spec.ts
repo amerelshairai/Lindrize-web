@@ -16,6 +16,7 @@ const PAGES = [
   '/contact/',
   '/privacy/',
   '/terms/',
+  '/ownership/',
 ];
 const both = (path: string) => [path, `/ar${path}`];
 
@@ -171,12 +172,19 @@ test('FAQ answers are always visible, in six groups', async ({ page }) => {
   for (const answer of await items.locator('p').all()) await expect(answer).toBeVisible();
 });
 
-test('Privacy and Terms wait for the owner and stay out of search engines', async ({ page }) => {
-  for (const url of ['/privacy/', '/terms/', '/ar/privacy/', '/ar/terms/']) {
+test('the three legal pages show their full text and date, and are linked in the footer', async ({ page }) => {
+  for (const [url, sections] of [['/privacy/', 11], ['/terms/', 10], ['/ownership/', 8], ['/ar/privacy/', 11], ['/ar/terms/', 10], ['/ar/ownership/', 8]] as const) {
     await page.goto(url);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
-    await expect(page.locator('[data-launch-block]')).toBeVisible();
+    await expect(page.locator('main section[data-allow-terms]')).toHaveCount(sections);
+    await expect(page.locator('main time[datetime]')).toHaveCount(1);
+    await expect(page.locator('[data-launch-block]')).toHaveCount(0);
+    // Bold markers are turned into bold text, never shown as stars.
+    expect(await page.locator('main').innerText()).not.toContain('**');
   }
+  await page.goto('/ownership/');
+  await expect(page.locator('main li').first()).toBeVisible();
+  const footer = page.locator('footer');
+  for (const name of ['Privacy Policy', 'Terms', 'Ownership and buy-out']) await expect(footer.getByRole('link', { name })).toBeVisible();
 });
 
 test('Contact has the three ways to get in touch and no form', async ({ page }) => {

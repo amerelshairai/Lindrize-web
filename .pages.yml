@@ -2592,6 +2592,14 @@ content:
         label: Ready
         description: Switch on only when every section has its text in both languages.
         type: boolean
+      - name: approved
+        label: Approved
+        description: Switch on when you have read and accepted the text. The site cannot go live before that.
+        type: boolean
+      - name: updated
+        label: Updated
+        description: The day the text last changed, as 2026-11-17. Shown at the top of the page.
+        type: string
       - name: seo
         label: Search result
         type: object
@@ -2628,6 +2636,16 @@ content:
             type: string
       - name: notice
         label: Notice
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: intro
+        label: Intro
         type: object
         fields:
           - name: en
@@ -2671,6 +2689,14 @@ content:
         label: Ready
         description: Switch on only when every section has its text in both languages.
         type: boolean
+      - name: approved
+        label: Approved
+        description: Switch on when you have read and accepted the text. The site cannot go live before that.
+        type: boolean
+      - name: updated
+        label: Updated
+        description: The day the text last changed, as 2026-11-17. Shown at the top of the page.
+        type: string
       - name: seo
         label: Search result
         type: object
@@ -2707,6 +2733,113 @@ content:
             type: string
       - name: notice
         label: Notice
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: intro
+        label: Intro
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: sections
+        label: Sections
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: body
+            label: Body
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+        list: true
+  - name: page-ownership
+    label: "Page: Ownership and Buy-out Policy"
+    type: file
+    path: site/src/content/pages/ownership.yaml
+    format: yaml
+    fields:
+      - name: ready
+        label: Ready
+        description: Switch on only when every section has its text in both languages.
+        type: boolean
+      - name: approved
+        label: Approved
+        description: Switch on when you have read and accepted the text. The site cannot go live before that.
+        type: boolean
+      - name: updated
+        label: Updated
+        description: The day the text last changed, as 2026-11-17. Shown at the top of the page.
+        type: string
+      - name: seo
+        label: Search result
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: description
+            label: Description
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: text
+              - name: ar
+                label: Arabic
+                type: text
+      - name: title
+        label: Title
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: notice
+        label: Notice
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: text
+          - name: ar
+            label: Arabic
+            type: text
+      - name: intro
+        label: Intro
         type: object
         fields:
           - name: en
@@ -3281,6 +3414,16 @@ content:
                 type: string
           - name: terms
             label: Terms
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+          - name: ownership
+            label: Ownership
             type: object
             fields:
               - name: en
@@ -3906,6 +4049,21 @@ content:
                 type: string
           - name: did
             label: Did
+            type: object
+            fields:
+              - name: en
+                label: English
+                type: string
+              - name: ar
+                label: Arabic
+                type: string
+      - name: legal
+        label: Legal
+        type: object
+        fields:
+          - name: updated
+            label: Updated
+            description: The day the text last changed, as 2026-11-17. Shown at the top of the page.
             type: object
             fields:
               - name: en
