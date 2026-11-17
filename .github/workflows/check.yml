@@ -109,11 +109,11 @@ jobs:
       - name: The receiver image builds and answers
         run: |
           docker build -t lindrize-receiver receiver
-          docker run -d --name r --read-only --cap-drop ALL -p 127.0.0.1:8081:8080 \
+          docker run -d --name lz-receiver --read-only --cap-drop ALL -p 127.0.0.1:8081:8080 \
             -e ALLOWED_ORIGIN=https://lindrize.online -e TURNSTILE_SECRET=x -e SMTP_HOST=localhost \
             -e SMTP_USER=x -e SMTP_PASS=x -e MAIL_FROM=x@example.test -e OWNER_EMAIL=x@example.test lindrize-receiver
           for i in 1 2 3 4 5 6 7 8 9 10; do curl -fsS http://127.0.0.1:8081/api/health && exit 0; sleep 1; done
-          docker logs r; exit 1
+          docker logs lz-receiver; exit 1
 
   audit:
     name: Known security issues in dependencies
