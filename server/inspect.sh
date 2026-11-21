@@ -27,6 +27,21 @@ if command -v docker >/dev/null 2>&1; then
 else
   echo "not installed"
 fi
+line "Docker networks"
+docker network ls --format '{{.Name}} ({{.Driver}})' 2>/dev/null || echo "(none or needs sudo)"
+line "Docker projects in /docker (folder names only)"
+ls -1 /docker 2>/dev/null || echo "no /docker folder"
+line "Front door (Traefik) settings, with email addresses and passwords hidden"
+for name in $(docker ps --format '{{.Names}} {{.Image}}' 2>/dev/null | awk 'tolower($2) ~ /traefik|caddy|nginx/ {print $1}'); do
+  echo "-- $name"
+  docker inspect --format '{{range .Args}}{{println .}}{{end}}' "$name" 2>/dev/null \
+    | sed -E 's/[^ =]+@[^ ]+/<email hidden>/g; s/(password|secret|token|users|key)=.*/\1=<hidden>/I'
+done
+line "Website-related labels on running containers (secrets hidden)"
+for name in $(docker ps --format '{{.Names}}' 2>/dev/null); do
+  docker inspect --format '{{range $k, $v := .Config.Labels}}{{$k}}={{$v}}{{println}}{{end}}' "$name" 2>/dev/null \
+    | grep -i '^traefik\.' | grep -viE 'users|password|secret|token|key' | sed "s/^/$name: /"
+done
 line "Firewall"
 (ufw status 2>/dev/null || echo "ufw: not installed or needs sudo") | head -20
 line "Protection and updates"
