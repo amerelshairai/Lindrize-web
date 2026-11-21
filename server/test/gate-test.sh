@@ -28,7 +28,8 @@ done
 [[ "$(cat "$LINDRIZE_SITE_DIR/current/version.txt")" == v7 ]] || fail "newest release is not live"
 [[ "$(ls "$LINDRIZE_SITE_DIR/releases" | wc -l)" == 5 ]] || fail "should keep exactly 5 releases"
 [[ "$(readlink "$LINDRIZE_SITE_DIR/current")" == "releases/${ids[6]}" ]] || fail "link must be relative"
-gate list | grep -q "${ids[6]}  (live)" || fail "list"
+listing="$(gate list)"
+[[ "$listing" == *"${ids[6]}  (live)"* ]] || fail "list"
 
 # Everything else is refused.
 for bad in "" "bash" "cat /etc/passwd" "activate ../../etc" "activate ${ids[6]}; id" \
