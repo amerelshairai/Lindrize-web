@@ -39,6 +39,12 @@ content:
       - name: founder
         label: Founder
         type: string
+      - name: founderAr
+        label: Founder ar
+        type: string
+      - name: founderInstagram
+        label: Founder instagram
+        type: string
       - name: demo
         label: Demo
         type: object
@@ -2448,6 +2454,26 @@ content:
             type: string
       - name: founderLanguages
         label: Founder languages
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: founderPhone
+        label: Founder phone
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
+      - name: founderInstagram
+        label: Founder instagram
         type: object
         fields:
           - name: en

@@ -5,8 +5,13 @@
   "whatsappNumber": "962785536571",
   "whatsappDisplay": "+962 78 553 6571",
   "email": "amer.ai@lindrize.online",
-  "city": { "en": "Amman, Jordan", "ar": "عمّان، الأردن" },
+  "city": {
+    "en": "Amman, Jordan",
+    "ar": "عمّان، الأردن"
+  },
   "founder": "Amer El-shair",
+  "founderAr": "عامر الشاعر",
+  "founderInstagram": "https://www.instagram.com/amer_aiflow/",
   "demo": {
     "handle": "darb_alyasmeen",
     "chatUrl": "https://ig.me/m/darb_alyasmeen",
@@ -15,5 +20,9 @@
   "videoId": "",
   "turnstileSiteKey": "",
   "umamiWebsiteId": "",
-  "foundingPlaces": { "tier30": 3, "tier20": 2, "tier15": 5 }
+  "foundingPlaces": {
+    "tier30": 3,
+    "tier20": 2,
+    "tier15": 5
+  }
 }

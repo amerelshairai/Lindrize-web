@@ -66,9 +66,19 @@ if (!home) throw new Error('home.yaml is missing');
   <section class="sec">
     <div class="wrap block founder">
       <h2>{tr(c.founderTitle, lang)}</h2>
-      <p class="name" lang="en" dir="ltr">{settings.founder}</p>
-      <p class="role">{tr(c.founderRole, lang)}, Lindrize · {tr(settings.city, lang)}</p>
+      {lang === 'ar' ? <p class="name">{settings.founderAr}</p> : <p class="name" lang="en" dir="ltr">{settings.founder}</p>}
+      <p class="role">{tr(c.founderRole, lang)}{lang === 'ar' ? '،' : ','} Lindrize · {tr(settings.city, lang)}</p>
       {c.founderLanguages && <p class="role">{tr(c.founderLanguages, lang)}</p>}
+      <ul class="links" role="list">
+        <li>
+          {tr(c.founderPhone, lang)}:{' '}
+          <a href={`tel:+${settings.whatsappNumber}`}><span class="ltr" dir="ltr">{settings.whatsappDisplay}</span></a>
+        </li>
+        <li>
+          {tr(c.founderInstagram, lang)}:{' '}
+          <a href={settings.founderInstagram} rel="me noopener" target="_blank"><span class="ltr" dir="ltr">@amer_aiflow</span></a>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -125,6 +135,20 @@ if (!home) throw new Error('home.yaml is missing');
     flex-direction: column;
     gap: 0.4rem;
     padding-top: var(--space-section);
+  }
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+  }
+  .links a {
+    display: inline-block;
+    padding-block: 0.25rem;
+    color: var(--ink);
   }
   .founder h2 {
     font-family: inherit;

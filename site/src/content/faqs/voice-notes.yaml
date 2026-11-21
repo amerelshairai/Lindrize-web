@@ -1,0 +1,8 @@
+group: product
+order: 7
+question:
+  en: "Can it understand voice notes?"
+  ar: "هل يفهم الرسائل الصوتية؟"
+answer:
+  en: "Yes. Understanding customers' voice notes is an extra you can add to the AI Travel Sales Assistant. Choose it in \"Design your agent\", or ask about it on the call."
+  ar: "نعم. فهم الرسائل الصوتية من عملائك إضافة يمكنك إضافتها إلى مساعد مبيعات السفر. اخترها في «صمّم مساعدك»، أو اسأل عنها في المكالمة."

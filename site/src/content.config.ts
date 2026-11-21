@@ -138,6 +138,8 @@ const aboutPage = defineCollection({
     founderTitle: text,
     founderRole: text,
     founderLanguages: optional(text),
+    founderPhone: text,
+    founderInstagram: text,
   }),
 });
 

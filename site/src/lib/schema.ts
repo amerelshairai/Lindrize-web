@@ -19,7 +19,7 @@ export const organization = (): Node => ({
   logo: absoluteUrl('/icon-512.png'),
   image: absoluteUrl('/og-image.png'),
   description: 'AI sales assistants for travel agencies',
-  founder: { '@type': 'Person', name: settings.founder },
+  founder: { '@type': 'Person', name: settings.founder, alternateName: settings.founderAr, sameAs: [settings.founderInstagram] },
   address: { '@type': 'PostalAddress', addressLocality: 'Amman', addressCountry: 'JO' },
   areaServed,
   telephone: `+${settings.whatsappNumber}`,

@@ -14,7 +14,7 @@ glance:
   - label: { en: "Who", ar: "من نحن" }
     value:
       en: "Lindrize, founded and run by Amer El-shair."
-      ar: "Lindrize، أسسها ويديرها Amer El-shair."
+      ar: "Lindrize، أسسها ويديرها عامر الشاعر."
   - label: { en: "Where", ar: "أين" }
     value: { en: "Amman, Jordan.", ar: "عمّان، الأردن." }
   - label: { en: "Built for", ar: "لمن نبني" }
@@ -70,3 +70,5 @@ different:
 founderTitle: { en: "Founder", ar: "المؤسس" }
 founderRole: { en: "Founder", ar: "المؤسس" }
 founderLanguages: { en: "Speaks Arabic (native) and English.", ar: "يتحدّث العربية (لغته الأم) والإنجليزية." }
+founderPhone: { en: "Phone and WhatsApp", ar: "الهاتف و WhatsApp" }
+founderInstagram: { en: "Instagram", ar: "Instagram" }
