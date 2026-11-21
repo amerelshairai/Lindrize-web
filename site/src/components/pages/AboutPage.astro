@@ -68,6 +68,7 @@ if (!home) throw new Error('home.yaml is missing');
       <h2>{tr(c.founderTitle, lang)}</h2>
       <p class="name" lang="en" dir="ltr">{settings.founder}</p>
       <p class="role">{tr(c.founderRole, lang)}, Lindrize · {tr(settings.city, lang)}</p>
+      {c.founderLanguages && <p class="role">{tr(c.founderLanguages, lang)}</p>}
     </div>
   </section>
 

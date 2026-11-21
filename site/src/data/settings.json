@@ -15,5 +15,5 @@
   "videoId": "",
   "turnstileSiteKey": "",
   "umamiWebsiteId": "",
-  "foundingPlaces": { "tier30": null, "tier20": null, "tier15": null }
+  "foundingPlaces": { "tier30": 3, "tier20": 2, "tier15": 5 }
 }

@@ -137,6 +137,7 @@ const aboutPage = defineCollection({
     different: z.array(z.object({ title: text, body: text })).min(1),
     founderTitle: text,
     founderRole: text,
+    founderLanguages: optional(text),
   }),
 });
 

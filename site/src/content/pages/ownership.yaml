@@ -82,7 +82,7 @@ sections:
         - One 1-hour handover session
         - 30 days of questions by email after handover
 
-        **Price:** stated in your proposal. The standard price for the core AI Travel Sales Assistant is **750 JOD**. Extra features are priced separately. The buy-out is paid in full before handover.
+        **Price:** stated in your proposal. For the basic AI Travel Sales Assistant, the buy-out starts from **750 JOD**. Extra features are priced separately. The buy-out is paid in full before handover.
 
         **When:** at any time after the 3-month minimum period, or when you cancel. The monthly subscription ends at handover.
 
@@ -102,7 +102,7 @@ sections:
         - جلسة تسليم واحدة مدتها ساعة
         - 30 يوماً للإجابة على أسئلتك عبر البريد الإلكتروني بعد التسليم
 
-        **السعر:** يُحدَّد في عرض السعر الخاص بك. السعر المعتاد للمساعد الأساسي لمبيعات السفر هو **750 ديناراً أردنياً**، وتُسعَّر الميزات الإضافية بشكل منفصل. يُدفع المبلغ كاملاً قبل التسليم.
+        **السعر:** يُحدَّد في عرض السعر الخاص بك. يبدأ سعر شراء المساعد الأساسي لمبيعات السفر من **750 ديناراً أردنياً**، وتُسعَّر الميزات الإضافية بشكل منفصل. يُدفع المبلغ كاملاً قبل التسليم.
 
         **متى:** في أي وقت بعد انتهاء فترة الالتزام الدنيا (3 أشهر)، أو عند إلغاء الاشتراك. وينتهي الاشتراك الشهري عند التسليم.
 
@@ -117,9 +117,9 @@ sections:
       ar: "خدمات الأطراف الثالثة"
     body:
       en: |
-        The system runs on services such as Meta (Instagram, WhatsApp, Messenger), OpenAI, Google and n8n. They belong to their providers and follow their own terms. Lindrize does not own them and cannot transfer them.
+        The system runs on services such as Meta (Instagram, WhatsApp, Messenger), OpenAI and Google. They belong to their providers and follow their own terms. Lindrize does not own them and cannot transfer them.
       ar: |
-        يعمل النظام على خدمات مثل Meta (Instagram و WhatsApp و Messenger) و OpenAI و Google و n8n. هذه الخدمات ملك لمزوّديها وتخضع لشروطهم، ولا تملكها Lindrize ولا تستطيع نقل ملكيتها.
+        يعمل النظام على خدمات مثل Meta (Instagram و WhatsApp و Messenger) و OpenAI و Google. هذه الخدمات ملك لمزوّديها وتخضع لشروطهم، ولا تملكها Lindrize ولا تستطيع نقل ملكيتها.
   - title:
       en: "Talking about our work"
       ar: "الحديث عن أعمالنا"

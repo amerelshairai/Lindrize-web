@@ -2446,6 +2446,16 @@ content:
           - name: ar
             label: Arabic
             type: string
+      - name: founderLanguages
+        label: Founder languages
+        type: object
+        fields:
+          - name: en
+            label: English
+            type: string
+          - name: ar
+            label: Arabic
+            type: string
   - name: page-contact
     label: "Page: Contact"
     type: file

@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import settings from '../src/data/settings.json' with { type: 'json' };
 import { expectNoSidewaysScroll, scrollThrough, watchForErrors } from './helpers';
 
 const WCAG = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
@@ -159,7 +160,10 @@ test('Pricing shows how payment works and no amounts', async ({ page }) => {
     const text = await page.locator('main').innerText();
     expect(text, 'no currency amounts on the pricing page').not.toMatch(/JOD|USD|\$|دينار|دولار|ريال|درهم/);
     await expect(page.locator('.tiers li')).toHaveCount(3);
-    await expect(page.locator('.tiers .left'), 'places left stay hidden until they are set').toHaveCount(0);
+    // Places left come from settings.json (3, 2 and 5); a tier without a number hides its line.
+    const places = Object.values(settings.foundingPlaces).filter((n) => n !== null);
+    await expect(page.locator('.tiers .left')).toHaveCount(places.length);
+    for (const n of places) await expect(page.locator('.tiers .left').filter({ hasText: String(n) })).not.toHaveCount(0);
   }
 });
 

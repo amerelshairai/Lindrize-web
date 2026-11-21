@@ -1,5 +1,10 @@
 # Legal pages: what to confirm before approving
 
+**Owner's answers (21 November 2026):** n8n stays in the buy-out section only (removed from
+"Third-party services"). The buy-out *starts from* 750 JOD for the basic assistant. OpenAI for
+the demo and the 30-day answer time are confirmed. Still open: demo-chat retention (point 2)
+and the Arabic name (point 4). The owner switches `approved` on in the three files.
+
 The three pages are written and visible on the preview:
 
 | Page | English | Arabic | File |
