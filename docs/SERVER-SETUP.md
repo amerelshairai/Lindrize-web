@@ -17,6 +17,27 @@ something on the server already uses the web ports). Do not go past step 1 until
 - Lines in grey boxes are typed into the server's terminal, one box at a time.
 - `YOUR-IP` means your server's address from the Hostinger panel (four numbers with dots).
 
+## Hostinger: where things are in the panel
+
+All of these are in **hPanel** (hpanel.hostinger.com) → **VPS** → your server → **Manage**.
+
+| You need | Where |
+|---|---|
+| The server's IP address, plan and operating system | The **Overview** page |
+| A terminal in the browser, without PowerShell | **Browser terminal** button (top right of Overview) |
+| A full copy of the server before changes | **Backups and monitoring** → **Snapshots** |
+| Hostinger's own firewall (in front of the server) | **Security** → **Firewall** |
+| Root password reset, if you are ever locked out | **Settings** (root access) |
+
+Hostinger renames menu items now and then. If one is not where this table says, search for it
+in hPanel's search box, or send me a screenshot.
+
+**One thing to look at now:** the operating system name on the Overview page. If it says
+**"Ubuntu 24.04 with n8n"** (Hostinger's n8n template), n8n is running there behind its own
+web server (Traefik), which already uses the website ports 80 and 443. The website and n8n can
+share the server, but steps 6 and 8 change. Step 1 confirms it and I adjust those steps before
+you reach them.
+
 ## What gets installed
 
 | Part | Job |
@@ -64,9 +85,10 @@ not secrets): `DEPLOY_ENABLED` and `PUBLISH_CHECK_URL`.
 
 ## Step 1. Look at the server (changes nothing)
 
-1. Open the Hostinger panel → VPS → your server. Note the **IP address** and the plan's
-   memory and storage.
-2. Connect. On Windows, open **PowerShell** and type (Hostinger's "Browser terminal" also works):
+1. In hPanel → VPS → your server → **Overview**, note the **IP address**, the plan, and the
+   **operating system** name.
+2. Connect. Easiest: press **Browser terminal** on the Overview page (it logs you in as root).
+   Or on Windows, open **PowerShell** and type:
 
 ```bash
 ssh root@YOUR-IP
@@ -89,10 +111,26 @@ bash inspect.sh
 
 | If the output shows | Then |
 |---|---|
-| Something already listening on port 80 or 443 (for example n8n's own web server) | The Nginx steps change. I rewrite them to fit before you continue. |
+| Something already listening on port 80 or 443 (for example Traefik from the n8n template) | Steps 6 and 8 change so the website and n8n share the ports. I rewrite them before you continue. |
 | Less than about 1 GB of free memory | Umami may not fit next to what already runs. We decide together. |
 | A system other than Ubuntu 22.04 or 24.04 | Some commands differ. I adjust them. |
 | Port 8081 or 8082 in use | I move the services to free ports. |
+
+Send me the operating system name from the Overview page too.
+
+---
+
+## Step 1b. Take a snapshot (Hostinger)
+
+A snapshot is a full copy of the server as it is now. If anything in the next steps goes
+wrong, Hostinger can put the whole server back exactly as it was, n8n included.
+
+1. hPanel → VPS → your server → **Backups and monitoring** → **Snapshots** → **Create
+   snapshot**.
+2. Wait until it shows as finished (a few minutes).
+
+**Check:** the snapshot is listed with today's date. Hostinger keeps one snapshot at a time,
+so creating a new one later replaces this one.
 
 ---
 
@@ -163,8 +201,12 @@ sudo sshd -t && sudo systemctl reload ssh
 ```
 
 **Check:** open a third window and run `ssh amer@YOUR-IP`: it logs in. Then run
-`ssh root@YOUR-IP`: it is refused. If you ever lock yourself out, Hostinger's "Browser
-terminal" in the panel still gets you in.
+`ssh root@YOUR-IP`: it is refused.
+
+Good to know: Hostinger's **Browser terminal** logs in as root, so after this step it may stop
+working. That is expected. Use PowerShell with your key from now on. If you ever lock yourself
+out, the snapshot from step 1b, or a root password reset in hPanel → **Settings**, gets you
+back in. Tell me before using either.
 
 From here on, every command is typed as `amer`.
 
@@ -188,6 +230,14 @@ sudo ufw --force enable
 
 **Check:** `sudo ufw status` shows `Status: active` and exactly those three rules (each
 listed twice, once marked `(v6)`).
+
+**Hostinger's own firewall** sits in front of the server, separate from UFW. Open hPanel →
+VPS → your server → **Security** → **Firewall**:
+
+- If no firewall configuration is active there, leave it. UFW above does the job.
+- If one is active, it must have **accept** rules for TCP **22**, **80** and **443**. Add any
+  that are missing, then press **Activate** again (changes apply only after that). Never
+  activate an empty configuration: it blocks everything, including your own login.
 
 Good to know: Docker opens its own doors and ignores this firewall. That is why every service
 in this setup listens only on `127.0.0.1` (the server itself), which nothing outside can reach.
@@ -511,8 +561,9 @@ sudo /srv/lindrize/repo/server/backup-umami.sh && sudo ls -lh /srv/lindrize/back
 
 **Check:** one file named `umami-` and today's date is listed.
 
-The backups sit on the same server. For a copy elsewhere, switch on Hostinger's own weekly
-VPS backups in the panel. Only anonymous visitor counts are in this database; the website
+The backups sit on the same server. For a copy elsewhere, Hostinger keeps its own weekly
+backups of the whole VPS (hPanel → **Backups and monitoring**); check they are switched on for
+your plan. Only anonymous visitor counts are in this database; the website
 itself is always safe on GitHub.
 
 ---
