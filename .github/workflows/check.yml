@@ -100,12 +100,35 @@ jobs:
         run: shellcheck -S warning -e SC2010 server/*.sh server/test/*.sh
       - name: Publish gate and undo script
         run: bash server/test/gate-test.sh
-      - name: Web server rules
-        run: bash server/test/nginx-test.sh
-      - name: Services file is valid
+      - name: Web server rules, before and after launch
+        run: bash server/test/nginx-test.sh preview && bash server/test/nginx-test.sh live
+      - name: Services files are valid, before and after launch
         run: |
-          mkdir -p /tmp/lz && printf 'UMAMI_DB_PASSWORD=a\nUMAMI_APP_SECRET=b\nUMAMI_TWO_FACTOR_KEY=c\n' > /tmp/lz/.env && touch /tmp/lz/.env.receiver
+          mkdir -p /tmp/lz/repo && ln -s "$PWD/server" /tmp/lz/repo/server && ln -s "$PWD/receiver" /tmp/lz/repo/receiver
+          printf 'UMAMI_DB_PASSWORD=a\nUMAMI_APP_SECRET=b\nUMAMI_TWO_FACTOR_KEY=c\n' > /tmp/lz/.env && touch /tmp/lz/.env.receiver
           docker compose --project-directory /tmp/lz -f server/docker-compose.yml --env-file /tmp/lz/.env config -q
+          docker compose --project-directory /tmp/lz -f server/docker-compose.yml -f server/docker-compose.live.yml --env-file /tmp/lz/.env config -q
+      - name: The website container starts locked down and serves the site
+        run: |
+          image="$(grep -m1 'image: nginxinc/' server/docker-compose.yml | awk '{print $2}')"
+          sudo install -d -m 777 /tmp/lzlog
+          mkdir -p /tmp/lzwww/releases && cp -r site/dist /tmp/lzwww/releases/test && ln -s releases/test /tmp/lzwww/current
+          docker run -d --name lz-web --read-only --tmpfs /tmp --cap-drop ALL --security-opt no-new-privileges:true \
+            -p 127.0.0.1:18090:8080 \
+            -v /tmp/lzwww:/var/www/lindrize:ro -v /tmp/lzlog:/var/log/lindrize \
+            -v "$PWD/server/nginx/lindrize.conf:/etc/nginx/conf.d/default.conf:ro" \
+            -v "$PWD/server/nginx/site.conf:/etc/nginx/lindrize/site.conf:ro" \
+            -v "$PWD/server/nginx/headers.conf:/etc/nginx/lindrize/headers.conf:ro" \
+            -v "$PWD/server/nginx/preview-before-launch.conf:/etc/nginx/lindrize/preview.conf:ro" \
+            "$image"
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            code="$(curl -s -o /dev/null -w '%{http_code}' -H 'Host: lindrize.online' http://127.0.0.1:18090/ || true)"
+            [ "$code" = 200 ] && break; sleep 1
+          done
+          docker logs lz-web
+          [ "$code" = 200 ] || { echo "The website container did not serve the home page (got $code)"; exit 1; }
+          curl -fsS -H 'Host: lindrize.online' http://127.0.0.1:18090/ar/ | grep -q '<html lang="ar"'
+          test -s /tmp/lzlog/access.log
       - name: The receiver image builds and answers
         run: |
           docker build -t lindrize-receiver receiver

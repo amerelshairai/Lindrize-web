@@ -4,6 +4,22 @@ Changes the building model made on its own under the decision rule in `PLAN.md`.
 non-critical: it makes the site safer, faster, more accessible or more honest, and stays inside
 what `SPEC.md` asks for. Newest phase first.
 
+## Phase 5, fitted to the real server (21 November 2026)
+
+The inspection showed a Hostinger KVM 1 with n8n, its Postgres and Hostinger's Traefik, which
+already owns ports 80 and 443.
+
+| Decision | Why | Replaced |
+|---|---|---|
+| **The website runs behind the existing Traefik,** as four containers in their own project (`lindrize`). Traefik gets the HTTPS certificates. No Nginx or certbot on the server itself. | Two programs cannot both own ports 80 and 443, and moving n8n behind a new web server would touch a live system. This way n8n is never changed or restarted. | Nginx and certbot installed on the server (PLAN section 10). |
+| **Nginx still serves the site, inside a container** (`nginx-unprivileged`, runs as an ordinary user, read-only). | Keeps every tested rule: security headers, caching, redirects, request limits, shortened-address logs. | — |
+| **Launch is a switch** (`LINDRIZE_STAGE=live`), which adds the main address to Traefik and makes the test address forward. | One command on launch day, one to undo. | Copying web server files by hand. |
+| **Hostinger's firewall (in hPanel) instead of UFW.** Only 22, 80 and 443 open. | Docker bypasses UFW. The hPanel firewall also closes n8n's direct port (32768), which today bypasses HTTPS. | UFW. |
+| **Root may log in with a key only** (`prohibit-password`), not "never". | Hostinger's panel tools may rely on root access; passwords are what attackers guess. | `PermitRootLogin no`. |
+| **A 2 GB swap file.** | The server had none; n8n and the website share 4 GB. | — |
+| **Logs are cleaned by a small daily script** (`server/rotate-logs.sh`), 14 days. | The log folder belongs to the container's user, which the system's logrotate refuses to handle safely. | Ubuntu's Nginx logrotate. |
+| **GitHub's checks now start the real website container**, locked down as on the server, and serve the site from it. | The closest test to the server without the server. | — |
+
 ## Phase 5, owner's answers (17 November 2026)
 
 | Decision | Why | Replaced |

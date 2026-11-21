@@ -1,0 +1,10 @@
+# Launch day (LINDRIZE_STAGE=live in /srv/lindrize/.env, see docs/DNS-MOVE.md).
+# Adds the main address and www to Traefik, and makes the test address forward to the main one.
+services:
+  web:
+    volumes:
+      - ./repo/server/nginx/preview-after-launch.conf:/etc/nginx/lindrize/preview.conf:ro
+    labels:
+      traefik.http.routers.lindrize-live.rule: Host(`lindrize.online`) || Host(`www.lindrize.online`)
+      traefik.http.routers.lindrize-live.entrypoints: websecure
+      traefik.http.routers.lindrize-live.tls.certresolver: letsencrypt

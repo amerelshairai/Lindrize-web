@@ -87,15 +87,15 @@ dig +short lindrize.online @1.1.1.1
 dig +short www.lindrize.online @1.1.1.1
 ```
 
-4. Get the certificate for both names and switch the real site on:
+4. Switch the main address on. This tells Traefik to answer for `lindrize.online` and `www`,
+   and it fetches their HTTPS certificate by itself within about a minute. n8n is not touched.
 
 ```bash
-sudo certbot certonly --webroot -w /var/www/certbot --cert-name lindrize.online -d lindrize.online -d www.lindrize.online --deploy-hook "systemctl reload nginx"
+sudo sed -i 's/^LINDRIZE_STAGE=.*/LINDRIZE_STAGE=live/' /srv/lindrize/.env && sudo /srv/lindrize/repo/server/services.sh up -d
 ```
 
-```bash
-sudo ln -s /etc/nginx/sites-available/lindrize.conf /etc/nginx/sites-enabled/ && sudo nginx -t && sudo systemctl reload nginx
-```
+   Only do this after step 3 shows YOUR-IP for both names: if Let's Encrypt is asked before the
+   DNS change has arrived, it refuses and makes you wait an hour.
 
 **Check, in this order:**
 
@@ -108,8 +108,15 @@ sudo ln -s /etc/nginx/sites-available/lindrize.conf /etc/nginx/sites-enabled/ &&
 
 ## Step 5. Undo, if anything is wrong
 
-Delete the `A` record for `@`, and put the old value from step 3 back into row 6. Email is
-unaffected either way, because its records were never touched. Then tell me what you saw.
+Delete the `A` record for `@`, and put the old value from step 3 back into row 6. Then switch
+the main address off on the server:
+
+```bash
+sudo sed -i 's/^LINDRIZE_STAGE=.*/LINDRIZE_STAGE=preview/' /srv/lindrize/.env && sudo /srv/lindrize/repo/server/services.sh up -d
+```
+
+Email is unaffected either way, because its records were never touched. Then tell me what you
+saw.
 
 ## Step 6. After launch
 
@@ -119,12 +126,8 @@ Same day:
       `PUBLISH_CHECK_URL` to `https://lindrize.online`.
 - [ ] In `/srv/lindrize/.env.receiver`, set `ALLOWED_ORIGIN=https://lindrize.online`, then run
       `sudo /srv/lindrize/repo/server/services.sh up -d`.
-- [ ] Make the test address forward to the real one:
-
-```bash
-sudo cp /srv/lindrize/repo/server/nginx/lindrize-preview-after-launch.conf /etc/nginx/sites-available/lindrize-preview.conf && sudo nginx -t && sudo systemctl reload nginx
-```
-
+- [ ] Check that `https://new.lindrize.online` now forwards to `https://lindrize.online`
+      (switched on automatically in step 4).
 - [ ] Change the UptimeRobot monitor to `https://lindrize.online/`.
 - [ ] Open the Umami dashboard: your own visit is counted.
 - [ ] Start `docs/SEO-SETUP.md`.

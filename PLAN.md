@@ -461,6 +461,8 @@ Before any change to the server or DNS, the plan for that step is written out an
   - the Umami admin password
 - the written Privacy Policy and Terms
 
+**Server (21 November 2026):** the VPS already runs n8n behind Hostinger's Traefik, so the website runs as containers behind that Traefik instead of a separate Nginx and certbot (`docs/DECISIONS.md`). `docs/SERVER-SETUP.md` is fitted to the inspected server.
+
 **Status (16 November 2026):** everything that can be prepared without the server is written and tested: `server/`, the Publish and Launch check workflows, `.pages.yml`, and the five guides. Nothing on the server, the domain or DNS has been changed. Next is the owner running step 1 of `docs/SERVER-SETUP.md` (look only) and step 1 of `docs/DNS-MOVE.md` (export only).
 
 ---

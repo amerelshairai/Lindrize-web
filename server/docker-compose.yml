@@ -1,13 +1,48 @@
-# The three background services. Started with server/services.sh (see docs/SERVER-SETUP.md).
+# The website's four containers. Started with server/services.sh (see docs/SERVER-SETUP.md).
+# They run next to n8n and never touch it.
 #
-# - Nothing here is reachable from the internet directly. Each service listens only on the
-#   server itself (127.0.0.1); Nginx is the only way in.
+# - Hostinger's Traefik (already on the server for n8n) receives every visit on ports 80 and 443,
+#   handles HTTPS, and passes the Lindrize addresses to "web". Nothing here publishes a port.
 # - Secrets come from two files that exist only on the server and are never on GitHub:
-#     /srv/lindrize/.env            (Umami and its database)
+#     /srv/lindrize/.env            (Umami, its database, and the launch switch)
 #     /srv/lindrize/.env.receiver   (the email receiver)
+# - Before launch only the test address (new.) and stats. are routed. On launch day
+#   LINDRIZE_STAGE=live adds docker-compose.live.yml: the main address, and the test address
+#   then forwards to it.
 name: lindrize
 
 services:
+  web:
+    # Nginx that runs as an ordinary user, not root. Exact version.
+    image: nginxinc/nginx-unprivileged:1.28-alpine
+    volumes:
+      - /var/www/lindrize:/var/www/lindrize:ro
+      - /var/log/lindrize:/var/log/lindrize
+      - ./repo/server/nginx/lindrize.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./repo/server/nginx/site.conf:/etc/nginx/lindrize/site.conf:ro
+      - ./repo/server/nginx/headers.conf:/etc/nginx/lindrize/headers.conf:ro
+      - ./repo/server/nginx/preview-before-launch.conf:/etc/nginx/lindrize/preview.conf:ro
+    environment:
+      NGINX_ENTRYPOINT_QUIET_LOGS: "1"
+    networks: [edge, backend]
+    depends_on: [receiver, umami]
+    restart: unless-stopped
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 64m
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: lindrize_edge
+      traefik.http.services.lindrize.loadbalancer.server.port: "8080"
+      traefik.http.routers.lindrize-preview.rule: Host(`new.lindrize.online`) || Host(`stats.lindrize.online`)
+      traefik.http.routers.lindrize-preview.entrypoints: websecure
+      traefik.http.routers.lindrize-preview.tls.certresolver: letsencrypt
+    logging: &logging
+      driver: json-file
+      options: { max-size: "5m", max-file: "3" }
+
   receiver:
     build: ./repo/receiver
     env_file: ./.env.receiver
@@ -17,8 +52,7 @@ services:
       CATALOG_PATH: /site/current/design-catalog.json
     volumes:
       - /var/www/lindrize:/site:ro
-    ports:
-      - "127.0.0.1:8081:8080"
+    networks: [backend]
     restart: unless-stopped
     read_only: true
     tmpfs: [/tmp]
@@ -26,9 +60,7 @@ services:
     security_opt: ["no-new-privileges:true"]
     mem_limit: 128m
     pids_limit: 64
-    logging: &logging
-      driver: json-file
-      options: { max-size: "5m", max-file: "3" }
+    logging: *logging
 
   umami:
     # Exact version. Updates are a deliberate change to this line, tested first.
@@ -37,7 +69,7 @@ services:
       DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD:?set UMAMI_DB_PASSWORD in /srv/lindrize/.env}@db:5432/umami
       APP_SECRET: ${UMAMI_APP_SECRET:?set UMAMI_APP_SECRET in /srv/lindrize/.env}
       TWO_FACTOR_ENCRYPTION_KEY: ${UMAMI_TWO_FACTOR_KEY:?set UMAMI_TWO_FACTOR_KEY in /srv/lindrize/.env}
-      # Trust only the visitor address that Nginx passes on.
+      # Trust only the visitor address that our Nginx passes on.
       CLIENT_IP_HEADER: x-real-ip
       # Umami itself sends nothing to anyone.
       DISABLE_TELEMETRY: "1"
@@ -45,9 +77,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    ports:
-      - "127.0.0.1:8082:3000"
-    networks: [default, database]
+    networks: [backend, database]
     init: true
     restart: unless-stopped
     cap_drop: [ALL]
@@ -56,6 +86,7 @@ services:
     logging: *logging
 
   db:
+    # Umami's own database, separate from n8n's.
     image: postgres:15-alpine
     environment:
       POSTGRES_DB: umami
@@ -63,7 +94,7 @@ services:
       POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD:?set UMAMI_DB_PASSWORD in /srv/lindrize/.env}
     volumes:
       - umami-db:/var/lib/postgresql/data
-    # The database is on its own closed network: only Umami can reach it.
+    # A closed network: only Umami can reach the database.
     networks: [database]
     restart: unless-stopped
     security_opt: ["no-new-privileges:true"]
@@ -76,6 +107,11 @@ services:
     logging: *logging
 
 networks:
+  # Traefik reaches "web" here.
+  edge:
+    name: lindrize_edge
+  # web, receiver and Umami talk here. The receiver needs the internet to send email.
+  backend: {}
   database:
     internal: true
 
