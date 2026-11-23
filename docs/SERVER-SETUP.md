@@ -218,12 +218,26 @@ of safety. Hostinger's firewall covers everything.
 
 ## Step 4. Block password guessing, security fixes, and spare memory
 
+On this server Ubuntu's main update server does not answer over plain `http` (found
+23 November 2026: the daily update job had been stuck since 22 October). Switch it to `https`
+first, and stop the stuck job:
+
+```bash
+sudo sed -i 's#http://archive.ubuntu.com#https://archive.ubuntu.com#' /etc/apt/sources.list.d/ubuntu.sources
+```
+
+```bash
+sudo pkill -x apt-get; sleep 2; pgrep -a apt-get || echo CLEAR
+```
+
 ```bash
 sudo apt-get update && sudo apt-get install -y fail2ban git rsync
 ```
 
+On Ubuntu 24.04 the login service is called `ssh.service`, so the guard is told to watch that:
+
 ```bash
-printf '[sshd]\nenabled = true\nmaxretry = 5\nbantime = 1h\n' | sudo tee /etc/fail2ban/jail.d/lindrize.local
+printf '[sshd]\nenabled = true\nmaxretry = 5\nbantime = 1h\nbackend = systemd\njournalmatch = _SYSTEMD_UNIT=ssh.service + _COMM=sshd\n' | sudo tee /etc/fail2ban/jail.d/lindrize.local
 ```
 
 ```bash
@@ -248,7 +262,8 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
 **Check:**
-- `sudo fail2ban-client status sshd` shows `Currently banned:` with a number.
+- `sudo fail2ban-client status sshd` shows `Currently banned:` with a number, and
+  `Journal matches:  _SYSTEMD_UNIT=ssh.service`.
 - `free -m` shows a `Swap:` line with about `2047` in the total column.
 
 ---
