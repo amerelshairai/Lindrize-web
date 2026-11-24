@@ -15,7 +15,8 @@ export function loadConfig(env = process.env) {
     /** One address, or several separated by commas (used while the site is tested on a second address). */
     allowedOrigins: required(env, 'ALLOWED_ORIGIN')
       .split(',')
-      .map((origin) => origin.trim())
+      // Tolerate spaces, quotes and a final slash, which are easy to type by mistake.
+      .map((origin) => origin.trim().replace(/^["']|["']$/g, '').replace(/\/+$/, ''))
       .filter(Boolean),
     /** Optional: the published site's own list of choices, so the receiver follows content edits. */
     catalogPath: env.CATALOG_PATH || null,

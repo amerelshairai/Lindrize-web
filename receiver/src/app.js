@@ -48,7 +48,11 @@ export function createApp({ config, catalog: catalogSource, outside, log = () =>
     if (path !== '/api/design') return reply(res, 404, { ok: false, error: 'not_found' });
     if (req.method !== 'POST') return reply(res, 405, { ok: false, error: 'method' });
     // Browsers always send the page's origin with this kind of request. Anything else is refused.
-    if (!origins.has(req.headers.origin)) return reply(res, 403, { ok: false, error: 'origin' });
+    if (!origins.has(req.headers.origin)) {
+      // The address is the site's (for example https://new.lindrize.online), never the visitor's.
+      log(`refused-origin ${String(req.headers.origin ?? 'none').slice(0, 80)}`);
+      return reply(res, 403, { ok: false, error: 'origin' });
+    }
     if (!String(req.headers['content-type'] ?? '').toLowerCase().startsWith('application/json')) {
       return reply(res, 415, { ok: false, error: 'format' });
     }

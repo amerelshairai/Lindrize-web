@@ -220,3 +220,17 @@ test('the list of choices follows the published site, and a broken file is ignor
   assert.equal(looksValid({ types: {} }), false);
   rmSync(dir, { recursive: true });
 });
+
+test('the allowed-address setting tolerates typing slips, and refusals are logged', async () => {
+  const { loadConfig } = await import('../src/config.js');
+  const env = {
+    ALLOWED_ORIGIN: ' https://lindrize.online/ , "https://new.lindrize.online" ',
+    TURNSTILE_SECRET: 'x', SMTP_HOST: 'x', SMTP_USER: 'x', SMTP_PASS: 'x', MAIL_FROM: 'x', OWNER_EMAIL: 'x',
+  };
+  assert.deepEqual(loadConfig(env).allowedOrigins, ['https://lindrize.online', 'https://new.lindrize.online']);
+
+  const app = await start();
+  assert.equal((await app.post(goodBody(), { headers: { origin: 'https://evil.example' } })).status, 403);
+  assert.ok(app.sent.events.includes('refused-origin https://evil.example'));
+  await app.stop();
+});
