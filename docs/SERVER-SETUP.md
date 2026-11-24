@@ -369,7 +369,7 @@ browser tab open and paste the value into the server file below, never into chat
 |---|---|---|
 | **Cloudflare Turnstile** (the human check) | dash.cloudflare.com → sign up or log in (free) → **Turnstile** → **Add widget** | Hostnames: `lindrize.online` and `new.lindrize.online`. Mode: **Managed**. You get a **site key** (public) and a **secret key**. |
 | **Email-sending password** | Signed in as `amer.ai@lindrize.online`: myaccount.google.com → **Security** → **2-Step Verification** → **App passwords** | Create one named "Lindrize website". If "App passwords" is missing, turn on 2-Step Verification for this mailbox first. If it is still missing, tell me: your Workspace admin settings may block it. |
-| **Telegram alert** (optional) | In Telegram, message `@BotFather` → `/newbot` | You get a bot **token**. Then send your new bot any message and open `https://api.telegram.org/botTOKEN/getUpdates` in a browser (TOKEN replaced by yours): the number after `"chat":{"id":` is your **chat id**. |
+| **Telegram alert** (optional; not used, as Telegram is blocked in Jordan. The Privacy Policy no longer mentions it. Leave both lines empty.) | In Telegram, message `@BotFather` → `/newbot` | You get a bot **token**. Then send your new bot any message and open `https://api.telegram.org/botTOKEN/getUpdates` in a browser (TOKEN replaced by yours): the number after `"chat":{"id":` is your **chat id**. |
 
 1. Create the two secret files:
 
