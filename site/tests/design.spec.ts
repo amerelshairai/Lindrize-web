@@ -1,4 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
+import settings from '../src/data/settings.json' with { type: 'json' };
 import { expect, test, type Page } from '@playwright/test';
 import { estimate, roundNice } from '../src/lib/estimate';
 import { expectNoSidewaysScroll, fakeCalendly, watchForErrors } from './helpers';
@@ -130,12 +131,7 @@ test('the board plays one step a second, reacts to extras, and compares with no 
   await context.close();
 });
 
-test('the email option is hidden until the human check is set up, then works', async ({ page }) => {
-  await page.goto(URL);
-  await reachDesign(page);
-  const form = page.locator('[data-email-form]');
-  await expect(form).toBeHidden();
-
+test('the email option shows once the human check is set up, and works', async ({ page }) => {
   // Stand-ins for Cloudflare's check and for the receiver, which run on the real server.
   await page.route('https://challenges.cloudflare.com/**', (route) =>
     route.fulfill({
@@ -148,7 +144,16 @@ test('the email option is hidden until the human check is set up, then works', a
     received = route.request().postDataJSON() as Record<string, unknown>;
     await route.fulfill({ contentType: 'application/json', body: '{"ok":true}' });
   });
-  await form.evaluate((el) => el.setAttribute('data-sitekey', '1x00000000000000000000AA'));
+  await page.goto(URL);
+  await reachDesign(page);
+  const form = page.locator('[data-email-form]');
+  if (settings.turnstileSiteKey === '') {
+    // Without a site key the option stays hidden; give it one to test the rest.
+    await expect(form).toBeHidden();
+    await form.evaluate((el) => el.setAttribute('data-sitekey', '1x00000000000000000000AA'));
+  } else {
+    await expect(form).toHaveAttribute('data-sitekey', settings.turnstileSiteKey);
+  }
   await expect(form).toBeVisible();
   await expect(form.getByRole('link', { name: 'Privacy Policy' })).toHaveAttribute('href', '/privacy/');
 
