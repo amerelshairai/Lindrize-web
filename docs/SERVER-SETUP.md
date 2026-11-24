@@ -552,6 +552,7 @@ there: you would hear at once if n8n went down.
 | Website libraries | Monthly | GitHub proposes updates ("Dependabot"). If the checks are green, press Merge. |
 | Server file or receiver changes | When I change them | `sudo /srv/lindrize/repo/server/services.sh update`, then `sudo /srv/lindrize/repo/server/install-host.sh` |
 | Umami version | A few times a year | I change the version number in `server/docker-compose.yml`; you run the `update` command above. |
+| After editing `/srv/lindrize/.env.receiver` | Every time | `sudo /srv/lindrize/repo/server/services.sh up -d --force-recreate receiver`. The receiver reads the file only when it starts. |
 | See what the receiver did | When an email is missing | `sudo /srv/lindrize/repo/server/services.sh logs --tail 50 receiver` (it logs events, never addresses) |
 | Go back one website version | When a publish went wrong | See "Undo" in `HOW-TO-EDIT.md` |
 | n8n and Traefik | As before | Unchanged by this setup. Hostinger's tools for them work as they did. |
