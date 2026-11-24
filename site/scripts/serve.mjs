@@ -35,6 +35,16 @@ export function startServer(port) {
       res.writeHead(400).end();
       return;
     }
+    // Like the real server: the visitor-count script and its endpoint come from Umami.
+    // Here they are harmless stand-ins, so pages behave as they will live.
+    if (path === '/u/script.js') {
+      res.writeHead(200, { 'content-type': 'text/javascript; charset=utf-8', 'cache-control': 'no-cache' }).end('/* Umami stand-in for local tests */');
+      return;
+    }
+    if (path === '/u/api/send') {
+      res.writeHead(204).end();
+      return;
+    }
     let file = join(DIST, path);
     // Never serve anything outside dist/.
     if (file !== DIST.slice(0, -1) && !file.startsWith(DIST.endsWith(sep) ? DIST : DIST + sep)) {

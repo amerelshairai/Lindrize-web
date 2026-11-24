@@ -7,6 +7,9 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { pages, isRedirect, attr, decode, report, DIST } from './lib.mjs';
 
+/** Addresses the web server answers by itself: the visitor-count script comes from Umami. */
+const SERVER_PATHS = new Set(['/u/script.js']);
+
 const all = pages();
 const byUrl = new Map(all.map((p) => [p.url, p]));
 const broken = new Set();
@@ -32,6 +35,8 @@ for (const page of all) {
       const target = new URL(value, `https://site.local${page.url}`);
       const path = decodeURIComponent(target.pathname);
       const hash = decodeURIComponent(target.hash.slice(1));
+      // Served by the server itself, not from the site files (server/nginx/site.conf).
+      if (SERVER_PATHS.has(path)) continue;
       const targetPage = byUrl.get(path);
       if (targetPage) {
         if (hash && !ids(targetPage.html).has(hash)) broken.add(`${page.url}: "${value}" points to a missing place #${hash}`);
