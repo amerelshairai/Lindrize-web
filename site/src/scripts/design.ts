@@ -374,6 +374,19 @@ if (root && form) {
     const button = emailForm.querySelector<HTMLButtonElement>('button[type="submit"]');
     let token = '';
     let widgetStarted = false;
+    // Send can be pressed before the human check has finished: it then waits for it.
+    const waiting: Array<(value: string) => void> = [];
+    const settle = (value: string): void => {
+      token = value;
+      waiting.splice(0).forEach((resolve) => resolve(value));
+    };
+    const waitForToken = (ms: number): Promise<string> =>
+      token
+        ? Promise.resolve(token)
+        : new Promise((resolve) => {
+            waiting.push(resolve);
+            setTimeout(() => resolve(token), ms);
+          });
 
     const fail = (message: string | undefined): void => {
       if (statusEl) statusEl.textContent = '';
@@ -394,15 +407,21 @@ if (root && form) {
         api?.render(holder, {
           sitekey,
           language: root.dataset['lang'] ?? 'en',
-          callback: (value: string) => (token = value),
+          callback: (value: string) => settle(value),
           'expired-callback': () => (token = ''),
-          'error-callback': () => (token = ''),
+          'error-callback': () => settle(''),
         });
       };
       const script = document.createElement('script');
       script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
       script.async = true;
       script.addEventListener('load', render);
+      // Blocked or offline: stop waiting, and let the next Send try again.
+      script.addEventListener('error', () => {
+        widgetStarted = false;
+        script.remove();
+        settle('');
+      });
       document.head.append(script);
     };
     input?.addEventListener('focus', startCheck);
@@ -418,12 +437,14 @@ if (root && form) {
         input?.focus();
         return;
       }
+      if (statusEl) statusEl.textContent = text['sending'] ?? '';
+      if (button) button.disabled = true;
+      if (!token) await waitForToken(15000);
       if (!token) {
+        if (button) button.disabled = false;
         fail(text['errorCheck']);
         return;
       }
-      if (statusEl) statusEl.textContent = text['sending'] ?? '';
-      if (button) button.disabled = true;
       try {
         const response = await fetch(emailForm.dataset['endpoint'] ?? '/api/design', {
           method: 'POST',

@@ -180,6 +180,29 @@ test('the email option shows once the human check is set up, and works', async (
   expect(Object.keys(received ?? {}).sort()).toEqual(['company', 'design', 'elapsed', 'email', 'lang', 'token']);
 });
 
+test('pressing Send before the human check has finished waits for it, then sends', async ({ page }) => {
+  // A slow human check: the answer comes 1.5 seconds after it starts.
+  await page.route('https://challenges.cloudflare.com/**', (route) =>
+    route.fulfill({
+      contentType: 'text/javascript',
+      body: 'window.turnstile = { render: (el, o) => setTimeout(() => o.callback("slow-token"), 1500) };',
+    }),
+  );
+  let received: Record<string, unknown> | undefined;
+  await page.route('**/api/design', async (route) => {
+    received = route.request().postDataJSON() as Record<string, unknown>;
+    await route.fulfill({ contentType: 'application/json', body: '{"ok":true}' });
+  });
+  await page.goto(URL);
+  await reachDesign(page);
+  const form = page.locator('[data-email-form]');
+  await form.evaluate((el) => el.setAttribute('data-sitekey', 'x'));
+  await page.getByLabel('Your email').fill('owner@agency.com');
+  await page.getByRole('button', { name: 'Send' }).click();
+  await expect(form.getByRole('status')).toHaveText('Sent. Check your inbox for your design.', { timeout: 10_000 });
+  expect(received).toMatchObject({ email: 'owner@agency.com', token: 'slow-token' });
+});
+
 test('if sending fails, the visitor is told what to do instead', async ({ page }) => {
   await page.goto(URL);
   await reachDesign(page);
