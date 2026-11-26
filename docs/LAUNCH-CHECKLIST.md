@@ -27,12 +27,12 @@ Lines marked **(gate)** are also enforced by the "Launch check" on GitHub.
 
 ## Server (`docs/SERVER-SETUP.md`)
 
-- [ ] Steps 1 to 13 done, each check passed
+- [x] Steps 1 to 13 done, each check passed (26 November 2026)
 - [ ] The site on `https://new.lindrize.online` matches the preview, English and Arabic
-- [ ] "Email me my design": your copy and the visitor's copy arrive, not in spam
-- [ ] The Telegram alert arrives (if set up)
+- [x] "Email me my design": your copy and the visitor's copy arrive
+- [x] Telegram alert: not used (Telegram is blocked in Jordan)
 - [ ] The Umami password is no longer the default
-- [ ] A backup file exists in `/srv/lindrize/backups/`
+- [x] A backup file exists in `/srv/lindrize/backups/`
 - [ ] Undo tried once: `HOW-TO-EDIT.md` → "Undo"
 
 ## Checks
