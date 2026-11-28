@@ -94,7 +94,8 @@ dig +short www.lindrize.online @1.1.1.1
 sudo sed -i 's/^LINDRIZE_STAGE=.*/LINDRIZE_STAGE=live/' /srv/lindrize/.env && sudo /srv/lindrize/repo/server/services.sh up -d
 ```
 
-   Only do this after step 3 shows YOUR-IP for both names: if Let's Encrypt is asked before the
+   The server refuses this (and says why) until `lindrize.online` points to it, so it cannot
+   send visitors to an address that does not work yet. Only do this after step 3 shows YOUR-IP for both names: if Let's Encrypt is asked before the
    DNS change has arrived, it refuses and makes you wait an hour.
 
 **Check, in this order:**
