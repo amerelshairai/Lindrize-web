@@ -34,7 +34,13 @@ function collect(scope) {
     let out = '';
     for (const node of el.childNodes) {
       if (node.nodeType === 3) out += node.textContent;
-      else if (node.nodeType === 1 && !SKIP.has(node.tagName) && !node.closest('svg')) out += ` ${textOf(node)} `;
+      // Inline pieces (a link, bold text) join the sentence as they are, so the export shows no
+      // spaces the page does not have. Other pieces (a name and a time) get a space between them.
+      else if (node.nodeType === 1 && !SKIP.has(node.tagName) && !node.closest('svg')) {
+        const inner = textOf(node);
+        const ltr = node.classList?.contains('ltr');
+        out += INLINE.has(node.tagName) ? (ltr ? `\u200E${inner}` : inner) : ` ${inner} `;
+      }
     }
     return out;
   };

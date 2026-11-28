@@ -4,7 +4,7 @@ name:
   ar: "منظّمو الرحلات الوافدة"
 intro:
   en: "For operators who receive visitors from abroad: clear quotes for travellers and partners, and guides and transport that are confirmed in time."
-  ar: "لمن يستقبلون زواراً من الخارج: عروض أسعار واضحة للمسافرين والشركاء، ومرشدون ووسائل نقل تتأكّد في وقتها."
+  ar: "لمن يستقبلون زواراً من الخارج: عروض أسعار واضحة للمسافرين والشركاء، وتأكيد المرشدين ووسائل النقل في الوقت المناسب."
 # System numbers that fit this field best, in the order shown.
 systems: [1, 4, 20, 21, 27]
 also:

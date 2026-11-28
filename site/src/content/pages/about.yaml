@@ -43,7 +43,7 @@ glance:
       ar: "احجز مكالمة مدتها 15 دقيقة عبر Google Meet."
 differentTitle: { en: "What makes Lindrize different", ar: "ما الذي يميّز Lindrize" }
 different:
-  - title: { en: "Built only for travel", ar: "مبنية للسفر فقط" }
+  - title: { en: "Built only for travel", ar: "مصمَّمة لقطاع السفر فقط" }
     body:
       en: "Every system starts from how agencies sell packages, Umrah and custom trips."
       ar: "كل نظام ينطلق من طريقة بيع المكاتب للباقات والعمرة والرحلات الخاصة."
@@ -54,7 +54,7 @@ different:
   - title: { en: "Your staff keep the final word", ar: "الكلمة الأخيرة لموظفيك" }
     body:
       en: "Nothing is confirmed and no payment is taken without a person on your team."
-      ar: "لا يُؤكَّد حجز ولا تُستلَم دفعة دون أحد أفراد فريقك."
+      ar: "لا يُؤكَّد حجز ولا تُستلَم دفعة دون موافقة أحد أفراد فريقك."
   - title: { en: "We do the setup", ar: "نحن نتولّى الإعداد" }
     body:
       en: "You do not need a technical team."

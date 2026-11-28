@@ -12,7 +12,7 @@ does:
   ar: "يوفّر لك نموذج تسجيل لمجموعات العمرة ورحلات المدارس والشركات. كل تسجيل يدخل في قائمة واحدة، فلا يعيد موظفوك كتابة الأسماء."
 never:
   en: "It never confirms a seat. A registration is a request until your staff approve it."
-  ar: "لا يؤكّد مقعداً. التسجيل طلب إلى أن يوافق عليه موظفوك."
+  ar: "لا يؤكّد مقعداً. يبقى التسجيل طلباً إلى أن يوافق عليه موظفوك."
 # The steps shown on the system's board. Always presented as an example.
 story:
   - who: team

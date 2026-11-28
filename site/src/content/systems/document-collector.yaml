@@ -30,11 +30,11 @@ story:
   - who: system
     text:
       en: "Two days later, a reminder asks for the missing one."
-      ar: "بعد يومين يطلب تذكيرٌ الجواز الناقص."
+      ar: "بعد يومين يصله تذكير بالجواز الناقص."
   - who: team
     text:
       en: "Staff see that the file is complete and start the visa application."
-      ar: "يرى الموظفون أن الملف اكتمل فيبدؤون طلب التأشيرة."
+      ar: "يرى الموظفون أن الملف اكتمل فيبدؤون بإجراءات التأشيرة."
 # Extra features offered for this system in "Design your agent".
 features:
   - id: until-complete

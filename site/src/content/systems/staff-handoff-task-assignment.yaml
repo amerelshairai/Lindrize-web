@@ -18,7 +18,7 @@ story:
   - who: system
     text:
       en: "A new Umrah request arrives."
-      ar: "طلب عمرة جديد يصل."
+      ar: "يصل طلب عمرة جديد."
   - who: system
     text:
       en: "The system assigns it to the Umrah specialist and notifies them."

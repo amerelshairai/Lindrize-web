@@ -2,8 +2,8 @@
 # approved: the owner has read and accepted the text. The site cannot go live before that.
 # updated: change to the day the text last changed (shown at the top of the page).
 ready: true
-approved: false
-updated: "2026-11-17"
+approved: true
+updated: "2026-11-28"
 seo:
   title:
     en: "Privacy Policy | Lindrize"
@@ -57,7 +57,7 @@ sections:
         لا يوجد في الموقع تسجيل ولا نموذج تواصل. المكان الوحيد الذي تكتب فيه معلومات شخصية هو الخانة تحت «أرسل تصميمي إلى بريدي». وعند استخدامها نستلم:
 
         - عنوان البريد الإلكتروني الذي تكتبه
-        - اختياراتك في «صمّم مساعدك»: نوع نشاطك وحجمه، والمشكلة، والنظام، والميزات، والنطاقات التي اخترتها
+        - اختياراتك في «صمّم مساعدك»: نوع نشاطك وحجمه، والمشكلة، والنظام، والميزات، والأرقام التقريبية التي اخترتها
         - لغة الصفحة
 
         نستخدمها لنرسل إليك تصميمك ولنتابعه معك. ولا نضيفك إلى نشرة بريدية أو قائمة مراسلات.

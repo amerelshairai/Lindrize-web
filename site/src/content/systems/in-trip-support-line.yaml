@@ -18,7 +18,7 @@ story:
   - who: customer
     text:
       en: "At 1 AM, a traveller asks when breakfast starts."
-      ar: "الساعة 1 فجراً، مسافر يسأل عن موعد الإفطار."
+      ar: "الساعة الواحدة فجراً، مسافر يسأل عن موعد الإفطار."
   - who: system
     text:
       en: "The system answers from the hotel details."
@@ -30,7 +30,7 @@ story:
   - who: system
     text:
       en: "The system marks it as urgent and alerts staff straight away."
-      ar: "النظام يصنّف الحالة عاجلة وينبّه الموظفين فوراً."
+      ar: "النظام يصنّف الحالة على أنها عاجلة وينبّه الموظفين فوراً."
   - who: team
     text:
       en: "The staff member on duty calls the traveller."

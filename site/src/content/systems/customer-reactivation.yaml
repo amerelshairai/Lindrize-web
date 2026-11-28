@@ -67,5 +67,5 @@ faqs:
       ar: "هل يستطيع العملاء إيقاف العروض؟"
     answer:
       en: "Yes. Anyone who asks to stop is removed from future messages."
-      ar: "نعم. من يطلب الإيقاف يُحذَف من الرسائل القادمة."
+      ar: "نعم. من يطلب الإيقاف يُستثنى من الرسائل القادمة."
 related: [14, 2, 12]

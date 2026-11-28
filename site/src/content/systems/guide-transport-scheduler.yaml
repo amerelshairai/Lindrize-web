@@ -9,7 +9,7 @@ summary:
   ar: "يرتّب المرشدين والسائقين والحافلات ويكشف التعارضات."
 does:
   en: "It plans your guides, drivers and buses on one calendar and warns you when two trips need the same person or vehicle."
-  ar: "يرتّب مرشديك وسائقيك وحافلاتك في تقويم واحد، وينبّهك عندما تحتاج رحلتان الشخص نفسه أو المركبة نفسها."
+  ar: "يرتّب مرشديك وسائقيك وحافلاتك في تقويم واحد، وينبّهك عندما تحتاج رحلتان إلى الشخص نفسه أو المركبة نفسها."
 never:
   en: "It never assigns anyone without your staff's approval."
   ar: "لا يسند مهمة لأحد دون موافقة موظفيك."
@@ -34,7 +34,7 @@ story:
   - who: system
     text:
       en: "The guide and the driver each get their schedule."
-      ar: "يصل المرشد والسائق جدول كلٍّ منهما."
+      ar: "يصل كلّاً من المرشد والسائق جدولُه الخاص."
 # Extra features offered for this system in "Design your agent".
 features:
   - id: clash-warnings
@@ -61,7 +61,7 @@ faqs:
       ar: "ما المقصود بالتعارض؟"
     answer:
       en: "Two trips that need the same guide, driver or bus at the same time."
-      ar: "رحلتان تحتاجان المرشد نفسه أو السائق نفسه أو الحافلة نفسها في الوقت نفسه."
+      ar: "رحلتان تحتاجان إلى المرشد نفسه أو السائق نفسه أو الحافلة نفسها في الوقت نفسه."
   - question:
       en: "Can guides confirm their jobs?"
       ar: "هل يستطيع المرشدون تأكيد مهامهم؟"

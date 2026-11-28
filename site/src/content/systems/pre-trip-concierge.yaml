@@ -3,7 +3,7 @@ group: look-after
 status: on-request
 name:
   en: "Pre-trip Concierge"
-  ar: "مرافق ما قبل الرحلة"
+  ar: "تجهيز المسافر قبل الرحلة"
 summary:
   en: "Meeting point, what to bring, guide contact and weather, sent before departure."
   ar: "نقطة التجمّع وما يجب إحضاره ورقم المرشد وحالة الطقس، تُرسَل قبل السفر."
@@ -55,7 +55,7 @@ faqs:
       ar: "متى تُرسَل الرسائل؟"
     answer:
       en: "On the days before departure that you choose in setup."
-      ar: "في الأيام التي تختارها قبل السفر عند الإعداد."
+      ar: "في الأيام التي تحدّدها عند الإعداد، قبل موعد السفر."
   - question:
       en: "Can travellers reply with questions?"
       ar: "هل يستطيع المسافرون الردّ بأسئلة؟"

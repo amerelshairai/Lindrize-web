@@ -25,7 +25,7 @@ cleared: { en: "Your answers were cleared from this device.", ar: "مُسحت إ
 business:
   title: { en: "Your business", ar: "عملك" }
   typeLabel: { en: "What kind of business is it?", ar: "ما نوع عملك؟" }
-  sizeLabel: { en: "How many people work there?", ar: "كم شخصاً يعمل فيه؟" }
+  sizeLabel: { en: "How many people work there?", ar: "كم شخصاً يعمل لديك؟" }
   sizes:
     - { id: solo, label: { en: "Just me", ar: "أنا فقط" } }
     - { id: small, label: { en: "2 to 5", ar: "من 2 إلى 5" } }
@@ -61,7 +61,7 @@ features:
 
 ranges:
   title: { en: "A few numbers", ar: "بعض الأرقام" }
-  lead: { en: "Rough ranges are enough. They help the call start from the right place.", ar: "تكفي أرقام تقريبية. تساعد على أن تبدأ المكالمة من النقطة الصحيحة." }
+  lead: { en: "Rough ranges are enough. They help the call start from the right place.", ar: "تكفي أرقام تقريبية، فهي تساعدنا على بدء المكالمة من النقطة الصحيحة." }
   # low and high are the bounds used by the estimate. They are never shown.
   messages:
     label: { en: "Customer messages a day", ar: "رسائل العملاء في اليوم" }
@@ -164,9 +164,9 @@ email:
   # Shown to people only if they somehow see the hidden trap field.
   trap: { en: "Leave this field empty", ar: "اترك هذا الحقل فارغاً" }
   sending: { en: "Sending…", ar: "جارٍ الإرسال…" }
-  sent: { en: "Sent. Check your inbox for your design.", ar: "أُرسل. تجد تصميمك في بريدك." }
+  sent: { en: "Sent. Check your inbox for your design.", ar: "تمّ الإرسال. ستجد تصميمك في بريدك." }
   errors:
-    email: { en: "Please enter an email like name@agency.com.", ar: "يرجى إدخال بريد مثل name@agency.com." }
+    email: { en: "Please enter an email like name@agency.com.", ar: "يُرجى إدخال بريد إلكتروني صحيح، مثل name@agency.com." }
     check: { en: "The human check has not finished. Wait a moment and press Send again.", ar: "لم يكتمل التحقق البشري بعد. انتظر لحظة ثم اضغط «أرسل» مجدداً." }
     tooMany: { en: "Too many tries. Please wait a while, or send it to us on WhatsApp.", ar: "محاولات كثيرة. انتظر قليلاً، أو أرسله لنا على WhatsApp." }
     failed: { en: "We could not send it. Please send it to us on WhatsApp or book a call.", ar: "تعذّر الإرسال. يرجى إرساله لنا على WhatsApp أو حجز مكالمة." }
@@ -183,7 +183,7 @@ board:
   moods:
     waiting: { title: { en: "Waiting", ar: "ينتظر" }, body: { en: "The customer has asked and is waiting.", ar: "العميل سأل وهو ينتظر." } }
     answered: { title: { en: "Answered", ar: "حصل على إجابة" }, body: { en: "The customer got an answer straight away.", ar: "حصل العميل على إجابة فوراً." } }
-    done: { title: { en: "Looked after", ar: "تمّت خدمته" }, body: { en: "Your team has taken it from here.", ar: "فريقك أكمل من هنا." } }
+    done: { title: { en: "Looked after", ar: "تمّت خدمته" }, body: { en: "Your team has taken it from here.", ar: "فريقك يتابع من هنا." } }
     lost: { title: { en: "Gone elsewhere", ar: "ذهب إلى غيرك" }, body: { en: "The customer stopped waiting.", ar: "العميل لم ينتظر أكثر." } }
   # The same customer on a normal night with nobody to answer. Shown for the Sales Assistant.
   withoutStory:

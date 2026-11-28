@@ -34,7 +34,7 @@ story:
   - who: team
     text:
       en: "By evening, every inquiry has a status."
-      ar: "مع المساء يكون لكل استفسار حالة."
+      ar: "بحلول المساء يكون لكل استفسار حالة محدَّدة."
 # Extra features offered for this system in "Design your agent".
 features:
   - id: filters

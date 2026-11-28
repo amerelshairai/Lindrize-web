@@ -34,7 +34,7 @@ story:
   - who: customer
     text:
       en: "Customers who ask about it are answered from the same sheet."
-      ar: "العملاء الذين يسألون عنه يُجابون من الجدول نفسه."
+      ar: "العملاء الذين يسألون عنه يحصلون على إجابات من الجدول نفسه."
 # Extra features offered for this system in "Design your agent".
 features:
   - id: two-languages

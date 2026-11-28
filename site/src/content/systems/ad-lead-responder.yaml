@@ -67,5 +67,5 @@ faqs:
       ar: "ماذا لو لم يردّ الشخص؟"
     answer:
       en: "The lead still goes to your staff with the details from the form."
-      ar: "يصل العميل إلى موظفيك على أي حال مع البيانات التي أدخلها في النموذج."
+      ar: "تصل بيانات العميل التي أدخلها في النموذج إلى موظفيك على أي حال."
 related: [1, 2, 16]

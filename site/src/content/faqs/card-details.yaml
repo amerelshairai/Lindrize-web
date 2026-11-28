@@ -5,4 +5,4 @@ question:
   ar: "هل يطلب من العملاء بيانات بطاقاتهم؟"
 answer:
   en: "No. Payment is never taken in the chat. Your staff arrange it directly with the customer."
-  ar: "لا. لا يتم الدفع داخل المحادثة أبداً. موظفوك يرتّبونه مع العميل مباشرة."
+  ar: "لا. لا يُطلَب أي دفع داخل المحادثة أبداً، بل يرتّبه موظفوك مع العميل مباشرة."

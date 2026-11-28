@@ -6,7 +6,7 @@ name:
   ar: "تحديث الباقات والأسعار"
 summary:
   en: "Staff edit one sheet, and the assistant, website and quotes update."
-  ar: "يعدّل الموظفون جدولاً واحداً فيتحدّث المساعد والموقع وعروض الأسعار."
+  ar: "يعدّل الموظفون جدولاً واحداً فيُحدَّث المساعد والموقع وعروض الأسعار."
 does:
   en: "Your staff edit one sheet of packages and prices. The assistant, your website and your quotes then use the new prices without anyone retyping them."
   ar: "يعدّل موظفوك جدولاً واحداً للباقات والأسعار، فيستخدم المساعد وموقعك وعروض أسعارك الأسعار الجديدة دون أن يعيد أحد كتابتها."

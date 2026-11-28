@@ -4,7 +4,7 @@ name:
   ar: "تأجير السيارات"
 intro:
   en: "Answer availability and price questions, collect licences and ID, and keep track of payments."
-  ar: "الردّ على أسئلة التوفّر والأسعار، وجمع الرخص والهويات، ومتابعة الدفعات."
+  ar: "الردّ على أسئلة التوفّر والأسعار، وجمع رخص القيادة والهويات، ومتابعة الدفعات."
 # System numbers that fit this field best, in the order shown.
 systems: [1, 9, 24]
 also:

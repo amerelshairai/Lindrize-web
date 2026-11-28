@@ -61,7 +61,7 @@ faqs:
       ar: "ماذا لو لم تكن الإجابة في المستندات؟"
     answer:
       en: "It says so, and the question is added to a list for you to fill in."
-      ar: "يقول ذلك، ويُضاف السؤال إلى قائمة لتكملها أنت."
+      ar: "يقول ذلك، ويُضاف السؤال إلى قائمة لتضيف إجابته بنفسك."
   - question:
       en: "Who can use it?"
       ar: "من يستطيع استخدامه؟"

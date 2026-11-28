@@ -8,7 +8,7 @@ seo:
 title: { en: "How pricing works", ar: "كيف يُحدَّد السعر" }
 lead:
   en: "Every agency's setup is different, so there is no price list here. This page explains how payment works. You get your exact price on the 15-minute call."
-  ar: "إعداد كل مكتب يختلف عن غيره، لذلك لا توجد قائمة أسعار هنا. هذه الصفحة تشرح طريقة الدفع، وتعرف سعرك بالتحديد في مكالمة الـ 15 دقيقة."
+  ar: "إعداد كل مكتب يختلف عن غيره، لذلك لا توجد قائمة أسعار هنا. هذه الصفحة تشرح كيف تُحسَب الرسوم، وتعرف سعرك بالتحديد في مكالمة الـ 15 دقيقة."
 partsTitle: { en: "What you pay for", ar: "ما الذي تدفع مقابله" }
 parts:
   - title: { en: "A one-time setup fee", ar: "رسوم إعداد لمرة واحدة" }
@@ -18,7 +18,7 @@ parts:
   - title: { en: "A monthly fee", ar: "رسوم شهرية" }
     body:
       en: "It covers running the system. There are two monthly plans: one for the service alone, and one that also includes the AI usage, managed for you."
-      ar: "تغطي تشغيل النظام. هناك خطتان شهريتان: واحدة للخدمة فقط، وأخرى تشمل أيضاً استخدام الذكاء الاصطناعي ونديره نحن عنك."
+      ar: "تغطي تشغيل النظام. هناك خطتان شهريتان: واحدة للخدمة فقط، وأخرى تشمل أيضاً استخدام الذكاء الاصطناعي الذي نديره نحن عنك."
   - title: { en: "A 10-day live trial", ar: "تجربة حيّة لمدة 10 أيام" }
     body:
       en: "The system works with your real customers for 10 days, so you judge it on real conversations."
@@ -51,4 +51,4 @@ next:
   title: { en: "Get your price", ar: "اعرف سعرك" }
   body:
     en: "Design your agent first, so the call starts from what you need. Or book the call straight away."
-    ar: "صمّم مساعدك أولاً لتبدأ المكالمة مما تحتاجه، أو احجز المكالمة مباشرة."
+    ar: "صمّم مساعدك أولاً لنبدأ المكالمة من احتياجاتك مباشرة، أو احجز المكالمة مباشرة."

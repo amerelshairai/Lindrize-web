@@ -34,7 +34,7 @@ story:
   - who: team
     text:
       en: "In the morning, staff call back with an offer."
-      ar: "في الصباح يعاود الموظفون الاتصال به بعرض."
+      ar: "في الصباح يعاود الموظفون الاتصال به ويقدّمون له عرضاً."
 # Extra features offered for this system in "Design your agent".
 features:
   - id: two-languages

@@ -40,7 +40,7 @@ features:
   - id: by-interest
     name:
       en: "Customer groups by interest"
-      ar: "مجموعات العملاء حسب الاهتمام"
+      ar: "تقسيم العملاء إلى مجموعات حسب اهتماماتهم"
   - id: send-time
     name:
       en: "Send at the time you choose"
@@ -61,7 +61,7 @@ faqs:
       ar: "كيف يوقف العملاء العروض؟"
     answer:
       en: "By replying that they want to stop. They are removed from future offers."
-      ar: "بالردّ بأنهم يريدون الإيقاف، فيُحذَفون من العروض القادمة."
+      ar: "بالردّ بأنهم يريدون الإيقاف، فيُستثنَون من العروض القادمة."
   - question:
       en: "Who writes the offer?"
       ar: "من يكتب العرض؟"

@@ -2,8 +2,8 @@
 # approved: the owner has read and accepted the text. The site cannot go live before that.
 # updated: change to the day the text last changed (shown at the top of the page).
 ready: true
-approved: false
-updated: "2026-11-17"
+approved: true
+updated: "2026-11-28"
 seo:
   title:
     en: "Terms | Lindrize"

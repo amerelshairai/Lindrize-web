@@ -9,7 +9,7 @@ summary:
   ar: "حالة كل مسافر ومواعيده النهائية."
 does:
   en: "It tracks each traveller's visa: what has been submitted, what is still waiting and which deadlines are close."
-  ar: "يتابع تأشيرة كل مسافر: ما قُدِّم، وما زال قيد الانتظار، وأي المواعيد النهائية اقتربت."
+  ar: "يتابع تأشيرة كل مسافر: ما قُدِّم، وما لا يزال قيد الانتظار، وأي المواعيد النهائية اقتربت."
 never:
   en: "It never submits an application and never predicts a decision. It keeps your staff on time."
   ar: "لا يقدّم طلب تأشيرة ولا يتوقّع نتيجته. يساعد موظفيك على الالتزام بالمواعيد."

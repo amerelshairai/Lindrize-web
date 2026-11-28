@@ -12,7 +12,7 @@ does:
   ar: "بعد الرحلة، يشكر كل مسافر، ويطلب منه تقييماً على Google، ويدعوه إلى ترشيح صديق. أما الشكاوى فتُحوَّل إلى موظفيك."
 never:
   en: "It never writes or posts a review for anyone, and it never offers a reward for a good review."
-  ar: "لا يكتب تقييماً ولا ينشره عن أحد، ولا يعرض مكافأة مقابل تقييم جيد."
+  ar: "لا يكتب تقييمات ولا ينشرها نيابةً عن أحد، ولا يعرض مكافأة مقابل تقييم جيد."
 # The steps shown on the system's board. Always presented as an example.
 story:
   - who: system

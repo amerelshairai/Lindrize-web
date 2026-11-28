@@ -238,7 +238,7 @@
         },
         "seen-check": {
           "en": "Ask the traveller to confirm they saw a change",
-          "ar": "طلب تأكيد المسافر أنه اطّلع على التغيير"
+          "ar": "طلب تأكيد من المسافر بأنه اطّلع على التغيير"
         }
       }
     },
@@ -285,7 +285,7 @@
     "10": {
       "name": {
         "en": "Pre-trip Concierge",
-        "ar": "مرافق ما قبل الرحلة"
+        "ar": "تجهيز المسافر قبل الرحلة"
       },
       "features": {
         "weather": {
@@ -370,7 +370,7 @@
       "features": {
         "by-interest": {
           "en": "Customer groups by interest",
-          "ar": "مجموعات العملاء حسب الاهتمام"
+          "ar": "تقسيم العملاء إلى مجموعات حسب اهتماماتهم"
         },
         "send-time": {
           "en": "Send at the time you choose",

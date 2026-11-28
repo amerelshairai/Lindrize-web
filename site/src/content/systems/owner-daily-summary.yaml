@@ -30,7 +30,7 @@ story:
   - who: team
     text:
       en: "The owner sees that Dubai was asked about most."
-      ar: "يرى صاحب المكتب أن دبي كانت الأكثر سؤالاً."
+      ar: "يرى صاحب المكتب أن دبي كانت الوجهة الأكثر طلباً."
   - who: team
     text:
       en: "They ask staff to prepare a Dubai offer."
@@ -55,7 +55,7 @@ faqs:
       ar: "من أين يأتي بالأرقام؟"
     answer:
       en: "From the systems you use with it. It counts what they recorded."
-      ar: "من الأنظمة التي تستخدمها معه. يحصي ما سجّلته."
+      ar: "من الأنظمة التي تستخدمها معه. يحصي ما سجّلته تلك الأنظمة."
   - question:
       en: "How do I receive it?"
       ar: "كيف أستلمه؟"
@@ -69,3 +69,10 @@ faqs:
       en: "Yes. A weekly summary can be added."
       ar: "نعم. يمكن إضافة ملخص أسبوعي."
 related: [16, 18, 27]
+seo:
+  title:
+    en: "Owner Daily Summary for travel agencies | Lindrize"
+    ar: "الملخص اليومي لأصحاب مكاتب السفر | Lindrize"
+  description:
+    en: "Each morning: inquiries, bookings, response times and top destinations. One of 30 systems Lindrize builds for travel agencies."
+    ar: "كل صباح: الاستفسارات والحجوزات وأوقات الردّ وأكثر الوجهات طلباً. أحد 30 نظاماً تبنيها Lindrize لمكاتب السفر والسياحة."

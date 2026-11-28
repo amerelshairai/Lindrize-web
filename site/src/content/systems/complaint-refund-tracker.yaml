@@ -18,7 +18,7 @@ story:
   - who: customer
     text:
       en: "A traveller complains that the hotel room was not as promised."
-      ar: "مسافر يشتكي من أن غرفة الفندق لم تكن كما وُعِد."
+      ar: "مسافر يشتكي من أن غرفة الفندق لم تكن كما وُعِد بها."
   - who: system
     text:
       en: "The system logs the case and assigns it to a staff member."
@@ -64,7 +64,7 @@ faqs:
       ar: "فريقك. النظام يسجّل القرار وتاريخه."
   - question:
       en: "Can I see patterns?"
-      ar: "هل أستطيع رؤية ما يتكرر؟"
+      ar: "هل أستطيع معرفة الشكاوى المتكرّرة؟"
     answer:
       en: "Yes. A monthly list shows what customers complained about most."
       ar: "نعم. قائمة شهرية تُظهر أكثر ما اشتكى منه العملاء."

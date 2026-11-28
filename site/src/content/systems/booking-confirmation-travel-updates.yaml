@@ -48,7 +48,7 @@ features:
   - id: seen-check
     name:
       en: "Ask the traveller to confirm they saw a change"
-      ar: "طلب تأكيد المسافر أنه اطّلع على التغيير"
+      ar: "طلب تأكيد من المسافر بأنه اطّلع على التغيير"
 faqs:
   - question:
       en: "Where do the trip details come from?"

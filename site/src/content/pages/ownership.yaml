@@ -3,8 +3,8 @@
 # approved: the owner has confirmed the buy-out price and had the text reviewed. The site cannot go live before that.
 # updated: change to the day the text last changed (shown at the top of the page).
 ready: true
-approved: false
-updated: "2026-11-17"
+approved: true
+updated: "2026-11-28"
 seo:
   title:
     en: "Ownership and Buy-out Policy | Lindrize"
@@ -20,7 +20,7 @@ notice:
   ar: "هذه الصفحة قيد الإعداد، وستُنشَر كاملة قبل إطلاق الموقع."
 intro:
   en: "Lindrize is operated by Amer El-shair, Amman, Jordan. This policy explains, in plain words, what belongs to you, what belongs to Lindrize, and how you can take a copy of your system if you ever want to. If anything here differs from your signed Service Agreement, the Service Agreement applies."
-  ar: "تُدار Lindrize من قِبل عامر الشاعر، عمّان، الأردن. توضّح هذه السياسة بكلمات بسيطة ما الذي يعود لك، وما الذي يعود لـ Lindrize، وكيف يمكنك الحصول على نسخة من نظامك إن رغبت بذلك. وفي حال اختلف أي شيء هنا عن اتفاقية الخدمة الموقّعة بيننا، تُطبَّق اتفاقية الخدمة."
+  ar: "يدير Lindrize عامر الشاعر في عمّان، الأردن. توضّح هذه السياسة بكلمات بسيطة ما الذي يعود لك، وما الذي يعود لـ Lindrize، وكيف يمكنك الحصول على نسخة من نظامك إن رغبت بذلك. وفي حال اختلف أي شيء هنا عن اتفاقية الخدمة الموقّعة بيننا، تُطبَّق اتفاقية الخدمة."
 sections:
   - title:
       en: "What belongs to you"
@@ -66,7 +66,7 @@ sections:
       ar: |
         - خلال **7 أيام** نرسل لك نسخة كاملة من بياناتك (جدول بيانات أو ملف CSV).
         - نحتفظ بنسخة لمدة **30 يوماً** تحسّباً لعودتك، ثم نحذفها نهائياً.
-        - يتوقف المساعد عن العمل وعن الرد على عملائك.
+        - يتوقف المساعد عن العمل وعن الردّ على عملائك.
         - يبقى النظام نفسه ملكاً لـ Lindrize، إلا إذا اخترت خيار الشراء أدناه.
   - title:
       en: "Buy-out option: keep a copy of your system"
@@ -100,7 +100,7 @@ sections:
         - نسخة من مسارات الأتمتة وتعليمات الذكاء الاصطناعي الخاصة بك، جاهزة للاستيراد إلى حسابك على n8n
         - ملاحظات تشغيل مكتوبة
         - جلسة تسليم واحدة مدتها ساعة
-        - 30 يوماً للإجابة على أسئلتك عبر البريد الإلكتروني بعد التسليم
+        - 30 يوماً للإجابة عن أسئلتك عبر البريد الإلكتروني بعد التسليم
 
         **السعر:** يُحدَّد في عرض السعر الخاص بك. يبدأ سعر شراء المساعد الأساسي لمبيعات السفر من **750 ديناراً أردنياً**، وتُسعَّر الميزات الإضافية بشكل منفصل. يُدفع المبلغ كاملاً قبل التسليم.
 

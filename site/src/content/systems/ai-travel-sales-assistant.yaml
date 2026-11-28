@@ -75,7 +75,7 @@ faqs:
       ar: "ماذا يحدث إذا سأل العميل سؤالاً لا يستطيع الإجابة عنه؟"
     answer:
       en: "It is set up to answer from your packages and price list. When a question falls outside them, it hands the conversation to your staff."
-      ar: "هو مُعَدّ ليجيب من باقاتك وقائمة أسعارك. وإذا خرج السؤال عنهما، حوّل المحادثة إلى موظفيك."
+      ar: "هو مُعَدّ ليجيب من باقاتك وقائمة أسعارك. وإذا كان السؤال خارج ذلك، يحوّل المحادثة إلى موظفيك."
 related: [2, 5, 16]
 seo:
   title:
